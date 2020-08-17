@@ -1,23 +1,55 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8"/>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <title>Sign up</title>
 </head>
 <body>
-<nav th:replace="partials/navbar :: navbar" />
-<h1>Create an account</h1>
-<form th:action="@{/sign-up}" method="POST" th:object="${user}">
-    <label for="username">Username</label>
-    <input id="username" th:field="*{username}" />
 
-    <label for="email">Email</label>
-    <input id="email" th:field="*{email}" />
+<nav th:replace="partials/navbar :: navbar"/>
 
-    <label for="password">Password</label>
-    <input id="password" type="password" th:field="*{password}" />
+<div class="container">
+    <div class="d-flex justify-content-center h-100">
+        <div class="card">
+            <div class="card-header">
+                <h3>Create an account</h3>
+            </div>
 
-    <input value="Sign me up!" type="submit" />
-</form>
+            <div class="card-body">
+                <form th:action="@{/sign-up}" method="POST" th:object="${user}">
+                    <div class="input-group form-group">
+                        <div class="input-group-prepend">
+                            <label class="input-group-text bg-info text-white" for="username">Username</label>
+                        </div>
+                        <input class="form-control" id="username" th:field="*{username}"/>
+                    </div>
+
+                    <div class="input-group form-group">
+                        <div class="input-group-prepend">
+                            <label class="input-group-text bg-info text-white" for="email">Email</label>
+                        </div>
+                        <input class="form-control" id="email" th:field="*{email}"/>
+                    </div>
+
+                    <div class="input-group form-group">
+                        <div class="input-group-prepend">
+                            <label class="input-group-text bg-info text-white" for="password">Password</label>
+                        </div>
+                        <input class="form-control" id="password" type="password" th:field="*{password}"/>
+                    </div>
+
+                    <div class="form-group">
+                        <input class="btn float-right login_btn bg-primary text-white" value="Sign me up!" type="submit"/>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>

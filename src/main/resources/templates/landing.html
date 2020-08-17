@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
+          integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <title>Landing Page</title>
+</head>
+<body>
+
+<nav th:replace="partials/navbar :: navbar"/>
+
+<div class="container">
+    <div class="jumbotron jumbotron-fluid">
+        <div class="header d-flex justify-content-center">
+            <h1 class="display-4">Online Yearbook</h1>
+        </div>
+    </div>
+</div>
+
+<div class="container d-flex justify-content-center">
+<div class="container card-body">
+    <div class="container body d-flex justify-content-center">
+        <h2><i class="far fa-eye"></i>View your yearbook online.</h2>
+    </div>
+</div>
+
+<div class="container card-body">
+    <div class="container body d-flex justify-content-center">
+        <h2><i class="fas fa-signature"></i>Sign your friends yearbook.</h2>
+    </div>
+</div>
+
+<div class="container card-body">
+    <div class="container body d-flex justify-content-center">
+        <h2><i class="far fa-comment-alt"></i>Leave a friendly message.</h2>
+    </div>
+</div>
+</div>
+
+<div class="container">
+    <div class="container body">
+        <h2 class="d-flex justify-content-center">Parents can sign up and register their child for yearbook viewing. Parents can also monitor their child.</h2>
+    </div>
+</div>
+
+</body>
+</html>
