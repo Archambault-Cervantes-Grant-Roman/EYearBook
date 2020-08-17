@@ -1,5 +1,5 @@
-create database practice_db;
-use practice_db;
+create DATABASE eyearbook_db;
+use eyearbook_db;
 
-create user 'practice_user'@'localhost' identified by 'password';
-grant all on *.* to 'practice_user'@'localhost';
+create user 'eyearbook_user'@'localhost' identified by 'password';
+grant all on *.* to 'eyearbook_user'@'localhost';
