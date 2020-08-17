@@ -2,25 +2,53 @@
 
 
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thyme leaf.org/extras/spring-security" lang="en">
 <head>
+<!--    bootstrap-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<!--    jquery-->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+<!--    css styling-->
+    <link href="../../static/eyearbook.css" rel="stylesheet"/>
     <meta charset="UTF-8">
+
     <title>Signature Page</title>
 </head>
 <body>
 <nav th:replace="partials/navbar :: navbar" />
-<h1>CHILDS NAME HERE DYNAMIC</h1>
+<h1 class="text-center">CHILDS NAME HERE DYNAMIC</h1>
 
-<div>
-    <h3>Comments</h3>
-    <div class="card mb-3" style="max-width: 540px;">
-        <div>
-            image
-        </div>
-        <div>text box </div>
-    </div>
+
+<div class="sidenav">
+    <div class="student_pic text-center">image here</div>
+    <a href="#">Search Registered Student</a>
+    <a href="#">View Yearbook</a>
+    <a href="#">Add as friend (dynamic - visable to visitors)</a>
+    <a href="#">Post a comment (dynamic - visable to visitors)</a>
 </div>
 
+<div class="container-fluid container">
+    <div class="main">
+        <h3 class="text-center">Comments</h3>
+        <div class="card mb-3" style="max-width: 700px;">
+            <div class="row no-gutters">
+                <div class="col-md-4">
+                    <img src="..." class="card-img" alt="...">
+                </div>
+
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">NAME OF WHO CREATED THIS COMMENT</h5>
+                        <p class="card-text">Sample of signing a yearbook.  "Have a great summer!"</p>
+                        <p class="card-text"><small class="text-muted">created at ?? </small></p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
 
 
 
