@@ -1,3 +1,4 @@
+
 CREATE DATABASE IF NOT EXISTS e_yearbook_db;
 
 create user 'e_yearbook_user'@'localhost' IDENTIFIED BY 'codeup';
