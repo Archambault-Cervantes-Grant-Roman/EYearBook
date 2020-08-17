@@ -1,8 +1,6 @@
-create DATABASE eyearbook_db;
-use eyearbook_db;
 
-create user 'eyearbook_user'@'localhost' identified by 'password';
-grant all on *.* to 'eyearbook_user'@'localhost';
+CREATE DATABASE IF NOT EXISTS e_yearbook_db;
 
-SHOW databases;
-DROP TABLE posts;
+create user 'e_yearbook_user'@'localhost' IDENTIFIED BY 'codeup';
+GRANT ALL ON e_yearbook_db.* TO 'e_yearbook_user'@'localhost';
+
