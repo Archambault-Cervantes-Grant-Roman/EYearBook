@@ -32,4 +32,10 @@ public class UserController {
         users.save(user);
         return "redirect:/login";
     }
+//
+//    @GetMapping("/signature-page")
+//    public String signaturePage(Model model){
+//        model.addArribute("user", user);
+//        return "users/signature-page";
+//    }
 }
