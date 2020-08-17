@@ -12,4 +12,10 @@ public class HomeController {
         return "index";
     }
 
+    @GetMapping("/landingpage")
+    public String landingPage(){
+        return "landing";
+    }
+
+
 }
