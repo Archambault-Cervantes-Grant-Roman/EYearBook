@@ -38,20 +38,11 @@ public class UserController {
         return "redirect:/login";
     }
 
-
-    public void validate(Object target, Errors errors) {
-
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password",
-                "required.password", "Field name is required.");
-
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "confirmPassword",
-                "required.confirmPassword", "Field name is required.");
-
-        User user = (User) target;
-
-        if (!(user.getPassword().equals(user.getRetypePassword()))) {
-            errors.rejectValue("password", "notmatch.password");
-        }
-    }
+//
+//    @GetMapping("/signature-page")
+//    public String signaturePage(Model model){
+//        model.addArribute("user", user);
+//        return "users/signature-page";
+//    }
 }
 

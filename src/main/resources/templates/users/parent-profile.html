@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thyme leaf.org/extras/spring-security" lang="en">
+<head>
+    <!--    bootstrap-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <!--    jquery-->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+    <!--    css styling-->
+    <link href="../../static/eyearbook.css" rel="stylesheet"/>
+    <meta charset="UTF-8">
+
+    <title>Parent Profile Page</title>
+</head>
+<body>
+<nav th:replace="partials/navbar :: navbar" />
+<h1 class="text-center">PARENTS NAME HERE </h1>
+<div class="card justify-content-sm-center" style="width: 18rem;">
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">Register a child</li>
+        <li class="list-group-item">Update profile</li>
+        <li class="list-group-item">View comments your child has posted</li>
+        <li class="list-group-item">purchase a yearbook</li>
+        <input type="text" class="list-group-item">enter yearbook purchase code</input>
+    </ul>
+</div>
+
+
+
+</body>
+</html>

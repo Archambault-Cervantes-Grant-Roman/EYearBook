@@ -16,9 +16,9 @@
 </head>
 <body>
 <nav th:replace="partials/navbar :: navbar" />
-<h1 class="text-center">CHILDS NAME HERE DYNAMIC</h1>
+<h1 class="text-center"><span th:text="${name}"></span>/h1>
 
-
+<!--side nav bar-->
 <div class="sidenav">
     <div class="student_pic text-center">image here</div>
     <a href="#">Search Registered Student</a>
