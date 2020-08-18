@@ -6,12 +6,10 @@
     <title>Log In</title>
 </head>
 <body>
-<div class="container">
 
-    <div class="row w-100 m-2">
         <nav th:replace="partials/navbar :: navbar" />
-    </div>
 
+<div class="container">
 
         <div th:if="${param.error}">
             Invalid Username and Password.
