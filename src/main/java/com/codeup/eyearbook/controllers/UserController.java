@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
@@ -32,10 +33,20 @@ public class UserController {
         users.save(user);
         return "redirect:/login";
     }
-//
-//    @GetMapping("/signature-page")
-//    public String signaturePage(Model model){
-//        model.addArribute("user", user);
-//        return "users/signature-page";
-//    }
+
+    @GetMapping("/signature-page/{id}")
+    public String signaturePage(@PathVariable long id,  Model model){
+        User user = users.getOne(id);
+        model.addAttribute("user", user);
+        return "users/signature-page";
+    }
+
+    @GetMapping("/parent-profile/{id}")
+    public String parentProfile(@PathVariable long id,  Model model){
+        User user = users.getOne(id);
+        model.addAttribute("user", user);
+        return "users/parent-profile";
+    }
+
+
 }
