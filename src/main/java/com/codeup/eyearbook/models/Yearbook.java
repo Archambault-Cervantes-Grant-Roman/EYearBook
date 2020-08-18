@@ -11,14 +11,15 @@ public class Yearbook {
     private long id;
 
     @Column(length = 150)
-    private String img_path;
+    private String image_path;
 
     @Column(length = 150)
     private int page_num;
 
+    public Yearbook(){}
     public Yearbook(long id, String img_path, int page_num) {
         this.id = id;
-        this.img_path = img_path;
+        this.image_path = img_path;
         this.page_num = page_num;
     }
 
@@ -31,11 +32,11 @@ public class Yearbook {
     }
 
     public String getImg_path() {
-        return img_path;
+        return image_path;
     }
 
     public void setImg_path(String img_path) {
-        this.img_path = img_path;
+        this.image_path = img_path;
     }
 
     public int getPage_num() {
