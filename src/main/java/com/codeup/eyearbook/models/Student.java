@@ -7,6 +7,7 @@ import javax.persistence.*;
 public class Student {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @Column(length = 150)
