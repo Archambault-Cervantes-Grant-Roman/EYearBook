@@ -87,4 +87,7 @@ public class Signatures {
     public void setProfile_user(User profile_user) {
         this.profile_user = profile_user;
     }
+
+    public void save(Signatures signatures) {
+    }
 }
