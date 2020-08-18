@@ -14,18 +14,32 @@
 </head>
 <body>
 <nav th:replace="partials/navbar :: navbar" />
-<h1 class="text-center">PARENTS NAME HERE </h1>
-<div class="card justify-content-sm-center" style="width: 18rem;">
-    <ul class="list-group list-group-flush">
-        <li class="list-group-item">Register a child</li>
-        <li class="list-group-item">Update profile</li>
-        <li class="list-group-item">View comments your child has posted</li>
-        <li class="list-group-item">purchase a yearbook</li>
-        <input type="text" class="list-group-item">enter yearbook purchase code</input>
-    </ul>
+<h1 class="text-center"><span th:text="${user.getUsername()}">parents name here </span></h1>
+<div class="sidenavP">
+
+    <a href="#">Register a child</a>
+    <a href="#">Update profile</a>
+    <a href="#" >View comments your child has posted</a>
+    <a href="#" >purchase a yearbook</a>
+    <a href="#" >enter yearbook purchase code</a>
 </div>
 
+<div class="container-fluid container">
+    <div class="main">
+        <h3 class="text-center">CHILDS Comments</h3>
+        <div class="card mb-3" style="max-width: 700px;">
 
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">NAME OF THE CHILD COMMENT WAS POSTED TO</h5>
+                        <p class="card-text">Sample of signing a yearbook.  "Have a great summer!"</p>
+                        <p class="card-text"><small class="text-muted">created at ?? </small></p>
+                    </div>
+                </div>
+
+        </div>
+    </div>
+</div>
 
 </body>
 </html>
