@@ -1,9 +1,5 @@
-
-
-
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thyme leaf.org/extras/spring-security" lang="en">
-<head>
+<html xmlns:th="http://www.thymeleaf.org"><head>
 <!--    bootstrap-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 <!--    jquery-->
@@ -43,6 +39,10 @@
                         <p class="card-text"><small class="text-muted">created at ?? </small></p>
                     </div>
                 </div>
+
+                <form th:action="@{/signature-page}" method="POST" th:object="${sign}">
+
+                </form>
 
             </div>
 

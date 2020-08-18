@@ -38,13 +38,8 @@ public class User {
     @Transient
     private String retypePassword;
 
-    public String getRetypePassword() {
-        return retypePassword;
-    }
 
-    public void setRetypePassword(String retypePassword) {
-        this.retypePassword = retypePassword;
-    }
+
 
     public User() {
     }

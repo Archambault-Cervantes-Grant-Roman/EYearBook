@@ -40,14 +40,14 @@ public class UserController {
         return "redirect:/login";
     }
 
-    @PostMapping("/SIGN-UP")
-    public RedirectView addNew(User user, RedirectAttributes redir) {
-        users.save(user);
-        RedirectView  redirectView= new RedirectView("/login",true);
-        redir.addFlashAttribute("message",
-                "You successfully registered! You can now login");
-        return redirectView;
-    }
+//    @PostMapping("/SIGN-UP")
+//    public RedirectView addNew(User user, RedirectAttributes redir) {
+//        users.save(user);
+//        RedirectView  redirectView= new RedirectView("/login",true);
+//        redir.addFlashAttribute("message",
+//                "You successfully registered! You can now login");
+//        return redirectView;
+//    }
 //
 //    @GetMapping("/signature-page")
 //    public String signaturePage(Model model){
