@@ -1,3 +1,6 @@
+/****************************************************************/
+/*signature page*/
+/*****************************************************************/
 .sidenav {
     height: 100%; /* Full-height: remove this if you want "auto" height */
     width: 190px; /* Set the width of the sidebar */
@@ -10,7 +13,7 @@
     padding-top: 20px;
 }
 
-/* The navigation menu links */
+/* The navigation menu links*/
 .sidenav a {
     padding: 6px 8px 6px 16px;
     text-decoration: none;
@@ -19,7 +22,7 @@
     display: block;
 }
 
-/* When you mouse over the navigation links, change their color */
+/* When you mouse over the navigation links, change their color*/
 .sidenav a:hover {
     color: #f1f1f1;
 }
@@ -39,3 +42,50 @@
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}
 }
+/***************************************************************/
+/* END OF SIGNATURE-PAGE CSS*/
+
+
+
+/*PARENT-PROFILE PAGE*/
+/************************************************************/
+.sidenavP {
+    height: 100%; /* Full-height: remove this if you want "auto" height */
+    width: 190px; /* Set the width of the sidebar */
+    position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+    z-index: 1; /* Stay on top */
+    top: 90px; /* from the top */
+    left: 10px;
+    background-color: rgb(191, 154, 151); /* dull pink */
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 20px;
+}
+
+/* The navigation menu links*/
+.sidenavP a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 18px;
+    color: black;
+    display: block;
+}
+
+/* When you mouse over the navigation links, change their color*/
+.sidenavP a:hover {
+    color: #f1f1f1;
+}
+/***************************************************************/
+/* END OF PARENT-PROFILE-PAGE CSS*/
+
+
+/*MOCK SITE*/
+/************************************************************/
+/*.hidden{*/
+/*    visibility: hidden;*/
+/*}*/
+/*.mock {*/
+/*    height: 50%;*/
+/*    width: auto;*/
+/*    margin: auto;*/
+/*}*/
+
