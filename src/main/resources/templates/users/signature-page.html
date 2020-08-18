@@ -45,6 +45,15 @@
                         <h3 th:text="${signatures.yearbook_comment}"></h3>
 
                     </div>
+                    <div class="card-body">
+                        <form th:action="@{/signature-page}" method="POST" th:object="${signatures}">
+
+                            <label for="yearbook_comment">Comment</label>
+                            <input type="text" name="yearbook_comment" id="yearbook_comment" th:field="*{yearbook_comment}"/>
+                            <br />
+                            <input value="Comment" type="submit"/>
+                        </form>
+                    </div>
                 </div>
 
 
@@ -54,15 +63,7 @@
     </div>
 </div>
 
-<div class="card-body">
-    <form th:action="@{/signature-page}" method="POST" th:object="${signatures}">
 
-        <label for="yearbook_comment">Comment</label>
-        <input type="text" name="yearbook_comment" id="yearbook_comment" th:field="*{yearbook_comment}"/>
-        <br />
-        <input value="Comment" type="submit"/>
-    </form>
-</div>
 
 
 
