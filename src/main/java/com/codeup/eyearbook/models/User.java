@@ -26,8 +26,9 @@ public class User {
     @Column(columnDefinition = "boolean default false")
     private boolean owns_yearbook;
 
-    @Column(length = 20)
-    private long student_id;
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "student_id")
+    private Student student;
 
     @Column(length = 150)
     private String sign_page_banner_image;
@@ -46,6 +47,7 @@ public class User {
         this.retypePassword = retypePassword;
     }
 
+
     public User() {
     }
 
@@ -58,48 +60,6 @@ public class User {
         owns_yearbook = copy.owns_yearbook;
         parent_id = copy.parent_id;
         sign_page_banner_image = copy.sign_page_banner_image;
-        student_id = copy.student_id;
-
-    }
-
-    public long getParent_id() {
-        return parent_id;
-    }
-
-    public void setParent_id(long parent_id) {
-        this.parent_id = parent_id;
-    }
-
-    public boolean isIs_parent() {
-        return is_parent;
-    }
-
-    public void setIs_parent(boolean is_parent) {
-        this.is_parent = is_parent;
-    }
-
-    public boolean isOwns_yearbook() {
-        return owns_yearbook;
-    }
-
-    public void setOwns_yearbook(boolean owns_yearbook) {
-        this.owns_yearbook = owns_yearbook;
-    }
-
-    public long getStudent_id() {
-        return student_id;
-    }
-
-    public void setStudent_id(long student_id) {
-        this.student_id = student_id;
-    }
-
-    public String getSign_page_banner_image() {
-        return sign_page_banner_image;
-    }
-
-    public void setSign_page_banner_image(String sign_page_banner_image) {
-        this.sign_page_banner_image = sign_page_banner_image;
     }
 
     public long getId() {
@@ -110,12 +70,12 @@ public class User {
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
+    public long getParent_id() {
+        return parent_id;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setParent_id(long parent_id) {
+        this.parent_id = parent_id;
     }
 
     public String getEmail() {
@@ -134,4 +94,43 @@ public class User {
         this.password = password;
     }
 
+    public boolean isIs_parent() {
+        return is_parent;
+    }
+
+    public void setIs_parent(boolean is_parent) {
+        this.is_parent = is_parent;
+    }
+
+    public boolean isOwns_yearbook() {
+        return owns_yearbook;
+    }
+
+    public void setOwns_yearbook(boolean owns_yearbook) {
+        this.owns_yearbook = owns_yearbook;
+    }
+
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
+    }
+
+    public String getSign_page_banner_image() {
+        return sign_page_banner_image;
+    }
+
+    public void setSign_page_banner_image(String sign_page_banner_image) {
+        this.sign_page_banner_image = sign_page_banner_image;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
 }
