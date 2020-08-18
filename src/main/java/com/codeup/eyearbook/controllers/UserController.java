@@ -24,13 +24,13 @@ import javax.validation.Valid;
 public class UserController {
     private UserRepository users;
     private PasswordEncoder passwordEncoder;
-    private SignatureRepository signatures;
+    private SignatureRepository comment;
 
 
-    public UserController(UserRepository users, PasswordEncoder passwordEncoder, SignatureRepository signatures) {
+    public UserController(UserRepository users, PasswordEncoder passwordEncoder, SignatureRepository comment) {
         this.users = users;
         this.passwordEncoder = passwordEncoder;
-        this.signatures = signatures;
+        this.comment = comment;
     }
 
     @GetMapping("/sign-up")
@@ -73,7 +73,7 @@ public class UserController {
         User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         signatures.setSigner(loggedInUser);
         System.out.println(loggedInUser.getUsername());
-        signatures.save(signatures);
+        comment.save(signatures);
         System.out.println(signatures.getYearbook_comment());
         return "redirect:/signature-page";
     }
