@@ -47,7 +47,8 @@ public class UserController {
         return "redirect:/login";
     }
 
-
+//TODO:does this grab the current logged in user?
+    //TODO:this page needs to be dynamic between basic child and premium child
     @GetMapping("/signature-page/{id}")
     public String signaturePage(@PathVariable long id,  Model model){
         User user = users.getOne(id);
@@ -55,6 +56,8 @@ public class UserController {
         return "users/signature-page";
     }
 
+    //TODO: does this page grab the current logged in user?
+    //TODO:  needs to be dynamic between a basic parent and a premium parent
     @GetMapping("/parent-profile/{id}")
     public String parentProfile(@PathVariable long id,  Model model){
         User user = users.getOne(id);
@@ -78,15 +81,32 @@ public class UserController {
         return "redirect:/signature-page";
     }
 
-    @PostMapping("/SIGN-UP")
-    public RedirectView addNew(User user, RedirectAttributes redir) {
-        users.save(user);
-        RedirectView  redirectView= new RedirectView("/login",true);
-        redir.addFlashAttribute("message",
-                "You successfully registered! You can now login");
-        return redirectView;
-    }
 
+//child registration
+    //TODO:  this page needs to grab the parent id and display it on the page
+
+@GetMapping("/child-registration/{parent_id}")
+public String childRegister(@PathVariable String parent_id, Model model) {
+//TODO: should just return the search form
+    return "users/child-registration";
+}
+//TODO:  need a post mapping to register the child - creating a new user
+    //TODO:  post mapping redirect to parents-profile page
+
+//    User studentUser = new
+//    @GetMapping("/sign-up")
+//    public String showSignupForm(Model model) {
+//        model.addAttribute("user", new User());
+//        return "users/register";
+//    }
+//
+//    @PostMapping("/sign-up")
+//    public String saveUser(@ModelAttribute User user) {
+//        String hash = passwordEncoder.encode(user.getPassword());
+//        user.setPassword(hash);
+//        users.save(user);
+//        return "redirect:/login";
+//    }
 
 }
 
