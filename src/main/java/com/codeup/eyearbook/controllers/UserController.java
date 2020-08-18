@@ -6,6 +6,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.Errors;
+import org.springframework.validation.ValidationUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,24 +25,33 @@ public class UserController {
     }
 
     @GetMapping("/sign-up")
-    public String showSignupForm(Model model){
+    public String showSignupForm(Model model) {
         model.addAttribute("user", new User());
         return "users/register";
     }
 
     @PostMapping("/sign-up")
-    public String saveUser(@ModelAttribute User user){
+    public String saveUser(@ModelAttribute User user) {
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
         users.save(user);
         return "redirect:/login";
     }
 
-    @PostMapping
-    public String submitForm(@Valid @ModelAttribute("user") User user, BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) {
-            return "users/register";
+
+    public void validate(Object target, Errors errors) {
+
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password",
+                "required.password", "Field name is required.");
+
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "confirmPassword",
+                "required.confirmPassword", "Field name is required.");
+
+        User user = (User) target;
+
+        if (!(user.getPassword().equals(user.getRetypePassword()))) {
+            errors.rejectValue("password", "notmatch.password");
         }
-        return "login";
     }
 }
+
