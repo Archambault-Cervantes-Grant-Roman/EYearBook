@@ -11,6 +11,8 @@ import org.springframework.validation.ValidationUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.view.RedirectView;
 
 import javax.validation.Valid;
 
@@ -38,6 +40,14 @@ public class UserController {
         return "redirect:/login";
     }
 
+    @PostMapping("/SIGN-UP")
+    public RedirectView addNew(User user, RedirectAttributes redir) {
+        users.save(user);
+        RedirectView  redirectView= new RedirectView("/login",true);
+        redir.addFlashAttribute("message",
+                "You successfully registered! You can now login");
+        return redirectView;
+    }
 //
 //    @GetMapping("/signature-page")
 //    public String signaturePage(Model model){
