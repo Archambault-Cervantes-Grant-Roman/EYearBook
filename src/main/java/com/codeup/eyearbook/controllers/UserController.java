@@ -10,6 +10,7 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
@@ -40,19 +41,31 @@ public class UserController {
         return "redirect:/login";
     }
 
-//    @PostMapping("/SIGN-UP")
-//    public RedirectView addNew(User user, RedirectAttributes redir) {
-//        users.save(user);
-//        RedirectView  redirectView= new RedirectView("/login",true);
-//        redir.addFlashAttribute("message",
-//                "You successfully registered! You can now login");
-//        return redirectView;
-//    }
-//
-//    @GetMapping("/signature-page")
-//    public String signaturePage(Model model){
-//        model.addArribute("user", user);
-//        return "users/signature-page";
-//    }
+
+    @GetMapping("/signature-page/{id}")
+    public String signaturePage(@PathVariable long id,  Model model){
+        User user = users.getOne(id);
+        model.addAttribute("user", user);
+        return "users/signature-page";
+    }
+
+    @GetMapping("/parent-profile/{id}")
+    public String parentProfile(@PathVariable long id,  Model model){
+        User user = users.getOne(id);
+        model.addAttribute("user", user);
+        return "users/parent-profile";
+    }
+
+
+    @PostMapping("/SIGN-UP")
+    public RedirectView addNew(User user, RedirectAttributes redir) {
+        users.save(user);
+        RedirectView  redirectView= new RedirectView("/login",true);
+        redir.addFlashAttribute("message",
+                "You successfully registered! You can now login");
+        return redirectView;
+    }
+
+
 }
 

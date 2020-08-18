@@ -51,6 +51,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 .antMatchers(
+                        "/users/parent-profile",
+                        "/users/sign-up",
+                        "/users/signature-page",
+//  DELETE BELOW AS SOON AS WE CAN
                         "/ads/create", // only authenticated users can create ads
                         "/ads/{id}/edit",
                         "/ads/view",
