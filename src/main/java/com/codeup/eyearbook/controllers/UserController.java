@@ -1,7 +1,10 @@
 package com.codeup.eyearbook.controllers;
 
+import com.codeup.eyearbook.models.Signatures;
 import com.codeup.eyearbook.models.User;
+import com.codeup.eyearbook.repositories.SignatureRepository;
 import com.codeup.eyearbook.repositories.UserRepository;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,10 +24,13 @@ import javax.validation.Valid;
 public class UserController {
     private UserRepository users;
     private PasswordEncoder passwordEncoder;
+    private SignatureRepository signatures;
 
-    public UserController(UserRepository users, PasswordEncoder passwordEncoder) {
+
+    public UserController(UserRepository users, PasswordEncoder passwordEncoder, SignatureRepository signatures) {
         this.users = users;
         this.passwordEncoder = passwordEncoder;
+        this.signatures = signatures;
     }
 
     @GetMapping("/sign-up")
@@ -56,6 +62,21 @@ public class UserController {
         return "users/parent-profile";
     }
 
+    @GetMapping("/signature-page")
+    public String signatureForm(Model model) {
+        model.addAttribute("signatures", new Signatures());
+        return "users/signature-page";
+    }
+
+    @PostMapping("/signature-page")
+    public String saveSignature(@ModelAttribute Signatures signatures) {
+        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        signatures.setSigner(loggedInUser);
+        System.out.println(loggedInUser.getUsername());
+        signatures.save(signatures);
+        System.out.println(signatures.getYearbook_comment());
+        return "redirect:/signature-page";
+    }
 
     @PostMapping("/SIGN-UP")
     public RedirectView addNew(User user, RedirectAttributes redir) {
