@@ -36,15 +36,18 @@
                 <div class="col-md-4">
                     <img src="..." class="card-img" alt="...">
                 </div>
-
+<!--                <h3 th:text="${signatures.yearbook_comment}">COMMENT SHOULD APPEAR HERE</h3>-->
+<!--                <div class="col-12" th:each="signature : ${signatures}">-->
+<!--                    <h2 th:text="${signatures.yearbook_comment}">OR COMMENT SHOULD APPEAR HERE</h2>-->
+<!--                </div>-->
                 <div class="col-md-8">
                     <div class="card-body">
                         <h5 class="card-title">NAME OF WHO CREATED THIS COMMENT</h5>
                         <p class="card-text">Sample of signing a yearbook.  "Have a great summer!"</p>
                         <p class="card-text"><small class="text-muted">created at ?? </small></p>
-                        <h3 th:text="${signatures.yearbook_comment}"></h3>
 
                     </div>
+
                     <div class="card-body">
                         <form th:action="@{/signature-page}" method="POST" th:object="${signatures}">
 
