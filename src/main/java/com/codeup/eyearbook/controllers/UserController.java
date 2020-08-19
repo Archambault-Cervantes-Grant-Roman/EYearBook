@@ -78,6 +78,7 @@ public class UserController {
 
     @GetMapping("/signature-page")
     public String signatureForm(Model model) {
+//        model.addAttribute("signatures", comment.findAll());
         model.addAttribute("signatures", new Signatures());
         return "users/signature-page";
     }
