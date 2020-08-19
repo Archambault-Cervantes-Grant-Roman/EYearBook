@@ -16,12 +16,14 @@
 <!--<h1 class="text-center"><span th:text="${user.getUsername()}"></span></h1>-->
 
 <!--TODO:  create a banner div-->
+<div class="student_pic text-center">image here</div>
+
 
 <h1 class="text-center">username here</h1>
 
 <!--side nav bar-->
 <div class="sidenav">
-    <div class="student_pic text-center">image here</div>
+
     <a href="#">Search Registered Student</a>
     <a href="#">View Yearbook</a>
     <a href="#">Add as friend (dynamic - visible to visitors)</a>
@@ -36,10 +38,12 @@
                 <div class="col-md-4">
                     <img src="..." class="card-img" alt="...">
                 </div>
-<!--                <h3 th:text="${signatures.yearbook_comment}">COMMENT SHOULD APPEAR HERE</h3>-->
-<!--                <div class="col-12" th:each="signature : ${signatures}">-->
-<!--                    <h2 th:text="${signatures.yearbook_comment}">OR COMMENT SHOULD APPEAR HERE</h2>-->
-<!--                </div>-->
+                <ul>
+                <li class="col-12" th:each="comment : ${comment}">
+                    <h2> Posted by:  <span th:text="${comment.signer.getUsername()}"></span></h2>
+                    <h2> Comment:  <span th:text="${comment.yearbook_comment}"></span></h2>
+                </li>
+                </ul>
                 <div class="col-md-8">
                     <div class="card-body">
                         <h5 class="card-title">NAME OF WHO CREATED THIS COMMENT</h5>
