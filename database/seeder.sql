@@ -7,5 +7,14 @@ insert into signatures ( yearbook_comment, signer_id) values
 ('Body 2 asdf asdf asd fasdf as dfa sdfa sdf', 4);
 
 
-insert into student_records (first_name, image, last_name, student_id) values
-('Leroy', 'path', 'grant', '0010100');
+insert into student_records (first_name, last_name, image,  student_id) values
+('Leroy', 'https://cdn.filestackcontent.com/BT3RYnEMTap6rZAJb9k6', 'Grant', '0010100'),
+('Bobbie', 'https://cdn.filestackcontent.com/BT3RYnEMTap6rZAJb9k6', 'Archambault', '8957945'),
+('Augustine', 'https://cdn.filestackcontent.com/BT3RYnEMTap6rZAJb9k6', 'Cervantes', '5743829'),
+('Armando', 'https://cdn.filestackcontent.com/BT3RYnEMTap6rZAJb9k6', 'Roman', '4234985');
+
+UPDATE student_records
+SET
+    student_id = '1234567'
+WHERE
+        first_name = 'Leroy';
