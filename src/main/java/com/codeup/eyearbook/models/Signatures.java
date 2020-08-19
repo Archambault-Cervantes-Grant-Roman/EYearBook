@@ -21,7 +21,7 @@ public class Signatures {
     @Column(columnDefinition = "boolean default false")
     private boolean is_flagged;
 
-    @Column(name = "created_at")
+    @Column(name = "created_at", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private java.sql.Timestamp created_at;
 
     public Signatures(){}
