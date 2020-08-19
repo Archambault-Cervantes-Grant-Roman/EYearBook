@@ -56,14 +56,25 @@ public class UserController {
         return "users/signature-page";
     }
 
+
     //TODO: does this page grab the current logged in user?
     //TODO:  needs to be dynamic between a basic parent and a premium parent
-    @GetMapping("/parent-profile/{id}")
-    public String parentProfile(@PathVariable long id,  Model model){
-        User user = users.getOne(id);
+    @GetMapping("/parent-profile")
+    public String parentProfile(Model model){
+        User loggedIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = users.getOne(loggedIn.getId());
         model.addAttribute("user", user);
         return "users/parent-profile";
     }
+
+//    //TODO: does this page grab the current logged in user?
+//    //TODO:  needs to be dynamic between a basic parent and a premium parent
+//    @GetMapping("/parent-profile/{id}")
+//    public String parentProfile(@PathVariable long id,  Model model){
+//        User user = users.getOne(id);
+//        model.addAttribute("user", user);
+//        return "users/parent-profile";
+//    }
 
     @GetMapping("/signature-page")
     public String signatureForm(Model model) {
