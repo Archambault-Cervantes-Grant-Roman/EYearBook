@@ -38,10 +38,12 @@
                 <div class="col-md-4">
                     <img src="..." class="card-img" alt="...">
                 </div>
-<!--                <h3 th:text="${signatures.yearbook_comment}">COMMENT SHOULD APPEAR HERE</h3>-->
-<!--                <div class="col-12" th:each="signature : ${signatures}">-->
-<!--                    <h2 th:text="${signatures.yearbook_comment}">OR COMMENT SHOULD APPEAR HERE</h2>-->
-<!--                </div>-->
+                <ul>
+                <li class="col-12" th:each="comment : ${comment}">
+                    <h2> Posted by:  <span th:text="${comment.signer.getUsername()}"></span></h2>
+                    <h2> Comment:  <span th:text="${comment.yearbook_comment}"></span></h2>
+                </li>
+                </ul>
                 <div class="col-md-8">
                     <div class="card-body">
                         <h5 class="card-title">NAME OF WHO CREATED THIS COMMENT</h5>
