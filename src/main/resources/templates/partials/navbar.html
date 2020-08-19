@@ -33,11 +33,11 @@
             </th:block>
 
 <!--            <div th:object="${user}">-->
-<!--                <th:block sec:authorize="isAuthenticated()">-->
-<!--                    <li class="nav-item">-->
-<!--                        <a class="nav-link" th:href="@{${'/parent-profile/' + users.id}}">My Profile</a>-->
-<!--                    </li>-->
-<!--                </th:block>-->
+                <th:block sec:authorize="isAuthenticated()">
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/parent-profile/{id}}">My Profile</a>
+                    </li>
+                </th:block>
 <!--            </div>-->
 
         </div>
