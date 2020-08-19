@@ -35,7 +35,9 @@
 <!--            <div th:object="${user}">-->
                 <th:block sec:authorize="isAuthenticated()">
                     <li class="nav-item">
-                        <a class="nav-link" th:href="@{/parent-profile/{id}}">My Profile</a>
+
+                        <a class="nav-link" th:href="@{|/parent-profile|}">My Profile</a>
+<!--                        <a class="nav-link" th:href="@{/parent-profile/{id}(id=${user.id})}">My Profile</a>-->
                     </li>
                 </th:block>
 <!--            </div>-->
