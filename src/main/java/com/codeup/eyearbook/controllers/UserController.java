@@ -86,6 +86,15 @@ public class UserController {
         return "users/edit-profile";
     }
 
+    @PostMapping("edit-profile")
+    public String update(@PathVariable long id, @ModelAttribute User user) {
+        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        User user = usersDao.getOne(1L);
+        users.save(loggedInUser);
+        users.save(user);
+        return "redirect:/parent-profile";
+    }
+
     @GetMapping("/signature-page")
     public String signatureForm(Model model) {
         model.addAttribute("signatures", new Signatures());
@@ -119,11 +128,13 @@ public String childRegister(@PathVariable String parent_id, Model model) {
 //TODO:  need a post mapping to register the child - creating a new user
     //TODO:  post mapping redirect to parents-profile page
 
+
     //@PostMapping("/child-registration")
     //public String locateByStudentId(@ModelAttribute Student student){
       //  student.getStudent_id();
         //return "hello";
     //}
+
 
 
 
