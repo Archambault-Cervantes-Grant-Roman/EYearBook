@@ -6,6 +6,7 @@ use eyearbook_db;
 insert into signatures ( yearbook_comment, signer_id) values
 ('Body 2 asdf asdf asd fasdf as dfa sdfa sdf', 4);
 
+select * from student_records;
 
 insert into student_records (first_name, last_name, image,  student_id) values
 ('Leroy', 'https://cdn.filestackcontent.com/BT3RYnEMTap6rZAJb9k6', 'Grant', '0010100'),

@@ -4,6 +4,7 @@ import com.codeup.eyearbook.models.Signatures;
 import com.codeup.eyearbook.models.Student;
 import com.codeup.eyearbook.models.User;
 import com.codeup.eyearbook.repositories.SignatureRepository;
+import com.codeup.eyearbook.repositories.StudentRepository;
 import com.codeup.eyearbook.repositories.UserRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -26,12 +27,14 @@ public class UserController {
     private UserRepository users;
     private PasswordEncoder passwordEncoder;
     private SignatureRepository comment;
+    private StudentRepository studentsDao;
 
 
-    public UserController(UserRepository users, PasswordEncoder passwordEncoder, SignatureRepository comment) {
+    public UserController(UserRepository users, PasswordEncoder passwordEncoder, SignatureRepository comment, StudentRepository studentsDao) {
         this.users = users;
         this.passwordEncoder = passwordEncoder;
         this.comment = comment;
+        this.studentsDao = studentsDao;
     }
 
     @GetMapping("/sign-up")
@@ -68,15 +71,6 @@ public class UserController {
         return "users/parent-profile";
     }
 
-//    //TODO: does this page grab the current logged in user?
-//    //TODO:  needs to be dynamic between a basic parent and a premium parent
-//    @GetMapping("/parent-profile/{id}")
-//    public String parentProfile(@PathVariable long id,  Model model){
-//        User user = users.getOne(id);
-//        model.addAttribute("user", user);
-//        return "users/parent-profile";
-//    }
-
     @GetMapping("/signature-page")
     public String signatureForm(Model model) {
         model.addAttribute("signatures", new Signatures());
@@ -97,26 +91,27 @@ public class UserController {
 
 //child registration
     //TODO:  this page needs to grab the parent id and display it on the page
-
+//TODO: should just return the search form
 @GetMapping("/child-registration/{parent_id}")
 public String childRegister(@PathVariable String parent_id, Model model) {
-//TODO: should just return the search form
-
+model.addAttribute("student", new Student());
     return "users/child-registration";
 }
 //TODO:  need a post mapping to register the child - creating a new user
     //TODO:  post mapping redirect to parents-profile page
 
     @PostMapping("/child-registration")
-    public String locateByStudentId(@ModelAttribute Student studentId){
-        student.
-        student.getStudent_id();
-    }
-
-    @PostMapping("child-registration")
-    public String saveStudent(@ModelAttribute User studentUser){
+    public String locateByStudentId(@ModelAttribute Student student){
+    studentsDao.findByStudent_id(Long student_id);
+fn ln , create a user
+                redir to same page
 
     }
+
+//    @PostMapping("child-registration")
+//    public String saveStudent(@ModelAttribute User studentUser){
+//
+//    }
 
 
 //    User studentUser = new
