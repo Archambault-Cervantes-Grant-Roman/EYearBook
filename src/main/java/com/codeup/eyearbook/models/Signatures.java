@@ -13,8 +13,8 @@ public class Signatures {
 
     /* Armando :had to make this column be nullable because it was tying the image submit
     and wasn't allowing for a blank comment box
+    original contained nullable = false
      */
-
     @Column(columnDefinition = "TEXT")
     private String yearbook_comment;
 
