@@ -17,5 +17,6 @@ SET
 WHERE
         first_name = 'Leroy';
 
+
 insert into users (id, parent_id, username, password) values
 (2, 0, 'leroy', 'password');
