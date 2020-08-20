@@ -54,8 +54,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                         "/users/parent-profile",
                         "/users/sign-up",
                         "/users/signature-page",
-//  DELETE BELOW AS SOON AS WE CAN
-                        "/ads/create", // only authenticated users can create ads
+                        //  DELETE BELOW AS SOON AS WE CAN
+                        "/users/edit-profile", // only authenticated users can edit profile
                         "/ads/{id}/edit",
                         "/ads/view",
                         "/posts/create"// only authenticated users can edit ads

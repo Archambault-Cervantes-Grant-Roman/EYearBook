@@ -17,4 +17,6 @@ SET
 WHERE
         first_name = 'Leroy';
 
-DROP TABLE student_records;
+
+insert into users (id, parent_id, username, password) values
+(2, 0, 'leroy', 'password');
