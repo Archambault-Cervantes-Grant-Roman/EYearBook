@@ -88,7 +88,10 @@ public class UserController {
     @GetMapping("/signature-page")
     public String signatureForm(Model model) {
         model.addAttribute("signatures", new Signatures());
+        //Armando: inserted this attribute to be able to find and display comments
         model.addAttribute("comment", comment.findAll());
+        //Armando: inserted this attribute to be able to find and display images
+        model.addAttribute("image", new User());
         return "users/signature-page";
     }
 
