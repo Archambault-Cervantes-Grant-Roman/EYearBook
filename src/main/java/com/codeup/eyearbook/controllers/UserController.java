@@ -65,8 +65,6 @@ public class UserController {
         return "users/parent-profile";
     }
 
-//<<<<<<< HEAD
-//=======
 ////    //TODO: does this page grab the current logged in user?
 ////    //TODO:  needs to be dynamic between a basic parent and a premium parent
 ////    @GetMapping("/parent-profile/{id}")
@@ -119,56 +117,24 @@ public class UserController {
 //child registration
     //TODO:  this page needs to grab the parent id and display it on the page
 //TODO: should just return the search form
-@GetMapping("/child-registration/{parent_id}")
-public String childRegister(@PathVariable String parent_id, Model model) {
-model.addAttribute("student", new Student());
-    return "registerChild";
+@GetMapping("/register-child")
+public String childRegister(Model model) {
+//    User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();      loggedInUser.getParent_id();
+//    System.out.println(loggedInUser.getParent_id());
+    model.addAttribute("student", new Student());
+    return "users/register-child";
 }
-//TODO:  need a post mapping to register the child - creating a new user
-    //TODO:  post mapping redirect to parents-profile page
 
+    @PostMapping("/register-child")
+    public String locateByStudentId(@RequestParam long id, @ModelAttribute Student student) {
+        System.out.println(id);
+        studentsDao.getByStudent_id(id);
 
-
-//    @GetMapping("/child-registration")
-//    public String showStudent(@ModelAttribute )
-//
-//    @PostMapping("/child-registration")
-//    public String locateByStudentId(@ModelAttribute Student student){
-//    studentsDao.findByStudent_id(Long student_id);
-//fn ln , create a user
-//                redir to same page
-//
-
-//    @PostMapping("/child-registration")
-//    public String locateByStudentId(@ModelAttribute Student studentId){
-//
-//        Studenttudent.getStudent_id();
-
-//    }
-
-    //@PostMapping("/child-registration")
-    //public String locateByStudentId(@ModelAttribute Student student){
-      //  student.getStudent_id();
-        //return "hello";
-    //}
-
-
-
-
-//    User studentUser = new
-//    @GetMapping("/sign-up")
-//    public String showSignupForm(Model model) {
-//        model.addAttribute("user", new User());
-//        return "users/register";
-//    }
-//
-//    @PostMapping("/sign-up")
-//    public String saveUser(@ModelAttribute User user) {
-//        String hash = passwordEncoder.encode(user.getPassword());
-//        user.setPassword(hash);
-//        users.save(user);
-//        return "redirect:/login";
-//    }
+        System.out.println(studentsDao.getByStudent_id(id).toString());
+        student.getFirst_name();
+        student.getLast_name();
+        return "redirect: users/register-child";
+    }
 
 }
 
