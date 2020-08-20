@@ -1,5 +1,6 @@
 package com.codeup.eyearbook.controllers;
 
+
 import com.codeup.eyearbook.models.Signatures;
 import com.codeup.eyearbook.models.Student;
 import com.codeup.eyearbook.models.User;
@@ -115,16 +116,11 @@ public String childRegister(@PathVariable String parent_id, Model model) {
 //TODO:  need a post mapping to register the child - creating a new user
     //TODO:  post mapping redirect to parents-profile page
 
-    @PostMapping("/child-registration")
-    public String locateByStudentId(@ModelAttribute Student studentId){
-        student.
-        student.getStudent_id();
-    }
-
-    @PostMapping("child-registration")
-    public String saveStudent(@ModelAttribute User studentUser){
-
-    }
+    //@PostMapping("/child-registration")
+    //public String locateByStudentId(@ModelAttribute Student student){
+      //  student.getStudent_id();
+        //return "hello";
+    //}
 
 
 //    User studentUser = new
