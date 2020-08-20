@@ -10,14 +10,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.Errors;
-import org.springframework.validation.ValidationUtils;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import org.springframework.web.servlet.view.RedirectView;
-
-import javax.validation.Valid;
 
 @Controller
 public class UserController {
@@ -115,7 +108,7 @@ public class UserController {
 @GetMapping("/child-registration/{parent_id}")
 public String childRegister(@PathVariable String parent_id, Model model) {
 model.addAttribute("student", new Student());
-    return "users/child-registration";
+    return "registerChild";
 }
 //TODO:  need a post mapping to register the child - creating a new user
     //TODO:  post mapping redirect to parents-profile page
