@@ -7,7 +7,7 @@
     <!--    jquery-->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
     <!--    css styling-->
-    <link href="../../static/eyearbook.css" rel="stylesheet"/>
+    <link href="/eyearbook.css" rel="stylesheet"/>
     <meta charset="UTF-8">
 
     <title>Parent Profile Page</title>
@@ -18,7 +18,7 @@
 <div class="sidenavP">
 
     <a href="#">Register a child</a>
-    <a href="#">Update profile</a>
+    <a th:href="@{|/edit-profile|}">Update profile</a>
     <a href="#" >View comments your child has posted</a>
     <a href="#" >purchase a yearbook</a>
     <a href="#" >enter yearbook purchase code</a>
