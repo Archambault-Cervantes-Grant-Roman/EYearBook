@@ -51,8 +51,11 @@ public class UserController {
     //TODO:this page needs to be dynamic between basic child and premium child
     @GetMapping("/signature-page/{id}")
     public String signaturePage(@PathVariable long id,  Model model){
+        User loggedIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User user = users.getOne(id);
         model.addAttribute("user", user);
+        model.addAttribute("signatures", new Signatures());
+        model.addAttribute("image", new User());
         return "users/signature-page";
     }
 

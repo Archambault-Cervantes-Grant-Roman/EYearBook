@@ -14,7 +14,12 @@
 </head>
 <body>
 <nav th:replace="partials/navbar :: navbar" />
-<h1 class="text-center"><span th:text="${user.getUsername()}">parents name here </span></h1>
+<!--<h1 class="text-center"><span th:text="${user.getStudent().id}">parents name here </span></h1>-->
+<h1 class="text-center"><span th:text="${user != null} ? ${user.getUsername()} : 'user is null'"></span></h1>
+<h1 class="text-center"><span th:text="${user != null} ? ${user.getParent_id()} : 'user is null'"></span></h1>
+
+<!--<h1 class="text-center"><span th:text="${}">child name here </span></h1>-->
+
 <div class="sidenavP">
 
     <a href="#">Register a child</a>
