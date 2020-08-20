@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
-<head th:include="partials/head :: header-links">
+<head>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<nav th:replace="partials/navbar :: navbar" />
     <title>View Students</title>
 </head>
 <body>
@@ -8,10 +10,10 @@
     <h1>Showing Students</h1>
     <div class="row mt-5">
         <div class="col">
-            <div class="card mb-2" th:each="ad : ${students}">
+            <div class="card mb-2" th:each="student : ${students}">
                 <div class="card-body">
-                    <h5 class="card-title" th:text="${students.first_name}"></h5>
-                    <p class="card-text" th:text="${students.last_name}"></p>
+                    <h5 class="card-title" th:text="${student.first_name} +' '+ ${student.last_name}"></h5>
+
 
                 </div>
             </div>

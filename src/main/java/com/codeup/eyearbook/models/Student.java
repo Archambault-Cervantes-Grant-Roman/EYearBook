@@ -1,9 +1,17 @@
 package com.codeup.eyearbook.models;
 
+import com.codeup.eyearbook.repositories.StudentRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import javax.persistence.*;
+import java.util.List;
+
+
 
 @Entity
 @Table(name = "student_records")
+@Service
 public class Student {
 
     @Id
@@ -17,7 +25,6 @@ public class Student {
             cascade =  CascadeType.ALL,
             mappedBy = "student")
     private User user;
-
 
 
 

@@ -16,3 +16,5 @@ SET
     student_id = '1234567'
 WHERE
         first_name = 'Leroy';
+
+DROP TABLE student_records;
