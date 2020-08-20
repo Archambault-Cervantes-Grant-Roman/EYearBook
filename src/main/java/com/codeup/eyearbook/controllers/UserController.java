@@ -1,6 +1,7 @@
 package com.codeup.eyearbook.controllers;
 
 import com.codeup.eyearbook.models.Signatures;
+import com.codeup.eyearbook.models.Student;
 import com.codeup.eyearbook.models.User;
 import com.codeup.eyearbook.repositories.SignatureRepository;
 import com.codeup.eyearbook.repositories.UserRepository;
@@ -76,6 +77,14 @@ public class UserController {
 //        return "users/parent-profile";
 //    }
 
+    @GetMapping("edit-profile")
+    public String editProfile(Model model){
+        User loggedIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = users.getOne(loggedIn.getId());
+        model.addAttribute("user", user);
+        return "users/edit-profile";
+    }
+
     @GetMapping("/signature-page")
     public String signatureForm(Model model) {
         model.addAttribute("signatures", new Signatures());
@@ -100,10 +109,23 @@ public class UserController {
 @GetMapping("/child-registration/{parent_id}")
 public String childRegister(@PathVariable String parent_id, Model model) {
 //TODO: should just return the search form
+
     return "users/child-registration";
 }
 //TODO:  need a post mapping to register the child - creating a new user
     //TODO:  post mapping redirect to parents-profile page
+
+    @PostMapping("/child-registration")
+    public String locateByStudentId(@ModelAttribute Student studentId){
+        student.
+        student.getStudent_id();
+    }
+
+    @PostMapping("child-registration")
+    public String saveStudent(@ModelAttribute User studentUser){
+
+    }
+
 
 //    User studentUser = new
 //    @GetMapping("/sign-up")

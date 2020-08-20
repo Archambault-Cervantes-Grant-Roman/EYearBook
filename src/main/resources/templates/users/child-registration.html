@@ -18,6 +18,29 @@
 <!--TODO:  create a search by student id form here which hides upon submission-->
 <!--TODO:  has a error message if student id is incorrect-->
 
+<form class="form-inline ml-3" th:action="@{/register-child}" method="POST" th:object="${user}">
+
+    <div class="form-row">
+        <div class="col-4 mr-2">
+            <label for="student_id" class="sr-only">Student Id</label>
+            <input type="text" readonly class="form-control-plaintext" id="student_id" value="Enter childs student id">
+        </div>
+
+
+        <div class="col-3 mx-sm-2 mb-2">
+            <label for="inputStudentId" class="sr-only">Student Id</label>
+            <input type="password" class="form-control" id="inputStudentId" placeholder="Student Id">
+        </div>
+
+        <div class="col-2 ml-2">
+        <button type="submit" class=" col btn btn-primary mb-2">Confirm</button>
+        </div>
+    </div>
+</form>
+
+
+
+
 <!--TODO:  this form is hidden until a matching student id is found-->
 <div class="container">
     <div class="d-flex justify-content-center h-100">
