@@ -13,10 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
@@ -100,13 +97,16 @@ model.addAttribute("student", new Student());
 //TODO:  need a post mapping to register the child - creating a new user
     //TODO:  post mapping redirect to parents-profile page
 
-    @PostMapping("/child-registration")
-    public String locateByStudentId(@ModelAttribute Student student){
-    studentsDao.findByStudent_id(Long student_id);
-fn ln , create a user
-                redir to same page
-
-    }
+    @GetMapping("/child-registration")
+    public String showStudent(@ModelAttribute )
+//
+//    @PostMapping("/child-registration")
+//    public String locateByStudentId(@ModelAttribute Student student){
+//    studentsDao.findByStudent_id(Long student_id);
+//fn ln , create a user
+//                redir to same page
+//
+//    }
 
 //    @PostMapping("child-registration")
 //    public String saveStudent(@ModelAttribute User studentUser){
