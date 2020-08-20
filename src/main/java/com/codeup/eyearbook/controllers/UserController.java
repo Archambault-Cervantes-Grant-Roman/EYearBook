@@ -118,16 +118,16 @@ public String childRegister(@PathVariable String parent_id, Model model) {
 //TODO:  need a post mapping to register the child - creating a new user
     //TODO:  post mapping redirect to parents-profile page
 
-    @PostMapping("/child-registration")
-    public String locateByStudentId(@ModelAttribute Student studentId){
-        student.
-        student.getStudent_id();
-    }
+//    @PostMapping("/child-registration")
+//    public String locateByStudentId(@ModelAttribute Student studentId){
+//
+//        Studenttudent.getStudent_id();
+//    }
 
-    @PostMapping("child-registration")
-    public String saveStudent(@ModelAttribute User studentUser){
-
-    }
+//    @PostMapping("child-registration")
+//    public String saveStudent(@ModelAttribute User studentUser){
+//
+//    }
 
 
 //    User studentUser = new
