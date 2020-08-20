@@ -1,5 +1,6 @@
 package com.codeup.eyearbook.controllers;
 
+
 import com.codeup.eyearbook.models.Signatures;
 import com.codeup.eyearbook.models.Student;
 import com.codeup.eyearbook.models.User;
@@ -97,7 +98,10 @@ public class UserController {
     @GetMapping("/signature-page")
     public String signatureForm(Model model) {
         model.addAttribute("signatures", new Signatures());
+        //Armando: inserted this attribute to be able to find and display comments
         model.addAttribute("comment", comment.findAll());
+        //Armando: inserted this attribute to be able to find and display images
+        model.addAttribute("image", new User());
         return "users/signature-page";
     }
 
@@ -124,16 +128,14 @@ public String childRegister(@PathVariable String parent_id, Model model) {
 //TODO:  need a post mapping to register the child - creating a new user
     //TODO:  post mapping redirect to parents-profile page
 
-//    @PostMapping("/child-registration")
-//    public String locateByStudentId(@ModelAttribute Student studentId){
-//        student.
-//        student.getStudent_id();
-//    }
-//
-//    @PostMapping("child-registration")
-//    public String saveStudent(@ModelAttribute User studentUser){
-//
-//    }
+
+    //@PostMapping("/child-registration")
+    //public String locateByStudentId(@ModelAttribute Student student){
+      //  student.getStudent_id();
+        //return "hello";
+    //}
+
+
 
 
 //    User studentUser = new

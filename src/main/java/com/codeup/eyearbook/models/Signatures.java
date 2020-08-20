@@ -11,7 +11,11 @@ public class Signatures {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(columnDefinition = "TEXT", nullable = false)
+    /* Armando :had to make this column be nullable because it was tying the image submit
+    and wasn't allowing for a blank comment box
+    original contained nullable = false
+     */
+    @Column(columnDefinition = "TEXT")
     private String yearbook_comment;
 
     @ManyToOne
