@@ -68,10 +68,33 @@ public class UserController {
         return "users/parent-profile";
     }
 
+//<<<<<<< HEAD
+//=======
+////    //TODO: does this page grab the current logged in user?
+////    //TODO:  needs to be dynamic between a basic parent and a premium parent
+////    @GetMapping("/parent-profile/{id}")
+////    public String parentProfile(@PathVariable long id,  Model model){
+////        User user = users.getOne(id);
+////        model.addAttribute("user", user);
+////        return "users/parent-profile";
+////    }
+
+    @GetMapping("edit-profile")
+    public String editProfile(Model model){
+        User loggedIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = users.getOne(loggedIn.getId());
+        model.addAttribute("user", user);
+        return "users/edit-profile";
+    }
+//
+//>>>>>>> be3b64d46cb5327e3253e4a252bace1ba027cf7d
     @GetMapping("/signature-page")
     public String signatureForm(Model model) {
         model.addAttribute("signatures", new Signatures());
+        //Armando: inserted this attribute to be able to find and display comments
         model.addAttribute("comment", comment.findAll());
+        //Armando: inserted this attribute to be able to find and display images
+        model.addAttribute("image", new User());
         return "users/signature-page";
     }
 
@@ -97,8 +120,9 @@ model.addAttribute("student", new Student());
 //TODO:  need a post mapping to register the child - creating a new user
     //TODO:  post mapping redirect to parents-profile page
 
-    @GetMapping("/child-registration")
-    public String showStudent(@ModelAttribute )
+////<<<<<<< HEAD
+//    @GetMapping("/child-registration")
+//    public String showStudent(@ModelAttribute )
 //
 //    @PostMapping("/child-registration")
 //    public String locateByStudentId(@ModelAttribute Student student){
@@ -106,6 +130,12 @@ model.addAttribute("student", new Student());
 //fn ln , create a user
 //                redir to same page
 //
+//=======
+//    @PostMapping("/child-registration")
+//    public String locateByStudentId(@ModelAttribute Student studentId){
+//
+//        Studenttudent.getStudent_id();
+//>>>>>>> be3b64d46cb5327e3253e4a252bace1ba027cf7d
 //    }
 
 //    @PostMapping("child-registration")
