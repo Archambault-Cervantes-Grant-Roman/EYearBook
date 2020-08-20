@@ -22,3 +22,7 @@ SET
     student_id = '1234567'
 WHERE
         first_name = 'Leroy';
+
+
+insert into users (id, parent_id, username, password) values
+(2, 0, 'leroy', 'password');

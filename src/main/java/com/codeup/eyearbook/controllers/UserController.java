@@ -1,5 +1,6 @@
 package com.codeup.eyearbook.controllers;
 
+
 import com.codeup.eyearbook.models.Signatures;
 import com.codeup.eyearbook.models.Student;
 import com.codeup.eyearbook.models.User;
@@ -45,8 +46,11 @@ public class UserController {
     //TODO:this page needs to be dynamic between basic child and premium child
     @GetMapping("/signature-page/{id}")
     public String signaturePage(@PathVariable long id,  Model model){
+        User loggedIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User user = users.getOne(id);
         model.addAttribute("user", user);
+        model.addAttribute("signatures", new Signatures());
+        model.addAttribute("image", new User());
         return "users/signature-page";
     }
 
@@ -79,8 +83,18 @@ public class UserController {
         model.addAttribute("user", user);
         return "users/edit-profile";
     }
-//
-//>>>>>>> be3b64d46cb5327e3253e4a252bace1ba027cf7d
+
+
+    @PostMapping("edit-profile")
+    public String update(@PathVariable long id, @ModelAttribute User user) {
+        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        User user = usersDao.getOne(1L);
+        users.save(loggedInUser);
+        users.save(user);
+        return "redirect:/parent-profile";
+    }
+
+
     @GetMapping("/signature-page")
     public String signatureForm(Model model) {
         model.addAttribute("signatures", new Signatures());
@@ -113,7 +127,8 @@ model.addAttribute("student", new Student());
 //TODO:  need a post mapping to register the child - creating a new user
     //TODO:  post mapping redirect to parents-profile page
 
-////<<<<<<< HEAD
+
+
 //    @GetMapping("/child-registration")
 //    public String showStudent(@ModelAttribute )
 //
@@ -123,18 +138,21 @@ model.addAttribute("student", new Student());
 //fn ln , create a user
 //                redir to same page
 //
-//=======
+
 //    @PostMapping("/child-registration")
 //    public String locateByStudentId(@ModelAttribute Student studentId){
 //
 //        Studenttudent.getStudent_id();
-//>>>>>>> be3b64d46cb5327e3253e4a252bace1ba027cf7d
+
 //    }
 
-//    @PostMapping("child-registration")
-//    public String saveStudent(@ModelAttribute User studentUser){
-//
-//    }
+    //@PostMapping("/child-registration")
+    //public String locateByStudentId(@ModelAttribute Student student){
+      //  student.getStudent_id();
+        //return "hello";
+    //}
+
+
 
 
 //    User studentUser = new

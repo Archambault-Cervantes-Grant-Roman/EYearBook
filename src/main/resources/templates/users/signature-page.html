@@ -22,6 +22,62 @@
 
 
 <h1 class="text-center">username here</h1>
+<!--<h2> Username  <span th:text="${user.student.getFirst_name()}"></span></h2>-->
+
+
+
+            <!--=====Armando: this is the area for filestack integration=====-->
+    <div class="container">
+<!--        <h3 th:text="${user.sign_page_banner_image}"></h3>-->
+<!--        src="https://cdn.filestackcontent.com/aga12Vt5Ri3GQcwQQBqL"-->
+        <img src="https://cdn.filestackcontent.com/aga12Vt5Ri3GQcwQQBqL"  alt="Simply Easy Learning" width="auto"
+             height="300">
+        <form th:action="@{'/signature-page'}" method="post" th:object="${image}" id="imageform">
+            <input type="BUTTON" value="Upload an Image" id="image" onclick="pickMark()">
+            <script>
+                var client = filestack.init("AYQfUbwHaR2yVhg0AatBVz");
+
+                let imgUrl;
+                let imageSelection = document.querySelector('#imagePath');
+                console.log(imageSelection);
+
+                function pickMark() {
+                    console.log("Picking Watermark");
+                    //Limiting file types and number for uploading in the picker
+                    client.pick({
+                        //Only accepting files with a mimetype 'image/*'
+                        accept: 'image/*',
+                        //Only accepting at most 1 file
+                        maxFiles:1,
+                    }).then(function(result) {//Taking the result object in as 'result'
+                        //Putting the result in a string, and printing it to the console
+                        // console.log(result);
+                        console.log(result.filesUploaded[0].url);
+
+                        // imgUrl = result.filesUploaded[0].url;
+                        // imgUrl = (JSON.stringify(result.filesUploaded[0].url));
+                        imgUrl = result.filesUploaded[0].url;
+                        console.log(imgUrl);
+                        // document.getElementById("submit").addEventListener("click", updateImage);
+                        document.getElementById('sign_page_banner_image').value = imgUrl;
+                        // imageSelection = document.querySelector('#imagePath');
+                        console.log(imageSelection);
+                        console.log(imgUrl);
+                    })
+                }
+            </script>
+            <h1 class="display-4 student_pic text-center">image here</h1>
+            <div class="form-group">
+                <label for="sign_page_banner_image"></label>
+                <input type="hidden" value=imgUrl class="form-control" id="sign_page_banner_image" th:field="*{sign_page_banner_image}">
+            </div>
+            <button form="imageform" value="Submit" type="submit" class="btn btn-primary">Submit</button>
+
+        </form>
+
+
+    </div>
+                        <!--^^^^^^^^^^Filestack integration^^^^^^^^^^-->
 
 
             <!--=====Armando: this is the area for filestack integration=====-->
