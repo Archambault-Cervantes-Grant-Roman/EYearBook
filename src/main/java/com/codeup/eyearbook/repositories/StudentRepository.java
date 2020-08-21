@@ -18,10 +18,11 @@ public interface StudentRepository extends JpaRepository<Student, Long> {
     List<Student> findAllByOrderByIdDesc();
 
 
-        @Query("SELECT s FROM Student s WHERE s.first_name LIKE %?1%"
-                + " OR s.last_name LIKE %?1%")
+    @Query("SELECT s FROM Student s WHERE s.first_name LIKE %?1%"
+            + " OR s.last_name LIKE %?1%")
 
-         List<Student> search(String keyword);
+    List<Student> search(String keyword);
+
 
 
 
@@ -33,7 +34,7 @@ public interface StudentRepository extends JpaRepository<Student, Long> {
 
 //    Student getByStudent_id(long id);
 
-    }
+}
 
 
 

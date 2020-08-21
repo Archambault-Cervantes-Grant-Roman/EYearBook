@@ -1,9 +1,8 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thyme leaf.org/extras/spring-security" lang="en">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
 <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
-    <link href="/eyearbook.css" rel="stylesheet"/>
     <meta charset="UTF-8">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
@@ -65,9 +64,9 @@
                                                     </div>
                                                     <div class="row">
                                                         <div class="col">
-                                                            <div class="form-group" th:action="@{|/parent-profile|}" th:method="post">
+                                                            <div class="form-group">
                                                                 <label>Username</label>
-                                                                <input class="form-control" type="text" name="username" placeholder="new username" th:value="*{user.getUsername()}">
+                                                                <input class="form-control" type="text" name="username" th:placeholder="*{user.getUsername()}">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -75,7 +74,7 @@
                                                         <div class="col">
                                                             <div class="form-group">
                                                                 <label>Email</label>
-                                                                <input class="form-control" type="text" placeholder="user@example.com" th:value="*{user.getEmail()}">
+                                                                <input class="form-control" type="text" name="email" th:placeholder="*{user.getEmail()}">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -87,16 +86,8 @@
                                                     <div class="row">
                                                         <div class="col">
                                                             <div class="form-group">
-                                                                <label>Current Password</label>
-                                                                <input class="form-control" type="password" placeholder="••••••">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col">
-                                                            <div class="form-group">
                                                                 <label>New Password</label>
-                                                                <input class="form-control" type="password" placeholder="••••••">
+                                                                <input class="form-control" type="password" name="newPassword" placeholder="••••••">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -104,7 +95,7 @@
                                                         <div class="col">
                                                             <div class="form-group">
                                                                 <label>Confirm <span class="d-none d-xl-inline">Password</span></label>
-                                                                <input class="form-control" type="password" placeholder="••••••"></div>
+                                                                <input class="form-control" type="password" name="confirmPassword" placeholder="••••••"></div>
                                                         </div>
                                                     </div>
                                                 </div>
