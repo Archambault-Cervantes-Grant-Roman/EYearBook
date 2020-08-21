@@ -28,6 +28,7 @@ public interface StudentRepository extends JpaRepository<Student, Long> {
     @Query (value = "select * FROM student_records where student_id = ?1", nativeQuery = true)
     Student getByStudent_id(long student_id);
 
+
 //@Query ("select student_id, first_name, last_name FROM student_records where student_id = ?1")
 
 //    Student getByStudent_id(long id);
