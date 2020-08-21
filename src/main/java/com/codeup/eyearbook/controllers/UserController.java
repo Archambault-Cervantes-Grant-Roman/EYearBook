@@ -42,7 +42,6 @@ public class UserController {
         return "redirect:/login";
     }
 
-//TODO:does this grab the current logged in user?
     //TODO:this page needs to be dynamic between basic child and premium child
     @GetMapping("/signature-page/{id}")
     public String signaturePage(@PathVariable long id,  Model model){
@@ -55,8 +54,6 @@ public class UserController {
     }
 
 
-    //TODO: does this page grab the current logged in user?
-    //TODO:  needs to be dynamic between a basic parent and a premium parent
     @GetMapping("/parent-profile")
     public String parentProfile(Model model){
         User loggedIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -64,15 +61,6 @@ public class UserController {
         model.addAttribute("user", user);
         return "users/parent-profile";
     }
-
-////    //TODO: does this page grab the current logged in user?
-////    //TODO:  needs to be dynamic between a basic parent and a premium parent
-////    @GetMapping("/parent-profile/{id}")
-////    public String parentProfile(@PathVariable long id,  Model model){
-////        User user = users.getOne(id);
-////        model.addAttribute("user", user);
-////        return "users/parent-profile";
-////    }
 
     @GetMapping("edit-profile")
     public String editProfile(Model model){
@@ -114,30 +102,40 @@ public class UserController {
     }
 
 
-//child registration
-    //TODO:  this page needs to grab the parent id and display it on the page
-//TODO: should just return the search form
+//CHILD REGISTRATION PART ONE - STUDENT ID********************
+
 @GetMapping("/register-child")
 public String childRegister() {
-//    User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//    loggedInUser.getId();
-//    System.out.println(loggedInUser.getParent_id())
-
         return "users/register-child";
 }
 
+//APPLYS THE CHILDS INFO ONTO THE CARD FOR PART 2 OF CHILD REGISTRATION**************
     @PostMapping("/register-child")
     public String locateByStudentId(@RequestParam long id, Model model) {
         User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-    loggedInUser.getId();
-        System.out.println(id);
+        loggedInUser.getId();
         Student s = studentsDao.getByStudent_id(id);
         model.addAttribute("studentId", s.getStudent_id());
-        System.out.println(model.addAttribute("studentId", s.getStudent_id()));
         model.addAttribute("firstName", s.getFirst_name());
         model.addAttribute("lastName", s.getLast_name());
+//        this creates a new user from the student record
+        model.addAttribute("user", new User() );
         return "users/child-register2";
     }
+
+
+    @PostMapping("/child-register2")
+    public String saveChildUser(@ModelAttribute User user) {
+        String hash = passwordEncoder.encode(user.getPassword());
+//        get the parents id
+        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+   long parentId =  loggedInUser.getId();
+        user.setParent_id(parentId);
+        user.setPassword(hash);
+        users.save(user);
+        return "redirect:/parent-profile";
+    }
+
 
 
 }
