@@ -118,23 +118,27 @@ public class UserController {
     //TODO:  this page needs to grab the parent id and display it on the page
 //TODO: should just return the search form
 @GetMapping("/register-child")
-public String childRegister(Model model) {
-//    User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();      loggedInUser.getParent_id();
-//    System.out.println(loggedInUser.getParent_id());
-    model.addAttribute("student", new Student());
-    return "users/register-child";
+public String childRegister() {
+//    User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//    loggedInUser.getId();
+//    System.out.println(loggedInUser.getParent_id())
+
+        return "users/register-child";
 }
 
     @PostMapping("/register-child")
-    public String locateByStudentId(@RequestParam long id, @ModelAttribute Student student) {
+    public String locateByStudentId(@RequestParam long id, Model model) {
+        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    loggedInUser.getId();
         System.out.println(id);
-        studentsDao.getByStudent_id(id);
-
-        System.out.println(studentsDao.getByStudent_id(id).toString());
-        student.getFirst_name();
-        student.getLast_name();
-        return "redirect: users/register-child";
+        Student s = studentsDao.getByStudent_id(id);
+        model.addAttribute("studentId", s.getStudent_id());
+        System.out.println(model.addAttribute("studentId", s.getStudent_id()));
+        model.addAttribute("firstName", s.getFirst_name());
+        model.addAttribute("lastName", s.getLast_name());
+        return "users/child-register2";
     }
+
 
 }
 
