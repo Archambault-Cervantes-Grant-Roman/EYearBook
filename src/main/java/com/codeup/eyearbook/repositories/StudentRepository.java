@@ -16,6 +16,7 @@ public interface StudentRepository extends JpaRepository<Student, Long> {
 
 
 
+
     List<Student> findAllByOrderByIdDesc();
 
 
@@ -24,6 +25,10 @@ public interface StudentRepository extends JpaRepository<Student, Long> {
 
          List<Student> search(String keyword);
 
+
+
+//    @Query (value = "select student_id, first_name, last_name FROM student_records where student_id = ?1", nativeQuery = true)
+//    Student getByStudent_id(long id);
 
     }
 
@@ -34,6 +39,6 @@ public interface StudentRepository extends JpaRepository<Student, Long> {
 
 
 
-}
+
 
 
