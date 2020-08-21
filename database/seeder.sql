@@ -1,6 +1,5 @@
-# use eyearbook_db;
 create database if not exists eyearbook_db;
-use practice_db;
+use eyearbook_db;
 
 insert into signatures ( yearbook_comment, signer_id) values
 ('Body 2 asdf asdf asd fasdf as dfa sdfa sdf', 4);
@@ -8,7 +7,6 @@ insert into signatures ( yearbook_comment, signer_id) values
 
 select * from student_records;
 
-insert into student_records (first_name, last_name, image,  student_id) values
 
 insert into student_records (first_name, image, last_name,  student_id) values
 

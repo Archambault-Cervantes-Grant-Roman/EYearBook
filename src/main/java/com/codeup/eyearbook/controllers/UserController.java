@@ -84,11 +84,19 @@ public class UserController {
 
 
     @PostMapping("edit-profile")
-    public String update(@PathVariable long id, @ModelAttribute User user) {
+    public String update(@RequestParam (name="username") String username, @RequestParam (name="email") String email, @RequestParam (name="newPassword") String newPassword, @ModelAttribute User user, Model model) {
         User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        User user = usersDao.getOne(1L);
+        model.addAttribute("username", username);
+        model.addAttribute("email", email);
+        model.addAttribute("newPassword", newPassword);
+        long id = loggedInUser.getId();
+        users.getOne(id);
+        loggedInUser.setUsername(username);
+        loggedInUser.setEmail(email);
+        String hash = passwordEncoder.encode(loggedInUser.getPassword());
+        loggedInUser.setPassword(hash);
         users.save(loggedInUser);
-        users.save(user);
+        System.out.println(model.addAttribute("username", username));
         return "redirect:/parent-profile";
     }
 
