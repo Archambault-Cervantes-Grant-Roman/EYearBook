@@ -18,7 +18,7 @@
 <!--TODO:  create a search by student id form here which hides upon submission-->
 <!--TODO:  has a error message if student id is incorrect-->
 
-<form class="form-inline ml-3" th:action="@{/register-child}" th:method="POST" th:object="${student}">
+<form class="form-inline ml-3" th:action="@{/register-child}" th:method="POST">
 
     <div class="form-row">
         <div class="col-4 mr-2">
@@ -47,11 +47,11 @@
 <!--        <div class="card">-->
 <!--            <div class="card-header justify-content-center">-->
 <!--                <h3>Child Registration</h3>-->
-<!--                <h4>Student id: <span th:text="${student_id}"></span></h4>-->
-<!--                <h4>First Name <span th:text="*{first_name}"></span>:</h4>-->
-<!--                <h4>Last Name <span th:text="${student.last_name}"></span>:</h4>-->
+<!--                <h4>Student id: <span th:text="${studentId}"></span></h4>-->
+<!--                <h4>First Name <span th:text="${firstName}"></span>:</h4>-->
+<!--                <h4>Last Name <span th:text="${lastName}"></span>:</h4>-->
 <!--            </div>-->
-
+<!--            <span th:text="${user != null} ? ${user.getParent_id()} : 'user is null'">-->
 <!--            <div class="card-body">-->
 <!--                <form th:action="@{/register-child}" method="POST" th:object="${user}">-->
 
@@ -107,9 +107,9 @@
 <!--                    });-->
 <!--                </script>-->
 <!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
+        </div>
+    </div>
+</div>
 
 
 
