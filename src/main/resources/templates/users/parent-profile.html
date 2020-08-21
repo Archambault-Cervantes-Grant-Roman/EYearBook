@@ -15,8 +15,10 @@
 <body>
 <nav th:replace="partials/navbar :: navbar" />
 
+
 <h1 class="text-center">Username: <span th:text="${user != null} ? ${user.getUsername()} : 'user is null'"></span></h1>
 <!--<h1 class="text-center"><span th:text="${user != null} ? ${user.getParent_id()} : 'user is null'"></span></h1>-->
+
 
 <!--<h1 class="text-center"><span th:text="${}">child name here </span></h1>-->
 
