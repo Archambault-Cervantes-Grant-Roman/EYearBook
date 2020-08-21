@@ -20,16 +20,16 @@ public class StudentController {
     public StudentController(StudentRepository studentDao) {
         this.studentDao = studentDao;
     }
-    @GetMapping("/search")
-    @ResponseBody
-    public List<Student> getStudent() {
-        return studentDao.findAll();
-    }
-    @GetMapping("/search/view")
-    public String getAdsIndex(Model model) {
-        model.addAttribute("students", studentDao.findAllByOrderByIdDesc());
-        return "users/search";
-    }
+//    @GetMapping("/search")
+//    @ResponseBody
+//    public List<Student> getStudent() {
+//        return studentDao.findAll();
+//    }
+//    @GetMapping("/search/view")
+//    public String getAdsIndex(Model model) {
+//        model.addAttribute("students", studentDao.findAllByOrderByIdDesc());
+//        return "users/search";
+//    }
 
 
 }
