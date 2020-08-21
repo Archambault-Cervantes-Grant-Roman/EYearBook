@@ -27,62 +27,57 @@
                 <h4>Student id: <span th:text="${studentId}"></span></h4>
                 <h4>First Name <span th:text="${firstName}"></span>:</h4>
                 <h4>Last Name <span th:text="${lastName}"></span>:</h4>
-                <span th:text="${user != null} ? ${user.getParent_id()} : 'user is null'">-->
-                    <!--            <div class="card-body">-->
-                    <!--                <form th:action="@{/register-child}" method="POST" th:object="${user}">-->
 
+                                <div class="card-body">
+<!--                                    <form th:action="@{/register-child}" method="POST">-->
+                                        <form th:action="@{/child-register2}" method="POST" th:object="${user}">
 
-                    <!--                    <div class="input-group form-group">-->
-                    <!--                        <div class="input-group-prepend">-->
-                    <!--                            <label class="input-group-text bg-info text-white" for="username">Username</label>-->
-                    <!--                        </div>-->
-                    <!--                        <input class="form-control" id="username" th:field="*{username}"/>-->
-                    <!--                    </div>-->
+                                        <div class="input-group form-group">
+                                            <div class="input-group-prepend">
+                                                <label class="input-group-text bg-info text-white" for="username">Username</label>
+                                            </div>
+<!--                                            <input class="form-control" id="cUsername" name="cUsername"/>-->
+                                            <input class="form-control" id="username" th:field="*{username}"/>
+                                        </div>
 
-                    <!--                    <div class="input-group form-group">-->
-                    <!--                        <div class="input-group-prepend">-->
-                    <!--                            <label class="input-group-text bg-info text-white" for="email">Email</label>-->
-                    <!--                        </div>-->
-                    <!--                        <input class="form-control" id="email" th:field="*{email}"/>-->
-                    <!--                    </div>-->
+                                        <div class="input-group form-group">
+                                            <div class="input-group-prepend">
+                                                <label class="input-group-text bg-info text-white" for="password">Password</label>
+                                            </div>
+<!--                                            <input class="form-control" id="password" type="password" name="password"/>-->
+                                            <input class="form-control" id="password" type="password" th:field="*{password}"/>
+                                        </div>
 
-                    <!--                    <div class="input-group form-group">-->
-                    <!--                        <div class="input-group-prepend">-->
-                    <!--                            <label class="input-group-text bg-info text-white" for="password">Password</label>-->
-                    <!--                        </div>-->
-                    <!--                        <input class="form-control" id="password" type="password" th:field="*{password}"/>-->
-                    <!--                    </div>-->
+                                        <div class="input-group form-group">
+                                            <div class="input-group-prepend">
+                                                <label class="input-group-text bg-info text-white" for="confirmPassword">Confirm Password</label>
+                                            </div>
+                                            <input class="form-control" type="password" name="confirmPassword" id="confirmPassword"/>
+                                            <input id="is_parent" type="hidden" name="is_parent" th:value="0" />
+                                        </div>
 
-                    <!--                    <div class="input-group form-group">-->
-                    <!--                        <div class="input-group-prepend">-->
-                    <!--                            <label class="input-group-text bg-info text-white" for="confirmPassword">Confirm Password</label>-->
-                    <!--                        </div>-->
-                    <!--                        <input class="form-control" type="password" name="confirmPassword" id="confirmPassword"/>-->
-                    <!--                        <input id="is_parent" type="hidden" name="is_parent" th:value="0" />-->
-                    <!--                    </div>-->
+                                        <div class="form-group">
+                                            <input class="btn float-right login_btn bg-primary text-white" value="Register my child!" type="submit"/>
+                                        </div>
 
-                    <!--                    <div class="form-group">-->
-                    <!--                        <input class="btn float-right login_btn bg-primary text-white" value="Register my child!" type="submit"/>-->
-                    <!--                    </div>-->
+                                    </form>
+                                    <script>
+                                        $('document').ready(function(){
+                                            var password = document.getElementById("password")
+                                            var confirmPassword = document.getElementById("confirmPassword");
 
-                    <!--                </form>-->
-                    <!--                <script>-->
-                    <!--                    $('document').ready(function(){-->
-                    <!--                        var password = document.getElementById("password")-->
-                    <!--                        var confirmPassword = document.getElementById("confirmPassword");-->
-
-                    <!--                        function validatePassword(){-->
-                    <!--                            if(password.value !== confirmPassword.value) {-->
-                    <!--                                confirmPassword.setCustomValidity("Passwords Don't Match");-->
-                    <!--                            } else {-->
-                    <!--                                confirmPassword.setCustomValidity('');-->
-                    <!--                            }-->
-                    <!--                        }-->
-                    <!--                        password.onchange = validatePassword;-->
-                    <!--                        confirmPassword.onkeyup = validatePassword;-->
-                    <!--                    });-->
-                    <!--                </script>-->
-                    <!--            </div>-->
+                                            function validatePassword(){
+                                                if(password.value !== confirmPassword.value) {
+                                                    confirmPassword.setCustomValidity("Passwords Don't Match");
+                                                } else {
+                                                    confirmPassword.setCustomValidity('');
+                                                }
+                                            }
+                                            password.onchange = validatePassword;
+                                            confirmPassword.onkeyup = validatePassword;
+                                        });
+                                    </script>
+                                </div>
             </div>
         </div>
     </div>

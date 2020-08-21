@@ -14,19 +14,15 @@
 </head>
 <body>
 <nav th:replace="partials/navbar :: navbar" />
-<!--<h1 class="text-center"><span th:text="${user.getStudent().id}">parents name here </span></h1>-->
-<h1 class="text-center"><span th:text="${user != null} ? ${user.getUsername()} : 'user is null'"></span></h1>
-<h1 class="text-center"><span th:text="${user != null} ? ${user.getParent_id()} : 'user is null'"></span></h1>
+
+
+<h1 class="text-center">Username: <span th:text="${user != null} ? ${user.getUsername()} : 'user is null'"></span></h1>
+<!--<h1 class="text-center"><span th:text="${user != null} ? ${user.getParent_id()} : 'user is null'"></span></h1>-->
+
 
 <!--<h1 class="text-center"><span th:text="${}">child name here </span></h1>-->
 
 <div class="sidenavP">
-<!--to use a button, have a form with the action going to register child with a method of get and send to get mapping you can style the button to look like an achor or make alll buttons the button will have a hidden input that links the parent id DO NOT USE FORM MODEL BINDING-->
-
-<!--    <form action="register-child" method="get">-->
-<!--        <input type="hidden" name="parentId" th:value="${user.id}">-->
-<!--        <button>Register a child</button>-->
-<!--    </form>-->
 
     <a href="/register-child">Register a child</a>
     <a th:href="@{|/edit-profile|}">Update profile</a>
