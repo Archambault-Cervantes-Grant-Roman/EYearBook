@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thyme leaf.org/extras/spring-security" lang="en">
+<head>
+    <!--    bootstrap-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <!--    jquery-->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+    <!--    css styling-->
+    <link href="/eyearbook.css" type="text/css" rel="stylesheet"/>
+    <meta charset="UTF-8">
+<head>
+    <meta charset="UTF-8">
+    <title>Child Registration</title>
+</head>
+<body>
+<nav th:replace="partials/navbar :: navbar" />
+
+<!--TODO:  create a search by student id form here which hides upon submission-->
+<!--TODO:  has a error message if student id is incorrect-->
+
+<form class="form-inline ml-3" th:action="@{/register-child}" th:method="POST">
+
+    <div class="form-row">
+        <div class="col-4 mr-2">
+            <label for="student_id" class="sr-only">Student Id</label>
+            <input type="text" readonly class="form-control-plaintext" value="Enter student id" id="student_id">
+        </div>
+
+<!--PARENT ENTERS THE STUDENT ID-->
+        <div class="col-3 mx-sm-2 mb-2">
+            <label for="id" class="sr-only">Student Id</label>
+            <input type="text" class="form-control" name="id" id="id" placeholder="Student Id" >
+        </div>
+
+        <div class="col-2 ml-2">
+        <button type="submit" class=" col btn btn-primary mb-2">Confirm</button>
+        </div>
+    </div>
+</form>
+
+
+
+
+<!--&lt;!&ndash;TODO:  this form is hidden until a matching student id is found&ndash;&gt;-->
+<!--<div class="container">-->
+<!--    <div class="d-flex justify-content-center h-100">-->
+<!--        <div class="card">-->
+<!--            <div class="card-header justify-content-center">-->
+<!--                <h3>Child Registration</h3>-->
+<!--                <h4>Student id: <span th:text="${studentId}"></span></h4>-->
+<!--                <h4>First Name <span th:text="${firstName}"></span>:</h4>-->
+<!--                <h4>Last Name <span th:text="${lastName}"></span>:</h4>-->
+<!--            </div>-->
+<!--            <span th:text="${user != null} ? ${user.getParent_id()} : 'user is null'">-->
+<!--            <div class="card-body">-->
+<!--                <form th:action="@{/register-child}" method="POST" th:object="${user}">-->
+
+
+<!--                    <div class="input-group form-group">-->
+<!--                        <div class="input-group-prepend">-->
+<!--                            <label class="input-group-text bg-info text-white" for="username">Username</label>-->
+<!--                        </div>-->
+<!--                        <input class="form-control" id="username" th:field="*{username}"/>-->
+<!--                    </div>-->
+
+<!--                    <div class="input-group form-group">-->
+<!--                        <div class="input-group-prepend">-->
+<!--                            <label class="input-group-text bg-info text-white" for="email">Email</label>-->
+<!--                        </div>-->
+<!--                        <input class="form-control" id="email" th:field="*{email}"/>-->
+<!--                    </div>-->
+
+<!--                    <div class="input-group form-group">-->
+<!--                        <div class="input-group-prepend">-->
+<!--                            <label class="input-group-text bg-info text-white" for="password">Password</label>-->
+<!--                        </div>-->
+<!--                        <input class="form-control" id="password" type="password" th:field="*{password}"/>-->
+<!--                    </div>-->
+
+<!--                    <div class="input-group form-group">-->
+<!--                        <div class="input-group-prepend">-->
+<!--                            <label class="input-group-text bg-info text-white" for="confirmPassword">Confirm Password</label>-->
+<!--                        </div>-->
+<!--                        <input class="form-control" type="password" name="confirmPassword" id="confirmPassword"/>-->
+<!--                        <input id="is_parent" type="hidden" name="is_parent" th:value="0" />-->
+<!--                    </div>-->
+
+<!--                    <div class="form-group">-->
+<!--                        <input class="btn float-right login_btn bg-primary text-white" value="Register my child!" type="submit"/>-->
+<!--                    </div>-->
+
+<!--                </form>-->
+<!--                <script>-->
+<!--                    $('document').ready(function(){-->
+<!--                        var password = document.getElementById("password")-->
+<!--                        var confirmPassword = document.getElementById("confirmPassword");-->
+
+<!--                        function validatePassword(){-->
+<!--                            if(password.value !== confirmPassword.value) {-->
+<!--                                confirmPassword.setCustomValidity("Passwords Don't Match");-->
+<!--                            } else {-->
+<!--                                confirmPassword.setCustomValidity('');-->
+<!--                            }-->
+<!--                        }-->
+<!--                        password.onchange = validatePassword;-->
+<!--                        confirmPassword.onkeyup = validatePassword;-->
+<!--                    });-->
+<!--                </script>-->
+<!--            </div>-->
+        </div>
+    </div>
+</div>
+
+
+
+
+</body>
+</html>
