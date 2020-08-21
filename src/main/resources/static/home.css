@@ -1,0 +1,17 @@
+.jumbotron {
+    background-color: ghostwhite;
+    opacity: 0.7;
+}
+
+body {
+    background-color: black;
+}
+
+h1, h4 {
+    color: ghostwhite;
+}
+
+#title {
+    color: black;
+}
+
