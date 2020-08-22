@@ -45,11 +45,8 @@ public class UserController {
     //TODO:this page needs to be dynamic between basic child and premium child
     @GetMapping("/signature-page/{id}")
     public String signaturePage(@PathVariable long id,  Model model){
-        User loggedIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User user = users.getOne(id);
         model.addAttribute("user", user);
-        model.addAttribute("signatures", new Signatures());
-        model.addAttribute("image", new User());
         return "users/signature-page";
     }
 
@@ -95,20 +92,35 @@ public class UserController {
         //Armando: inserted this attribute to be able to find and display comments
         model.addAttribute("comment", comment.findAll());
         //Armando: inserted this attribute to be able to find and display images
-        model.addAttribute("image", new User());
         return "users/signature-page";
     }
 
     @PostMapping("/signature-page")
-    public String saveSignature(@ModelAttribute Signatures signatures) {
+    public String saveSignature(@RequestParam (name="bannerimage") String bannerimage, @ModelAttribute Signatures signatures, User user) {
         User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         signatures.setSigner(loggedInUser);
         System.out.println(loggedInUser.getUsername());
-        comment.save(signatures);
+        System.out.println(bannerimage);
+
         System.out.println(signatures.getYearbook_comment());
         return "redirect:/signature-page";
     }
 
+    @GetMapping("/filestack")
+    public String imageForm(Model model) {
+        model.addAttribute("user", new User());
+        return "users/filestack";
+    }
+
+    @PostMapping("/filestack")
+    public String saveImage(@ModelAttribute User user) {
+            User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            user.setId(loggedInUser);
+            user.save()
+
+        System.out.println(signatures.getYearbook_comment());
+        return "redirect:/filestack";
+    }
 
 //CHILD REGISTRATION PART ONE - STUDENT ID********************
 
