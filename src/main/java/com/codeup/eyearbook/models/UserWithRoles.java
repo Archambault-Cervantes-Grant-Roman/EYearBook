@@ -1,16 +1,21 @@
 package com.codeup.eyearbook.models;
 
-import com.codeup.eyearbook.models.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
+import java.util.List;
 
 public class UserWithRoles extends User implements UserDetails {
 
     public UserWithRoles(User user) {
-        super(user);  // Call the copy constructor defined in User
+        super(user); // Call the copy constructor defined in User
+//        super(permission);
+    }
+    public UserWithRoles(User user, String roles) {
+        super(user);
+
     }
 
     @Override
@@ -38,4 +43,9 @@ public class UserWithRoles extends User implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
+
+//        @Query("select User.is_parent from User, User where username=?1")
+
+
 }

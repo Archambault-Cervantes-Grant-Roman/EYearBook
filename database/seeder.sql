@@ -1,6 +1,7 @@
 create database if not exists eyearbook_db;
 use eyearbook_db;
 
+use practice_db;
 insert into signatures ( yearbook_comment, signer_id) values
 ('Body 2 asdf asdf asd fasdf as dfa sdfa sdf', 4);
 

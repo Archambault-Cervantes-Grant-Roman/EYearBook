@@ -37,25 +37,70 @@ public class User {
     @Column(length = 20, nullable = false, unique = true)
     private String username;
 
+
+    @OneToOne(mappedBy = "user")
+    private Permission permission;
+
     @Transient
     private String retypePassword;
 
-
-
-
+    public User(User copy) {
+       id = copy.id;
+       parent_id = copy.parent_id;
+       email = copy.email;
+       password = copy.password;
+       is_parent = copy.is_parent;
+       owns_yearbook = copy.owns_yearbook;
+       student = copy.student;
+       sign_page_banner_image = copy.sign_page_banner_image;
+       username = copy.username;
+       permission = copy.permission;
+       retypePassword = copy.retypePassword;
+    }
 
     public User() {
     }
-
-    public User(User copy) {
-        id = copy.id; // This line is SUPER important! Many things won't work if it's absent
+    public User(User copy, List<String> copyList) {
+        id = copy.id;
+        parent_id = copy.parent_id;
         email = copy.email;
-        username = copy.username;
         password = copy.password;
         is_parent = copy.is_parent;
         owns_yearbook = copy.owns_yearbook;
-        parent_id = copy.parent_id;
+        student = copy.student;
         sign_page_banner_image = copy.sign_page_banner_image;
+        username = copy.username;
+        permission = copy.permission;
+        retypePassword = copy.retypePassword;
+
+
+    }
+//    public User(User copy) {
+//        id = copy.id; // This line is SUPER important! Many things won't work if it's absent
+//        email = copy.email;
+//        username = copy.username;
+//        password = copy.password;
+//        is_parent = copy.is_parent;
+//        owns_yearbook = copy.owns_yearbook;
+//        parent_id = copy.parent_id;
+//        sign_page_banner_image = copy.sign_page_banner_image;
+//        permission = copy.permission;
+//    }
+
+    public Permission getPermission() {
+        return permission;
+    }
+
+    public void setPermission(Permission permission) {
+        this.permission = permission;
+    }
+
+    public String getRetypePassword() {
+        return retypePassword;
+    }
+
+    public void setRetypePassword(String retypePassword) {
+        this.retypePassword = retypePassword;
     }
 
     public long getId() {
@@ -129,4 +174,7 @@ public class User {
     public void setUsername(String username) {
         this.username = username;
     }
+
+
+
 }
