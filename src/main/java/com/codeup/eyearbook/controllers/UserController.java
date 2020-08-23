@@ -75,23 +75,24 @@ public class UserController {
         return "users/edit-profile";
     }
 
-
-    @PostMapping("edit-profile")
-    public String update(@RequestParam (name="username") String username, @RequestParam (name="email") String email, @RequestParam (name="newPassword") String newPassword, @ModelAttribute User user, Model model) {
-        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        model.addAttribute("username", username);
-        model.addAttribute("email", email);
-        model.addAttribute("newPassword", newPassword);
-        long id = loggedInUser.getId();
-        users.getOne(id);
-        loggedInUser.setUsername(username);
-        loggedInUser.setEmail(email);
-        String hash = passwordEncoder.encode(loggedInUser.getPassword());
-        loggedInUser.setPassword(hash);
-        users.save(loggedInUser);
-        System.out.println(model.addAttribute("username", username));
-        return "redirect:/parent-profile";
-    }
+//      Armando: I dont think you no longer need this to edit profile
+//      I made one called "@PostMapping("editUser")" that handles the post
+//    @PostMapping("edit-profile")
+//    public String update(@RequestParam (name="username") String username, @RequestParam (name="email") String email, @RequestParam (name="newPassword") String newPassword, @ModelAttribute User user, Model model) {
+//        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        model.addAttribute("username", username);
+//        model.addAttribute("email", email);
+//        model.addAttribute("newPassword", newPassword);
+//        long id = loggedInUser.getId();
+//        users.getOne(id);
+//        loggedInUser.setUsername(username);
+//        loggedInUser.setEmail(email);
+//        String hash = passwordEncoder.encode(loggedInUser.getPassword());
+//        loggedInUser.setPassword(hash);
+//        users.save(loggedInUser);
+//        System.out.println(model.addAttribute("username", username));
+//        return "redirect:/parent-profile";
+//    }
 
 
     @GetMapping("/signature-page")
@@ -123,9 +124,21 @@ public class UserController {
         return "users/file-stack";
     }
 
+
+//    Armando: I had to make this mapping to save the image, might be able to use one already made
     @PostMapping("saveUser")
     public String saveUserImage(@ModelAttribute("user") User user){
 
+        users.save(user);
+        return "redirect:/parent-profile";
+    }
+
+    //    Armando: I had to make this mapping to edit the user info, might be able to use one already made
+
+    @PostMapping("editUser")
+    public String updateUserInfo(@ModelAttribute("user") User user){
+        String hash = passwordEncoder.encode(user.getPassword());
+        user.setPassword(hash);
         users.save(user);
         return "redirect:/parent-profile";
     }

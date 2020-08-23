@@ -43,30 +43,32 @@
                                 </div>
                                 <div class="tab-content pt-3">
                                     <div class="tab-pane active">
-                                        <form th:action="@{edit/profile}" th:method="post"  class="form" novalidate="">
+                                        <form th:action="@{editUser}" th:method="post"  class="form"  th:object="${user}">
+                                            <input type="text" th:field="*{id}">
+
                                             <div class="row  d-flex justify-content-center">
                                                 <div class="col-12 col-sm-6 mb-3">
-                                                    <div class="row">
-                                                        <div class="col">
-                                                            <div class="form-group">
-                                                                <label>First Name</label>
-                                                                <input class="form-control" type="text" name="name" placeholder="John" value="John">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col">
-                                                            <div class="form-group">
-                                                                <label>Last Name</label>
-                                                                <input class="form-control" type="text" name="name" placeholder="Smith" value="Smith">
-                                                            </div>
-                                                        </div>
-                                                    </div>
+<!--                                                    <div class="row">-->
+<!--                                                        <div class="col">-->
+<!--                                                            <div class="form-group">-->
+<!--                                                                <label>First Name</label>-->
+<!--                                                                <input class="form-control" type="text" name="name" placeholder="John" value="John">-->
+<!--                                                            </div>-->
+<!--                                                        </div>-->
+<!--                                                    </div>-->
+<!--                                                    <div class="row">-->
+<!--                                                        <div class="col">-->
+<!--                                                            <div class="form-group">-->
+<!--                                                                <label>Last Name</label>-->
+<!--                                                                <input class="form-control" type="text" name="name" placeholder="Smith" value="Smith">-->
+<!--                                                            </div>-->
+<!--                                                        </div>-->
+<!--                                                    </div>-->
                                                     <div class="row">
                                                         <div class="col">
                                                             <div class="form-group">
                                                                 <label>Username</label>
-                                                                <input class="form-control" type="text" name="username" th:placeholder="*{user.getUsername()}">
+                                                                <input class="form-control" type="text" name="username" th:field="*{username}">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -74,32 +76,40 @@
                                                         <div class="col">
                                                             <div class="form-group">
                                                                 <label>Email</label>
-                                                                <input class="form-control" type="text" name="email" th:placeholder="*{user.getEmail()}">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row d-flex justify-content-center">
-                                                <div class="col-12 col-sm-6 mb-3">
-                                                    <div class="mb-2"><b>Change Password</b></div>
-                                                    <div class="row">
-                                                        <div class="col">
-                                                            <div class="form-group">
-                                                                <label>New Password</label>
-                                                                <input class="form-control" type="password" name="newPassword" placeholder="••••••">
+                                                                <input class="form-control" type="text" name="email" th:field="*{email}">
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="row">
                                                         <div class="col">
                                                             <div class="form-group">
-                                                                <label>Confirm <span class="d-none d-xl-inline">Password</span></label>
-                                                                <input class="form-control" type="password" name="confirmPassword" placeholder="••••••"></div>
+                                                                <label>password</label>
+                                                                <input class="form-control" type="text" placeholder="Password" name="password" th:field="*{password}">
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
+<!--                                            <div class="row d-flex justify-content-center">-->
+<!--                                                <div class="col-12 col-sm-6 mb-3">-->
+<!--                                                    <div class="mb-2"><b>Change Password</b></div>-->
+<!--                                                    <div class="row">-->
+<!--                                                        <div class="col">-->
+<!--                                                            <div class="form-group">-->
+<!--                                                                <label>New Password</label>-->
+<!--                                                                <input class="form-control" type="password" name="newPassword" placeholder="••••••">-->
+<!--                                                            </div>-->
+<!--                                                        </div>-->
+<!--                                                    </div>-->
+<!--                                                    <div class="row">-->
+<!--                                                        <div class="col">-->
+<!--                                                            <div class="form-group">-->
+<!--                                                                <label>Confirm <span class="d-none d-xl-inline">Password</span></label>-->
+<!--                                                                <input class="form-control" type="password" name="confirmPassword" placeholder="••••••"></div>-->
+<!--                                                        </div>-->
+<!--                                                    </div>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
                                             <div class="row">
                                                 <div class="col d-flex justify-content-start">
                                                     <a th:href="@{|/parent-profile|}" class="btn btn-danger" type="submit">Cancel</a>
