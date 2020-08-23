@@ -68,13 +68,13 @@ public class UserController {
     }
 
 
-//    @GetMapping("edit-profile")
-//    public String editProfile(Model model){
-//        User loggedIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        User user = users.getOne(loggedIn.getId());
-//        model.addAttribute("user", user);
-//        return "users/edit-profile";
-//    }
+    @GetMapping("edit-profile")
+    public String editProfile(Model model){
+        User loggedIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = users.getOne(loggedIn.getId());
+        model.addAttribute("user", user);
+        return "users/edit-profile";
+    }
 
 
     @GetMapping("/signature-page")
