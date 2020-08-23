@@ -1,66 +1,68 @@
 package com.codeup.eyearbook;
 
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import com.codeup.eyearbook.services.UserDetailsServiceImpl;
+import org.springframework.context.annotation.*;
+import org.springframework.security.authentication.dao.*;
+import org.springframework.security.config.annotation.authentication.builders.*;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.annotation.web.configuration.*;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
+@EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-    private com.codeup.eyearbook.services.UserDetailsLoader usersLoader;
-
-    public SecurityConfiguration(com.codeup.eyearbook.services.UserDetailsLoader usersLoader) {
-        this.usersLoader = usersLoader;
+    @Bean
+    public UserDetailsService userDetailsService() {
+        return new UserDetailsServiceImpl();
     }
 
     @Bean
-    public PasswordEncoder passwordEncoder() {
+    public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    public DaoAuthenticationProvider authenticationProvider() {
+        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
+        authProvider.setUserDetailsService(userDetailsService());
+        authProvider.setPasswordEncoder(passwordEncoder());
+
+        return authProvider;
     }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth
-                .userDetailsService(usersLoader) // How to find users by their username
-                .passwordEncoder(passwordEncoder()) // How to encode and verify passwords
-        ;
+        auth.authenticationProvider(authenticationProvider());
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http
-                /* Login configuration */
-                .formLogin()
-                .loginPage("/login")
-                .defaultSuccessUrl("/") // user's home page, it can be any URL
-                .permitAll() // Anyone can go to the login page
-                /* Logout configuration */
-                .and()
-                .logout()
-                .logoutSuccessUrl("/login?logout") // append a query string value
-                /* Pages that can be viewed without having to log in */
-                .and()
-                .authorizeRequests()
-                .antMatchers("/") // anyone can see the home and the ads pages
-                .permitAll()
-                /* Pages that require authentication */
-                .and()
-                .authorizeRequests()
-                .antMatchers(
-                        "/users/parent-profile",
-                        "/users/sign-up",
-                        "/users/signature-page",
-                        //  DELETE BELOW AS SOON AS WE CAN
-                        "/users/edit-profile", // only authenticated users can edit profile
-                        "/ads/{id}/edit",
-                        "/ads/view",
-                        "/posts/create"// only authenticated users can edit ads
-                )
-                .authenticated()
-        ;
+            http
+                    /* Login configuration */
+                    .formLogin()
+                    .loginPage("/login")
+                    .defaultSuccessUrl("/") // user's home page, it can be any URL
+                    .permitAll() // Anyone can go to the login page
+                    /* Logout configuration */
+                    .and()
+                    .logout()
+                    .logoutSuccessUrl("/login?logout") // append a query string value
+                    /* Pages that can be viewed without having to log in */
+                    .and()
+                    .authorizeRequests()
+                    .antMatchers("/", "/sign-up") // anyone can see the home and the ads pages
+                    .permitAll()
+                    /* Pages that require authentication */
+                    .and()
+                    .authorizeRequests()
+                    .antMatchers("/yearbook").hasAnyAuthority("PC", "PP")
+                    .antMatchers("/new").hasAnyAuthority("ADMIN", "CREATOR")
+                    .antMatchers("/edit/**").hasAnyAuthority("ADMIN", "EDITOR")
+                    .antMatchers("/delete/**").hasAuthority("ADMIN")
+                    .anyRequest().authenticated()
+
+            ;
     }
 }
