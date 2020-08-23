@@ -14,21 +14,28 @@
 <body>
 
 <div class="h-25 mt-5">
-    <h3 class="text-center">Welcome.  Please click the button below to purchase a yearbook</h3>
+    <h1 class="text-center">Welcome.  </h1>
+    <h2 class="text-center">Please click the button below to purchase a yearbook</h2>
     <br>
 
 </div>
 <div class="container text-center mt-3" >
+    <form th:action="@{mock-site}" method="post">
 <button>Purchase a Yearbook</button>
 <br>
-        <div class="hidden mt-5">
-            <div class="thank-msg">
-                Thank you for your purchase
-            </div>
+<br>
+        <div >
+            <h3><span th:text="${thankYouMsg}"> </span></h3>
             <br>
-            <div>
-                <a href="#">register this code at E-YearBook.net</a>
-            </div>
+            <h3><span th:text="${purchaseCode}"> </span></h3>
+        </div>
+
+        <br>
+        <div>
+        <a href="/login" style="font-size: larger" th:text="${registerLink}"> </a>
+        </div>
+
+    </form>
         </div>
 
 </div>

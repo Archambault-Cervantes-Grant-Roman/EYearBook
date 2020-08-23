@@ -67,31 +67,13 @@ public class UserController {
         return "users/parent-profile";
     }
 
-    @GetMapping("edit-profile")
-    public String editProfile(Model model){
-        User loggedIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User user = users.getOne(loggedIn.getId());
-        model.addAttribute("user", user);
-        return "users/edit-profile";
-    }
 
-//      Armando: I dont think you no longer need this to edit profile
-//      I made one called "@PostMapping("editUser")" that handles the post
-//    @PostMapping("edit-profile")
-//    public String update(@RequestParam (name="username") String username, @RequestParam (name="email") String email, @RequestParam (name="newPassword") String newPassword, @ModelAttribute User user, Model model) {
-//        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        model.addAttribute("username", username);
-//        model.addAttribute("email", email);
-//        model.addAttribute("newPassword", newPassword);
-//        long id = loggedInUser.getId();
-//        users.getOne(id);
-//        loggedInUser.setUsername(username);
-//        loggedInUser.setEmail(email);
-//        String hash = passwordEncoder.encode(loggedInUser.getPassword());
-//        loggedInUser.setPassword(hash);
-//        users.save(loggedInUser);
-//        System.out.println(model.addAttribute("username", username));
-//        return "redirect:/parent-profile";
+//    @GetMapping("edit-profile")
+//    public String editProfile(Model model){
+//        User loggedIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        User user = users.getOne(loggedIn.getId());
+//        model.addAttribute("user", user);
+//        return "users/edit-profile";
 //    }
 
 
