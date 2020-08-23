@@ -75,16 +75,23 @@ public class UserController {
 ////    }
 
     @GetMapping("edit-profile")
-    public String editProfile(Model model){
+    public String editProfile(){
         User loggedIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User user = users.getOne(loggedIn.getId());
-        model.addAttribute("user", user);
         return "users/edit-profile";
     }
 
+//    @GetMapping("edit-profile")
+//    public String editProfile(Model model){
+//        User loggedIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        User user = users.getOne(loggedIn.getId());
+//        model.addAttribute("user", user);
+//        return "users/edit-profile";
+//    }
+
 
     @PostMapping("edit-profile")
-    public String update(@RequestParam (name="username") String username, @RequestParam (name="email") String email, @RequestParam (name="newPassword") String newPassword, @ModelAttribute User user, Model model) {
+    public String update(@RequestParam (name="username") String username, @RequestParam (name="email") String email, @RequestParam (name="newPassword") String newPassword, Model model) {
         User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         model.addAttribute("username", username);
         model.addAttribute("email", email);
@@ -96,7 +103,7 @@ public class UserController {
         String hash = passwordEncoder.encode(loggedInUser.getPassword());
         loggedInUser.setPassword(hash);
         users.save(loggedInUser);
-        System.out.println(model.addAttribute("username", username));
+        System.out.println(username);
         return "redirect:/parent-profile";
     }
 
