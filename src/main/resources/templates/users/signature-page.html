@@ -20,8 +20,13 @@
 
 <!--TODO:  create a banner div-->
 
+<!--the following get won't work unless you go to a specific users webpage-->
+<!-- ex: /signature-page/1-->
+<!-- ex: /signature-page/2-->
+<img th:src="${user.getSign_page_banner_image()}"/>
 
-<h1 class="text-center">username here</h1>
+
+<!--<h1 class="text-center">username here</h1>-->
 
 
 <!--=====Armando: this is the area for filestack integration=====-->
@@ -59,14 +64,14 @@
                     </div>
 
                     <div class="card-body">
-<!--                        <form th:action="@{/signature-page}" method="POST" th:object="${signatures}" id="commentform">-->
+                        <form th:action="@{/signature-page}" method="POST" th:object="${signatures}" id="commentform">
 
-<!--                            <label for="yearbook_comment">Comment</label>-->
-<!--                            <input type="text" name="yearbook_comment" id="yearbook_comment" th:field="*{yearbook_comment}"/>-->
-<!--                            <br />-->
-<!--                            <button  value="Submit" type="submit">Comment</button>-->
+                            <label for="yearbook_comment">Comment</label>
+                            <input type="text" name="yearbook_comment" id="yearbook_comment" th:field="*{yearbook_comment}"/>
+                            <br />
+                            <button  value="Submit" type="submit">Comment</button>
 
-<!--                        </form>-->
+                        </form>
                     </div>
 
                 </div>

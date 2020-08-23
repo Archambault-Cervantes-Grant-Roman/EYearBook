@@ -11,7 +11,11 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
+import java.util.Optional;
 
 @Controller
 public class UserController {
@@ -44,8 +48,12 @@ public class UserController {
 
     //TODO:this page needs to be dynamic between basic child and premium child
     @GetMapping("/signature-page/{id}")
-    public String signaturePage(@PathVariable long id,  Model model){
+    public String signaturePage(@PathVariable("id") long id, Model model){
+        // Armando: I have to have the following 3 lines
+        // to go to a users personal page and show their
+        // personal banner image
         User user = users.getOne(id);
+        model.addAttribute("signatures", new Signatures());
         model.addAttribute("user", user);
         return "users/signature-page";
     }
@@ -96,31 +104,44 @@ public class UserController {
     }
 
     @PostMapping("/signature-page")
-    public String saveSignature(@RequestParam (name="bannerimage") String bannerimage, @ModelAttribute Signatures signatures, User user) {
+    public String saveSignature(@ModelAttribute Signatures signatures) {
         User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         signatures.setSigner(loggedInUser);
         System.out.println(loggedInUser.getUsername());
-        System.out.println(bannerimage);
 
         System.out.println(signatures.getYearbook_comment());
         return "redirect:/signature-page";
     }
 
-    @GetMapping("/filestack")
-    public String imageForm(Model model) {
-        model.addAttribute("user", new User());
-        return "users/filestack";
+    @GetMapping("/filestack/{id}")
+    public String imageForm(@PathVariable("id")long id, Model model) {
+        User user = users.getOne(id);
+
+//        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        System.out.println(user.getUsername());
+        model.addAttribute("user", user);
+        return "users/file-stack";
     }
 
-    @PostMapping("/filestack")
-    public String saveImage(@ModelAttribute User user) {
-            User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-            user.setId(loggedInUser);
-            user.save()
+    @PostMapping("saveUser")
+    public String saveUserImage(@ModelAttribute("user") User user){
 
-        System.out.println(signatures.getYearbook_comment());
-        return "redirect:/filestack";
+        users.save(user);
+        return "redirect:/parent-profile";
     }
+
+//    @PostMapping("/filestack/{id}")
+//    public String saveImage(@PathVariable("id") long id, @Valid User user,
+//                            BindingResult result, Model model) {
+//        if (result.hasErrors()) {
+//            user.setId(id);
+//            return "users/file-stack";
+//        }
+//
+//        users.save(user);
+//        model.addAttribute("users", users.findAll());
+//        return "redirect:/parent-profile";
+//    }
 
 //CHILD REGISTRATION PART ONE - STUDENT ID********************
 

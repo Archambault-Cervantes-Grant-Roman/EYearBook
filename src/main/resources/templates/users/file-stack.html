@@ -1,23 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thyme leaf.org/extras/spring-security">
 <head>
+
+
+    <!--    bootstrap-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <!--    jquery-->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+    <!--    css styling-->
+    <link href="/eyearbook.css" type="text/css" rel="stylesheet"/>
+    <!--    filestack -->
+    <script type="text/javascript" src="https://static.filestackapi.com/v3/filestack.js"></script>
+
     <meta charset="UTF-8">
-    <title>Filestack integration</title>
+
+    <title>Signature Page</title>
 </head>
 <body>
 <div class="container">
     <!--        <h3 th:text="${user.sign_page_banner_image}"></h3>-->
     <!--        src="https://cdn.filestackcontent.com/aga12Vt5Ri3GQcwQQBqL"-->
-    <img src="https://cdn.filestackcontent.com/aga12Vt5Ri3GQcwQQBqL"  alt="Simply Easy Learning" width="auto"
-         height="300">
-    <form th:action="@{'/signature-page'}" method="post" th:object="${user}" id="imageform">
+
+    <div class="form-group">
+        <!--            <label for="image">Image</label>-->
         <input type="BUTTON" value="Upload an Image" id="image" onclick="pickMark()">
         <script>
             var client = filestack.init("APJwcTjQWQrG8BahkFJh2z");
 
+            //The function pickMark()
             let imgUrl;
-            let imageSelection = document.querySelector('#imagePath');
+            let imageSelection = document.querySelector('#sign_page_banner_image');
             console.log(imageSelection);
+
+            // function updateImage(){
+            //     imgUrl = imageSelection.value;
+            // }
 
             function pickMark() {
                 console.log("Picking Watermark");
@@ -43,18 +60,27 @@
                     console.log(imgUrl);
                 })
             }
+
+
         </script>
-        <h1 class="display-4 student_pic text-center">image here</h1>
+    </div>
+
+    <form th:action="@{/saveUser}" method="post" th:object="${user}">
+        <input type="text" th:field="*{id}">
         <div class="form-group">
             <label for="sign_page_banner_image"></label>
-            <input type="text" value=imgUrl class="form-control"  id="sign_page_banner_image" th:field="*{sign_page_banner_image}">
+            <input type="text" value=imgUrl class="form-control" id="sign_page_banner_image" th:field="*{sign_page_banner_image}">
+            <label for="password"></label>
+            <input type="hidden" value=imgUrl class="form-control" id="password" th:field="*{password}">
+            <label for="username"></label>
+            <input type="hidden" value=imgUrl class="form-control" id="username" th:field="*{username}">
+            <label for="email"></label>
+            <input type="hidden" value=imgUrl class="form-control" id="email" th:field="*{email}">
         </div>
-        <button value="Submit" type="submit" class="btn btn-primary">Submit</button>
 
+
+        <button id="submit" type="submit" class="btn btn-primary">Submit</button>
     </form>
-
-
-</div>
 <!--^^^^^^^^^^Filestack integration^^^^^^^^^^-->
 </body>
 </html>
