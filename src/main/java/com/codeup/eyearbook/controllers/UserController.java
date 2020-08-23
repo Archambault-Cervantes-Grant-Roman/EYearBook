@@ -104,6 +104,7 @@ public class UserController {
         User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         signatures.setSigner(loggedInUser);
         System.out.println(loggedInUser.getUsername());
+
         comment.save(signatures);
         System.out.println(signatures.getYearbook_comment());
         return "redirect:/signature-page";
