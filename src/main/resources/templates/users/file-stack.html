@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+
+    <!--    bootstrap-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <!--    jquery-->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+    <!--    css styling-->
+    <link href="/eyearbook.css" type="text/css" rel="stylesheet"/>
+    <!--    filestack -->
+    <script type="text/javascript" src="https://static.filestackapi.com/v3/filestack.js"></script>
+
+    <meta charset="UTF-8">
+
+    <title>Signature Page</title>
+</head>
+<body>
+<div class="container">
+    <!--        <h3 th:text="${user.sign_page_banner_image}"></h3>-->
+    <!--        src="https://cdn.filestackcontent.com/aga12Vt5Ri3GQcwQQBqL"-->
+
+    <div class="form-group">
+        <!--            <label for="image">Image</label>-->
+        <input type="BUTTON" value="Upload an Image" id="image" onclick="pickMark()">
+        <script>
+
+
+
+            // var client = filestack.init(FILESTACK_KEY);
+
+
+            var client = filestack.init("APJwcTjQWQrG8BahkFJh2z");
+
+            //The function pickMark()
+            let imgUrl;
+            let imageSelection = document.querySelector('#sign_page_banner_image');
+            console.log(imageSelection);
+
+            // function updateImage(){
+            //     imgUrl = imageSelection.value;
+            // }
+
+            function pickMark() {
+                console.log("Picking Watermark");
+                //Limiting file types and number for uploading in the picker
+                client.pick({
+                    //Only accepting files with a mimetype 'image/*'
+                    accept: 'image/*',
+                    //Only accepting at most 1 file
+                    maxFiles:1,
+                }).then(function(result) {//Taking the result object in as 'result'
+                    //Putting the result in a string, and printing it to the console
+                    // console.log(result);
+                    console.log(result.filesUploaded[0].url);
+
+                    // imgUrl = result.filesUploaded[0].url;
+                    // imgUrl = (JSON.stringify(result.filesUploaded[0].url));
+                    imgUrl = result.filesUploaded[0].url;
+                    console.log(imgUrl);
+                    // document.getElementById("submit").addEventListener("click", updateImage);
+                    document.getElementById('sign_page_banner_image').value = imgUrl;
+                    // imageSelection = document.querySelector('#imagePath');
+                    console.log(imageSelection);
+                    console.log(imgUrl);
+                })
+            }
+
+
+        </script>
+    </div>
+
+    <form th:action="@{/saveUser}" method="post" th:object="${user}">
+        <input type="text" th:field="*{id}">
+        <div class="form-group">
+            <label for="sign_page_banner_image"></label>
+            <input type="text" value=imgUrl class="form-control" id="sign_page_banner_image" th:field="*{sign_page_banner_image}">
+            <label for="password"></label>
+            <input type="hidden" value=imgUrl class="form-control" id="password" th:field="*{password}">
+            <label for="username"></label>
+            <input type="hidden" value=imgUrl class="form-control" id="username" th:field="*{username}">
+            <label for="email"></label>
+            <input type="hidden" value=imgUrl class="form-control" id="email" th:field="*{email}">
+        </div>
+
+
+        <button id="submit" type="submit" class="btn btn-primary">Submit</button>
+    </form>
+<!--^^^^^^^^^^Filestack integration^^^^^^^^^^-->
+</body>
+</html>

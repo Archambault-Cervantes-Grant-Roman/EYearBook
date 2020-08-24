@@ -12,10 +12,16 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+<<<<<<< HEAD
 import com.codeup.eyearbook.models.Role;
 
+=======
+import javax.validation.Valid;
+import java.util.Optional;
+>>>>>>> 6e8cfdc03f5bbc9c12c5a3661052edd03c52c0db
 
 @Controller
 public class UserController {
@@ -51,24 +57,33 @@ public class UserController {
         return "redirect:/login";
     }
 
-    //TODO:this page needs to be dynamic between basic child and premium child
-    @GetMapping("/signature-page/{id}")
-    public String signaturePage(@PathVariable long id,  Model model){
-        User loggedIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User user = users.getOne(id);
-        model.addAttribute("user", user);
-        model.addAttribute("signatures", new Signatures());
-        model.addAttribute("image", new User());
-        return "users/signature-page";
-    }
 
-
+//*****************PARENT PROFILE PAGE******************************
     @GetMapping("/parent-profile")
     public String parentProfile(Model model){
         User loggedIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User user = users.getOne(loggedIn.getId());
         model.addAttribute("user", user);
         return "users/parent-profile";
+    }
+
+
+    @PostMapping("/purchase-code")
+    public String enteredPurchaseCode(@ModelAttribute User user, @RequestParam(name = "code") String code) {
+        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        long parentId = loggedInUser.getId();
+        user = users.getOne(parentId);
+        code = "DX978J3";
+
+        if (code.equals("DX978J3")) {
+            user.setOwns_yearbook(true);
+//            can user once we implement roles
+//            Role role = userroleDao.getOne(1);
+//            user.getRoles().add(role);
+        }
+
+        users.save(user);
+        return "redirect:/parent-profile";
     }
 
     @GetMapping("edit-profile")
@@ -79,32 +94,29 @@ public class UserController {
         return "users/edit-profile";
     }
 
-
-    @PostMapping("edit-profile")
-    public String update(@RequestParam (name="username") String username, @RequestParam (name="email") String email, @RequestParam (name="newPassword") String newPassword, @ModelAttribute User user, Model model) {
-        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        model.addAttribute("username", username);
-        model.addAttribute("email", email);
-        model.addAttribute("newPassword", newPassword);
-        long id = loggedInUser.getId();
-        users.getOne(id);
-        loggedInUser.setUsername(username);
-        loggedInUser.setEmail(email);
-        String hash = passwordEncoder.encode(loggedInUser.getPassword());
-        loggedInUser.setPassword(hash);
-        users.save(loggedInUser);
-        System.out.println(model.addAttribute("username", username));
+    @PostMapping("editUser")
+    public String updateUserInfo(@ModelAttribute("user") User user){
+        String hash = passwordEncoder.encode(user.getPassword());
+        user.setPassword(hash);
+        users.save(user);
         return "redirect:/parent-profile";
     }
 
 
+
+    //*****************---END----PARENT PROFILE PAGE******************************
     @GetMapping("/signature-page")
     public String signatureForm(Model model) {
+
         model.addAttribute("signatures", new Signatures());
         //Armando: inserted this attribute to be able to find and display comments
         model.addAttribute("comment", comment.findAll());
         //Armando: inserted this attribute to be able to find and display images
-        model.addAttribute("image", new User());
+        // Armando : not too sure if this belongs in the
+        // generic signature-page area
+        User loggedIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = users.getOne(loggedIn.getId());
+        model.addAttribute("user", user);
         return "users/signature-page";
     }
 
@@ -114,13 +126,33 @@ public class UserController {
         signatures.setSigner(loggedInUser);
         System.out.println(loggedInUser.getUsername());
 
+        // new line to test if comments appear?
+
         comment.save(signatures);
         System.out.println(signatures.getYearbook_comment());
         return "redirect:/signature-page";
     }
 
+    @GetMapping("/filestack/{id}")
+    public String imageForm(@PathVariable("id")long id, Model model) {
+        User user = users.getOne(id);
 
-//CHILD REGISTRATION PART ONE - STUDENT ID********************
+//        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        System.out.println(user.getUsername());
+        model.addAttribute("user", user);
+        return "users/file-stack";
+    }
+
+
+//    Armando: I had to make this mapping to save the image, might be able to use one already made
+    @PostMapping("saveUser")
+    public String saveUserImage(@ModelAttribute("user") User user){
+
+        users.save(user);
+        return "redirect:/parent-profile";
+    }
+
+//****************CHILD REGISTRATION PART ONE - STUDENT ID********************
 
 @GetMapping("/register-child")
 public String childRegister() {
@@ -156,5 +188,7 @@ public String childRegister() {
 
 
 
-}
+
+
+    }
 
