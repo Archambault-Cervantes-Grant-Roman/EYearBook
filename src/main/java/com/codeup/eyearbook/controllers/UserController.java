@@ -61,7 +61,8 @@ public class UserController {
     public String enteredPurchaseCode(@ModelAttribute User user, @RequestParam(name = "code") String code) {
         User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         long parentId = loggedInUser.getId();
-        user = users.getOne(parentId);
+        User existingUser = users.getOne(parentId);
+
         code = "DX978J3";
 
         if (code.equals("DX978J3")) {
@@ -71,7 +72,7 @@ public class UserController {
 //            user.getRoles().add(role);
         }
 
-        users.save(user);
+        users.save(existingUser);
         return "redirect:/parent-profile";
     }
 
