@@ -66,6 +66,9 @@ public class UserController {
 
         if (code.equals("DX978J3")) {
             user.setOwns_yearbook(true);
+//            can user once we implement roles
+//            Role role = userroleDao.getOne(1);
+//            user.getRoles().add(role);
         }
 
         users.save(user);
