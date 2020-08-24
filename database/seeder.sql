@@ -26,4 +26,7 @@ WHERE
 insert into users (id, parent_id, username, password) values
 (2, 0, 'leroy', 'password');
 
-insert into users_roles(user_id, role_id) values ( 1, 3)
+insert into roles (role_id, name) values
+('1', 'OWNSYEARBOOK'),
+('2', 'CHILD'),
+('3', 'PARENT');
