@@ -46,19 +46,8 @@ public class UserController {
         return "redirect:/login";
     }
 
-    //TODO:this page needs to be dynamic between basic child and premium child
-//    @GetMapping("/signature-page/{id}")
-//    public String signaturePage(@PathVariable("id") long id, Model model){
-//        // Armando: I have to have the following 3 lines
-//        // to go to a users personal page and show their
-//        // personal banner image
-//        User user = users.getOne(id);
-//        model.addAttribute("signatures", new Signatures());
-//        model.addAttribute("user", user);
-//        return "users/signature-page";
-//    }
 
-
+//*****************PARENT PROFILE PAGE******************************
     @GetMapping("/parent-profile")
     public String parentProfile(Model model){
         User loggedIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -68,6 +57,24 @@ public class UserController {
     }
 
 
+    @PostMapping("/purchase-code")
+    public String enteredPurchaseCode(@ModelAttribute User user, @RequestParam(name = "code") String code) {
+        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        long parentId = loggedInUser.getId();
+        user = users.getOne(parentId);
+        code = "DX978J3";
+
+        if (code.equals("DX978J3")) {
+            user.setOwns_yearbook(true);
+//            can user once we implement roles
+//            Role role = userroleDao.getOne(1);
+//            user.getRoles().add(role);
+        }
+
+        users.save(user);
+        return "redirect:/parent-profile";
+    }
+
     @GetMapping("edit-profile")
     public String editProfile(Model model){
         User loggedIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -76,7 +83,17 @@ public class UserController {
         return "users/edit-profile";
     }
 
+    @PostMapping("editUser")
+    public String updateUserInfo(@ModelAttribute("user") User user){
+        String hash = passwordEncoder.encode(user.getPassword());
+        user.setPassword(hash);
+        users.save(user);
+        return "redirect:/parent-profile";
+    }
 
+
+
+    //*****************---END----PARENT PROFILE PAGE******************************
     @GetMapping("/signature-page")
     public String signatureForm(Model model) {
 
@@ -122,30 +139,7 @@ public class UserController {
         return "redirect:/parent-profile";
     }
 
-    //    Armando: I had to make this mapping to edit the user info, might be able to use one already made
-
-    @PostMapping("editUser")
-    public String updateUserInfo(@ModelAttribute("user") User user){
-        String hash = passwordEncoder.encode(user.getPassword());
-        user.setPassword(hash);
-        users.save(user);
-        return "redirect:/parent-profile";
-    }
-
-//    @PostMapping("/filestack/{id}")
-//    public String saveImage(@PathVariable("id") long id, @Valid User user,
-//                            BindingResult result, Model model) {
-//        if (result.hasErrors()) {
-//            user.setId(id);
-//            return "users/file-stack";
-//        }
-//
-//        users.save(user);
-//        model.addAttribute("users", users.findAll());
-//        return "redirect:/parent-profile";
-//    }
-
-//CHILD REGISTRATION PART ONE - STUDENT ID********************
+//****************CHILD REGISTRATION PART ONE - STUDENT ID********************
 
 @GetMapping("/register-child")
 public String childRegister() {
@@ -181,5 +175,7 @@ public String childRegister() {
 
 
 
-}
+
+
+    }
 
