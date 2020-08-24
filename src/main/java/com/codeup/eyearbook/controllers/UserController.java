@@ -47,15 +47,29 @@ public class UserController {
     }
 
     //TODO:this page needs to be dynamic between basic child and premium child
-//    @GetMapping("/signature-page/{id}")
-//    public String signaturePage(@PathVariable("id") long id, Model model){
-//        // Armando: I have to have the following 3 lines
-//        // to go to a users personal page and show their
-//        // personal banner image
-//        User user = users.getOne(id);
-//        model.addAttribute("signatures", new Signatures());
-//        model.addAttribute("user", user);
-//        return "users/signature-page";
+    @GetMapping("/signature-page/{id}")
+    public String signaturePage(@PathVariable("id") long id, Model model){
+        // Armando: I have to have the following 3 lines
+        // to go to a users personal page and show their
+        // personal banner image
+        User user = users.getOne(id);
+        model.addAttribute("signatures", new Signatures());
+//        model.addAttribute("comment", comment.findAll());
+
+
+        model.addAttribute("user", user);
+        return "users/signature-page";
+    }
+
+//    @PostMapping("/signature-page/{id}")
+//    public String saveSignatureIndividual(@PathVariable("id") long id, @ModelAttribute Signatures signatures) {
+//        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        signatures.setSigner(loggedInUser);
+//        System.out.println(loggedInUser.getUsername());
+//        // new line to test if comments appear?
+//        comment.save(signatures);
+//        System.out.println(signatures.getYearbook_comment());
+//        return "redirect:/parent-profile";
 //    }
 
 
@@ -77,31 +91,31 @@ public class UserController {
     }
 
 
-    @GetMapping("/signature-page")
-    public String signatureForm(Model model) {
-
-        model.addAttribute("signatures", new Signatures());
-        //Armando: inserted this attribute to be able to find and display comments
-        model.addAttribute("comment", comment.findAll());
-        //Armando: inserted this attribute to be able to find and display images
-        // Armando : not too sure if this belongs in the
-        // generic signature-page area
-        User loggedIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User user = users.getOne(loggedIn.getId());
-        model.addAttribute("user", user);
-        return "users/signature-page";
-    }
-
-    @PostMapping("/signature-page")
-    public String saveSignature(@ModelAttribute Signatures signatures) {
-        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        signatures.setSigner(loggedInUser);
-        System.out.println(loggedInUser.getUsername());
-        // new line to test if comments appear?
-        comment.save(signatures);
-        System.out.println(signatures.getYearbook_comment());
-        return "redirect:/signature-page";
-    }
+//    @GetMapping("/signature-page")
+//    public String signatureForm(Model model) {
+//
+//        model.addAttribute("signatures", new Signatures());
+//        //Armando: inserted this attribute to be able to find and display comments
+//        model.addAttribute("comment", comment.findAll());
+//        //Armando: inserted this attribute to be able to find and display images
+//        // Armando : not too sure if this belongs in the
+//        // generic signature-page area
+//        User loggedIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        User user = users.getOne(loggedIn.getId());
+//        model.addAttribute("user", user);
+//        return "users/signature-page";
+//    }
+//
+//    @PostMapping("/signature-page")
+//    public String saveSignature(@ModelAttribute Signatures signatures) {
+//        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        signatures.setSigner(loggedInUser);
+//        System.out.println(loggedInUser.getUsername());
+//        // new line to test if comments appear?
+//        comment.save(signatures);
+//        System.out.println(signatures.getYearbook_comment());
+//        return "redirect:/signature-page";
+//    }
 
     @GetMapping("/filestack/{id}")
     public String imageForm(@PathVariable("id")long id, Model model) {
@@ -111,6 +125,17 @@ public class UserController {
         System.out.println(user.getUsername());
         model.addAttribute("user", user);
         return "users/file-stack";
+    }
+
+    @PostMapping("saveSignature")
+    public String saveSignatureIndividual(@ModelAttribute Signatures signatures) {
+        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        signatures.setSigner(loggedInUser);
+        System.out.println(loggedInUser.getUsername());
+        // new line to test if comments appear?
+        comment.save(signatures);
+        System.out.println(signatures.getYearbook_comment());
+        return "redirect:/parent-profile";
     }
 
 

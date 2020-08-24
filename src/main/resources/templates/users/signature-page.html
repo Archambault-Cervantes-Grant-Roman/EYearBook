@@ -9,6 +9,7 @@
     <link href="/eyearbook.css" type="text/css" rel="stylesheet"/>
     <!--    filestack -->
     <script type="text/javascript" src="https://static.filestackapi.com/v3/filestack.js"></script>
+    <link rel="stylesheet" href="/SignaturePage.css"/>
 
     <meta charset="UTF-8">
 
@@ -24,7 +25,10 @@
 <!--the following get won't work unless you go to a specific users webpage-->
 <!-- ex: /signature-page/1-->
 <!-- ex: /signature-page/2-->
-<img th:src="${user.getSign_page_banner_image()}" height="300" width="auto"/>
+        <div class="d-flex justify-content-center box large">
+            <img th:src="${user.getSign_page_banner_image()}" />
+        </div>
+
 
 
 <h1 class="text-center">username here</h1>
@@ -52,8 +56,8 @@
                     <img src="..." class="card-img" alt="...">
                 </div>
                 <ul>
-                    <li class="col-12" th:each="comment : ${comment}">
-                        <h2> Posted by:  <span th:text="${comment.signer.getUsername()}"></span></h2>
+                    <li class="col-12" th:each="comment : ${user.myPageSignatures}">
+                        <h2> Posted by:  <span th:text="${comment.signer.username}"></span></h2>
                         <h2> Comment:  <span th:text="${comment.yearbook_comment}"></span></h2>
                     </li>
                 </ul>
@@ -66,7 +70,7 @@
                     </div>
 
                     <div class="card-body">
-                        <form th:action="@{/signature-page}" method="POST" th:object="${signatures}" id="commentform">
+                        <form th:action="@{/saveSignature}" method="POST" th:object="${signatures}" id="commentform">
 
                             <label for="yearbook_comment">Comment</label>
                             <input type="text" name="yearbook_comment" id="yearbook_comment" th:field="*{yearbook_comment}"/>
