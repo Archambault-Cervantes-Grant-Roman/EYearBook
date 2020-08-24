@@ -25,8 +25,3 @@ WHERE
 
 insert into users (id, parent_id, username, password) values
 (2, 0, 'leroy', 'password');
-
-insert into roles (role_id, name) values
-('1', 'OWNSYEARBOOK'),
-('2', 'CHILD'),
-('3', 'PARENT');

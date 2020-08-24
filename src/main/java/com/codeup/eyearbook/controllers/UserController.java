@@ -7,7 +7,6 @@ import com.codeup.eyearbook.models.User;
 import com.codeup.eyearbook.repositories.SignatureRepository;
 import com.codeup.eyearbook.repositories.StudentRepository;
 import com.codeup.eyearbook.repositories.UserRepository;
-import com.codeup.eyearbook.repositories.UserRoleRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -15,10 +14,8 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-
-import com.codeup.eyearbook.models.Role;
-
-
+import javax.validation.Valid;
+import java.util.Optional;
 
 @Controller
 public class UserController {
@@ -26,21 +23,18 @@ public class UserController {
     private PasswordEncoder passwordEncoder;
     private SignatureRepository comment;
     private StudentRepository studentsDao;
-    private UserRoleRepository userRoleDao;
 
 
-    public UserController(UserRepository users, PasswordEncoder passwordEncoder, SignatureRepository comment, StudentRepository studentsDao, UserRoleRepository userRoleDao) {
+    public UserController(UserRepository users, PasswordEncoder passwordEncoder, SignatureRepository comment, StudentRepository studentsDao) {
         this.users = users;
         this.passwordEncoder = passwordEncoder;
         this.comment = comment;
         this.studentsDao = studentsDao;
-        this.userRoleDao = userRoleDao;
     }
 
     @GetMapping("/sign-up")
     public String showSignupForm(Model model) {
         model.addAttribute("user", new User());
-
         return "users/register";
     }
 
@@ -48,8 +42,6 @@ public class UserController {
     public String saveUser(@ModelAttribute User user) {
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
-        Role role  = userRoleDao.getOne(3);
-        user.getRoles().add(role);
         users.save(user);
         return "redirect:/login";
     }
@@ -122,9 +114,7 @@ public class UserController {
         User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         signatures.setSigner(loggedInUser);
         System.out.println(loggedInUser.getUsername());
-
         // new line to test if comments appear?
-
         comment.save(signatures);
         System.out.println(signatures.getYearbook_comment());
         return "redirect:/signature-page";
