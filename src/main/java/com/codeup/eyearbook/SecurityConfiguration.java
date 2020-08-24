@@ -57,7 +57,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                     /* Pages that require authentication */
                     .and()
                     .authorizeRequests()
-                    .antMatchers("/yearbook").hasAnyAuthority("PC", "PP")
+                    .antMatchers("/yearbook").hasAnyAuthority("OWNSYEARBOOK")
                     .antMatchers("/new").hasAnyAuthority("ADMIN", "CREATOR")
                     .antMatchers("/edit/**").hasAnyAuthority("ADMIN", "EDITOR")
                     .antMatchers("/delete/**").hasAuthority("ADMIN")

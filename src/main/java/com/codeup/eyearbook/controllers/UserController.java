@@ -15,13 +15,10 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-<<<<<<< HEAD
+
 import com.codeup.eyearbook.models.Role;
 
-=======
-import javax.validation.Valid;
-import java.util.Optional;
->>>>>>> 6e8cfdc03f5bbc9c12c5a3661052edd03c52c0db
+
 
 @Controller
 public class UserController {
