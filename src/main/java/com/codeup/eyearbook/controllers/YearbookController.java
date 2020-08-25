@@ -20,7 +20,15 @@ public class YearbookController {
     }
 
     @RequestMapping("/yearbook")
-    public String home(Model model){
-        return "users/yearbook";
+    public String home(){
+        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = new User();
+        if( !loggedInUser.isOwns_yearbook()){
+            return "/home";
+        }
+        if( loggedInUser.isOwns_yearbook()){
+            return "users/yearbook";}
+        return("/home");
     }
-}
+    }
+
