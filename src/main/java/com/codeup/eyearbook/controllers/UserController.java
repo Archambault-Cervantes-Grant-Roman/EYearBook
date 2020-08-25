@@ -46,20 +46,7 @@ public class UserController {
         return "redirect:/login";
     }
 
-    //TODO:this page needs to be dynamic between basic child and premium child
-    @GetMapping("/signature-page/{id}")
-    public String signaturePage(@PathVariable("id") long id, Model model){
-        // Armando: I have to have the following 3 lines
-        // to go to a users personal page and show their
-        // personal banner image
-        User user = users.getOne(id);
-        model.addAttribute("signatures", new Signatures());
-//        model.addAttribute("comment", comment.findAll());
 
-
-        model.addAttribute("user", user);
-        return "users/signature-page";
-    }
 
 //    @PostMapping("/signature-page/{id}")
 //    public String saveSignatureIndividual(@PathVariable("id") long id, @ModelAttribute Signatures signatures) {
@@ -127,20 +114,11 @@ public class UserController {
         return "users/file-stack";
     }
 
-    @PostMapping("saveSignature")
-    public String saveSignatureIndividual(@ModelAttribute Signatures signatures) {
-        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        signatures.setSigner(loggedInUser);
-        System.out.println(loggedInUser.getUsername());
-        // new line to test if comments appear?
-        comment.save(signatures);
-        System.out.println(signatures.getYearbook_comment());
-        return "redirect:/parent-profile";
-    }
+
 
 
 //    Armando: I had to make this mapping to save the image, might be able to use one already made
-    @PostMapping("saveUser")
+    @PostMapping("/saveUser")
     public String saveUserImage(@ModelAttribute("user") User user){
 
         users.save(user);

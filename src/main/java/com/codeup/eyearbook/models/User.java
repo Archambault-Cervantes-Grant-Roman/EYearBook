@@ -37,7 +37,6 @@ public class User {
     @OneToMany(mappedBy = "signer", cascade = CascadeType.ALL)
     private List<Signatures> userSignatures;
 
-
     @Column(length = 150)
     private String sign_page_banner_image;
 
