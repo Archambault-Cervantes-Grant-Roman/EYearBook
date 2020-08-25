@@ -15,6 +15,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Objects;
 import java.util.Optional;
 
 @Controller
@@ -85,47 +86,53 @@ public class UserController {
         return "users/edit-profile";
     }
 
+
+    //this is to change username, email, and password
     @PostMapping("editUser")
     public String updateUserInfo(@ModelAttribute("user") User user){
+        User loggedIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        long id = loggedIn.getId();
+        User existing = users.getOne(id);
+        existing.setUsername(user.getUsername());
+        existing.setEmail(user.getEmail());
         String hash = passwordEncoder.encode(user.getPassword());
-        user.setPassword(hash);
-        users.save(user);
+        existing.setPassword(hash);
+        users.save(existing);
         return "redirect:/parent-profile";
     }
 
 
-
     //*****************---END----PARENT PROFILE PAGE******************************
-    @GetMapping("/signature-page")
-    public String signatureForm(Model model) {
-
-        model.addAttribute("signatures", new Signatures());
-        //Armando: inserted this attribute to be able to find and display comments
-        model.addAttribute("comment", comment.findAll());
-        //Armando: inserted this attribute to be able to find and display images
-        // Armando : not too sure if this belongs in the
-        // generic signature-page area
-        String yearbookLink = "View yearbook";
-        User loggedIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User user = users.getOne(loggedIn.getId());
-        model.addAttribute("user", user);
-
-        if(user.isOwns_yearbook()){
-            model.addAttribute("yearbookLink", yearbookLink);
-        }
-        return "users/signature-page";
-    }
-
-    @PostMapping("/signature-page")
-    public String saveSignature(@ModelAttribute Signatures signatures) {
-        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        signatures.setSigner(loggedInUser);
-        System.out.println(loggedInUser.getUsername());
-        // new line to test if comments appear?
-        comment.save(signatures);
-        System.out.println(signatures.getYearbook_comment());
-        return "redirect:/signature-page";
-    }
+//    @GetMapping("/signature-page")
+//    public String signatureForm(Model model) {
+//
+//        model.addAttribute("signatures", new Signatures());
+//        //Armando: inserted this attribute to be able to find and display comments
+//        model.addAttribute("comment", comment.findAll());
+//        //Armando: inserted this attribute to be able to find and display images
+//        // Armando : not too sure if this belongs in the
+//        // generic signature-page area
+//        String yearbookLink = "View yearbook";
+//        User loggedIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        User user = users.getOne(loggedIn.getId());
+//        model.addAttribute("user", user);
+//
+//        if(user.isOwns_yearbook()){
+//            model.addAttribute("yearbookLink", yearbookLink);
+//        }
+//        return "users/signature-page";
+//    }
+//
+//    @PostMapping("/signature-page")
+//    public String saveSignature(@ModelAttribute Signatures signatures) {
+//        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        signatures.setSigner(loggedInUser);
+//        System.out.println(loggedInUser.getUsername());
+//        // new line to test if comments appear?
+//        comment.save(signatures);
+//        System.out.println(signatures.getYearbook_comment());
+//        return "redirect:/signature-page";
+//    }
 
     @GetMapping("/filestack/{id}")
     public String imageForm(@PathVariable("id")long id, Model model) {
