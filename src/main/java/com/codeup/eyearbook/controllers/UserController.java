@@ -17,6 +17,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Objects;
 import java.util.Optional;
 
 @Controller
@@ -44,13 +45,14 @@ public class UserController {
         user.setPassword(hash);
         user.setIsParent(true);
         userDao.save(user);
+
         return "redirect:/login";
     }
 
 
-//*****************PARENT PROFILE PAGE******************************
+    //*****************PARENT PROFILE PAGE******************************
     @GetMapping("/parent-profile")
-    public String parentProfile(Model model){
+    public String parentProfile(Model model) {
 
         Authentication token = SecurityContextHolder.getContext().getAuthentication();
         boolean AnonCheck = token instanceof AnonymousAuthenticationToken;
@@ -61,7 +63,7 @@ public class UserController {
         model.addAttribute("user", user);
 
         boolean isParent = loggedInUser.getIsParent();
-        return isParent  ? "users/parent-profile" : "/home";
+        return isParent ? "users/parent-profile" : "/home";
 //        return "users/parent-profile";
     }
 
@@ -86,12 +88,12 @@ public class UserController {
 
         userDao.save(user);
         boolean isParent = loggedInUser.getIsParent();
-        return isParent  ? "users/parent-profile" : "/home";
+        return isParent ? "users/parent-profile" : "/home";
 //        return "redirect:/parent-profile";
     }
 
     @GetMapping("edit-profile")
-    public String editProfile(Model model){
+    public String editProfile(Model model) {
 
         Authentication token = SecurityContextHolder.getContext().getAuthentication();
         boolean AnonCheck = token instanceof AnonymousAuthenticationToken;
@@ -102,87 +104,77 @@ public class UserController {
         model.addAttribute("user", user);
 
         boolean isParent = loggedInUser.getIsParent();
-        return isParent  ? "users/edit-profile" : "/home";
+        return isParent ? "users/edit-profile" : "/home";
 //        return "users/edit-profile";
     }
 
 
 
+        //this is to change username, email, and password
+        @PostMapping("editUser")
+        public String updateUserInfo (@ModelAttribute("user") User user){
+            User loggedIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            long id = loggedIn.getId();
+            User existing = userDao.getOne(id);
+            existing.setUsername(user.getUsername());
+            existing.setEmail(user.getEmail());
+            String hash = passwordEncoder.encode(user.getPassword());
+            existing.setPassword(hash);
+            userDao.save(existing);
+
+            return "redirect:/parent-profile";
+        }
 
 
-//    DO WE NEED TO ADD PREVENTION TO THIS PAGE AS WELL?
-    @PostMapping("editUser")
-    public String updateUserInfo(@ModelAttribute("user") User user){
-
-
-        String hash = passwordEncoder.encode(user.getPassword());
-        user.setPassword(hash);
-        userDao.save(user);
-
-        return "redirect:/parent-profile";
-    }
-
-
-
-    //*****************---END----PARENT PROFILE PAGE******************************
-
-
-
-
-
-
+        //*****************---END----PARENT PROFILE PAGE******************************
 
 //****************CHILD REGISTRATION PART ONE - STUDENT ID********************
 
-@GetMapping("/register-child")
-public String childRegister() {
-    Authentication token = SecurityContextHolder.getContext().getAuthentication();
-    boolean AnonCheck = token instanceof AnonymousAuthenticationToken;
-    if (AnonCheck) return "users/login";
-    User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            @GetMapping("/register-child")
+            public String childRegister () {
+                Authentication token = SecurityContextHolder.getContext().getAuthentication();
+                boolean AnonCheck = token instanceof AnonymousAuthenticationToken;
+                if (AnonCheck) return "users/login";
+                User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
-    boolean isParent = loggedInUser.getIsParent();
-    return isParent  ? "users/register-child" : "/home";
+                boolean isParent = loggedInUser.getIsParent();
+                return isParent ? "users/register-child" : "/home";
 //        return "users/register-child";
-}
+            }
 
 //APPLYS THE CHILDS INFO ONTO THE CARD FOR PART 2 OF CHILD REGISTRATION**************
-    @PostMapping("/register-child")
-    public String locateByStudentId(@RequestParam long id, Model model) {
+            @PostMapping("/register-child")
+            public String locateByStudentId ( @RequestParam long id, Model model){
 //        Authentication token = SecurityContextHolder.getContext().getAuthentication();
 //        boolean AnonCheck = token instanceof AnonymousAuthenticationToken;
 //        if (AnonCheck) return "users/login";
-        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+                User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
-        loggedInUser.getId();
-        Student s = studentsDao.getByStudent_id(id);
-        model.addAttribute("studentId", s.getStudent_id());
-        model.addAttribute("firstName", s.getFirst_name());
-        model.addAttribute("lastName", s.getLast_name());
+                loggedInUser.getId();
+                Student s = studentsDao.getByStudent_id(id);
+                model.addAttribute("studentId", s.getStudent_id());
+                model.addAttribute("firstName", s.getFirst_name());
+                model.addAttribute("lastName", s.getLast_name());
 //        this creates a new user from the student record
-        model.addAttribute("user", new User() );
+                model.addAttribute("user", new User());
 
 //        boolean isParent = loggedInUser.isIsParent();
 //        return !isParent  ? "users/child-register2" : "/home";
-        return "users/child-register2";
-    }
+                return "users/child-register2";
+            }
 
 
-    @PostMapping("/child-register2")
-    public String saveChildUser(@ModelAttribute User user) {
-        String hash = passwordEncoder.encode(user.getPassword());
+            @PostMapping("/child-register2")
+            public String saveChildUser (@ModelAttribute User user){
+                String hash = passwordEncoder.encode(user.getPassword());
 //        get the parents id
-        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-   long parentId =  loggedInUser.getId();
-        user.setParent_id(parentId);
-        user.setPassword(hash);
-        userDao.save(user);
-        return "redirect:/parent-profile";
-    }
+                User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+                long parentId = loggedInUser.getId();
+                user.setParent_id(parentId);
+                user.setPassword(hash);
+                userDao.save(user);
+                return "redirect:/parent-profile";
+            }
 
 
-
-
-
-    }
-
+        }

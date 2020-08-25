@@ -23,14 +23,17 @@ public class YearbookController {
 
     @RequestMapping("/yearbook")
     public String home(){
+
         Authentication token = SecurityContextHolder.getContext().getAuthentication();
         boolean AnonCheck = token instanceof AnonymousAuthenticationToken;
         if (AnonCheck) return "users/login";
+
         User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 //        User user = new User();
         boolean yearBookCheck = loggedInUser.isOwns_yearbook();
         // This means the user is not logged in
         return yearBookCheck  ? "users/yearbook" : "/home";
+
 
     }
     }

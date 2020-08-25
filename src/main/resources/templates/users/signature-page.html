@@ -31,7 +31,9 @@
 
 
 
-<h1 class="text-center" th:text="${username}"></h1>
+
+<h1 th:text="${user.username}" class="text-center">username here</h1>
+
 <br>
 <div th:if="${!user.isOwns_yearbook()}">
     <h3>Please ask a parent to purchase a yearbook</h3>
@@ -81,11 +83,13 @@
                     </div>
 
                     <div class="card-body">
-<!--                        <form th:action="@{/signature-page/{id}}" method="POST" th:object="${signatures}" id="commentform">-->
-<!--&lt;!&ndash;                            <input type="text" th:value="*{profile_user}">&ndash;&gt;-->
-<!--                            <div class="form-group">-->
-<!--                                <label for="yearbookComment"></label>-->
-<!--                                <input type="text" class="form-control" id="yearbookComment" th:field="*{yearbookComment}">-->
+
+                        <form th:action="@{/signature-page/{id}(id=${user.id})}" method="POST" th:object="${signatures}" id="commentform">
+<!--                        <form th:action="@{/signature-page}" method="POST" th:object="${signatures}" id="commentform">-->
+                        <div class="form-group">
+                                <label for="yearbook_comment"></label>
+                                <input type="text" class="form-control" id="yearbook_comment" th:field="*{yearbook_comment}">
+
                             </div>
                             <button  value="Submit" type="submit">Comment</button>
                         </form>
