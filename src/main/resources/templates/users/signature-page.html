@@ -77,9 +77,9 @@
                     </div>
 
                     <div class="card-body">
-                        <form th:action="@{/signature-page/{id}}" method="POST" th:object="${signatures}" id="commentform">
-<!--                            <input type="text" th:value="*{profile_user}">-->
-                            <div class="form-group">
+                        <form th:action="@{/signature-page/{id}(id=${user.id})}" method="POST" th:object="${signatures}" id="commentform">
+<!--                        <form th:action="@{/signature-page}" method="POST" th:object="${signatures}" id="commentform">-->
+                        <div class="form-group">
                                 <label for="yearbook_comment"></label>
                                 <input type="text" class="form-control" id="yearbook_comment" th:field="*{yearbook_comment}">
                             </div>
