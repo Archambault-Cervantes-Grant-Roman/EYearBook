@@ -28,16 +28,9 @@ public class SignatureController {
     //TODO:this page needs to be dynamic between basic child and premium child
     @GetMapping("/signature-page/{id}")
     public String signaturePage(@PathVariable("id") long profileId, Model model){
-        // Armando: I have to have the following 3 lines
-        // to go to a users personal page and show their
-        // personal banner image
         User user = users.getOne(profileId);
+
         model.addAttribute("signatures", new Signatures());
-
-//        model.addAttribute("comment", comment.findAll());
-
-
-
         model.addAttribute("user", user);
         return "users/signature-page";
     }
@@ -47,28 +40,39 @@ public class SignatureController {
     but the parameter type for setProfile_user needs to be a User
     If I leave postMapping to ("/signature-page") without the path variable itll post but I have to set profile_user manual
      */
-
+//
     @PostMapping("/signature-page/{id}")
-//    @RequestParam("yearbook_comment") String yearbook_comment,  @PathVariable("id") long id,
-    public String saveSignatureIndividual(@RequestParam("yearbook_comment") String yearbook_comment,  @PathVariable("id") long id,@ModelAttribute Signatures signatures) {
+    public String saveSignatureIndividual(@PathVariable("id") long id, @ModelAttribute Signatures signatures) {
         User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User profileUser = users.getOne(id);
 
-//        System.out.println(id);
-        User user = users.getOne(id);
-        Signatures signature = new Signatures();
-        signature.setProfile_user(user);
-        signature.setSigner(loggedInUser);
-        signature.setYearbook_comment(yearbook_comment);
+        signatures.setProfile_user(profileUser);
+        signatures.setSigner(loggedInUser);
         signatureDao.save(signatures);
 
-        // uncomment below to use with  @PostMapping("/signature-page")
+        return "redirect:/signature-page/{id}";
+    }
+//
+//    @PostMapping("/signature-page")
+//    public String saveSignatureIndividual(@ModelAttribute Signatures signatures) {
 //        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 //        signatures.setSigner(loggedInUser);
-//        System.out.println(loggedInUser.getUsername());
 //        // new line to test if comments appear?
 //        signatureDao.save(signatures);
 //        System.out.println(signatures.getYearbook_comment());
-        return "redirect:/parent-profile";
-    }
+//        return "redirect:/parent-profile";
+//    }
+
+    // =====LEROY'S VERSION===== //
+//    @PostMapping("/signature-page/{id}")
+////    @RequestParam("yearbook_comment") String yearbook_comment,  @PathVariable("id") long id,
+//    public String saveSignature(@RequestParam("yearbook_comment") String yearbook_comment,  @PathVariable("id") long id,@ModelAttribute Signatures signatures) {
+//        Signatures signature = new Signatures();
+//        signature.setYearbook_comment(yearbook_comment);
+//        signature.save(signatures);
+//        return "redirect:/parent-profile";
+//    }
+
+
 }
 
