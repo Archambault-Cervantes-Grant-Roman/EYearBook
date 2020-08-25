@@ -1,12 +1,15 @@
 <!doctype html>
-<html>
+<<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thyme leaf.org/extras/spring-security" lang="en">>
 <head>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="/js/turn.js"></script>
+
+
 <!--<script> alert("Test");</script>-->
     <style type="text/css">
         body{
-            background:#ccc;
+            /*background-image: url("static/img/cool-background.png");*/
+
         }
         #magazine{
             width:1152px;
@@ -18,9 +21,13 @@
         }
     </style>
 </head>
-<body>
+<body th:style="'background: url(/img/cool-background.png)'">
 
-<div id="magazine">
+
+<input id="test" min="1" max="16" value='10' step="1" onchange="showVal(this.value)" type="range"/>
+<input id="rotate"  type="button" class="rotateButton" onchange="RotateYearbook()">
+
+<div id="magazine" class="container yearbook d-flex justify-content-center">
     <div style="background-image:url(https://cdn.filestackcontent.com/Np3Ryca6TMaZOFX07LsB
 );"></div>
     <div style="background-image:url(https://cdn.filestackcontent.com/ncu5kzCQWWOv273H1xyw);"></div>
@@ -83,6 +90,46 @@
             $('#magazine').turn('next');
 
     });
+
+
+    function setZoom(zoom,e) {
+
+        transformOrigin = [0,0];
+        e = e || instance.getContainer();
+        var p = ["webkit", "moz", "ms", "o"],
+            s = "scale(" + zoom + ")",
+            oString = (transformOrigin[0] * 100) + "% " + (transformOrigin[1] * 100) + "%";
+
+        for (var i = 0; i < p.length; i++) {
+            e.style[p[i] + "Transform"] = s;
+            e.style[p[i] + "TransformOrigin"] = oString;
+        }
+
+        el.style["transform"] = s;
+        el.style["transformOrigin"] = oString;
+
+    }
+
+    //setZoom(5,document.getElementsByClassName('container')[0]);
+      function RotateYearbook() {
+
+        let div = document.getElementById('magazine'),
+            deg = rotated ? 0 : 66;
+
+
+        div.style.mozTransform    = 'rotate('+deg+'deg)';
+        div.style.msTransform     = 'rotate('+deg+'deg)';
+        div.style.oTransform      = 'rotate('+deg+'deg)';
+        div.style.transform       = 'rotate('+deg+'deg)';
+
+        rotated = !rotated;
+    }
+    function showVal(a){
+        var zoomScale = Number(a)/10;
+        setZoom(zoomScale,document.getElementsByClassName('container')[0])
+
+
+    }
 
 </script>
 
