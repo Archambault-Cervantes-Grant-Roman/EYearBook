@@ -57,7 +57,7 @@ public class SignatureController {
         signatures.setSigner(loggedInUser);
         signatureDao.save(signatures);
 
-        return "redirect:/parent-profile";
+        return "redirect:/signature-page/{id}";
     }
 //
 //    @PostMapping("/signature-page")
