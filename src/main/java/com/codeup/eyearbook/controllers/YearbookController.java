@@ -4,6 +4,8 @@ import com.codeup.eyearbook.models.User;
 import com.codeup.eyearbook.models.Yearbook;
 import com.codeup.eyearbook.repositories.UserRepository;
 import com.codeup.eyearbook.repositories.YearbookRepository;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,14 +23,15 @@ public class YearbookController {
 
     @RequestMapping("/yearbook")
     public String home(){
+        Authentication token = SecurityContextHolder.getContext().getAuthentication();
+        boolean AnonCheck = token instanceof AnonymousAuthenticationToken;
+        if (AnonCheck) return "users/login";
         User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User user = new User();
-        if( !loggedInUser.isOwns_yearbook()){
-            return "/home";
-        }
-        if( loggedInUser.isOwns_yearbook()){
-            return "users/yearbook";}
-        return("/home");
+//        User user = new User();
+        boolean yearBookCheck = loggedInUser.isOwns_yearbook();
+        // This means the user is not logged in
+        return yearBookCheck  ? "users/yearbook" : "/home";
+
     }
     }
 

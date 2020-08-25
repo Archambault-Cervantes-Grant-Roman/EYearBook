@@ -31,9 +31,11 @@
 
 
 
-<h1 class="text-center">username here</h1>
+<h1 class="text-center" th:text="${username}"></h1>
 <br>
-
+<div th:if="${!user.isOwns_yearbook()}">
+    <h3>Please ask a parent to purchase a yearbook</h3>
+</div>
 
 
 <br>
@@ -43,14 +45,16 @@
 <div class="sidenav">
 
     <a href="/search">Search Registered Student</a>
+    <div th:if="${user.isOwns_yearbook()}">
 
-    <form th:action="@{/validate-owner}" method="get">
-        <a href="/yearbook" style="font-size: larger" th:text="${yearbookLink}"> </a>
-    </form>
+        <a href="/yearbook" style="font-size: larger" > View Your Yearbook </a>
+    </div>
 <!--    <a href="#">Add as friend (dynamic - visible to visitors)</a>-->
 <!--    <a href="#">Post a comment (dynamic - visible to visitors)</a>-->
 </div>
 
+<!--  COMMENTS SECTION-->
+<div th:if="${user.isOwns_yearbook()}">
 
 
 <div class="container-fluid container">
@@ -63,10 +67,10 @@
                 </div>
                 <ul>
 
-                    <li class="col-12" th:each="comment : ${user.myPageSignatures}">
-                        <h2> Posted by:  <span th:text="${comment.signer.username}"></span></h2>
-                        <h2> Comment:  <span th:text="${comment.yearbook_comment}"></span></h2>
-                    </li>
+<!--                    <li class="col-12" th:each="comment : ${user.myPageSignatures}">-->
+<!--                        <h2> Posted by:  <span th:text="${comment.signer.username}"></span></h2>-->
+<!--                        <h2> Comment:  <span th:text="${comment.yearbook_comment}"></span></h2>-->
+<!--                    </li>-->
                 </ul>
                 <div class="col-md-8">
                     <div class="card-body">
@@ -77,11 +81,11 @@
                     </div>
 
                     <div class="card-body">
-                        <form th:action="@{/signature-page/{id}}" method="POST" th:object="${signatures}" id="commentform">
-<!--                            <input type="text" th:value="*{profile_user}">-->
-                            <div class="form-group">
-                                <label for="yearbook_comment"></label>
-                                <input type="text" class="form-control" id="yearbook_comment" th:field="*{yearbook_comment}">
+<!--                        <form th:action="@{/signature-page/{id}}" method="POST" th:object="${signatures}" id="commentform">-->
+<!--&lt;!&ndash;                            <input type="text" th:value="*{profile_user}">&ndash;&gt;-->
+<!--                            <div class="form-group">-->
+<!--                                <label for="yearbookComment"></label>-->
+<!--                                <input type="text" class="form-control" id="yearbookComment" th:field="*{yearbookComment}">-->
                             </div>
                             <button  value="Submit" type="submit">Comment</button>
                         </form>
@@ -93,34 +97,10 @@
     </div>
 </div>
 
-<!--MODAL CODE FOR DOESN'T OWN A YEARBOOK-->
 
-<!--<div class="modal" tabindex="-1" role="dialog">-->
-<!--    <div class="modal-dialog" role="document">-->
-<!--        <div class="modal-content">-->
-<!--            <div class="modal-header">-->
-<!--                <h5 class="modal-title">Purchase a yearbook</h5>-->
-<!--                <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
-<!--                    <span aria-hidden="true">&times;</span>-->
-<!--                </button>-->
-<!--            </div>-->
-<!--            <div class="modal-body">-->
-<!--                <p>Would you like to purchase a yearbook now?  </p>-->
-<!--            </div>-->
-<!--            <div class="modal-footer">-->
-<!--                <form th:action="@{/mock-site}" method="get">-->
-<!--                <button type="button" class="btn btn-primary">Yes</button>-->
-<!--                </form>-->
-<!--                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
 
-<!--&lt;!&ndash;MODAL SCRIPT BOOTSTRAP&ndash;&gt;-->
-<!--<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>-->
-<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>-->
-<!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>-->
+</div>
+
 
 </body>
 </html>
