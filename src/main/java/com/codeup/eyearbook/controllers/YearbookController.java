@@ -13,40 +13,39 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class YearbookController {
-    private UserRepository users;
+    private UserRepository userDao;
     private YearbookRepository yearbook;
 
-    public YearbookController(YearbookRepository yearbook, UserRepository users) {
-        this.users = users;
+    public YearbookController(YearbookRepository yearbook, UserRepository userDao) {
+        this.userDao = userDao;
         this.yearbook = yearbook;
     }
 
     @RequestMapping("/yearbook")
     public String home(){
 
-
         Authentication token = SecurityContextHolder.getContext().getAuthentication();
         boolean AnonCheck = token instanceof AnonymousAuthenticationToken;
         if (AnonCheck) return "users/login";
 
-
         User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        User parent =  userDao.getOne(loggedInUser.getParent_id());
+        boolean parentOwnsYearbook = parent.isOwns_yearbook();
+        System.out.println(loggedInUser.getUsername());
+        System.out.println(parent.getUsername());
+        System.out.println(parentOwnsYearbook);
+         if(parentOwnsYearbook){
+             loggedInUser.setOwns_yearbook(true);
+         }
+
+
 //        User user = new User();
         boolean yearBookCheck = loggedInUser.isOwns_yearbook();
         // This means the user is not logged in
+        return yearBookCheck  ? "users/yearbook" : "/home";
 
 
-            return yearBookCheck  ? "users/yearbook" : "/home";
-//        if( !loggedInUser.isOwns_yearbook()){
-//            return "/home";
-//        }
-//
-//        if( loggedInUser.isOwns_yearbook()){
-//
-//        return "users/yearbook";}
-//
-//
-//        return("/home");
     }
     }
 

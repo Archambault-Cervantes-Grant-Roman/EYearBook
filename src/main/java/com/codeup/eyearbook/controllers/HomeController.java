@@ -19,13 +19,9 @@ public class HomeController {
 
 
     @RequestMapping("/")
-    public String home(Model model) {
-//        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        User user = users.getOne(loggedInUser.getId());
-//   model.addAttribute(user);
+    public String home() {
         return "home";
     }
-
 
 
 }

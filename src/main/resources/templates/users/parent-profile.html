@@ -28,8 +28,13 @@
     <a href="/register-child">Register a child</a>
     <a th:href="@{|/edit-profile|}">Update profile</a>
     <a href="#" >View comments your child has posted</a>
+    <div th:if="${user.isOwns_yearbook()}">
+        <a href="/yearbook" >View Yearbook</a>
+    </div>
+    <div th:if="${!user.isOwns_yearbook()}">
     <a href="/mock-site" >purchase a yearbook</a>
     <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalEnterPurchaseCodeForm">enter yearbook purchase code</a>
+    </div>
 <!--    <a href="#" >enter yearbook purchase code</a>-->
 </div>
 
