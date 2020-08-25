@@ -37,35 +37,20 @@ public String redirectThisPage (){
     @GetMapping("/signature-page/{id}")
     public String signatureForm(@PathVariable("id") long profileId,Model model) {
 
- Authentication token = SecurityContextHolder.getContext().getAuthentication();
-        boolean AnonCheck = token instanceof AnonymousAuthenticationToken;
-        if (AnonCheck) return "users/login";
-//        if currently loggin in userid =  profileid = see their own page
-//        if they don't match the logged in user sees the owners page
-
         User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        loggedInUser.getId();
-//        BOBBIE: "DO WE NEED TO CREATE A NEW USER HERE?"
-        User user = new User();
-       user = userDao.getOne(profileId);
-//      ===============================================
+        loggedInUser = userDao.getOne(loggedInUser.getId());
 
+        User user = userDao.getOne(profileId);
+        model.addAttribute("user", user);
 
         model.addAttribute("signatures", new Signatures());
-        //Armando: inserted this attribute to be able to find and display comments
-        model.addAttribute("comment", signatureDao.findAll());
-        //Armando: inserted this attribute to be able to find and display images
-        String yearbookLink = "View yearbook";
-        User loggedIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        user = userDao.getOne(loggedIn.getId());
         String username = user.getUsername();
-        model.addAttribute("user", user);
         model.addAttribute("username", username);
 
 
 //IF IS PARENT REDIRECT TO HOME PAGE.....
         boolean isParent = loggedInUser.getIsParent();
-        return !isParent  ? "users/signature-page/{id}" : "/home";
+        return !isParent  ? "users/signature-page" : "home";
     }
 
 
