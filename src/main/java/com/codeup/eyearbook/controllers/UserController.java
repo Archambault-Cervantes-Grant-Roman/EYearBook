@@ -43,6 +43,7 @@ public class UserController {
     public String saveUser(@ModelAttribute User user) {
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
+        user.setIsParent(true);
         users.save(user);
         return "redirect:/login";
     }
@@ -84,32 +85,20 @@ public class UserController {
         return "users/edit-profile";
     }
 
+
+    //this is to change username, email, and password
     @PostMapping("editUser")
     public String updateUserInfo(@ModelAttribute("user") User user){
+        User loggedIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        long id = loggedIn.getId();
+        User existing = users.getOne(id);
+        existing.setUsername(user.getUsername());
+        existing.setEmail(user.getEmail());
         String hash = passwordEncoder.encode(user.getPassword());
-        user.setPassword(hash);
-        users.save(user);
+        existing.setPassword(hash);
+        users.save(existing);
         return "redirect:/parent-profile";
     }
-
-
-
-    //addition code to update password and to login with new blank password / should not be able to update with blank password
-//    @PostMapping("editUser")
-//    public String updateUserInfo(@ModelAttribute("user") User user, @RequestParam (name = "password") String password){
-//        User loggedIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        long id = loggedIn.getId();
-//        User existing = users.getOne(id);
-//        String currentPassword = existing.getPassword();
-//        String hash = passwordEncoder.encode(user.getPassword());
-//        user.setPassword(hash);
-//        if (Objects.equals(user.getPassword(), "")) {
-//            existing.setPassword(currentPassword);
-//        }
-//        users.save(user);
-//        return "redirect:/parent-profile";
-//    }
-
 
 
     //*****************---END----PARENT PROFILE PAGE******************************
