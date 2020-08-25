@@ -76,14 +76,20 @@ public class UserController {
         if (AnonCheck) return "users/login";
         User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
-        long parentId = loggedInUser.getId();
-        user = userDao.getOne(parentId);
+        long id = loggedInUser.getId();
+        user = userDao.getOne(id);
 
         code = "DX978J3";
 
         if (code.equals("DX978J3")) {
             user.setOwns_yearbook(true);
 
+        }
+
+        User parent =  userDao.getOne(loggedInUser.getParent_id());
+        boolean parentOwnsYearbook = parent.isOwns_yearbook();
+        if(parentOwnsYearbook){
+            loggedInUser.setOwns_yearbook(true);
         }
 
         userDao.save(user);
