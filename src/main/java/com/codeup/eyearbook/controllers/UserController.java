@@ -15,6 +15,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Objects;
 import java.util.Optional;
 
 @Controller
@@ -90,6 +91,24 @@ public class UserController {
         users.save(user);
         return "redirect:/parent-profile";
     }
+
+
+
+    //addition code to update password and to login with new blank password / should not be able to update with blank password
+//    @PostMapping("editUser")
+//    public String updateUserInfo(@ModelAttribute("user") User user, @RequestParam (name = "password") String password){
+//        User loggedIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        long id = loggedIn.getId();
+//        User existing = users.getOne(id);
+//        String currentPassword = existing.getPassword();
+//        String hash = passwordEncoder.encode(user.getPassword());
+//        user.setPassword(hash);
+//        if (Objects.equals(user.getPassword(), "")) {
+//            existing.setPassword(currentPassword);
+//        }
+//        users.save(user);
+//        return "redirect:/parent-profile";
+//    }
 
 
 
