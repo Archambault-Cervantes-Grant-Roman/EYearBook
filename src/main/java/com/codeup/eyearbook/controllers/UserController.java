@@ -47,19 +47,7 @@ public class UserController {
     }
 
 
-
-//    @PostMapping("/signature-page/{id}")
-//    public String saveSignatureIndividual(@PathVariable("id") long id, @ModelAttribute Signatures signatures) {
-//        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        signatures.setSigner(loggedInUser);
-//        System.out.println(loggedInUser.getUsername());
-//        // new line to test if comments appear?
-//        comment.save(signatures);
-//        System.out.println(signatures.getYearbook_comment());
-//        return "redirect:/parent-profile";
-//    }
-
-
+//*****************PARENT PROFILE PAGE******************************
     @GetMapping("/parent-profile")
     public String parentProfile(Model model){
         User loggedIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -69,6 +57,24 @@ public class UserController {
     }
 
 
+    @PostMapping("/purchase-code")
+    public String enteredPurchaseCode(@ModelAttribute User user, @RequestParam(name = "code") String code) {
+        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        long parentId = loggedInUser.getId();
+        user = users.getOne(parentId);
+        code = "DX978J3";
+
+        if (code.equals("DX978J3")) {
+            user.setOwns_yearbook(true);
+//            can user once we implement roles
+//            Role role = userroleDao.getOne(1);
+//            user.getRoles().add(role);
+        }
+
+        users.save(user);
+        return "redirect:/parent-profile";
+    }
+
     @GetMapping("edit-profile")
     public String editProfile(Model model){
         User loggedIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -77,32 +83,42 @@ public class UserController {
         return "users/edit-profile";
     }
 
+    @PostMapping("editUser")
+    public String updateUserInfo(@ModelAttribute("user") User user){
+        String hash = passwordEncoder.encode(user.getPassword());
+        user.setPassword(hash);
+        users.save(user);
+        return "redirect:/parent-profile";
+    }
 
-//    @GetMapping("/signature-page")
-//    public String signatureForm(Model model) {
-//
-//        model.addAttribute("signatures", new Signatures());
-//        //Armando: inserted this attribute to be able to find and display comments
-//        model.addAttribute("comment", comment.findAll());
-//        //Armando: inserted this attribute to be able to find and display images
-//        // Armando : not too sure if this belongs in the
-//        // generic signature-page area
-//        User loggedIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        User user = users.getOne(loggedIn.getId());
-//        model.addAttribute("user", user);
-//        return "users/signature-page";
-//    }
-//
-//    @PostMapping("/signature-page")
-//    public String saveSignature(@ModelAttribute Signatures signatures) {
-//        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        signatures.setSigner(loggedInUser);
-//        System.out.println(loggedInUser.getUsername());
-//        // new line to test if comments appear?
-//        comment.save(signatures);
-//        System.out.println(signatures.getYearbook_comment());
-//        return "redirect:/signature-page";
-//    }
+
+
+    //*****************---END----PARENT PROFILE PAGE******************************
+    @GetMapping("/signature-page")
+    public String signatureForm(Model model) {
+
+        model.addAttribute("signatures", new Signatures());
+        //Armando: inserted this attribute to be able to find and display comments
+        model.addAttribute("comment", comment.findAll());
+        //Armando: inserted this attribute to be able to find and display images
+        // Armando : not too sure if this belongs in the
+        // generic signature-page area
+        User loggedIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = users.getOne(loggedIn.getId());
+        model.addAttribute("user", user);
+        return "users/signature-page";
+    }
+
+    @PostMapping("/signature-page")
+    public String saveSignature(@ModelAttribute Signatures signatures) {
+        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        signatures.setSigner(loggedInUser);
+        System.out.println(loggedInUser.getUsername());
+        // new line to test if comments appear?
+        comment.save(signatures);
+        System.out.println(signatures.getYearbook_comment());
+        return "redirect:/signature-page";
+    }
 
     @GetMapping("/filestack/{id}")
     public String imageForm(@PathVariable("id")long id, Model model) {
@@ -125,30 +141,7 @@ public class UserController {
         return "redirect:/parent-profile";
     }
 
-    //    Armando: I had to make this mapping to edit the user info, might be able to use one already made
-
-    @PostMapping("editUser")
-    public String updateUserInfo(@ModelAttribute("user") User user){
-        String hash = passwordEncoder.encode(user.getPassword());
-        user.setPassword(hash);
-        users.save(user);
-        return "redirect:/parent-profile";
-    }
-
-//    @PostMapping("/filestack/{id}")
-//    public String saveImage(@PathVariable("id") long id, @Valid User user,
-//                            BindingResult result, Model model) {
-//        if (result.hasErrors()) {
-//            user.setId(id);
-//            return "users/file-stack";
-//        }
-//
-//        users.save(user);
-//        model.addAttribute("users", users.findAll());
-//        return "redirect:/parent-profile";
-//    }
-
-//CHILD REGISTRATION PART ONE - STUDENT ID********************
+//****************CHILD REGISTRATION PART ONE - STUDENT ID********************
 
 @GetMapping("/register-child")
 public String childRegister() {
@@ -184,5 +177,7 @@ public String childRegister() {
 
 
 
-}
+
+
+    }
 
