@@ -25,13 +25,6 @@ public class SignatureController {
         this.studentsDao = studentsDao;
     }
 
-//            User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        loggedInUser = userDao.getOne(loggedInUser.getId());
-//        User user = userDao.getOne(profileId);
-//        String username = user.getUsername();
-//        model.addAttribute("username", username);
-//        boolean isParent = loggedInUser.getIsParent();
-//        return !isParent  ? "users/signature-page/{id}" : "/home";
 
     //TODO:this page needs to be dynamic between basic child and premium child
     @GetMapping("/signature-page/{id}")
@@ -63,27 +56,6 @@ public class SignatureController {
         return "redirect:/home";
     }
 
-    //    THIS CURRENTLY PREVENTS A PARENT FROM SEEING THE SIGNATURE PAGE, BUT REDIRECT DOES NOT WORK.  -----
-//    @GetMapping("/signature-page/{id}")
-//    public String signatureForm(@PathVariable("id") long profileId,Model model) {
-////
-//// Authentication token = SecurityContextHolder.getContext().getAuthentication();
-////        boolean AnonCheck = token instanceof AnonymousAuthenticationToken;
-////        if (AnonCheck) return "users/login";
-////        if currently loggin in userid =  profileid = see their own page
-////        if they don't match the logged in user sees the owners page
-//        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        loggedInUser = userDao.getOne(loggedInUser.getId());
-//        User user = userDao.getOne(profileId);
-//        model.addAttribute("user", user);
-//        model.addAttribute("signatures", new Signatures());
-////        user = userDao.getOne(loggedInUser.getId());
-//        String username = user.getUsername();
-//        model.addAttribute("username", username);
-////IF IS PARENT REDIRECT TO HOME PAGE.....
-//        boolean isParent = loggedInUser.getIsParent();
-//        return !isParent  ? "users/signature-page/{id}" : "/home";
-//    }
 
 
     @GetMapping("/filestack/{id}")
@@ -101,12 +73,5 @@ public class SignatureController {
         return "redirect:/parent-profile";
     }
 
-//        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        loggedInUser = userDao.getOne(loggedInUser.getId());
-//        User user = userDao.getOne(profileId);
-//        String username = user.getUsername();
-//        model.addAttribute("username", username);
-//        boolean isParent = loggedInUser.getIsParent();
-//        return !isParent  ? "users/signature-page/{id}" : "/home";
 }
 
