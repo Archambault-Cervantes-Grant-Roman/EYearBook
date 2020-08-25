@@ -31,6 +31,12 @@ public class User {
     @JoinColumn(name = "student_id")
     private Student student;
 
+    @OneToMany(mappedBy = "profile_user", cascade = CascadeType.ALL)
+    private List<Signatures> myPageSignatures;
+
+    @OneToMany(mappedBy = "signer", cascade = CascadeType.ALL)
+    private List<Signatures> userSignatures;
+
     @Column(length = 150)
     private String sign_page_banner_image;
 
@@ -128,5 +134,21 @@ public class User {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public List<Signatures> getMyPageSignatures() {
+        return myPageSignatures;
+    }
+
+    public void setMyPageSignatures(List<Signatures> myPageSignatures) {
+        this.myPageSignatures = myPageSignatures;
+    }
+
+    public List<Signatures> getUserSignatures() {
+        return userSignatures;
+    }
+
+    public void setUserSignatures(List<Signatures> userSignatures) {
+        this.userSignatures = userSignatures;
     }
 }

@@ -131,8 +131,10 @@ public class UserController {
     }
 
 
+
+
 //    Armando: I had to make this mapping to save the image, might be able to use one already made
-    @PostMapping("saveUser")
+    @PostMapping("/saveUser")
     public String saveUserImage(@ModelAttribute("user") User user){
 
         users.save(user);
