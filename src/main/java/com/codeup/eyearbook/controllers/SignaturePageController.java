@@ -40,6 +40,9 @@ public String redirectThisPage (){
  Authentication token = SecurityContextHolder.getContext().getAuthentication();
         boolean AnonCheck = token instanceof AnonymousAuthenticationToken;
         if (AnonCheck) return "users/login";
+//        if currently loggin in userid =  profileid = see their own page
+//        if they don't match the logged in user sees the owners page
+
         User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         loggedInUser.getId();
 //        BOBBIE: "DO WE NEED TO CREATE A NEW USER HERE?"

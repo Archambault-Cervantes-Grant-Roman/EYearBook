@@ -37,15 +37,15 @@
 
                 <th:block sec:authorize="isAuthenticated()">
 
-                    <li class="nav-item" th:if="${#authentication.principal.getIsParent}">
+                    <li class="nav-item" th:if="${#authentication.principal.isParent}">
                         <a class="nav-link" th:href="@{|/parent-profile|}">My Profile</a>
                     </li>
 
 
-                    <li class="nav-item" th:if="${!#authentication.principal.getIsParent}">
+                    <li class="nav-item" th:if="${!#authentication.principal.isParent}">
 <!--                    <li class="nav-item" th:if="${!user.isParent}">-->
 <!--                        <a class="nav-link" th:href="@{|/signature-page/{id}|}">My Profile</a>-->
-                        <a class="nav-link" th:href="@{/signature-page/{id} (id = ${#authorization.principal.getId})}">My Student Profile</a>
+                        <a class="nav-link" th:href="@{/signature-page/{id} (id = ${#authentication.principal.id})}">My Student Profile</a>
                     </li>
 
                 </th:block>
