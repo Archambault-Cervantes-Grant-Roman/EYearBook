@@ -104,9 +104,14 @@ public class UserController {
         //Armando: inserted this attribute to be able to find and display images
         // Armando : not too sure if this belongs in the
         // generic signature-page area
+        String yearbookLink = "View yearbook";
         User loggedIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User user = users.getOne(loggedIn.getId());
         model.addAttribute("user", user);
+
+       if(user.isOwns_yearbook()){
+           model.addAttribute("yearbookLink", yearbookLink);
+       }
         return "users/signature-page";
     }
 
