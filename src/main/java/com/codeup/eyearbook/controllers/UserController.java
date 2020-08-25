@@ -106,6 +106,7 @@ public class UserController {
         if (AnonCheck) return "users/login";
         User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
+
         User user = userDao.getOne(loggedInUser.getId());
         model.addAttribute("user", user);
 
@@ -113,6 +114,7 @@ public class UserController {
         return isParent ? "users/edit-profile" : "/home";
 //        return "users/edit-profile";
     }
+
 
 
 
@@ -133,6 +135,7 @@ public class UserController {
 
 
         //*****************---END----PARENT PROFILE PAGE******************************
+
 
 //****************CHILD REGISTRATION PART ONE - STUDENT ID********************
 

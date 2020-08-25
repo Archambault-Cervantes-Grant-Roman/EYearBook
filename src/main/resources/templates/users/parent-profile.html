@@ -48,6 +48,12 @@
                         <h5 class="card-title">NAME OF THE CHILD COMMENT WAS POSTED TO</h5>
                         <p class="card-text">Sample of signing a yearbook.  "Have a great summer!"</p>
                         <p class="card-text"><small class="text-muted">created at ?? </small></p>
+
+                        <ul>
+                            <li class="col-12" th:each="comment : ${user.userSignatures}">
+                                <h2> Comment:  <span th:text="${comment.yearbook_comment}"></span></h2>
+                            </li>
+                        </ul>
                     </div>
                 </div>
 
