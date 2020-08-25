@@ -22,7 +22,7 @@ public class User {
     private String password;
 
     @Column(columnDefinition = "boolean default true")
-    private boolean is_parent;
+    private boolean isParent;
 
     @Column(columnDefinition = "boolean default false")
     private boolean owns_yearbook;
@@ -58,7 +58,7 @@ public class User {
         email = copy.email;
         username = copy.username;
         password = copy.password;
-        is_parent = copy.is_parent;
+        isParent = copy.isParent;
         owns_yearbook = copy.owns_yearbook;
         parent_id = copy.parent_id;
         sign_page_banner_image = copy.sign_page_banner_image;
@@ -96,12 +96,12 @@ public class User {
         this.password = password;
     }
 
-    public boolean isIs_parent() {
-        return is_parent;
+    public boolean isIsParent() {
+        return isParent;
     }
 
-    public void setIs_parent(boolean is_parent) {
-        this.is_parent = is_parent;
+    public void setIsParent(boolean isParent) {
+        this.isParent = isParent;
     }
 
     public boolean isOwns_yearbook() {
