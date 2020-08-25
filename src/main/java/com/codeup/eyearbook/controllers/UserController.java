@@ -61,7 +61,7 @@ public class UserController {
     public String enteredPurchaseCode(@ModelAttribute User user, @RequestParam(name = "code") String code) {
         User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         long parentId = loggedInUser.getId();
-        User existingUser = users.getOne(parentId);
+        user = users.getOne(parentId);
 
         code = "DX978J3";
 
@@ -72,7 +72,7 @@ public class UserController {
 //            user.getRoles().add(role);
         }
 
-        users.save(existingUser);
+        users.save(user);
         return "redirect:/parent-profile";
     }
 
@@ -109,9 +109,9 @@ public class UserController {
         User user = users.getOne(loggedIn.getId());
         model.addAttribute("user", user);
 
-       if(user.isOwns_yearbook()){
-           model.addAttribute("yearbookLink", yearbookLink);
-       }
+        if(user.isOwns_yearbook()){
+            model.addAttribute("yearbookLink", yearbookLink);
+        }
         return "users/signature-page";
     }
 
