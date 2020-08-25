@@ -28,16 +28,9 @@ public class SignatureController {
     //TODO:this page needs to be dynamic between basic child and premium child
     @GetMapping("/signature-page/{id}")
     public String signaturePage(@PathVariable("id") long profileId, Model model){
-        // Armando: I have to have the following 3 lines
-        // to go to a users personal page and show their
-        // personal banner image
         User user = users.getOne(profileId);
+
         model.addAttribute("signatures", new Signatures());
-
-//        model.addAttribute("comment", comment.findAll());
-
-
-
         model.addAttribute("user", user);
         return "users/signature-page";
     }
