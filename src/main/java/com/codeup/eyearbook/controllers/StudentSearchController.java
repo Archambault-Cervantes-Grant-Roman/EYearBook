@@ -38,20 +38,5 @@ public class StudentSearchController {
         return "users/search";
     }
 
-    @RequestMapping(path = "/yearbook", method= RequestMethod.GET)
-    public String searchStudentsYearbook(Model model, @Param("keyword") String keyword) {
-
-//        model.addAttribute("students", studentDao.findAllByOrderByIdDesc());
-
-
-        List<Student> listStudents = service.listAll(keyword);
-
-        model.addAttribute("listStudents", listStudents);
-        model.addAttribute("keyword", keyword);
-
-
-        return "users/yearbook";
-    }
-
 
 }

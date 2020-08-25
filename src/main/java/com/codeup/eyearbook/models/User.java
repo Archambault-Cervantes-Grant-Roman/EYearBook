@@ -1,9 +1,7 @@
 package com.codeup.eyearbook.models;
 
 import javax.persistence.*;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Table(name = "users")
@@ -39,31 +37,14 @@ public class User {
     @Column(length = 20, nullable = false, unique = true)
     private String username;
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinTable(
-            name = "users_roles",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id")
-    )
-    private Set<Role> roles = new HashSet<>();
-
     @Transient
     private String retypePassword;
 
-    private boolean enabled;
 
 
 
 
     public User() {
-    }
-
-    public boolean isEnabled() {
-        return enabled;
-    }
-
-    public void setEnabled(boolean enabled) {
-        this.enabled = enabled;
     }
 
     public User(User copy) {
@@ -75,14 +56,6 @@ public class User {
         owns_yearbook = copy.owns_yearbook;
         parent_id = copy.parent_id;
         sign_page_banner_image = copy.sign_page_banner_image;
-    }
-
-    public Set<Role> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
     }
 
     public long getId() {
