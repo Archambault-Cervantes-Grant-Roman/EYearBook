@@ -96,7 +96,7 @@ public class User {
         this.password = password;
     }
 
-    public boolean isIsParent() {
+    public boolean getIsParent() {
         return isParent;
     }
 

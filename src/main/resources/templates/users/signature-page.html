@@ -63,9 +63,9 @@
                 </div>
                 <ul>
 
-                    <li class="col-12" th:each="comment : ${user.myPageSignatures}">
-                        <h2> Posted by:  <span th:text="${comment.signer.username}"></span></h2>
-                        <h2> Comment:  <span th:text="${comment.yearbook_comment}"></span></h2>
+                    <li class="col-12" th:each="user : ${user.myPageSignatures}">
+                        <h2> Posted by:  <span th:text="${user.signer.username}"></span></h2>
+                        <h2> Comment:  <span th:text="${user.yearbook_comment}"></span></h2>
                     </li>
                 </ul>
                 <div class="col-md-8">
