@@ -49,22 +49,17 @@ public class SignatureController {
      */
 //
     @PostMapping("/signature-page/{id}")
-    public String saveSignatureIndividual(@RequestParam("yearbook_comment") String yearbook_comment,  @PathVariable("id") long id, @ModelAttribute Signatures signatures) {
+    public String saveSignatureIndividual(@PathVariable("id") long id, @ModelAttribute Signatures signatures) {
         User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
-        User profileUser = users.getOne(1L);
-//        Signatures signature = new Signatures();
+        User profileUser = users.getOne(id);
 
         signatures.setProfile_user(profileUser);
-
         signatures.setSigner(loggedInUser);
-        signatures.setYearbook_comment(yearbook_comment);
-        System.out.println(yearbook_comment);
-//        signatureDao.save(signatures);
+        signatureDao.save(signatures);
 
         return "redirect:/parent-profile";
     }
-
+//
 //    @PostMapping("/signature-page")
 //    public String saveSignatureIndividual(@ModelAttribute Signatures signatures) {
 //        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
