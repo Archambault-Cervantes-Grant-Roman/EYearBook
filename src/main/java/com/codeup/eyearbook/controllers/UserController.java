@@ -134,26 +134,26 @@ public class UserController {
 //        return "redirect:/signature-page";
 //    }
 
-    @GetMapping("/filestack/{id}")
-    public String imageForm(@PathVariable("id")long id, Model model) {
-        User user = users.getOne(id);
-
-//        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        System.out.println(user.getUsername());
-        model.addAttribute("user", user);
-        return "users/file-stack";
-    }
+//    @GetMapping("/filestack/{id}")
+//    public String imageForm(@PathVariable("id")long id, Model model) {
+//        User user = users.getOne(id);
+//
+////        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        System.out.println(user.getUsername());
+//        model.addAttribute("user", user);
+//        return "users/file-stack";
+//    }
 
 
 
 
 //    Armando: I had to make this mapping to save the image, might be able to use one already made
-    @PostMapping("/saveUser")
-    public String saveUserImage(@ModelAttribute("user") User user){
-
-        users.save(user);
-        return "redirect:/parent-profile";
-    }
+//    @PostMapping("/saveUser")
+//    public String saveUserImage(@ModelAttribute("user") User user){
+//
+//        users.save(user);
+//        return "redirect:/parent-profile";
+//    }
 
 //****************CHILD REGISTRATION PART ONE - STUDENT ID********************
 

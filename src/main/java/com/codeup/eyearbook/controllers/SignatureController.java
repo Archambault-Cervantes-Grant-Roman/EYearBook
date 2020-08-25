@@ -13,38 +13,42 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class SignatureController {
-    private UserRepository users;
+    private UserRepository userDao;
     private PasswordEncoder passwordEncoder;
     private SignatureRepository signatureDao;
     private StudentRepository studentsDao;
 
-    public SignatureController(UserRepository users, PasswordEncoder passwordEncoder, SignatureRepository signatureDao, StudentRepository studentsDao) {
-        this.users = users;
+    public SignatureController(UserRepository userDao, PasswordEncoder passwordEncoder, SignatureRepository signatureDao, StudentRepository studentsDao) {
+        this.userDao = userDao;
         this.passwordEncoder = passwordEncoder;
         this.signatureDao = signatureDao;
         this.studentsDao = studentsDao;
     }
 
+//            User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        loggedInUser = userDao.getOne(loggedInUser.getId());
+//        User user = userDao.getOne(profileId);
+//        String username = user.getUsername();
+//        model.addAttribute("username", username);
+//        boolean isParent = loggedInUser.getIsParent();
+//        return !isParent  ? "users/signature-page/{id}" : "/home";
+
     //TODO:this page needs to be dynamic between basic child and premium child
     @GetMapping("/signature-page/{id}")
     public String signaturePage(@PathVariable("id") long profileId, Model model){
-        User user = users.getOne(profileId);
 
+        User user = userDao.getOne(profileId);
         model.addAttribute("signatures", new Signatures());
         model.addAttribute("user", user);
-        return "users/signature-page";
+        boolean isParent = user.getIsParent();
+        return !isParent  ? "users/signature-page" : "home";
+//        return "users/signature-page";
     }
 
-
-    /* Armando : I set the path variable as a parameter for the setProfile_User (which is the profile that you are signing
-    but the parameter type for setProfile_user needs to be a User
-    If I leave postMapping to ("/signature-page") without the path variable itll post but I have to set profile_user manual
-     */
-//
     @PostMapping("/signature-page/{id}")
     public String saveSignatureIndividual(@PathVariable("id") long id, @ModelAttribute Signatures signatures) {
         User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User profileUser = users.getOne(id);
+        User profileUser = userDao.getOne(id);
 
         signatures.setProfile_user(profileUser);
         signatures.setSigner(loggedInUser);
@@ -52,27 +56,57 @@ public class SignatureController {
 
         return "redirect:/signature-page/{id}";
     }
-//
-//    @PostMapping("/signature-page")
-//    public String saveSignatureIndividual(@ModelAttribute Signatures signatures) {
+                    // ===================== TESTING PURPOSES =====================//
+
+    @GetMapping("signature-page")
+    public String redirectThisPage (){
+        return "redirect:/home";
+    }
+
+    //    THIS CURRENTLY PREVENTS A PARENT FROM SEEING THE SIGNATURE PAGE, BUT REDIRECT DOES NOT WORK.  -----
+//    @GetMapping("/signature-page/{id}")
+//    public String signatureForm(@PathVariable("id") long profileId,Model model) {
+////
+//// Authentication token = SecurityContextHolder.getContext().getAuthentication();
+////        boolean AnonCheck = token instanceof AnonymousAuthenticationToken;
+////        if (AnonCheck) return "users/login";
+////        if currently loggin in userid =  profileid = see their own page
+////        if they don't match the logged in user sees the owners page
 //        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        signatures.setSigner(loggedInUser);
-//        // new line to test if comments appear?
-//        signatureDao.save(signatures);
-//        System.out.println(signatures.getYearbook_comment());
-//        return "redirect:/parent-profile";
-//    }
-
-    // =====LEROY'S VERSION===== //
-//    @PostMapping("/signature-page/{id}")
-////    @RequestParam("yearbook_comment") String yearbook_comment,  @PathVariable("id") long id,
-//    public String saveSignature(@RequestParam("yearbook_comment") String yearbook_comment,  @PathVariable("id") long id,@ModelAttribute Signatures signatures) {
-//        Signatures signature = new Signatures();
-//        signature.setYearbook_comment(yearbook_comment);
-//        signature.save(signatures);
-//        return "redirect:/parent-profile";
+//        loggedInUser = userDao.getOne(loggedInUser.getId());
+//        User user = userDao.getOne(profileId);
+//        model.addAttribute("user", user);
+//        model.addAttribute("signatures", new Signatures());
+////        user = userDao.getOne(loggedInUser.getId());
+//        String username = user.getUsername();
+//        model.addAttribute("username", username);
+////IF IS PARENT REDIRECT TO HOME PAGE.....
+//        boolean isParent = loggedInUser.getIsParent();
+//        return !isParent  ? "users/signature-page/{id}" : "/home";
 //    }
 
 
+    @GetMapping("/filestack/{id}")
+    public String imageForm(@PathVariable("id")long id, Model model) {
+        User user = userDao.getOne(id);
+//        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        System.out.println(user.getUsername());
+        model.addAttribute("user", user);
+        return "users/file-stack";
+    }
+    //    Armando: I had to make this mapping to save the image, might be able to use one already made
+    @PostMapping("/saveUser")
+    public String saveUserImage(@ModelAttribute("user") User user){
+        userDao.save(user);
+        return "redirect:/parent-profile";
+    }
+
+//        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        loggedInUser = userDao.getOne(loggedInUser.getId());
+//        User user = userDao.getOne(profileId);
+//        String username = user.getUsername();
+//        model.addAttribute("username", username);
+//        boolean isParent = loggedInUser.getIsParent();
+//        return !isParent  ? "users/signature-page/{id}" : "/home";
 }
 
