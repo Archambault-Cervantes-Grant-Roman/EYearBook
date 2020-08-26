@@ -26,13 +26,13 @@
 <!-- ex: /signature-page/1-->
 <!-- ex: /signature-page/2-->
         <div class="d-flex justify-content-center box large">
-            <img th:src="${user.getSign_page_banner_image()}" />
+            <img th:src="${pageOwner.getSign_page_banner_image()}" />
         </div>
 
 <h1 class="text-center"><span th:text="${username}"></span> </h1>
 
 <br>
-<div th:if="${!user.isOwns_yearbook()}">
+<div th:if="${!pageOwner.owns_yearbook}">
 <!--    <div th:if="${!user.getParent_id().isOwns_yearbook()}">-->
     <h4 class="text-center">Please ask a parent to purchase a yearbook</h4>
 </div>
@@ -43,23 +43,34 @@
 <div class="sidenav">
 
     <a href="/search">Search Registered Student</a>
-    <div th:if="${user.isOwns_yearbook()}">
-<!--        <div th:if="${user.getParent_id().isOwns_yearbook()}">-->
-        <a href="/yearbook" style="font-size: larger" > View Your Yearbook </a>
+    <div th:if="${pageOwner.owns_yearbook}">
+        <a href="/yearbook" >View Your Yearbook</a>
+    </div>
+    <div th:if="${!pageOwner.owns_yearbook}">
+        <p>Please get your purchase code  <br> from a parent to view your yearbook</p>
+        <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalEnterPurchaseCodeForm">enter yearbook purchase code</a>
     </div>
 <!--    <a href="#">Add as friend (dynamic - visible to visitors)</a>-->
 <!--    <a href="#">Post a comment (dynamic - visible to visitors)</a>-->
 </div>
 
+<br>
+
+<h1 class="text-center" th:if="${pageOwner.owns_yearbook}">premium content </h1>
+
+<br>
 <!--  COMMENTS SECTION-->
-<!--<div th:if="${user.isOwns_yearbook()}">-->
+
+
+
+
     <div class="container-fluid container">
         <div class="main">
-            <h3 class="text-center">Comments</h3>
+            <h3 class="text-center">Who signed your page:</h3>
             <ul>
-                <li class="col-12" th:each="user : ${user.myPageSignatures}">
-                    <h2> Posted by:  <span th:text="${user.signer.username}"></span></h2>
-                    <h2> Comment:  <span th:text="${user.yearbook_comment}"></span></h2>
+                <li class="col-12" th:each="user : ${pageOwner.myPageSignatures}">
+                    <h2> Posted by:  <span th:text="${pageOwner.signer.username}"></span></h2>
+                    <h2> Comment:  <span th:text="${pageOwner.yearbook_comment}"></span></h2>
                 </li>
             </ul>
             <div class="card mb-3" style="max-width: 700px;">
@@ -70,7 +81,7 @@
                     <div class="col-md-8">
                         <div class="card-body">
 
-                            <form th:action="@{/signature-page/{id}(id=${user.id})}" method="POST" th:object="${signatures}" id="commentform">
+                            <form th:action="@{/signature-page/{id}(id=${pageOwner.id})}" method="POST" th:object="${signatures}" id="commentform">
                                 <div class="form-group">
                                     <label for="yearbook_comment"></label>
                                     <input type="text" class="form-control" id="yearbook_comment" th:field="*{yearbook_comment}">
@@ -86,7 +97,47 @@
 <!--</div>-->
 
 
+<!--modal code-->
 
+<div class="modal fade " id="modalEnterPurchaseCodeForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+
+    <form th:action="@{/purchase-code}" method="POST" th:object="${pageOwner}">
+        <div class="modal-dialog p-2 modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h4 class="modal-title w-100 font-weight-bold">Enter Purchase Code: </h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body mx-3">
+                    <div class="md-form mb-4">
+                        <input type="text" id="purchaseCode" class="form-control validate" name="code"/>
+                        <label data-error="wrong" data-success="right" for="purchaseCode">purchase code</label>
+                        <br>
+
+                    </div>
+
+                </div>
+                <div class="modal-footer d-flex justify-content-center">
+                    <!--                <div class="modal-footer ">-->
+                    <button type="submit" class="btn btn-primary"  >Send </button>
+                    <!--                <button type="button" class="btn btn-indigo" data-dismiss="modal" >Send </button>-->
+                </div>
+            </div>
+
+
+        </div>
+    </form>
+</div>
+</div>
+
+<!--    bootstrap js-->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 
 
