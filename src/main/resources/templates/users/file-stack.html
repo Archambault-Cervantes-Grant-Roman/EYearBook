@@ -71,12 +71,7 @@
         </script>
     </div>
 
-<!--    <form th:action="@{/fileStack/{id}(id=${user.id})}" method="post" th:object="${user}">-->
-
     <form th:action="@{/fileStack}" method="post" th:object="${user}">
-<!--         is it line 80 that is causing an issue??-->
-<!--        Whenever I get rid of line 80 i get an error of a duplicate username-->
-<!--        With line 80 I get a error of a duplicate empty string-->
         <input type="text" th:field="*{id}">
         <div class="form-group">
             <label for="sign_page_banner_image"></label>
