@@ -53,31 +53,29 @@
 
 <!--  COMMENTS SECTION-->
 <div th:if="${user.isOwns_yearbook()}">
-
-
-<div class="container-fluid container">
-    <div class="main">
-        <h3 class="text-center">Comments</h3>
-        <div class="card mb-3" style="max-width: 700px;">
-            <div class="row no-gutters">
+    <div class="container-fluid container">
+        <div class="main">
+            <h3 class="text-center">Comments</h3>
+            <ul>
+                <li class="col-12" th:each="user : ${user.myPageSignatures}">
+                    <h2> Posted by:  <span th:text="${user.signer.username}"></span></h2>
+                    <h2> Comment:  <span th:text="${user.yearbook_comment}"></span></h2>
+                </li>
+            </ul>
+            <div class="card mb-3" style="max-width: 700px;">
+                <div class="row no-gutters">
                     <div class="col-md-4">
-                        <img src="..." class="card-img" alt="...">
+                            <img src="..." class="card-img" alt="...">
                     </div>
-
-                <div class="col-md-8">
+                    <div class="col-md-8">
                         <div class="card-body">
-
-
-            <form th:action="@{/signature-page/{id}(id=${user.id})}" method="POST" th:object="${signatures}" id="commentform">
-    <!--                        <form th:action="@{/signature-page}" method="POST" th:object="${signatures}" id="commentform">-->
-                    <div class="form-group">
-                        <label for="yearbook_comment"></label>
-                        <input type="text" class="form-control" id="yearbook_comment" th:field="*{yearbook_comment}">
-                    </div>
-                        <button  value="Submit" type="submit">Comment</button>
-            </form>
-
-
+                            <form th:action="@{/signature-page/{id}(id=${user.id})}" method="POST" th:object="${signatures}" id="commentform">
+                                <div class="form-group">
+                                    <label for="yearbook_comment"></label>
+                                    <input type="text" class="form-control" id="yearbook_comment" th:field="*{yearbook_comment}">
+                                </div>
+                                    <button  value="Submit" type="submit">Comment</button>
+                            </form>
                         </div>
                     </div>
                 </div>
