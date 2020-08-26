@@ -68,11 +68,8 @@ public class UserController {
 //        User yourStudent = userDao.findByParent_id();
 //        model.addAttribute("yourStudent", yourStudent);
 
+        List<User> children = userDao.findByParent_id(parentsId);
         model.addAttribute("children", userDao.findByParent_id(loggedInUser.getId()));
-
-
-       List<User> children = userDao.findByParent_id(parentsId);
-//        long childsId = child.getId();
         model.addAttribute("children", children);
 
         boolean isParent = loggedInUser.getIsParent();
