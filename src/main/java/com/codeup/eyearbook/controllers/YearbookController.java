@@ -29,6 +29,7 @@ public class YearbookController {
         if (AnonCheck) return "users/login";
 
         User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        loggedInUser = userDao.getOne(loggedInUser.getId());
 
         User parent =  userDao.getOne(loggedInUser.getParent_id());
         boolean parentOwnsYearbook = parent.isOwns_yearbook();
