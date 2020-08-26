@@ -29,7 +29,7 @@ public class User {
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "student_id")
-    private Student student;
+    private long studentId;
 
     @OneToMany(mappedBy = "profile_user", cascade = CascadeType.ALL)
     private List<Signatures> myPageSignatures;
@@ -112,12 +112,12 @@ public class User {
         this.owns_yearbook = owns_yearbook;
     }
 
-    public Student getStudent() {
-        return student;
+    public long getStudent(long studentId) {
+        return studentId;
     }
 
-    public void setStudent(Student student) {
-        this.student = student;
+    public void setStudent(long student) {
+        this.studentId = student;
     }
 
     public String getSign_page_banner_image() {

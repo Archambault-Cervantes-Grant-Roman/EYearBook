@@ -1,12 +1,8 @@
 package com.codeup.eyearbook.models;
 
-import com.codeup.eyearbook.repositories.StudentRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.*;
-import java.util.List;
-
 
 
 @Entity
@@ -59,7 +55,7 @@ public class Student {
         this.id = id;
     }
 
-    public long getStudent_id() {
+    public Student getStudent_id() {
         return student_id;
     }
 

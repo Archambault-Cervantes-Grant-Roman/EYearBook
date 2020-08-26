@@ -85,12 +85,12 @@ public class UserController {
             user.setOwns_yearbook(true);
 
         }
-
-        User parent =  userDao.getOne(loggedInUser.getParent_id());
-        boolean parentOwnsYearbook = parent.isOwns_yearbook();
-        if(parentOwnsYearbook){
-            loggedInUser.setOwns_yearbook(true);
-        }
+//        long parentId = loggedInUser.getParent_id();
+//        User parent =  userDao.getOne(parentId);
+//        boolean parentOwnsYearbook = parent.isOwns_yearbook();
+//        if(parentOwnsYearbook){
+//            loggedInUser.setOwns_yearbook(true);
+//        }
 
         userDao.save(user);
         boolean isParent = loggedInUser.getIsParent();
@@ -174,15 +174,17 @@ public class UserController {
 
 
             @PostMapping("/child-register2")
-            public String saveChildUser (@ModelAttribute User user){
+            public String saveChildUser (@ModelAttribute User user, Student student){
                 String hash = passwordEncoder.encode(user.getPassword());
 //        get the parents id
                 User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
                 long parentId = loggedInUser.getId();
                 user.setParent_id(parentId);
                 user.setPassword(hash);
+                user.setStudent(10100);
                 userDao.save(user);
                 return "redirect:/parent-profile";
+
             }
 
 

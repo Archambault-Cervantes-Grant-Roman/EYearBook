@@ -20,20 +20,28 @@
         <div class="col">
             <div class="card mb-2" th:each="student : ${listStudents}">
                 <div class="card-body">
+
+                    <img class="card-img-top card-img" th:src="${student.image}" alt="Card image cap">
                     <h5 class="card-title" th:text="${student.first_name} +' '+ ${student.last_name}"></h5>
+                    <h5 class="card-title" ></h5>
+
 
 
                 </div>
+
             </div>
         </div>
     </div>
-
+</div>
+<div th:each="user : ${listUsers}">
+    <p th:text="${user.getId()}"></p>
 </div>
 <script type="text/javascript">
     function clearSearch() {
         window.location = "[[@{/search}]]";
     }
 </script>
+
 
 </body>
 </html>
