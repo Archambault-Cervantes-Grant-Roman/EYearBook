@@ -17,6 +17,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -60,12 +61,19 @@ public class UserController {
         User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
         User user = userDao.getOne(loggedInUser.getId());
+        long parentsId = loggedInUser.getId();
         model.addAttribute("user", user);
+
 
 //        User yourStudent = userDao.findByParent_id();
 //        model.addAttribute("yourStudent", yourStudent);
 
         model.addAttribute("children", userDao.findByParent_id(loggedInUser.getId()));
+
+
+       List<User> children = userDao.findByParent_id(parentsId);
+//        long childsId = child.getId();
+        model.addAttribute("children", children);
 
         boolean isParent = loggedInUser.getIsParent();
         return isParent ? "users/parent-profile" : "/home";

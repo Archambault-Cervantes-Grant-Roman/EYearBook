@@ -1,3 +1,7 @@
+
+
+
+
 USE eyearbook_db;
 
 insert into student_records (first_name, image, last_name,  student_id) values
