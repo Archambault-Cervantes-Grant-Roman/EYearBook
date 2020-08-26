@@ -28,8 +28,13 @@
     <a href="/register-child">Register a child</a>
     <a th:href="@{|/edit-profile|}">Update profile</a>
     <a href="#" >View comments your child has posted</a>
+    <div th:if="${user.isOwns_yearbook()}">
+        <a href="/yearbook" >View Yearbook</a>
+    </div>
+    <div th:if="${!user.isOwns_yearbook()}">
     <a href="/mock-site" >purchase a yearbook</a>
     <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalEnterPurchaseCodeForm">enter yearbook purchase code</a>
+    </div>
 <!--    <a href="#" >enter yearbook purchase code</a>-->
 </div>
 
@@ -43,6 +48,12 @@
                         <h5 class="card-title">NAME OF THE CHILD COMMENT WAS POSTED TO</h5>
                         <p class="card-text">Sample of signing a yearbook.  "Have a great summer!"</p>
                         <p class="card-text"><small class="text-muted">created at ?? </small></p>
+
+                        <ul>
+                            <li class="col-12" th:each="comment : ${user.userSignatures}">
+                                <h2> Comment:  <span th:text="${comment.yearbook_comment}"></span></h2>
+                            </li>
+                        </ul>
                     </div>
                 </div>
 
