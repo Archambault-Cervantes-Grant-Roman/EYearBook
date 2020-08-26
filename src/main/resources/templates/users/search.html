@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
 <head>
+    <script src="https://kit.fontawesome.com/3963957e1d.js" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-
     <title>View Students</title>
 </head>
 <body>
@@ -10,19 +10,17 @@
 <div class="container mt-5">
     <h1>Showing Students</h1>
     <form th:action="@{/search}">
-        Filter: <input type="text" name="keyword" id="keyword" size="50" th:value="${keyword}" required />
+        <h5>Filter: <input type="text" name="keyword" id="keyword" size="50" th:value="${keyword}" required />
         &nbsp;
-        <input type="submit" value="Search" />
+        <input class="btn-info border-0 btn-sm" type="submit" value="Search" />
         &nbsp;
-        <input type="button" value="Clear" id="btnClear" onclick="clearSearch()" />
+            <input class="btn-secondary border-0 btn-sm" type="button" value="Clear" id="btnClear" onclick="clearSearch()" /></h5>
     </form>
     <div class="row mt-5">
         <div class="col">
-            <div class="card mb-2" th:each="student : ${listStudents}">
-                <div class="card-body">
+            <div class="card mb-2 border-0" th:each="student : ${listStudents}">
+                <div class="card-body body">
                     <h5 class="card-title" th:text="${student.first_name} +' '+ ${student.last_name}"></h5>
-
-
                 </div>
             </div>
         </div>

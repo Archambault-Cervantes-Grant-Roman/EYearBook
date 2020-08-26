@@ -43,12 +43,17 @@
 <div class="sidenav">
 
     <a href="/search">Search Registered Student</a>
+
     <div th:if="${pageOwner.owns_yearbook}">
         <a href="/yearbook" >View Your Yearbook</a>
     </div>
     <div th:if="${!pageOwner.owns_yearbook}">
         <p>Please get your purchase code  <br> from a parent to view your yearbook</p>
         <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalEnterPurchaseCodeForm">enter yearbook purchase code</a>
+
+
+    <a th:href="@{/fileStack/{id}(id=${user.id})}">Change banner image!</a>
+
     </div>
 <!--    <a href="#">Add as friend (dynamic - visible to visitors)</a>-->
 <!--    <a href="#">Post a comment (dynamic - visible to visitors)</a>-->
@@ -79,15 +84,19 @@
                             <img src="..." class="card-img" alt="...">
                     </div>
                     <div class="col-md-8">
+
                         <div class="card-body">
 
+
                             <form th:action="@{/signature-page/{id}(id=${pageOwner.id})}" method="POST" th:object="${signatures}" id="commentform">
+
                                 <div class="form-group">
                                     <label for="yearbook_comment"></label>
                                     <input type="text" class="form-control" id="yearbook_comment" th:field="*{yearbook_comment}">
                                 </div>
                                     <button  value="Submit" type="submit">Comment</button>
                             </form>
+
                         </div>
                     </div>
                 </div>
