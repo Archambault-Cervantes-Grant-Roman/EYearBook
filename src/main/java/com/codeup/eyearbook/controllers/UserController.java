@@ -60,8 +60,12 @@ public class UserController {
         User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
         User user = userDao.getOne(loggedInUser.getId());
+//        long parentsId = loggedInUser.getId();
         model.addAttribute("user", user);
 
+//        User child = userDao.getOne(parentsId);
+//        long childsId = child.getId();
+//        model.addAttribute("child", child);
         boolean isParent = loggedInUser.getIsParent();
         return isParent ? "users/parent-profile" : "/home";
 //        return "users/parent-profile";
