@@ -19,44 +19,57 @@
             background-color:#ccc;
             background-size:100% 100%;
         }
+        #magazine, #rotate{
+            -webkit-transform: rotate(90deg);
+            -moz-transform: rotate(90deg);
+            -o-transform: rotate(90deg);
+            -ms-transform: rotate(90deg);
+            transform: rotate(90deg);
+
+        }
     </style>
 </head>
 <body th:style="'background: url(/img/cool-background.png)'">
 
 
 <input id="test" min="1" max="16" value='10' step="1" onchange="showVal(this.value)" type="range"/>
-<input id="rotate"  type="button" class="rotateButton" onchange="RotateYearbook()">
+<input id="rotate"  type="button" class="rotateButton" onchange="rotateImage()"/>
+<input id="leftArrow" value="LEFT" type="button" class="turn-page" />
+<input id="rightArrow" value="RIGHT"  type="button" class="turn-page" />
+<div id="controls">
+    <label for="page-number">Page:</label> <input type="text" size="3" id="page-number"> of <span id="number-pages"></span>
+</div>
 
-<div id="magazine" class="container yearbook d-flex justify-content-center">
-    <div style="background-image:url(https://cdn.filestackcontent.com/Np3Ryca6TMaZOFX07LsB
+<div id="magazine" class="container yearbook rotate1 d-flex justify-content-center">
+    <div class="rotate" style="background-image:url(https://cdn.filestackcontent.com/Np3Ryca6TMaZOFX07LsB
 );"></div>
-    <div style="background-image:url(https://cdn.filestackcontent.com/ncu5kzCQWWOv273H1xyw);"></div>
+    <div class="rotate" style="background-image:url(https://cdn.filestackcontent.com/ncu5kzCQWWOv273H1xyw);"></div>
 
-    <div style="background-image:url(https://cdn.filestackcontent.com/hPhoy84nSWWU5AG0WOjx);"></div>
+    <div class="rotate" style="background-image:url(https://cdn.filestackcontent.com/hPhoy84nSWWU5AG0WOjx);"></div>
 
-    <div style="background-image:url(https://cdn.filestackcontent.com/cHcPY8TlTaWM8ch9uZKO);"></div>
+    <div class="rotate" style="background-image:url(https://cdn.filestackcontent.com/cHcPY8TlTaWM8ch9uZKO);"></div>
 
-    <div style="background-image:url(https://cdn.filestackcontent.com/uxfjMP0AS9K1VDk3vgTU);"></div>
+    <div class="rotate" style="background-image:url(https://cdn.filestackcontent.com/uxfjMP0AS9K1VDk3vgTU);"></div>
 
-    <div style="background-image:url(https://cdn.filestackcontent.com/V63xm4mvTkz88rhewMLv);"></div>
+    <div class="rotate" style="background-image:url(https://cdn.filestackcontent.com/V63xm4mvTkz88rhewMLv);"></div>
 
-    <div style="background-image:url(https://cdn.filestackcontent.com/B1NSXrHaSDys9Kj5qkrm);"></div>
+    <div class="rotate" style="background-image:url(https://cdn.filestackcontent.com/B1NSXrHaSDys9Kj5qkrm);"></div>
 
-    <div style="background-image:url(https://cdn.filestackcontent.com/uvu5nWE7RnGnFVInAzpI);"></div>
+    <div class="rotate" style="background-image:url(https://cdn.filestackcontent.com/uvu5nWE7RnGnFVInAzpI);"></div>
 
-    <div style="background-image:url(https://cdn.filestackcontent.com/2oYK2RrKTyDZyAa5THAE);"></div>
+    <div class="rotate" style="background-image:url(https://cdn.filestackcontent.com/2oYK2RrKTyDZyAa5THAE);"></div>
 
-    <div style="background-image:url(https://cdn.filestackcontent.com/Sz9VPUMFQcmiFRYi4E80);"></div>
+    <div class="rotate" style="background-image:url(https://cdn.filestackcontent.com/Sz9VPUMFQcmiFRYi4E80);"></div>
 
-    <div style="background-image:url(https://cdn.filestackcontent.com/nWeth7AnTR2p3Ol7AMEP);"></div>
+    <div class="rotate" style="background-image:url(https://cdn.filestackcontent.com/nWeth7AnTR2p3Ol7AMEP);"></div>
 
-    <div style="background-image:url(https://cdn.filestackcontent.com/kaVqX6tzTY67E06KKZ2L);"></div>
+    <div class="rotate" style="background-image:url(https://cdn.filestackcontent.com/kaVqX6tzTY67E06KKZ2L);"></div>
 
-    <div style="background-image:url(https://cdn.filestackcontent.com/hPhoy84nSWWU5AG0WOjx);"></div>
+    <div class="rotate" style="background-image:url(https://cdn.filestackcontent.com/hPhoy84nSWWU5AG0WOjx);"></div>
 
-    <div style="background-image:url(https://cdn.filestackcontent.com/hPhoy84nSWWU5AG0WOjx);"></div>
+    <div class="rotate" style="background-image:url(https://cdn.filestackcontent.com/hPhoy84nSWWU5AG0WOjx);"></div>
 
-    <div style="background-image:url(https://cdn.filestackcontent.com/ncu5kzCQWWOv273H1xyw);"></div>
+    <div class="rotate" style="background-image:url(https://cdn.filestackcontent.com/ncu5kzCQWWOv273H1xyw);"></div>
 
 
 
@@ -90,6 +103,18 @@
             $('#magazine').turn('next');
 
     });
+    $('#leftArrow').click( function(){
+
+            $('#magazine').turn('previous');
+
+    });
+
+    $('#rightArrow').click( function(){
+        $('#magazine').turn('next');
+    });
+
+
+
 
 
     function setZoom(zoom,e) {
@@ -113,8 +138,8 @@
     //setZoom(5,document.getElementsByClassName('container')[0]);
       function RotateYearbook() {
 
-        let div = document.getElementById('magazine'),
-            deg = rotated ? 0 : 66;
+        let div = document.getElementsByClassName('magazine'),
+            deg = rotated ? 0 : 120;
 
 
         div.style.mozTransform    = 'rotate('+deg+'deg)';
@@ -122,7 +147,7 @@
         div.style.oTransform      = 'rotate('+deg+'deg)';
         div.style.transform       = 'rotate('+deg+'deg)';
 
-        rotated = !rotated;
+           rotated = !rotated;
     }
     function showVal(a){
         var zoomScale = Number(a)/10;
@@ -130,6 +155,13 @@
 
 
     }
+    function rotateImage() {
+        var img = document.getElementsByClassName('rotate');
+        img.style.transform = 'rotate(180deg)';
+    }
+
+
+    // document.getElementsByClassName("rotate1").style.transform = "rotate(90deg)";
 
 </script>
 
