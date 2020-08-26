@@ -1,0 +1,24 @@
+.card-1:hover {
+    transition: transform 300ms;
+    transform: scale(1.2);
+    background-image: linear-gradient(to bottom right, #f54ea2, #ff7576);
+}
+
+.card-2:hover {
+    transition: transform 300ms;
+    transform: scale(1.2);
+    background-image: linear-gradient(to bottom right, #17ead9, #6078ea);
+}
+
+.card-3:hover {
+    transition: transform 300ms;
+    transform: scale(1.2);
+    background-image: linear-gradient(to bottom right, #f54ea2, #ff7576);
+}
+
+.card-4:hover {
+    transition: transform 300ms;
+    transform: scale(1.2);
+    background-image: linear-gradient(to bottom right, #6078ea, #17ead9);
+}
+
