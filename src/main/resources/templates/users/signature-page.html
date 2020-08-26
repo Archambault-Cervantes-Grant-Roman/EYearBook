@@ -2,9 +2,11 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thyme leaf.org/extras/spring-security" lang="en">
 <head>
     <!--    bootstrap-->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <!--    jquery-->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+            integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
     <!--    css styling-->
     <link href="/eyearbook.css" type="text/css" rel="stylesheet"/>
     <!--    filestack -->
@@ -16,7 +18,7 @@
     <title>Signature Page</title>
 </head>
 <body>
-<nav th:replace="partials/navbar :: navbar" />
+<nav th:replace="partials/navbar :: navbar"/>
 <!--<h1 class="text-center"><span th:text="${user.getUsername()}"></span></h1>-->
 
 <!--TODO:  create a banner div-->
@@ -25,15 +27,15 @@
 <!--the following get won't work unless you go to a specific users webpage-->
 <!-- ex: /signature-page/1-->
 <!-- ex: /signature-page/2-->
-        <div class="d-flex justify-content-center box large">
-            <img th:src="${pageOwner.getSign_page_banner_image()}" />
-        </div>
+<div class="d-flex justify-content-center box large">
+    <img th:src="${pageOwner.getSign_page_banner_image()}"/>
+</div>
 
-<h1 class="text-center"><span th:text="${username}"></span> </h1>
+<h1 class="text-center"><span th:text="${username}"></span></h1>
 
 <br>
 <div th:if="${!pageOwner.owns_yearbook}">
-<!--    <div th:if="${!user.getParent_id().isOwns_yearbook()}">-->
+    <!--    <div th:if="${!user.getParent_id().isOwns_yearbook()}">-->
     <h4 class="text-center">Please ask a parent to purchase a yearbook</h4>
 </div>
 
@@ -45,23 +47,23 @@
     <a href="/search">Search Registered Student</a>
 
     <div th:if="${pageOwner.owns_yearbook}">
-        <a href="/yearbook" >View Your Yearbook</a>
+        <a href="/yearbook">View Your Yearbook</a>
     </div>
     <div th:if="${!pageOwner.owns_yearbook}">
-        <p>Please get your purchase code  <br> from a parent to view your yearbook</p>
-        <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalEnterPurchaseCodeForm">enter yearbook purchase code</a>
+        <p>Please get your purchase code <br> from a parent to view your yearbook</p>
+        <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal"
+           data-target="#modalEnterPurchaseCodeForm">enter yearbook purchase code</a>
     </div>
 
     <a th:href="@{/fileStack/{id}(id=${pageOwner.id})}">Change banner image!</a>
 
-
-
-<!--    <a href="#">Add as friend (dynamic - visible to visitors)</a>-->
-
-    </div>
-    <a th:href="@{/fileStack/{id}(id=${pageOwner.id})}">Change banner image!</a>
 
     <!--    <a href="#">Add as friend (dynamic - visible to visitors)</a>-->
+
+</div>
+<a th:href="@{/fileStack/{id}(id=${pageOwner.id})}">Change banner image!</a>
+
+<!--    <a href="#">Add as friend (dynamic - visible to visitors)</a>-->
 
 <!--    <a href="#">Post a comment (dynamic - visible to visitors)</a>-->
 </div>
@@ -74,34 +76,52 @@
 <!--  COMMENTS SECTION-->
 
 
+<div class="container-fluid container">
+    <div class="main">
+        <h3 class="text-center">Who signed your page:</h3>
+
+        <div class="card" style="max-width: 500px;">
+                    <div class="card-title" th:each="pageOwner : ${pageOwner.myPageSignatures}">
+            <div class="row no-gutters">
+                <div class="col-sm-5" style="background: #868e96;">
+                    <img src="https://cdn.filestackcontent.com/BT3RYnEMTap6rZAJb9k6" class="card-img-top h-100"
+                         alt="profile-img">
+                </div>
+                <div class="col-sm-7">
+                        <div class="card-body"><span th:text="${pageOwner.signer.username}"></span>
+                            <div class="card-text"><span th:text="${pageOwner.yearbook_comment}"></span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--            <ul>-->
+            <!--                <li class="col-12" th:each="pageOwner : ${pageOwner.myPageSignatures}">-->
+            <!--                    <h2> Posted by:  <span th:text="${pageOwner.signer.username}"></span></h2>-->
+            <!--                    <h2> Comment:  <span th:text="${pageOwner.yearbook_comment}"></span></h2>-->
+            <!--                </li>-->
+            <!--            </ul>-->
 
 
-    <div class="container-fluid container">
-        <div class="main">
-            <h3 class="text-center">Who signed your page:</h3>
-            <ul>
-                <li class="col-12" th:each="pageOwner : ${pageOwner.myPageSignatures}">
-                    <h2> Posted by:  <span th:text="${pageOwner.signer.username}"></span></h2>
-                    <h2> Comment:  <span th:text="${pageOwner.yearbook_comment}"></span></h2>
-                </li>
-            </ul>
             <div class="card mb-3" style="max-width: 700px;">
                 <div class="row no-gutters">
                     <div class="col-md-4">
-                            <img src="..." class="card-img" alt="...">
+                        <img src="..." class="card-img" alt="...">
                     </div>
                     <div class="col-md-8">
 
                         <div class="card-body">
 
 
-                            <form th:action="@{/signature-page/{id}(id=${pageOwner.id})}" method="POST" th:object="${signatures}" id="commentform">
+                            <form th:action="@{/signature-page/{id}(id=${pageOwner.id})}" method="POST"
+                                  th:object="${signatures}" id="commentform">
 
                                 <div class="form-group">
                                     <label for="yearbook_comment"></label>
-                                    <input type="text" class="form-control" id="yearbook_comment" th:field="*{yearbook_comment}">
+                                    <input type="text" class="form-control" id="yearbook_comment"
+                                           th:field="*{yearbook_comment}">
                                 </div>
-                                    <button  value="Submit" type="submit">Comment</button>
+                                <button value="Submit" type="submit">Comment</button>
                             </form>
 
                         </div>
@@ -110,51 +130,56 @@
             </div>
         </div>
     </div>
-<!--</div>-->
+    <!--</div>-->
 
 
-<!--modal code-->
+    <!--modal code-->
 
-<div class="modal fade " id="modalEnterPurchaseCodeForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-     aria-hidden="true">
+    <div class="modal fade " id="modalEnterPurchaseCodeForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
 
-    <form th:action="@{/purchase-code}" method="POST" th:object="${pageOwner}">
-        <div class="modal-dialog p-2 modal-sm" role="document">
-            <div class="modal-content">
-                <div class="modal-header text-center">
-                    <h4 class="modal-title w-100 font-weight-bold">Enter Purchase Code: </h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-
-                <div class="modal-body mx-3">
-                    <div class="md-form mb-4">
-                        <input type="text" id="purchaseCode" class="form-control validate" name="code"/>
-                        <label data-error="wrong" data-success="right" for="purchaseCode">purchase code</label>
-                        <br>
-
+        <form th:action="@{/purchase-code}" method="POST" th:object="${pageOwner}">
+            <div class="modal-dialog p-2 modal-sm" role="document">
+                <div class="modal-content">
+                    <div class="modal-header text-center">
+                        <h4 class="modal-title w-100 font-weight-bold">Enter Purchase Code: </h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
 
+                    <div class="modal-body mx-3">
+                        <div class="md-form mb-4">
+                            <input type="text" id="purchaseCode" class="form-control validate" name="code"/>
+                            <label data-error="wrong" data-success="right" for="purchaseCode">purchase code</label>
+                            <br>
+
+                        </div>
+
+                    </div>
+                    <div class="modal-footer d-flex justify-content-center">
+                        <!--                <div class="modal-footer ">-->
+                        <button type="submit" class="btn btn-primary">Send</button>
+                        <!--                <button type="button" class="btn btn-indigo" data-dismiss="modal" >Send </button>-->
+                    </div>
                 </div>
-                <div class="modal-footer d-flex justify-content-center">
-                    <!--                <div class="modal-footer ">-->
-                    <button type="submit" class="btn btn-primary"  >Send </button>
-                    <!--                <button type="button" class="btn btn-indigo" data-dismiss="modal" >Send </button>-->
-                </div>
+
+
             </div>
-
-
-        </div>
-    </form>
-</div>
+        </form>
+    </div>
 </div>
 
 <!--    bootstrap js-->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
 
 
 </body>
