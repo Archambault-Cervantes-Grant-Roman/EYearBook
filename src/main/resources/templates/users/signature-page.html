@@ -17,27 +17,6 @@
 </head>
 <body>
 <nav th:replace="partials/navbar :: navbar" />
-<!--<h1 class="text-center"><span th:text="${user.getUsername()}"></span></h1>-->
-
-<!--TODO:  create a banner div-->
-
-
-<!--the following get won't work unless you go to a specific users webpage-->
-<!-- ex: /signature-page/1-->
-<!-- ex: /signature-page/2-->
-        <div class="d-flex justify-content-center box large">
-            <img th:src="${pageOwner.sign_page_banner_image}"/>
-        </div>
-
-<h1 class="text-center"><span th:text="${username}"></span> </h1>
-
-<br>
-<div th:if="${!pageOwner.owns_yearbook}">
-<!--    <div th:if="${!user.getParent_id().isOwns_yearbook()}">-->
-    <h4 class="text-center">Please ask a parent to purchase a yearbook</h4>
-</div>
-
-<br>
 
 <!--side nav bar-->
 <div class="sidenav">
@@ -47,34 +26,30 @@
     <div th:if="${pageOwner.owns_yearbook}">
         <a href="/yearbook" >View Your Yearbook</a>
     </div>
+
     <div th:if="${!pageOwner.owns_yearbook}">
         <p>Please get your purchase code  <br> from a parent to view your yearbook</p>
         <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalEnterPurchaseCodeForm">enter yearbook purchase code</a>
     </div>
-
     <a th:href="@{/fileStack/{id}(id=${pageOwner.id})}">Change banner image!</a>
-
-
-
-<!--    <a href="#">Add as friend (dynamic - visible to visitors)</a>-->
-
-    </div>
-    <a th:href="@{/fileStack/{id}(id=${pageOwner.id})}">Change banner image!</a>
-
     <!--    <a href="#">Add as friend (dynamic - visible to visitors)</a>-->
-
-<!--    <a href="#">Post a comment (dynamic - visible to visitors)</a>-->
+    <!--    <a href="#">Post a comment (dynamic - visible to visitors)</a>-->
 </div>
 
+
+</div>
+<h1 class="text-center"><span th:text="${username}"></span> </h1>
+<!--banner-->
+        <div class="d-flex justify-content-center box large">
+            <img th:src="${pageOwner.getSign_page_banner_image()}"/>
+        </div>
+<br>
+<div th:if="${!pageOwner.owns_yearbook}">
+    <h4 class="text-center">Please ask a parent to purchase a yearbook</h4>
+</div>
 <br>
 
-<h1 class="text-center" th:if="${pageOwner.owns_yearbook}">premium content </h1>
-
-<br>
 <!--  COMMENTS SECTION-->
-
-
-
 
     <div class="container-fluid container">
         <div class="main">

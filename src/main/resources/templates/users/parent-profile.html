@@ -20,30 +20,32 @@
 <h1 class="text-center">Username: <span th:text="${user != null} ? ${user.username} : 'user is null'"></span></h1>
 
 
-<!--<h1 class="text-center">Child's Name<span th:text="${user != null} ? ${user.getStudent().first_name} : 'user is null'"></span></h1>-->
 
-
-
-<!--<h1 class="text-center"><span th:text="${}">child name here </span></h1>-->
+<!--SIDE NAVBAR-->
 
 <div class="sidenavP">
-    <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalRegisterChild">Register a child</a>
-<!--    <a href="/register-child">Register a child</a>-->
-    <a th:href="@{|/edit-profile|}">Update profile</a>
 
-<!--create a for each here and it creates a link for each child-->
-<!--    link would say -->
-<!--    <a th:href="@{/signature-page/{id} (id=${child.id})}" >View childs profile page</a>-->
+        <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalRegisterChild">Register a child</a>
 
+        <div th:if="${!user.owns_yearbook}">
+            <a href="/mock-site" >purchase a yearbook</a>
+            <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalEnterPurchaseCodeForm">enter yearbook purchase code</a>
+        </div>
 
+        <a th:href="@{|/edit-profile|}">Update profile</a>
+
+    <h2>Your Child(ren):</h2>
+        <ul>
+            <li>update your childs profile with a purchase code</li>
+            <li>view your childs profile page</li>
+        </ul>
+    <div th:each="child : ${children}">
+        <a th:href="@{signature-page/{id} (id=${child.id})}"><span th:text="${child.username}"></span> </a>
+    </div>
     <div th:if="${user.owns_yearbook}">
-        <a href="/yearbook" >View Yearbook</a>
+        <a href="/yearbook">View Yearbook</a>
     </div>
-    <div th:if="${!user.owns_yearbook}">
-    <a href="/mock-site" >purchase a yearbook</a>
-    <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalEnterPurchaseCodeForm">enter yearbook purchase code</a>
-    </div>
-<!--    <a href="#" >enter yearbook purchase code</a>-->
+
 </div>
 
 <div class="container-fluid container">
@@ -104,12 +106,11 @@
                     <br>
 
                 </div>
-
             </div>
+
             <div class="modal-footer d-flex justify-content-center">
 <!--                <div class="modal-footer ">-->
                     <button type="submit" class="btn btn-primary">Send </button>
-<!--                <button type="button" class="btn btn-indigo" data-dismiss="modal" >Send </button>-->
             </div>
         </div>
 

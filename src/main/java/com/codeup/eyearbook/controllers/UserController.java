@@ -65,16 +65,12 @@ public class UserController {
         model.addAttribute("user", user);
 
 
-//        User yourStudent = userDao.findByParent_id();
-//        model.addAttribute("yourStudent", yourStudent);
-
         List<User> children = userDao.findByParent_id(parentsId);
         model.addAttribute("children", userDao.findByParent_id(loggedInUser.getId()));
         model.addAttribute("children", children);
 
         boolean isParent = loggedInUser.getIsParent();
         return isParent ? "users/parent-profile" : "/home";
-//        return "users/parent-profile";
     }
 
 
@@ -93,18 +89,10 @@ public class UserController {
 
         if (code.equals("DX978J3")) {
             user.setOwns_yearbook(true);
-
         }
-
-        User parent =  userDao.getOne(loggedInUser.getParent_id());
-        boolean parentOwnsYearbook = parent.isOwns_yearbook();
-        if(parentOwnsYearbook){
-            loggedInUser.setOwns_yearbook(true);
-        }
-
         userDao.save(user);
         boolean isParent = loggedInUser.getIsParent();
-        return isParent ? "users/parent-profile" : "/home";
+        return isParent ? "users/parent-profile" : "users/signature-page";
 //        return "redirect:/parent-profile";
     }
 
