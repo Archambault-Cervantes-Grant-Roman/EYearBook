@@ -86,15 +86,15 @@ public class UserController {
 
         }
 
-        User parent =  userDao.getOne(loggedInUser.getParent_id());
-        boolean parentOwnsYearbook = parent.isOwns_yearbook();
-        if(parentOwnsYearbook){
-            loggedInUser.setOwns_yearbook(true);
-        }
+//        User parent =  userDao.getOne(loggedInUser.getParent_id());
+//        boolean parentOwnsYearbook = parent.isOwns_yearbook();
+//        if(parentOwnsYearbook){
+//            loggedInUser.setOwns_yearbook(true);
+//        }
 
         userDao.save(user);
         boolean isParent = loggedInUser.getIsParent();
-        return isParent ? "users/parent-profile" : "/home";
+        return isParent ? "users/parent-profile" : "home";
 //        return "redirect:/parent-profile";
     }
 
@@ -134,7 +134,6 @@ public class UserController {
         }
 
 
-        //*****************---END----PARENT PROFILE PAGE******************************
 
 
 //****************CHILD REGISTRATION PART ONE - STUDENT ID********************
@@ -148,7 +147,7 @@ public class UserController {
 
                 boolean isParent = loggedInUser.getIsParent();
                 return isParent ? "users/register-child" : "/home";
-//        return "users/register-child";
+
             }
 
 //APPLYS THE CHILDS INFO ONTO THE CARD FOR PART 2 OF CHILD REGISTRATION**************
