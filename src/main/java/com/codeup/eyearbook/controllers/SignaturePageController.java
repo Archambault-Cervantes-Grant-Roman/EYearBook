@@ -42,6 +42,7 @@ public String redirectThisPage (){
 
         User pageOwner = userDao.getOne(profileId);
         model.addAttribute("pageOwner", pageOwner);
+
         model.addAttribute("signatures", new Signatures());
         String username = pageOwner.getUsername();
         model.addAttribute("username", username);
