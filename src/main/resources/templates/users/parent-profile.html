@@ -20,21 +20,14 @@
 <h1 class="text-center">Username: <span th:text="${user != null} ? ${user.getUsername()} : 'user is null'"></span></h1>
 
 
-<!--<h1 class="text-center">Child's Name<span th:text="${user != null} ? ${user.getStudent().first_name} : 'user is null'"></span></h1>-->
-<!--<ul>-->
-<!--    <li class="col-12" th:each="user : ${user.student}">-->
-<!--        <h2> Posted by:  <span th:text="${user.signer.username}"></span></h2>-->
-<!--        <h2> Comment:  <span th:text="${user.yearbook_comment}"></span></h2>-->
-<!--    </li>-->
-<!--</ul>-->
-
-<!--<h1 class="text-center"><span th:text="${}">child name here </span></h1>-->
-
+<!--SIDE NAVBAR-->
 <div class="sidenavP">
     <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalRegisterChild">Register a child</a>
-<!--    <a href="/register-child">Register a child</a>-->
     <a th:href="@{|/edit-profile|}">Update profile</a>
 
+<div th:each="child : ${children}">
+    <a th:href="@{signature-page/{id} (id=${child.id})}"><span th:text="${child.username}"></span> </a>
+</div>
 <!--create a for each here and it creates a link for each child-->
 <!--    link would say -->
 <!--    <a th:href="@{/signature-page/{id} (id=${child.id})}" >View childs profile page</a>-->
