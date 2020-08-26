@@ -17,14 +17,8 @@
 </head>
 <body>
 <nav th:replace="partials/navbar :: navbar" />
-<!--<h1 class="text-center"><span th:text="${user.getUsername()}"></span></h1>-->
-
-<!--TODO:  create a banner div-->
 
 
-<!--the following get won't work unless you go to a specific users webpage-->
-<!-- ex: /signature-page/1-->
-<!-- ex: /signature-page/2-->
         <div class="d-flex justify-content-center box large">
             <img th:src="${pageOwner.getSign_page_banner_image()}" />
         </div>
@@ -33,7 +27,7 @@
 
 <br>
 <div th:if="${!pageOwner.owns_yearbook}">
-<!--    <div th:if="${!user.getParent_id().isOwns_yearbook()}">-->
+
     <h4 class="text-center">Please ask a parent to purchase a yearbook</h4>
 </div>
 
@@ -53,10 +47,6 @@
     </div>
 
     <a th:href="@{/fileStack/{id}(id=${pageOwner.id})}">Change banner image!</a>
-
-
-
-<!--    <a href="#">Add as friend (dynamic - visible to visitors)</a>-->
 
     </div>
     <a th:href="@{/fileStack/{id}(id=${pageOwner.id})}">Change banner image!</a>
