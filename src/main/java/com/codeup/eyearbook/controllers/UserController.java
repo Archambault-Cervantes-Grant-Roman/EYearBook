@@ -165,6 +165,7 @@ public class UserController {
                 model.addAttribute("lastName", s.getLast_name());
 //        this creates a new user from the student record
                 model.addAttribute("user", new User());
+
 //        boolean isParent = loggedInUser.isIsParent();
 //        return !isParent  ? "users/child-register2" : "/home";
                 return "users/child-register2";
@@ -172,13 +173,12 @@ public class UserController {
 
 
             @PostMapping("/child-register2")
-            public String saveChildUser (@ModelAttribute User user, @RequestParam Student studentId){
+            public String saveChildUser (@ModelAttribute User user){
                 String hash = passwordEncoder.encode(user.getPassword());
 //        get the parents id
                 User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
                 long parentId = loggedInUser.getId();
                 user.setParent_id(parentId);
-                user.setStudent(studentId);
                 user.setPassword(hash);
                 userDao.save(user);
                 return "redirect:/parent-profile";
