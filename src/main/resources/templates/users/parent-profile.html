@@ -54,11 +54,12 @@
                 <li class="col-12" th:each="child : ${children}">
                     <h2>
                         <span th:each="userSignature : ${child.userSignatures}">
-                            <h2> Comment child posted:  <span th:text="${userSignature.yearbook_comment}"></span></h2>
+                            <h2 id="userChildPostedOn"><span th:text="${userSignature.profile_user.username}"></span></h2>
+                            <h2 id="commentChildPosted"><span th:text="${userSignature.yearbook_comment}"></span></h2>
                         </span>
-                        <span th:each="myPageSignatures : ${child.myPageSignatures}">
-                            <h2> Comment posted on child page:  <span th:text="${myPageSignatures.yearbook_comment}"></span></h2>
-                        </span>
+<!--                        <span th:each="myPageSignatures : ${child.myPageSignatures}">-->
+<!--                            <h2 id="commentPostedOnChildPage"><span th:text="${myPageSignatures.yearbook_comment}"></span></h2>-->
+<!--                        </span>-->
                     </h2>
                 </li>
             </ul>
