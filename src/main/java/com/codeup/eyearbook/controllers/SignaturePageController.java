@@ -72,23 +72,40 @@ public String redirectThisPage (){
         return "redirect:/signature-page/{id}";
     }
 
-    @GetMapping("/filestack/{id}")
+    @GetMapping("/fileStack/{id}")
     public String imageForm(@PathVariable("id")long id, Model model) {
         User user = userDao.getOne(id);
 
 //        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        System.out.println(user.getUsername());
+//        System.out.println(user.getUsername());
         model.addAttribute("user", user);
         return "users/file-stack";
     }
 
-    //    Armando: I had to make this mapping to save the image, might be able to use one already made
-    @PostMapping("/saveUser")
-    public String saveUserImage(@ModelAttribute("user") User user){
 
+    // ======= works when uploading one image =====//
+//        Armando: I had to make this mapping to save the image, might be able to use one already made
+//    @PostMapping("/saveUser/{id}")
+
+    // ===== Don't know if i need to add the {id} to grab the user
+    // and set to the profile that is trying to ipload an image
+    // in order to resolve the 'duplicate entry'
+
+
+    // the problem was redirecting to line 98 but now it redirecting to 94
+
+
+    @PostMapping("/fileStack")
+    public String saveUserImage(@ModelAttribute User user){
+        System.out.println(user.getId());
+
+        if(user.getEmail().isEmpty()){
+            user.setEmail(null);
+        }
         userDao.save(user);
         return "redirect:/parent-profile";
     }
+
 
 
 

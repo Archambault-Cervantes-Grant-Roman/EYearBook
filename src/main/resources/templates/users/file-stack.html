@@ -71,17 +71,26 @@
         </script>
     </div>
 
-    <form th:action="@{/saveUser}" method="post" th:object="${user}">
+<!--    <form th:action="@{/fileStack/{id}(id=${user.id})}" method="post" th:object="${user}">-->
+
+    <form th:action="@{/fileStack}" method="post" th:object="${user}">
+<!--         is it line 80 that is causing an issue??-->
+<!--        Whenever I get rid of line 80 i get an error of a duplicate username-->
+<!--        With line 80 I get a error of a duplicate empty string-->
         <input type="text" th:field="*{id}">
         <div class="form-group">
             <label for="sign_page_banner_image"></label>
-            <input type="text" value=imgUrl class="form-control" id="sign_page_banner_image" th:field="*{sign_page_banner_image}">
+            <input type="text" class="form-control" id="sign_page_banner_image" th:field="*{sign_page_banner_image}">
             <label for="password"></label>
-            <input type="hidden" value=imgUrl class="form-control" id="password" th:field="*{password}">
+            <input type="hidden" class="form-control" id="password" th:field="*{password}">
             <label for="username"></label>
-            <input type="hidden" value=imgUrl class="form-control" id="username" th:field="*{username}">
+            <input type="hidden" class="form-control" id="username" th:field="*{username}">
             <label for="email"></label>
-            <input type="hidden" value=imgUrl class="form-control" id="email" th:field="*{email}">
+            <input type="hidden" class="form-control" id="email" th:field="*{email}">
+            <label for="parent_id"></label>
+            <input type="hidden" class="form-control" id="parent_id" th:field="*{parent_id}">
+            <label for="owns_yearbook"></label>
+            <input type="hidden" class="form-control" id="owns_yearbook" th:field="*{owns_yearbook}">
         </div>
 
 
