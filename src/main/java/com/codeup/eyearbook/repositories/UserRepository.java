@@ -9,6 +9,9 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
 //    User findByParent_id(long id);
 
+    @Query (value = "select * FROM users where student_id = ?1", nativeQuery = true)
+    User getByStudent_id(long student_id);
+
 //    @Query("UPDATE users SET Student s WHERE s.first_name LIKE %?1%"
 //            + " OR s.last_name LIKE %?1%")
 //

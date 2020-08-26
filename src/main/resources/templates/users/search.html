@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
 <head>
-    <script src="https://kit.fontawesome.com/3963957e1d.js" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <link href="/search.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <title>View Students</title>
 </head>
 <body>
@@ -11,28 +9,31 @@
 <div class="container mt-5">
     <h1>Showing Students</h1>
     <form th:action="@{/search}">
-        <h5>Filter: <input type="text" name="keyword" id="keyword" size="50" th:value="${keyword}" required />
+        Filter: <input type="text" name="keyword" id="keyword" size="50" th:value="${keyword}" required />
         &nbsp;
-        <input class="btn-info border-0 btn-sm" type="submit" value="Search" />
+        <input type="submit" value="Search" />
         &nbsp;
-            <input class="btn-secondary border-0 btn-sm" type="button" value="Clear" id="btnClear" onclick="clearSearch()" /></h5>
+        <input type="button" value="Clear" id="btnClear" onclick="clearSearch()" />
     </form>
     <div class="row mt-5">
         <div class="col">
-            <div class="card mb-2 border-0" th:each="student : ${listStudents}">
-                <div class="card-body body">
+            <div class="card mb-2" th:each="student : ${listStudents}">
+                <div class="card-body">
+                    <img class="card-img-top card-img" th:src="${student.image}" alt="Card image cap">
                     <h5 class="card-title" th:text="${student.first_name} +' '+ ${student.last_name}"></h5>
+                    <h5 class="card-title" ></h5>
                 </div>
             </div>
         </div>
     </div>
-
+</div>
+<div th:each="user : ${listUsers}">
+    <p th:text="${user.getId()}"></p>
 </div>
 <script type="text/javascript">
     function clearSearch() {
         window.location = "[[@{/search}]]";
     }
 </script>
-
 </body>
 </html>
