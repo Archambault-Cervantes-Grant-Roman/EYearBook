@@ -27,7 +27,11 @@
 
     <a href="/register-child">Register a child</a>
     <a th:href="@{|/edit-profile|}">Update profile</a>
-    <a href="#" >View comments your child has posted</a>
+
+    <form th:action="@{/signature-page/{id}(id=${user.id})}" method="GET">
+    <a th:href="/signature-page/" >View childs profile page</a>
+    </form>
+
     <div th:if="${user.isOwns_yearbook()}">
         <a href="/yearbook" >View Yearbook</a>
     </div>

@@ -47,7 +47,7 @@ public String redirectThisPage (){
         String username = user.getUsername();
         model.addAttribute("username", username);
 
-
+//psuedo code:  if user id=parent id, allow the parent to see this signature page
 //IF IS PARENT REDIRECT TO HOME PAGE.....
         boolean isParent = loggedInUser.getIsParent();
         return !isParent  ? "users/signature-page" : "home";

@@ -52,7 +52,7 @@
 </div>
 
 <!--  COMMENTS SECTION-->
-<div th:if="${user.isOwns_yearbook()}">
+<!--<div th:if="${user.isOwns_yearbook()}">-->
     <div class="container-fluid container">
         <div class="main">
             <h3 class="text-center">Comments</h3>
@@ -69,6 +69,7 @@
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
+
                             <form th:action="@{/signature-page/{id}(id=${user.id})}" method="POST" th:object="${signatures}" id="commentform">
                                 <div class="form-group">
                                     <label for="yearbook_comment"></label>
@@ -82,7 +83,7 @@
             </div>
         </div>
     </div>
-</div>
+<!--</div>-->
 
 
 
