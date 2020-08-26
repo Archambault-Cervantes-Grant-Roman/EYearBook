@@ -151,4 +151,16 @@ public class User {
     public void setUserSignatures(List<Signatures> userSignatures) {
         this.userSignatures = userSignatures;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", parent_id=" + parent_id +
+                ", email='" + email + '\'' +
+                ", isParent=" + isParent +
+                ", owns_yearbook=" + owns_yearbook +
+                ", username='" + username + '\'' +
+                '}';
+    }
 }

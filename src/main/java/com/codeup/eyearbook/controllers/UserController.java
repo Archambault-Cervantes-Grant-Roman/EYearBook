@@ -17,6 +17,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -60,15 +61,16 @@ public class UserController {
         User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
         User user = userDao.getOne(loggedInUser.getId());
-//        long parentsId = loggedInUser.getId();
+        long parentsId = loggedInUser.getId();
         model.addAttribute("user", user);
 
-//        User child = userDao.getOne(parentsId);
-//        long childsId = child.getId();
-//        model.addAttribute("child", child);
+
+        List<User> children = userDao.findByParent_id(parentsId);
+        model.addAttribute("children", userDao.findByParent_id(loggedInUser.getId()));
+        model.addAttribute("children", children);
+
         boolean isParent = loggedInUser.getIsParent();
         return isParent ? "users/parent-profile" : "/home";
-//        return "users/parent-profile";
     }
 
 
@@ -87,18 +89,10 @@ public class UserController {
 
         if (code.equals("DX978J3")) {
             user.setOwns_yearbook(true);
-
         }
-
-        User parent =  userDao.getOne(loggedInUser.getParent_id());
-        boolean parentOwnsYearbook = parent.isOwns_yearbook();
-        if(parentOwnsYearbook){
-            loggedInUser.setOwns_yearbook(true);
-        }
-
         userDao.save(user);
         boolean isParent = loggedInUser.getIsParent();
-        return isParent ? "users/parent-profile" : "/home";
+        return isParent ? "users/parent-profile" : "users/signature-page";
 //        return "redirect:/parent-profile";
     }
 
