@@ -13,9 +13,5 @@ public interface UserRepository extends JpaRepository<User, Long> {
     @Query ("from User u where u.parent_id = :id")
     List<User> findByParent_id(@Param("id") long id);
 
-//    @Query("UPDATE users SET Student s WHERE s.first_name LIKE %?1%"
-//            + " OR s.last_name LIKE %?1%")
-//
-//    User editProfile();
 
 }
