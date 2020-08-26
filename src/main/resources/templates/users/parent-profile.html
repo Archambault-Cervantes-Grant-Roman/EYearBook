@@ -17,18 +17,12 @@
 <nav th:replace="partials/navbar :: navbar" />
 
 
-<h1 class="text-center">Username: <span th:text="${user != null} ? ${user.getUsername()} : 'user is null'"></span></h1>
+<h1 class="text-center">Username: <span th:text="${user != null} ? ${user.username} : 'user is null'"></span></h1>
 
 
 <!--<h1 class="text-center">Child's Name<span th:text="${user != null} ? ${user.getStudent().first_name} : 'user is null'"></span></h1>-->
 
-<ul>
-    <li class="col-12" th:each="child : ${children}">
-        <h2> Comment:  <span th:text="${child}"></span></h2>
-        <h2> Use  <span th:each="userSignature : ${child.userSignatures}"></span></h2>
 
-    </li>
-</ul>
 
 <!--<h1 class="text-center"><span th:text="${}">child name here </span></h1>-->
 
@@ -56,7 +50,18 @@
     <div class="main">
         <h3 class="text-center">Your childs Comments:</h3>
         <div class="card mb-3" style="max-width: 700px;">
-
+            <ul>
+                <li class="col-12" th:each="child : ${children}">
+                    <h2>
+                        <span th:each="userSignature : ${child.userSignatures}">
+                            <h2> Comment child posted:  <span th:text="${userSignature.yearbook_comment}"></span></h2>
+                        </span>
+                        <span th:each="myPageSignatures : ${child.myPageSignatures}">
+                            <h2> Comment posted on child page:  <span th:text="${myPageSignatures.yearbook_comment}"></span></h2>
+                        </span>
+                    </h2>
+                </li>
+            </ul>
                 <div class="col-md-8">
                     <div class="card-body">
                         <h5 class="card-title">NAME OF THE CHILD COMMENT WAS POSTED TO</h5>
