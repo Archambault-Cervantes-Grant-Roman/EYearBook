@@ -8,8 +8,26 @@
 <!--<script> alert("Test");</script>-->
     <style type="text/css">
         body{
+            margin:0;
+            overflow:hidden;
             /*background-image: url("static/img/cool-background.png");*/
 
+        }
+        .wrapper{
+            transform: rotate(90deg);
+            transform-origin:bottom left;
+
+            position:absolute;
+            top: -100vw;
+            left: 0;
+
+            height:100vw;
+            width:100vh;
+
+            background-color:#000;
+            color:#fff;
+
+            overflow:auto;
         }
         #magazine{
             width:1152px;
@@ -19,7 +37,7 @@
             background-color:#ccc;
             background-size:100% 100%;
         }
-        #magazine, #rotate{
+        #magazine, #rotate1{
             -webkit-transform: rotate(90deg);
             -moz-transform: rotate(90deg);
             -o-transform: rotate(90deg);
@@ -31,16 +49,19 @@
 </head>
 <body th:style="'background: url(/img/cool-background.png)'">
 
+<div id="wrapper" class="">
+<div>
 
 <input id="test" min="1" max="16" value='10' step="1" onchange="showVal(this.value)" type="range"/>
-<input id="rotate"  type="button" class="rotateButton" onchange="rotateImage()"/>
+<input id="rotate"  type="button" value="ROTATE" class="rotateButton"/>
 <input id="leftArrow" value="LEFT" type="button" class="turn-page" />
 <input id="rightArrow" value="RIGHT"  type="button" class="turn-page" />
 <div id="controls">
     <label for="page-number">Page:</label> <input type="text" size="3" id="page-number"> of <span id="number-pages"></span>
 </div>
 
-<div id="magazine" class="container yearbook rotate1 d-flex justify-content-center">
+
+            <div id="magazine" class="container yearbook rotate1 d-flex justify-content-center align-items-center">
     <div class="rotate" style="background-image:url(https://cdn.filestackcontent.com/Np3Ryca6TMaZOFX07LsB
 );"></div>
     <div class="rotate" style="background-image:url(https://cdn.filestackcontent.com/ncu5kzCQWWOv273H1xyw);"></div>
@@ -73,10 +94,9 @@
 
 
 
-
-
 </div>
-
+</div>
+</div>
 
 <script type="text/javascript">
 
@@ -156,9 +176,13 @@
 
     }
     function rotateImage() {
-        var img = document.getElementsByClassName('rotate');
+        var img = document.getElementById('rotate2');
         img.style.transform = 'rotate(180deg)';
     }
+
+    $("#rotate").on('click', function(){
+        $("#wrapper").toggleClass("wrapper");
+    });
 
 
     // document.getElementsByClassName("rotate1").style.transform = "rotate(90deg)";
