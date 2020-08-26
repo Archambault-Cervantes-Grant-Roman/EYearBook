@@ -86,15 +86,15 @@ public class UserController {
 
         }
 
-        User parent =  userDao.getOne(loggedInUser.getParent_id());
-        boolean parentOwnsYearbook = parent.isOwns_yearbook();
-        if(parentOwnsYearbook){
-            loggedInUser.setOwns_yearbook(true);
-        }
+//        User parent =  userDao.getOne(loggedInUser.getParent_id());
+//        boolean parentOwnsYearbook = parent.isOwns_yearbook();
+//        if(parentOwnsYearbook){
+//            loggedInUser.setOwns_yearbook(true);
+//        }
 
         userDao.save(user);
         boolean isParent = loggedInUser.getIsParent();
-        return isParent ? "users/parent-profile" : "/home";
+        return isParent ? "users/parent-profile" : "home";
 //        return "redirect:/parent-profile";
     }
 
@@ -134,7 +134,6 @@ public class UserController {
         }
 
 
-        //*****************---END----PARENT PROFILE PAGE******************************
 
 
 //****************CHILD REGISTRATION PART ONE - STUDENT ID********************
@@ -148,7 +147,7 @@ public class UserController {
 
                 boolean isParent = loggedInUser.getIsParent();
                 return isParent ? "users/register-child" : "/home";
-//        return "users/register-child";
+
             }
 
 //APPLYS THE CHILDS INFO ONTO THE CARD FOR PART 2 OF CHILD REGISTRATION**************
@@ -166,7 +165,6 @@ public class UserController {
                 model.addAttribute("lastName", s.getLast_name());
 //        this creates a new user from the student record
                 model.addAttribute("user", new User());
-
 //        boolean isParent = loggedInUser.isIsParent();
 //        return !isParent  ? "users/child-register2" : "/home";
                 return "users/child-register2";
@@ -174,12 +172,13 @@ public class UserController {
 
 
             @PostMapping("/child-register2")
-            public String saveChildUser (@ModelAttribute User user){
+            public String saveChildUser (@ModelAttribute User user, @RequestParam Student studentId){
                 String hash = passwordEncoder.encode(user.getPassword());
 //        get the parents id
                 User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
                 long parentId = loggedInUser.getId();
                 user.setParent_id(parentId);
+                user.setStudent(studentId);
                 user.setPassword(hash);
                 userDao.save(user);
                 return "redirect:/parent-profile";
