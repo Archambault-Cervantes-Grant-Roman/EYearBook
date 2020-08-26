@@ -64,9 +64,11 @@ public class UserController {
         long parentsId = loggedInUser.getId();
         model.addAttribute("user", user);
 
-       List<User> children = userDao.findByParent_id(parentsId);
 
+        List<User> children = userDao.findByParent_id(parentsId);
+        model.addAttribute("children", userDao.findByParent_id(loggedInUser.getId()));
         model.addAttribute("children", children);
+
         boolean isParent = loggedInUser.getIsParent();
         return isParent ? "users/parent-profile" : "/home";
     }
