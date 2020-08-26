@@ -52,9 +52,12 @@
         <div class="card mb-3" style="max-width: 700px;">
             <ul>
                 <li class="col-12" th:each="child : ${children}">
-                    <h2> Use
+                    <h2>
                         <span th:each="userSignature : ${child.userSignatures}">
-                            <h2> Comment:  <span th:text="${userSignature.yearbook_comment}"></span></h2>
+                            <h2> Comment child posted:  <span th:text="${userSignature.yearbook_comment}"></span></h2>
+                        </span>
+                        <span th:each="myPageSignatures : ${child.myPageSignatures}">
+                            <h2> Comment posted on child page:  <span th:text="${myPageSignatures.yearbook_comment}"></span></h2>
                         </span>
                     </h2>
                 </li>
