@@ -40,17 +40,18 @@ public String redirectThisPage (){
         User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         loggedInUser = userDao.getOne(loggedInUser.getId());
 
-        User user = userDao.getOne(profileId);
-        model.addAttribute("user", user);
-
+        User pageOwner = userDao.getOne(profileId);
+        model.addAttribute("pageOwner", pageOwner);
         model.addAttribute("signatures", new Signatures());
-        String username = user.getUsername();
+        String username = pageOwner.getUsername();
         model.addAttribute("username", username);
 
 //psuedo code:  if user id=parent id, allow the parent to see this signature page
 //IF IS PARENT REDIRECT TO HOME PAGE.....
         boolean isParent = loggedInUser.getIsParent();
-        return !isParent  ? "users/signature-page" : "home";
+        long loggedUserId = loggedInUser.getId();
+        long pageOwnersParentId = pageOwner.getParent_id();
+        return (!isParent || loggedUserId == pageOwnersParentId ) ? "users/signature-page" : "home";
     }
 
 

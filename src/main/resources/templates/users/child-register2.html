@@ -35,7 +35,7 @@
                             <div class="input-group-prepend">
                                 <label class="input-group-text bg-info text-white" for="username">Username</label>
                             </div>
-<!--   <input class="form-control" id="cUsername" name="cUsername"/>-->
+
                             <input class="form-control" id="username" th:field="*{username}"/>
                         </div>
 
@@ -43,25 +43,26 @@
                             <div class="input-group-prepend">
                                 <label class="input-group-text bg-info text-white" for="password">Password</label>
                             </div>
-<!--    <input class="form-control" id="password" type="password" name="password"/>-->
+
                             <input class="form-control" id="password" type="password" th:field="*{password}"/>
                         </div>
 
                         <div class="input-group form-group">
                             <div class="input-group-prepend">
-                                <label class="input-group-text bg-info text-white" for="confirmPassword">Confirm
-                                    Password</label>
+                                <label class="input-group-text bg-info text-white" for="confirmPassword">Confirm Password</label>
                             </div>
                             <input class="form-control" type="password" name="confirmPassword" id="confirmPassword"/>
-                            <input id="is_parent" type="hidden" name="is_parent" th:value="0"/>
+                            <input id="isParent" type="hidden" name="isParent" th:value="0"/>
                         </div>
-
+                        <input  id="parentId" type="hidden"  name="parentId" th:field="*{parent_id}"/>
                         <div class="form-group">
                             <input class="btn float-right login_btn bg-primary text-white" value="Register my child!"
                                    type="submit"/>
                         </div>
 
                     </form>
+
+
                     <script>
                         $('document').ready(function () {
                             var password = document.getElementById("password")
@@ -74,7 +75,6 @@
                                     confirmPassword.setCustomValidity('');
                                 }
                             }
-
                             password.onchange = validatePassword;
                             confirmPassword.onkeyup = validatePassword;
                         });

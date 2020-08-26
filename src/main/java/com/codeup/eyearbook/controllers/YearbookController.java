@@ -29,24 +29,28 @@ public class YearbookController {
         if (AnonCheck) return "users/login";
 
         User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        loggedInUser = userDao.getOne(loggedInUser.getId());
-
-        User parent =  userDao.getOne(loggedInUser.getParent_id());
-        boolean parentOwnsYearbook = parent.isOwns_yearbook();
-        System.out.println(loggedInUser.getUsername());
-        System.out.println(parent.getUsername());
-        System.out.println(parentOwnsYearbook);
-         if(parentOwnsYearbook){
-             loggedInUser.setOwns_yearbook(true);
-         }
+        long currentUserId = loggedInUser.getId();
+        loggedInUser = userDao.getOne(currentUserId);
 
 
 //        User user = new User();
         boolean yearBookCheck = loggedInUser.isOwns_yearbook();
         // This means the user is not logged in
-        return yearBookCheck  ? "users/yearbook" : "/home";
+        return yearBookCheck  ? "users/yearbook" : "home";
 
 
     }
-    }
+
+//    post mapping for child view yearbook link
+//User parent =  userDao.getOne(loggedInUser.getParent_id());
+//        boolean parentOwnsYearbook = parent.isOwns_yearbook();
+//        System.out.println(loggedInUser.getUsername());
+//        System.out.println(parent.getUsername());
+//        System.out.println(parentOwnsYearbook);
+//         if(parentOwnsYearbook){
+//             loggedInUser.setOwns_yearbook(true);
+//         }
+
+
+}
 

@@ -1,42 +1,42 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thyme leaf.org/extras/spring-security" lang="en">
-<head>
-    <!--    bootstrap-->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <!--    jquery-->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
-    <!--    css styling-->
-    <link href="/eyearbook.css" type="text/css" rel="stylesheet"/>
-    <meta charset="UTF-8">
-<head>
-    <meta charset="UTF-8">
-    <title>Child Registration</title>
-</head>
-<body>
-<nav th:replace="partials/navbar :: navbar" />
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thyme leaf.org/extras/spring-security" lang="en">-->
+<!--<head>-->
+<!--    &lt;!&ndash;    bootstrap&ndash;&gt;-->
+<!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">-->
+<!--    &lt;!&ndash;    jquery&ndash;&gt;-->
+<!--    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>-->
+<!--    &lt;!&ndash;    css styling&ndash;&gt;-->
+<!--    <link href="/eyearbook.css" type="text/css" rel="stylesheet"/>-->
+<!--    <meta charset="UTF-8">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Child Registration</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<nav th:replace="partials/navbar :: navbar" />-->
 
-<!--TODO:  create a search by student id form here which hides upon submission-->
-<!--TODO:  has a error message if student id is incorrect-->
+<!--&lt;!&ndash;TODO:  create a search by student id form here which hides upon submission&ndash;&gt;-->
+<!--&lt;!&ndash;TODO:  has a error message if student id is incorrect&ndash;&gt;-->
 
-<form class="form-inline ml-3" th:action="@{/register-child}" th:method="POST">
+<!--<form class="form-inline ml-3" th:action="@{/register-child}" th:method="POST">-->
 
-    <div class="form-row">
-        <div class="col-4 mr-2">
-            <label for="student_id" class="sr-only">Student Id</label>
-            <input type="text" readonly class="form-control-plaintext" value="Enter student id" id="student_id">
-        </div>
+<!--    <div class="form-row">-->
+<!--        <div class="col-4 mr-2">-->
+<!--            <label for="student_id" class="sr-only">Student Id</label>-->
+<!--            <input type="text" readonly class="form-control-plaintext" value="Enter student id" id="student_id">-->
+<!--        </div>-->
 
-<!--PARENT ENTERS THE STUDENT ID-->
-        <div class="col-3 mx-sm-2 mb-2">
-            <label for="id" class="sr-only">Student Id</label>
-            <input type="text" class="form-control" name="id" id="id" placeholder="Student Id" >
-        </div>
+<!--&lt;!&ndash;PARENT ENTERS THE STUDENT ID&ndash;&gt;-->
+<!--        <div class="col-3 mx-sm-2 mb-2">-->
+<!--            <label for="id" class="sr-only">Student Id</label>-->
+<!--            <input type="text" class="form-control" name="id" id="id" placeholder="Student Id" >-->
+<!--        </div>-->
 
-        <div class="col-2 ml-2">
-        <button type="submit" class=" col btn btn-primary mb-2">Confirm</button>
-        </div>
-    </div>
-</form>
+<!--        <div class="col-2 ml-2">-->
+<!--        <button type="submit" class=" col btn btn-primary mb-2">Confirm</button>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</form>-->
 
 
 
