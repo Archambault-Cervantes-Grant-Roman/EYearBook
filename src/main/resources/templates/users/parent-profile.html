@@ -35,14 +35,14 @@
 <!--    <a href="/register-child">Register a child</a>-->
     <a th:href="@{|/edit-profile|}">Update profile</a>
 
-<!--    <form th:action="@{/signature-page/{id}(id=${user.id})}" method="GET">-->
-<!--    <a th:href="/signature-page/" >View childs profile page</a>-->
-<!--    </form>-->
 
-    <div th:if="${user.isOwns_yearbook()}">
+<!--    <a th:href="@{/signature-page/{id} (id=${child.id})}" >View childs profile page</a>-->
+
+
+    <div th:if="${user.owns_yearbook}">
         <a href="/yearbook" >View Yearbook</a>
     </div>
-    <div th:if="${!user.isOwns_yearbook()}">
+    <div th:if="${!user.owns_yearbook}">
     <a href="/mock-site" >purchase a yearbook</a>
     <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalEnterPurchaseCodeForm">enter yearbook purchase code</a>
     </div>
