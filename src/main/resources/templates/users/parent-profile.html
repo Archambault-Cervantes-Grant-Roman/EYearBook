@@ -18,8 +18,15 @@
 
 
 <h1 class="text-center">Username: <span th:text="${user != null} ? ${user.getUsername()} : 'user is null'"></span></h1>
-<!--<h1 class="text-center"><span th:text="${user != null} ? ${user.getParent_id()} : 'user is null'"></span></h1>-->
 
+
+<!--<h1 class="text-center">Child's Name<span th:text="${user != null} ? ${user.getStudent().first_name} : 'user is null'"></span></h1>-->
+<!--<ul>-->
+<!--    <li class="col-12" th:each="user : ${user.student}">-->
+<!--        <h2> Posted by:  <span th:text="${user.signer.username}"></span></h2>-->
+<!--        <h2> Comment:  <span th:text="${user.yearbook_comment}"></span></h2>-->
+<!--    </li>-->
+<!--</ul>-->
 
 <!--<h1 class="text-center"><span th:text="${}">child name here </span></h1>-->
 
@@ -27,9 +34,18 @@
 
     <a href="/register-child">Register a child</a>
     <a th:href="@{|/edit-profile|}">Update profile</a>
-    <a href="#" >View comments your child has posted</a>
+
+    <form th:action="@{/signature-page/{id}(id=${user.id})}" method="GET">
+    <a th:href="/signature-page/" >View childs profile page</a>
+    </form>
+
+    <div th:if="${user.isOwns_yearbook()}">
+        <a href="/yearbook" >View Yearbook</a>
+    </div>
+    <div th:if="${!user.isOwns_yearbook()}">
     <a href="/mock-site" >purchase a yearbook</a>
     <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalEnterPurchaseCodeForm">enter yearbook purchase code</a>
+    </div>
 <!--    <a href="#" >enter yearbook purchase code</a>-->
 </div>
 
@@ -43,6 +59,12 @@
                         <h5 class="card-title">NAME OF THE CHILD COMMENT WAS POSTED TO</h5>
                         <p class="card-text">Sample of signing a yearbook.  "Have a great summer!"</p>
                         <p class="card-text"><small class="text-muted">created at ?? </small></p>
+
+                        <ul>
+                            <li class="col-12" th:each="comment : ${user.userSignatures}">
+                                <h2> Comment:  <span th:text="${comment.yearbook_comment}"></span></h2>
+                            </li>
+                        </ul>
                     </div>
                 </div>
 

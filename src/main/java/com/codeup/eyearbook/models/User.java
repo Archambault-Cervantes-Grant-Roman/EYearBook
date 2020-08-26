@@ -37,7 +37,7 @@ public class User {
     @OneToMany(mappedBy = "signer", cascade = CascadeType.ALL)
     private List<Signatures> userSignatures;
 
-    @Column(length = 150)
+    @Column(length = 255)
     private String sign_page_banner_image;
 
     @Column(length = 20, nullable = false, unique = true)
@@ -96,7 +96,7 @@ public class User {
         this.password = password;
     }
 
-    public boolean isIsParent() {
+    public boolean getIsParent() {
         return isParent;
     }
 
