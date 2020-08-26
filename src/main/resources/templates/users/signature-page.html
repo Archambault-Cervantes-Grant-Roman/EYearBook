@@ -52,10 +52,10 @@
         <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalEnterPurchaseCodeForm">enter yearbook purchase code</a>
 
 
-    <a th:href="@{/fileStack/{id}(id=${user.id})}">Change banner image!</a>
-
     </div>
-<!--    <a href="#">Add as friend (dynamic - visible to visitors)</a>-->
+    <a th:href="@{/fileStack/{id}(id=${pageOwner.id})}">Change banner image!</a>
+
+    <!--    <a href="#">Add as friend (dynamic - visible to visitors)</a>-->
 <!--    <a href="#">Post a comment (dynamic - visible to visitors)</a>-->
 </div>
 
