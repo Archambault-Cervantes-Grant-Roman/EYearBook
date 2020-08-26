@@ -60,26 +60,16 @@ public String redirectThisPage (){
      */
 
     @PostMapping("/signature-page/{id}")
-//    @RequestParam("yearbook_comment") String yearbook_comment,  @PathVariable("id") long id,
-    public String saveSignatureIndividual(@RequestParam("yearbookComment") String yearbookComment,  @PathVariable("id") long id,@ModelAttribute Signatures signatures) {
+    public String saveSignatureIndividual(@PathVariable("id") long id,@ModelAttribute Signatures signatures) {
         User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User profileUser = userDao.getOne(id);
 
-//        System.out.println(id);
-        User user = userDao.getOne(id);
-        Signatures signature = new Signatures();
-        signature.setProfile_user(user);
-        signature.setSigner(loggedInUser);
-        signature.setYearbook_comment(yearbookComment);
+        signatures.setProfile_user(profileUser);
+        signatures.setSigner(loggedInUser);
         signatureDao.save(signatures);
 
-        // uncomment below to use with  @PostMapping("/signature-page")
-//        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        signatures.setSigner(loggedInUser);
-//        System.out.println(loggedInUser.getUsername());
-//        // new line to test if comments appear?
-//        signatureDao.save(signatures);
-//        System.out.println(signatures.getYearbook_comment());
-        return "redirect:/signature-page";
+
+        return "redirect:/signature-page/{id}";
     }
 
     @GetMapping("/filestack/{id}")
