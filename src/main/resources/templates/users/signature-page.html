@@ -164,13 +164,15 @@
         <h3 class="text-center">Who signed your page:</h3>
 
         <div class="card" style="max-width: 500px;">
-            <div class="card-title" th:each="pageOwner : ${pageOwner.myPageSignatures}">
-                <div class="row no-gutters">
-                    <div class="col-sm-5" style="background: #868e96;">
-                        <img src="https://cdn.filestackcontent.com/BT3RYnEMTap6rZAJb9k6" class="card-img-top h-100"
-                             alt="profile-img">
-                    </div>
-                    <div class="col-sm-7">
+
+                    <div class="card-title" th:each="pageOwner : ${pageOwner.myPageSignatures}">
+            <div class="row border no-gutters">
+                <div class="col-sm-5" style="background: #868e96;">
+                    <img src="https://cdn.filestackcontent.com/BT3RYnEMTap6rZAJb9k6" class="card-img-top h-100"
+                         alt="profile-img">
+                </div>
+                <div class="col-sm-7">
+
                         <div class="card-body"><span th:text="${pageOwner.signer.username}"></span>
                             <div class="card-text"><span th:text="${pageOwner.yearbook_comment}"></span></div>
                         </div>
