@@ -61,10 +61,10 @@ public String redirectThisPage (){
     If I leave postMapping to ("/signature-page") without the path variable it'll post but I have to set profile_user manual
      */
 
-    @PostMapping("/signature-page/{id}")
-    public String saveSignatureIndividual(@PathVariable("id") long id,@ModelAttribute Signatures signatures) {
+    @PostMapping("/signature-page")
+    public String saveSignatureIndividual(@RequestParam(name = "ownerId") long ownerId, @ModelAttribute Signatures signatures) {
         User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User profileUser = userDao.getOne(id);
+        User profileUser = userDao.getOne(ownerId);
 
         if(!loggedInUser.getUsername().equals(profileUser.getUsername()) && !profileUser.hasSignature(loggedInUser)){
             signatures.setProfile_user(profileUser);
@@ -72,7 +72,7 @@ public String redirectThisPage (){
             signatureDao.save(signatures);
         }
 
-        return "redirect:/signature-page/{id}";
+        return "redirect:/signature-page/" + ownerId;
     }
 //
 //    @GetMapping("/bannerImg/{id}")
