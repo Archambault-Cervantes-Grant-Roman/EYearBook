@@ -25,11 +25,11 @@
     <script type='text/javascript' th:src="@{/js/script.js}"></script>
 
     <meta charset="UTF-8">
-
+    <meta id="fsak" th:content="${fsak}">
     <title>Signature Page</title>
 </head>
 <body>
-<script>
+<script th:inline="javascript">
 
 
     // var client = filestack.init(FILESTACK_KEY);
@@ -38,12 +38,11 @@
     //The function pickMark()
     let imgUrl;
     let imageSelection = document.querySelector('#sign_page_banner_image');
-    console.log(imageSelection);
 
     // function updateImage(){
     //     imgUrl = imageSelection.value;
     // }
-
+    const fsak = $("#fsak").attr("content")
     function pickMark() {
         var client = filestack.init(FILESTACK_KEY);
 
