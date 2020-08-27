@@ -30,4 +30,3 @@ insert into student_records (first_name, image, last_name,  student_id) values
 ('Michael', 'https://cdn.filestackcontent.com/mySC5BXRbuS5mV7F1wLR', 'Garrison', '22200'),
 ('Trevor', 'https://cdn.filestackcontent.com/76guinqQmegzFUQFdJxE', 'Mullis', '32300');
 
-# need michael, trevor
