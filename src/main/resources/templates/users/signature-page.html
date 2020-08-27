@@ -215,55 +215,43 @@
     </div>
 </div>
 
-
-<!--    &lt;!&ndash;modal code&ndash;&gt;-->
-
-<!--    <div class="modal fade " id="modalBannerImg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"-->
-<!--         aria-hidden="true">-->
-
-<!--        <form th:action="@{/bannerImg}" method="POST" th:object="${pageOwner}">-->
-<!--            <div class="modal-dialog p-2 modal-sm" role="document">-->
-<!--                <div class="modal-content">-->
-<!--                    <div class="modal-header text-center">-->
-<!--                        <h4 class="modal-title w-100 font-weight-bold"></h4>-->
-<!--                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
-<!--                            <span aria-hidden="true">&times;</span>-->
-<!--                        </button>-->
-<!--                    </div>-->
-
-<!--                    <div class="modal-body mx-3">-->
-<!--                        <div class="md-form mb-4">-->
-<!--                            <input type="hidden" th:field="*{id}">-->
-<!--                            <input type="hidden" class="form-control" id="sign_page_banner_image" th:field="*{sign_page_banner_image}">-->
-
-<!--                            <input type="hidden" class="form-control" id="password" th:field="*{password}">-->
-
-<!--                            <input type="hidden" class="form-control" id="username" th:field="*{username}">-->
-
-<!--                            <input type="hidden" class="form-control" id="email" th:field="*{email}">-->
-
-<!--                            <input type="hidden" class="form-control" id="parent_id" th:field="*{parent_id}">-->
-
-<!--                            <input type="hidden" class="form-control" id="owns_yearbook" th:field="*{owns_yearbook}">-->
-<!--                            <br>-->
-
-<!--                        </div>-->
-
-<!--                    </div>-->
-<!--                    <div class="modal-footer d-flex justify-content-center">-->
-<!--                        &lt;!&ndash;                <div class="modal-footer ">&ndash;&gt;-->
-<!--                        <input type="BUTTON" value="Upload an Image" id="image" onclick="pickMark()">-->
-<!--                        <button type="submit" class="btn btn-primary">Submit upload</button>-->
-
-<!--                        &lt;!&ndash;                <button type="button" class="btn btn-indigo" data-dismiss="modal" >Send </button>&ndash;&gt;-->
-<!--                    </div>-->
-<!--                </div>-->
+<!--modal code for purchase code-->
 
 
-<!--            </div>-->
-<!--        </form>-->
-<!--    </div>-->
-<!--</div>-->
+<div class="modal fade " id="modalEnterPurchaseCodeForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+
+    <form th:action="@{/purchase-code}" method="POST" th:object="${user}">
+        <div class="modal-dialog p-2 modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h4 class="modal-title w-100 font-weight-bold">Enter Purchase Code: </h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body mx-3">
+                    <div class="md-form mb-4">
+                        <input type="text" id="purchaseCode" class="form-control validate" name="code"/>
+                        <label data-error="wrong" data-success="right" for="purchaseCode">purchase code</label>
+                        <br>
+
+                    </div>
+                </div>
+
+                <div class="modal-footer d-flex justify-content-center">
+                    <!--                <div class="modal-footer ">-->
+                    <button type="submit" class="btn btn-primary">Send</button>
+                </div>
+            </div>
+
+
+        </div>
+    </form>
+</div>
+</div>
+
 
 <!--    bootstrap js-->
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
