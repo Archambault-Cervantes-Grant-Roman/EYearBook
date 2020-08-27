@@ -21,8 +21,6 @@
     <script type='text/javascript' th:src="@{/js/script.js}"></script>
 
 
-
-
     <script type='text/javascript' th:src="@{/js/keys.js}"></script>
     <script type='text/javascript' th:src="@{/js/script.js}"></script>
 
@@ -35,7 +33,6 @@
 
 
     // var client = filestack.init(FILESTACK_KEY);
-
 
 
     //The function pickMark()
@@ -56,8 +53,8 @@
             //Only accepting files with a mimetype 'image/*'
             accept: 'image/*',
             //Only accepting at most 1 file
-            maxFiles:1,
-        }).then(function(result) {//Taking the result object in as 'result'
+            maxFiles: 1,
+        }).then(function (result) {//Taking the result object in as 'result'
             //Putting the result in a string, and printing it to the console
             // console.log(result);
             console.log(result.filesUploaded[0].url);
@@ -90,69 +87,84 @@
         <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal"
            data-target="#modalEnterPurchaseCodeForm">enter yearbook purchase code</a>
     </div>
-<!--    <div class="d-flex justify-content-center">-->
-<!--        <div class="form-group ">-->
-<!--            <input type="BUTTON" class="btn btn-primary mx-sm-1" value="Upload an Image" id="image" onclick="pickMark()">-->
-<!--        </div>-->
-<!--        <br>-->
-<!--        <form th:action="@{/bannerImg}" method="post" th:object="${pageOwner}">-->
-<!--            <button id="submit" type="submit" class="btn btn-primary mx-sm-1">Submit</button>-->
+    <!--    <div class="d-flex justify-content-center">-->
+    <!--        <div class="form-group ">-->
+    <!--            <input type="BUTTON" class="btn btn-primary mx-sm-1" value="Upload an Image" id="image" onclick="pickMark()">-->
+    <!--        </div>-->
+    <!--        <br>-->
+    <!--        <form th:action="@{/bannerImg}" method="post" th:object="${pageOwner}">-->
+    <!--            <button id="submit" type="submit" class="btn btn-primary mx-sm-1">Submit</button>-->
 
-<!--            <input type="hidden" th:field="*{id}">-->
-<!--            <div class="form-group">-->
-<!--                <label for="sign_page_banner_image"></label>-->
-<!--                <input type="hidden" class="form-control" id="sign_page_banner_image"-->
-<!--                       th:field="*{sign_page_banner_image}">-->
-<!--                <label for="password"></label>-->
-<!--                <input type="hidden" class="form-control" id="password" th:field="*{password}">-->
-<!--                <label for="username"></label>-->
-<!--                <input type="hidden" class="form-control" id="username" th:field="*{username}">-->
-<!--                <label for="email"></label>-->
-<!--                <input type="hidden" class="form-control" id="email" th:field="*{email}">-->
-<!--                <label for="parent_id"></label>-->
-<!--                <input type="hidden" class="form-control" id="parent_id" th:field="*{parent_id}">-->
-<!--                <label for="owns_yearbook"></label>-->
-<!--                <input type="hidden" class="form-control" id="owns_yearbook" th:field="*{owns_yearbook}">-->
-<!--            </div>-->
-<!--        </form>-->
-<!--    </div>-->
+    <!--            <input type="hidden" th:field="*{id}">-->
+    <!--            <div class="form-group">-->
+    <!--                <label for="sign_page_banner_image"></label>-->
+    <!--                <input type="hidden" class="form-control" id="sign_page_banner_image"-->
+    <!--                       th:field="*{sign_page_banner_image}">-->
+    <!--                <label for="password"></label>-->
+    <!--                <input type="hidden" class="form-control" id="password" th:field="*{password}">-->
+    <!--                <label for="username"></label>-->
+    <!--                <input type="hidden" class="form-control" id="username" th:field="*{username}">-->
+    <!--                <label for="email"></label>-->
+    <!--                <input type="hidden" class="form-control" id="email" th:field="*{email}">-->
+    <!--                <label for="parent_id"></label>-->
+    <!--                <input type="hidden" class="form-control" id="parent_id" th:field="*{parent_id}">-->
+    <!--                <label for="owns_yearbook"></label>-->
+    <!--                <input type="hidden" class="form-control" id="owns_yearbook" th:field="*{owns_yearbook}">-->
+    <!--            </div>-->
+    <!--        </form>-->
+    <!--    </div>-->
     <!--    <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalBannerImg">Change your banner image</a>-->
-<!--    <a th:href="@{/bannerImg/{id}(id=${pageOwner.id})}">Change banner image!</a>-->
+    <!--    <a th:href="@{/bannerImg/{id}(id=${pageOwner.id})}">Change banner image!</a>-->
     <!--    <a href="#">Add as friend (dynamic - visible to visitors)</a>-->
     <!--    <a href="#">Post a comment (dynamic - visible to visitors)</a>-->
 
-<!--&lt;!&ndash;</div>&ndash;&gt;&lt;!&ndash;-->
+    <!--&lt;!&ndash;</div>&ndash;&gt;&lt;!&ndash;-->
 </div>
 
-<!--</div>-->
-<h1 class="text-center"><span th:text="${username}"></span></h1>
-<!--banner-->
-<!--        <div class="d-flex justify-content-center box large">-->
+
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--<h1 class="text-center"><span th:text="${username}"></span></h1>-->
+<!--&lt;!&ndash;banner&ndash;&gt;-->
+<!--&lt;!&ndash;        <div class="d-flex justify-content-center box large">&ndash;&gt;-->
+<!--<div class="d-flex justify-content-center" style="width: 100%; height: 200px;">-->
+<!--    <img th:src="${pageOwner.getSign_page_banner_image()}"/>-->
+<!--    <br>-->
+<!--    &lt;!&ndash;    if luggedInUser{id} not equal to signature-page{id} dont show the following info&ndash;&gt;-->
+<!--    <div class="d-flex justify-content-center">-->
+<!--        <div class="form-group ">-->
+<!--            <input type="BUTTON" class="btn btn-primary mx-sm-1" value="Upload an Image" id="image"-->
+<!--                   onclick="pickMark()">-->
+<!--        </div>-->
+
+
+<div class="card mb-3"><span th:text="${username}"></span></div>
 <div class="d-flex justify-content-center" style="width: 100%; height: 200px;">
     <img th:src="${pageOwner.getSign_page_banner_image()}"/>
+</div>
+<div class="card-body d-flex justify-content-center">
 
-    <br>
+    <h5 class="card-title">Upload and image and click submit</h5>
+    <div class="form-group"><input type="BUTTON" class="btn btn-primary mx-sm-1" value="Upload an Image"
+                                   id="image" onclick="pickMark()">
+    </div>
 
-<!--    if luggedInUser{id} not equal to signature-page{id} dont show the following info-->
 
-        <div class="d-flex justify-content-center">
-            <div class="form-group ">
-                <input type="BUTTON" class="btn btn-primary mx-sm-1" value="Upload an Image" id="image" onclick="pickMark()">
-            </div>
-            <h1 th:text="${pageOwner.id}"></h1>
-            <form th:action="@{/bannerImg}" method="post" th:object="${pageOwner}">
-                <button id="submit" type="submit" class="btn btn-primary mx-sm-1">Submit</button>
-                <input type="hidden" th:field="*{id}">
-                <div class="form-group">
-                    <label for="sign_page_banner_image"></label>
-                    <input type="hidden" class="form-control" id="sign_page_banner_image"
-                           th:field="*{sign_page_banner_image}">
-                </div>
-            </form>
+    <h1 th:text="${pageOwner.id}"></h1>
+
+    <form th:action="@{/bannerImg}" method="post" th:object="${pageOwner}">
+        <button id="submit" type="submit" class="btn btn-primary mx-sm-1">Submit</button>
+        <input type="hidden" th:field="*{id}">
+        <div class="form-group">
+            <label for="sign_page_banner_image"></label>
+            <input type="hidden" class="form-control" id="sign_page_banner_image"
+                   th:field="*{sign_page_banner_image}">
         </div>
 </div>
+</form>
+<!--    </div>-->
+<!--</div>-->
 
-</div>
+<!--</div>-->
 <br>
 <div th:if="${!pageOwner.owns_yearbook}">
     <h4 class="text-center">Please ask a parent to purchase a yearbook</h4>
@@ -169,11 +181,11 @@
         <div class="card" style="max-width: 500px;">
             <div class="card-title" th:each="pageOwner : ${pageOwner.myPageSignatures}">
                 <div class="row border no-gutters">
-                <div class="col-sm-5" style="background: #868e96;">
-                    <img class="card-img-top h-100" th:src="${pageOwner.signer.student.image}" alt="profile-img"/>
-                </div>
-                <div class="col-sm-7">
-<!--                            <img th:src="${pageOwner.signer.sign_page_banner_image}"/>-->
+                    <div class="col-sm-5" style="background: #868e96;">
+                        <img class="card-img-top h-100" th:src="${pageOwner.signer.student.image}" alt="profile-img"/>
+                    </div>
+                    <div class="col-sm-7">
+                        <!--                            <img th:src="${pageOwner.signer.sign_page_banner_image}"/>-->
                         <div class="card-body"><span th:text="${pageOwner.signer.username}"></span>
                             <div class="card-text"><span th:text="${pageOwner.yearbook_comment}"></span></div>
                         </div>
@@ -196,6 +208,7 @@
 <!--                            if loggedInUser{id} equals the signature-page{id} -->
 <!--                            dont show this form so that way a user cant sign own page-->
                             <form th:action="@{/signature-page}" method="POST"
+                                  
                                   th:object="${signatures}" id="commentform">
 
                                 <input type="hidden" th:name="ownerId" th:value="${pageOwner.id}">
