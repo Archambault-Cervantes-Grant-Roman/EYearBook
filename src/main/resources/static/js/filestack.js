@@ -4,7 +4,7 @@
     // var client = filestack.init(FILESTACK_KEY);
 
 
-    var client = filestack.init("APJwcTjQWQrG8BahkFJh2z");
+    var client = filestack.init("");
 
     //The function pickMark()
     let imgUrl;
