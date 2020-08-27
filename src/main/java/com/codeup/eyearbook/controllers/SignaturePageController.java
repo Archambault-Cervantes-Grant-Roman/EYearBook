@@ -84,18 +84,19 @@ public String redirectThisPage (){
 //    }
 
     @PostMapping("/bannerImg")
-    public String saveUserImage(@ModelAttribute User pageOwner){
+    public String saveUserImage(@RequestParam(name = "imageOwnerId") long imgOwnerId, @ModelAttribute User pageOwner){
         System.out.println(pageOwner.getId());
 //        System.out.println(user.getId());
         User currentUser = userDao.getOne(pageOwner.getId());
         currentUser.setSign_page_banner_image(pageOwner.getSign_page_banner_image());
+
 
 //        if(pageOwner.getEmail().isEmpty()){
 //            pageOwner.setEmail(null);
 //        }
         userDao.save(currentUser);
 //        userDao.save(pageOwner);
-        return "redirect:/signature-page";
+        return "redirect:/signature-page/" + imgOwnerId;
     }
 
 
