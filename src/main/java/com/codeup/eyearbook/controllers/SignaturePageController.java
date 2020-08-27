@@ -66,10 +66,11 @@ public String redirectThisPage (){
         User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User profileUser = userDao.getOne(id);
 
-        signatures.setProfile_user(profileUser);
-        signatures.setSigner(loggedInUser);
-        signatureDao.save(signatures);
-
+        if(!loggedInUser.getUsername().equals(profileUser.getUsername()) && !profileUser.hasSignature(loggedInUser)){
+            signatures.setProfile_user(profileUser);
+            signatures.setSigner(loggedInUser);
+            signatureDao.save(signatures);
+        }
 
         return "redirect:/signature-page/{id}";
     }
@@ -97,4 +98,5 @@ public String redirectThisPage (){
 
 
 }
+
 
