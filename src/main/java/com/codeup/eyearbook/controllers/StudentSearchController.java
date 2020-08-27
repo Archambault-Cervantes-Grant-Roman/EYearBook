@@ -50,17 +50,18 @@ public class StudentSearchController {
                 students.add(user);
             }
         }
-                filteredResults = students;
-//            for (User user: students) {
+//                filteredResults = students;
+            for (User user: students) {
 
-//                if (keyword != null) {
-//                    if (user.getUsername().equals(keyword)) {
-//                        filteredResults.add(user);
-//                    } else {
-//                        filteredResults = students;
-//                    }
-//                }
-//            }
+                if (keyword != null) {
+                    System.out.println(keyword);
+                    if (user.getUsername().equals(keyword)) {
+                        filteredResults.add(user);
+                    } else {
+                        filteredResults = students;
+                    }
+                }
+            }
 //        for (User user : students) {
 //            if (user.getUsername().equals(query) || user.getStudent().getFirst_name().equals(query) ) {
 //                filteredResults.add(user);
