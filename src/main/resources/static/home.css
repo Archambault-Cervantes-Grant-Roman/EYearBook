@@ -1,19 +1,29 @@
 
 
 .jumbotron-fluid {
-    background-image: url("https://cdn.filestackcontent.com/LB12gU0rSFSLFBdrskkm");
-    background-size: 100% 100%;
+    background-image: linear-gradient(#d6fee4, #d6fbfe);
 }
 
-body {
-    background-color: black;
+/*body {*/
+/*    background-color: black;*/
+/*}*/
+
+h4 {
+    font-family: 'Bebas Neue', cursive;
 }
 
-h1, h4 {
-    color: ghostwhite;
+/*#title {*/
+/*    color: ghostwhite;*/
+/*}*/
+
+.fas, .far {
+    color: limegreen;
 }
 
-#title {
-    color: ghostwhite;
+h1 {
+    font-weight: bold;
+    font-family: 'Patua One', serif;
+    background: -webkit-linear-gradient(springgreen, forestgreen);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
-
