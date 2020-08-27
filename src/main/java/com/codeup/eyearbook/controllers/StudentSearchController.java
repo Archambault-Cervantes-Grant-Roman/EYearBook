@@ -28,28 +28,71 @@ public class StudentSearchController {
         this.userDao = userDao;
     }
 
+    private void search(String name){
+        String [] = name.split(" ");
+        int count = 0;
+        for(int i=0; i < name.length(); )
+
+    }
+
     @RequestMapping(path = "/search", method= RequestMethod.GET)
     public String searchStudents(Model model, @Param("keyword") String keyword) {
 
+//        String query;
+
+//        String keyword = "";
+
+
+
+        List<User> users = userDao.findAll();
+
+        List<User> students = new ArrayList<>();
+
+        List<User> filteredResults = new ArrayList<>();
+
+        for (User user : users) {
+            if (!user.isParent()) {
+                students.add(user);
+            }
+        }
+
+
+            for (User user: students) {
+
+                if (keyword != null) {
+                    if (user.getUsername().contains(keyword)) {
+                        filteredResults.add(user);
+                    } else {
+                        filteredResults = students;
+                    }
+                }
+            }
+//        for (User user : students) {
+//            if (user.getUsername().equals(query) || user.getStudent().getFirst_name().equals(query) ) {
+//                filteredResults.add(user);
+//            }
+//        }
+
+                    model.addAttribute("filteredResults", filteredResults);
 //        model.addAttribute("students", studentDao.findAllByOrderByIdDesc());
 
 
-        List<Student> listStudents = service.listAll(keyword);
+//        List<User> listUser = service.listAllStudents(keyword);
 
-        List<User> listUsers = new ArrayList<>();
-        for(Student student1: listStudents ){
-            listUsers.add(userDao.getByStudent_id(student1.getStudent_id()));
-        }
-
-        model.addAttribute("listStudents", listStudents);
-        model.addAttribute("keyword", keyword);
-        model.addAttribute("listUsers", listUsers);
-        System.out.println(listStudents);
-        System.out.println(listStudents);
+//        List<User> listUsers = new ArrayList<>();
+//        for(Student student1: listStudents ){
+//            listUsers.add(userDao.getByStudent_id(student1.getStudent_id()));
+//        }
 
 
-        return "users/search";
-    }
+                    model.addAttribute("keyword", keyword);
+//        model.addAttribute("listUsers", listUsers);
+//        System.out.println(listStudents);
+//        System.out.println(listStudents);
+                    System.out.println(users.toString());
+                    System.out.println(students.toString());
+                    return "users/search";
+                }
 
 
-}
+            }

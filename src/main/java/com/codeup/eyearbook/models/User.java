@@ -128,6 +128,14 @@ public class User {
         this.sign_page_banner_image = sign_page_banner_image;
     }
 
+    public boolean isParent() {
+        return isParent;
+    }
+
+    public void setParent(boolean parent) {
+        isParent = parent;
+    }
+
     public String getUsername() {
         return username;
     }
@@ -150,5 +158,16 @@ public class User {
 
     public void setUserSignatures(List<Signatures> userSignatures) {
         this.userSignatures = userSignatures;
+    }
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", parent_id=" + parent_id +
+                ", email='" + email + '\'' +
+                ", isParent=" + isParent +
+                ", owns_yearbook=" + owns_yearbook +
+                ", username='" + username + '\'' +
+                '}';
     }
 }
