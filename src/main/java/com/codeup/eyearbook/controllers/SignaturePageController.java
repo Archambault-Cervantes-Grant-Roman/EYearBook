@@ -30,7 +30,7 @@ public class SignaturePageController {
 
 @GetMapping("signature-page")
 public String redirectThisPage (){
-        return "redirect:/home";
+        return "redirect:/";
 }
 
 //    THIS CURRENTLY PREVENTS A PARENT FROM SEEING THE SIGNATURE PAGE, BUT REDIRECT DOES NOT WORK.  -----
@@ -90,7 +90,7 @@ public String redirectThisPage (){
             user.setEmail(null);
         }
         userDao.save(user);
-        return "redirect:/parent-profile";
+        return "redirect:/signature-page";
     }
 
 
