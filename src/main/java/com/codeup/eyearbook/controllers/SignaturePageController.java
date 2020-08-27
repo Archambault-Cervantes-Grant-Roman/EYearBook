@@ -5,6 +5,7 @@ import com.codeup.eyearbook.models.User;
 import com.codeup.eyearbook.repositories.SignatureRepository;
 import com.codeup.eyearbook.repositories.StudentRepository;
 import com.codeup.eyearbook.repositories.UserRepository;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -27,6 +28,10 @@ public class SignaturePageController {
         this.studentsDao = studentsDao;
     }
 
+    @Value("${filestack.api.key}")
+    
+    private String fsak;
+    
 
 @GetMapping("signature-page")
 public String redirectThisPage (){
@@ -36,7 +41,7 @@ public String redirectThisPage (){
 //    THIS CURRENTLY PREVENTS A PARENT FROM SEEING THE SIGNATURE PAGE, BUT REDIRECT DOES NOT WORK.  -----
     @GetMapping("/signature-page/{id}")
     public String signatureForm(@PathVariable("id") long profileId,Model model) {
-
+        
         User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         loggedInUser = userDao.getOne(loggedInUser.getId());
 
@@ -46,7 +51,8 @@ public String redirectThisPage (){
         model.addAttribute("signatures", new Signatures());
         String username = pageOwner.getUsername();
         model.addAttribute("username", username);
-
+        
+        model.addAttribute("fsak", fsak);
 //psuedo code:  if user id=parent id, allow the parent to see this signature page
 //IF IS PARENT REDIRECT TO HOME PAGE.....
         boolean isParent = loggedInUser.getIsParent();
