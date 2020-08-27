@@ -14,25 +14,25 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarNav">
-        <div class="navbar-nav mr-md-auto">
+        <div class="navbar-nav ">
 
 
             <li class="nav-item active"><a class="nav-link" th:href="@{/}">Home<span class="sr-only"></span></a></li>
 
 
-            <ul class="navbar-nav ml-auto">
+            <ul class="navbar-nav ">
                 <th:block sec:authorize="!isAuthenticated()">
-                    <li class="nav-item mr-md-auto">
+                    <li class="nav-item ">
                         <a class="nav-link " th:href="@{/login}">Login</a>
                     </li>
-                    <li class="nav-item mr-md-auto">
+                    <li class="nav-item ">
                         <a class="nav-link " th:href="@{/sign-up}">Sign Up</a>
                     </li>
 
                 </th:block>
 
                 <th:block sec:authorize="isAuthenticated()">
-                    <li class="nav-item mr-md-auto">
+                    <li class="nav-item ">
                         <form th:action="@{/logout}" th:method="post">
                             <button class="nav-link btn-link btn ">Logout</button>
                         </form>
@@ -43,12 +43,12 @@
 
                 <th:block sec:authorize="isAuthenticated()">
 
-                    <li class="nav-item mr-md-auto" th:if="${#authentication.principal.isParent}">
+                    <li class="nav-item" th:if="${#authentication.principal.isParent}">
                         <a class="nav-link " th:href="@{|/parent-profile|}">My Profile</a>
                     </li>
 
 
-                    <li class="nav-item mr-md-auto" th:if="${!#authentication.principal.isParent}">
+                    <li class="nav-item " th:if="${!#authentication.principal.isParent}">
                         <a class="nav-link " th:href="@{/signature-page/{id} (id = ${#authentication.principal.id})}">My
                             Student Profile</a>
                     </li>
