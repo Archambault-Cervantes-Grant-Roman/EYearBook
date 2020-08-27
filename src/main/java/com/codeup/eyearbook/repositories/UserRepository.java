@@ -4,13 +4,18 @@ import com.codeup.eyearbook.models.Student;
 import com.codeup.eyearbook.models.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+
+import java.util.List;
 
 import java.util.List;
 
 public interface UserRepository extends JpaRepository<User, Long> {
     User findByUsername(String username);
 
-//    User findByParent_id(long id);
+    @Query ("from User u where u.parent_id = :id")
+    List<User> findByParent_id(@Param("id") long id);
+
 
     @Query (value = "select * FROM users where student_id = ?1", nativeQuery = true)
     User getByStudent_id(long student_id);
@@ -28,5 +33,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
 //            + " OR s.last_name LIKE %?1%")
 //
 //    User editProfile();
+
 
 }

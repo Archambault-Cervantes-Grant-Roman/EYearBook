@@ -1,12 +1,13 @@
-
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thyme leaf.org/extras/spring-security" lang="en">
 <head>
     <!--    bootstrap CSS-->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
     <!--    jquery-->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+            integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
     <!--    css styling-->
     <link href="/eyearbook.css" rel="stylesheet"/>
     <meta charset="UTF-8">
@@ -14,99 +15,115 @@
     <title>Parent Profile Page</title>
 </head>
 <body>
-<nav th:replace="partials/navbar :: navbar" />
+<nav th:replace="partials/navbar :: navbar"/>
 
 
-<h1 class="text-center">Username: <span th:text="${user != null} ? ${user.getUsername()} : 'user is null'"></span></h1>
+<h1 class="text-center">Username: <span th:text="${user != null} ? ${user.username} : 'user is null'"></span></h1>
 
 
-<!--<h1 class="text-center">Child's Name<span th:text="${user != null} ? ${user.getStudent().first_name} : 'user is null'"></span></h1>-->
-<!--<ul>-->
-<!--    <li class="col-12" th:each="user : ${user.student}">-->
-<!--        <h2> Posted by:  <span th:text="${user.signer.username}"></span></h2>-->
-<!--        <h2> Comment:  <span th:text="${user.yearbook_comment}"></span></h2>-->
-<!--    </li>-->
-<!--</ul>-->
-
-<!--<h1 class="text-center"><span th:text="${}">child name here </span></h1>-->
+<!--SIDE NAVBAR-->
 
 <div class="sidenavP">
-    <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalRegisterChild">Register a child</a>
-<!--    <a href="/register-child">Register a child</a>-->
+
+    <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalRegisterChild">Register a
+        child</a>
+
+    <div th:if="${!user.owns_yearbook}">
+        <a href="/mock-site">purchase a yearbook</a>
+        <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal"
+           data-target="#modalEnterPurchaseCodeForm">enter yearbook purchase code</a>
+    </div>
+
     <a th:href="@{|/edit-profile|}">Update profile</a>
 
-
-<!--    <a th:href="@{/signature-page/{id} (id=${child.id})}" >View childs profile page</a>-->
-
-
+    <h2>Your Child(ren):</h2>
+    <ul>
+        <li>update your childs profile with a purchase code</li>
+        <li>view your childs profile page</li>
+    </ul>
+    <div th:each="child : ${children}">
+        <a th:href="@{signature-page/{id} (id=${child.id})}"><span th:text="${child.username}"></span> </a>
+    </div>
     <div th:if="${user.owns_yearbook}">
-        <a href="/yearbook" >View Yearbook</a>
+        <a href="/yearbook">View Yearbook</a>
     </div>
-    <div th:if="${!user.owns_yearbook}">
-    <a href="/mock-site" >purchase a yearbook</a>
-    <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalEnterPurchaseCodeForm">enter yearbook purchase code</a>
-    </div>
-<!--    <a href="#" >enter yearbook purchase code</a>-->
+
 </div>
+
 
 <div class="container-fluid container">
     <div class="main">
         <h3 class="text-center">Your childs Comments:</h3>
-        <div class="card mb-3" style="max-width: 700px;">
+
+        <div class="card mb-3" style="max-width: 500px;">
+                <div class="col-12" th:each="child : ${children}">
+            <div>
+                    <div class="card-body" th:each="userSignature : ${child.userSignatures}">
+                        <div class="row border no-gutters">
+                            <div class="col-sm-7">
+                                <div class="card-body" id="userChildPostedOn"><span
+                                        th:text="${userSignature.profile_user.username}"></span>
+                                <div class="card-text" id="commentChildPosted"><span
+                                        th:text="${userSignature.yearbook_comment}"></span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
 
                 <div class="col-md-8">
                     <div class="card-body">
                         <h5 class="card-title">NAME OF THE CHILD COMMENT WAS POSTED TO</h5>
-                        <p class="card-text">Sample of signing a yearbook.  "Have a great summer!"</p>
+                        <p class="card-text">Sample of signing a yearbook. "Have a great summer!"</p>
                         <p class="card-text"><small class="text-muted">created at ?? </small></p>
 
                         <ul>
                             <li class="col-12" th:each="comment : ${user.userSignatures}">
-                                <h2> Comment:  <span th:text="${comment.yearbook_comment}"></span></h2>
+                                <h2> Comment: <span th:text="${comment.yearbook_comment}"></span></h2>
                             </li>
                         </ul>
                     </div>
                 </div>
 
+            </div>
         </div>
     </div>
-</div>
 
-<!--modal code for purchase code-->
+    <!--modal code for purchase code-->
 
 
-<div class="modal fade " id="modalEnterPurchaseCodeForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-     aria-hidden="true">
+    <div class="modal fade " id="modalEnterPurchaseCodeForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
 
-    <form th:action="@{/purchase-code}" method="POST" th:object="${user}">
-        <div class="modal-dialog p-2 modal-sm" role="document">
-        <div class="modal-content">
-            <div class="modal-header text-center">
-                <h4 class="modal-title w-100 font-weight-bold">Enter Purchase Code: </h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
+        <form th:action="@{/purchase-code}" method="POST" th:object="${user}">
+            <div class="modal-dialog p-2 modal-sm" role="document">
+                <div class="modal-content">
+                    <div class="modal-header text-center">
+                        <h4 class="modal-title w-100 font-weight-bold">Enter Purchase Code: </h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
 
-            <div class="modal-body mx-3">
-                <div class="md-form mb-4">
-                    <input type="text" id="purchaseCode" class="form-control validate" name="code"/>
-                    <label data-error="wrong" data-success="right" for="purchaseCode">purchase code</label>
-                    <br>
+                    <div class="modal-body mx-3">
+                        <div class="md-form mb-4">
+                            <input type="text" id="purchaseCode" class="form-control validate" name="code"/>
+                            <label data-error="wrong" data-success="right" for="purchaseCode">purchase code</label>
+                            <br>
 
+                        </div>
+                    </div>
+
+                    <div class="modal-footer d-flex justify-content-center">
+                        <!--                <div class="modal-footer ">-->
+                        <button type="submit" class="btn btn-primary">Send</button>
+                    </div>
                 </div>
 
-            </div>
-            <div class="modal-footer d-flex justify-content-center">
-<!--                <div class="modal-footer ">-->
-                    <button type="submit" class="btn btn-primary">Send </button>
-<!--                <button type="button" class="btn btn-indigo" data-dismiss="modal" >Send </button>-->
-            </div>
-        </div>
 
-
-        </div>
-    </form>
+            </div>
+        </form>
     </div>
 </div>
 
@@ -117,7 +134,7 @@
 <div class="modal fade " id="modalRegisterChild" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
      aria-hidden="true">
 
-    <form th:action="@{/register-child}" method="POST" >
+    <form th:action="@{/register-child}" method="POST">
         <div class="modal-dialog p-2 modal-sm" role="document">
             <div class="modal-content">
                 <div class="modal-header text-center">
@@ -136,7 +153,7 @@
                 </div>
                 <div class="modal-footer d-flex justify-content-center">
                     <!--                <div class="modal-footer ">-->
-                    <button type="submit" class="btn btn-primary"> Submit </button>
+                    <button type="submit" class="btn btn-primary"> Submit</button>
                 </div>
             </div>
         </div>
@@ -187,9 +204,15 @@
 <!--</div>-->
 
 <!--    bootstrap js-->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
 
 
 </body>

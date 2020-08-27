@@ -1,14 +1,20 @@
+
+
+
+
 USE eyearbook_db;
 
+TRUNCATE student_records;
 insert into student_records (first_name, image, last_name,  student_id) values
-('Leroy', 'https://cdn.filestackcontent.com/BT3RYnEMTap6rZAJb9k6', 'Grant', '1010'),
-('Bobbie', 'https://cdn.filestackcontent.com/BT3RYnEMTap6rZAJb9k6', 'Archambault', '2020'),
-('Augustine', 'https://cdn.filestackcontent.com/BT3RYnEMTap6rZAJb9k6', 'Cervantes', '3030'),
-('Armando', 'https://cdn.filestackcontent.com/BT3RYnEMTap6rZAJb9k6', 'Roman', '4040');
 
-INSERT into users(is_parent, owns_yearbook, parent_id, password, username, student_id) values
-( 1 , 0, null, 'test', 'test', null),
-( 0 , 0, 1, 'leroy', 'leroy', 1010),
-( 0 , 0, 1, 'bobbie', 'bobbie', 2020),
-( 0 , 0, 1, 'augustine', 'augustine', 3030),
-( 0 , 0, 1, 'mando', 'mando', 4040);
+('Leroy', 'https://cdn.filestackcontent.com/ybzvHNRA6wXUtxB6V1EQ', 'Grant', '10100'),
+('Bobbie', 'https://cdn.filestackcontent.com/0kdK6M8DQDerTXdf5GHY', 'Archambault', '318808'),
+('Augustine', 'https://cdn.filestackcontent.com/GCEQLHtRvyVvzkEho4Ah', 'Cervantes', '20200'),
+('Armando', 'https://cdn.filestackcontent.com/8roWCAFPTmaH31EtieMY', 'Roman', '30300'),
+('Ramon', 'https://cdn.filestackcontent.com/yJhXkP8S3A77KtrVVlAc', 'Villareal', '40400'),
+('Laura', 'https://cdn.filestackcontent.com/bIyJvBpkQgS1A1wuIcOq', 'Davis', '50500'),
+('Shelby', 'https://cdn.filestackcontent.com/t73F4KcuTgiVK0bdz3c3', 'Polasek', '60600'),
+('Knoah', 'https://cdn.filestackcontent.com/G5CLsdkQQGS3oPqznfEg', 'Cotto', '70700');
+
+
+
