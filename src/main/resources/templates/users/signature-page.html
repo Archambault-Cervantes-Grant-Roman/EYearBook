@@ -173,11 +173,10 @@
                     <div class="card-title" th:each="pageOwner : ${pageOwner.myPageSignatures}">
             <div class="row border no-gutters">
                 <div class="col-sm-5" style="background: #868e96;">
-                    <img src="https://cdn.filestackcontent.com/BT3RYnEMTap6rZAJb9k6" class="card-img-top h-100"
-                         alt="profile-img">
+                    <img class="card-img-top h-100" th:src="${pageOwner.signer.sign_page_banner_image}" alt="profile-img"/>
                 </div>
                 <div class="col-sm-7">
-
+<!--                            <img th:src="${pageOwner.signer.sign_page_banner_image}"/>-->
                         <div class="card-body"><span th:text="${pageOwner.signer.username}"></span>
                             <div class="card-text"><span th:text="${pageOwner.yearbook_comment}"></span></div>
                         </div>
