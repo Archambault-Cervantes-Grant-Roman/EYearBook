@@ -14,10 +14,11 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     @Query (value = "select * FROM users where student_id = ?1", nativeQuery = true)
     User getByStudent_id(long student_id);
-//    @Query ("from User u where u.student.first_name ")
-//    List<User> search()
 
-//            @Query (value= "SELECT u from User u, Student s where u.student.student_id = s.student_id and s.first_name LIKE %?1 OR s.last_name LIKE %?1%")
+//    @Query (value = "select * FROM users u WHERE u.username like %?1%", nativeQuery = true)
+//    List<User> search(String username);
+
+//            @Query (value= "SELECT u from users u, student_records s where u.student_id = s.student_id and s.first_name LIKE %?1 OR s.last_name LIKE %?1%")
 //    @Query (value = "SELECT u FROM User u  Student s where u.student.student_id = s.student_id and s.first_name LIKE %?1 OR s.last_name LIKE %?1%" )
 //    List<User> searchStudent(String keyword);
 //

@@ -28,21 +28,15 @@ public class StudentSearchController {
         this.userDao = userDao;
     }
 
-    private void search(String name){
-        String [] = name.split(" ");
-        int count = 0;
-        for(int i=0; i < name.length(); )
+//    private void search(String name){
+//        String [] = name.split(" ");
+//        int count = 0;
+//        for(int i=0; i < name.length(); )
 
-    }
+//    }
 
     @RequestMapping(path = "/search", method= RequestMethod.GET)
     public String searchStudents(Model model, @Param("keyword") String keyword) {
-
-//        String query;
-
-//        String keyword = "";
-
-
 
         List<User> users = userDao.findAll();
 
@@ -50,23 +44,23 @@ public class StudentSearchController {
 
         List<User> filteredResults = new ArrayList<>();
 
+        //Controller filter method
         for (User user : users) {
             if (!user.isParent()) {
                 students.add(user);
             }
         }
-
-
-            for (User user: students) {
-
-                if (keyword != null) {
-                    if (user.getUsername().contains(keyword)) {
-                        filteredResults.add(user);
-                    } else {
-                        filteredResults = students;
-                    }
-                }
-            }
+                filteredResults = students;
+//            for (User user: students) {
+//
+//                if (keyword != null) {
+//                    if (user.getUsername().contains(keyword)) {
+//                        filteredResults.add(user);
+//                    } else {
+//                        filteredResults = students;
+//                    }
+//                }
+//            }
 //        for (User user : students) {
 //            if (user.getUsername().equals(query) || user.getStudent().getFirst_name().equals(query) ) {
 //                filteredResults.add(user);
@@ -76,7 +70,7 @@ public class StudentSearchController {
                     model.addAttribute("filteredResults", filteredResults);
 //        model.addAttribute("students", studentDao.findAllByOrderByIdDesc());
 
-
+//       Student filter method based on student_id
 //        List<User> listUser = service.listAllStudents(keyword);
 
 //        List<User> listUsers = new ArrayList<>();
