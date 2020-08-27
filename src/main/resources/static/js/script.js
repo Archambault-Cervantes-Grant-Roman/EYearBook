@@ -1,0 +1,1 @@
+const FILESTACK_KEY = config.FILESTACK;
