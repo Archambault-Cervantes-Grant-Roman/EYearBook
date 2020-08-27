@@ -2,23 +2,39 @@
     transition: transform 300ms;
     transform: scale(1.2);
     background-image: linear-gradient(to bottom right, #f54ea2, #ff7576);
+    color: white;
 }
 
 .card-2:hover {
     transition: transform 300ms;
     transform: scale(1.2);
-    background-image: linear-gradient(to bottom right, #17ead9, #6078ea);
+    background-image: linear-gradient(to bottom right, #7117ea, #6078ea);
+    color: white;
 }
 
 .card-3:hover {
     transition: transform 300ms;
     transform: scale(1.2);
-    background-image: linear-gradient(to bottom right, #f54ea2, #ff7576);
+    background-image: linear-gradient(to bottom right, #184e68, #57ca85);
+    color: white;
 }
 
 .card-4:hover {
     transition: transform 300ms;
     transform: scale(1.2);
     background-image: linear-gradient(to bottom right, #6078ea, #17ead9);
+    color: white;
+}
+
+.git-icon:hover {
+    color:white;
+}
+
+.linkedin-icon:hover {
+    color: white;
+}
+
+.email-icon:hover {
+    color: white;
 }
 
