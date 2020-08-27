@@ -19,7 +19,8 @@
     <div class="row mt-5">
         <div class="col">
             <div class="card" th:each="user : ${filteredResults}">
-                <h1 class="card" th:text="${user.username}"></h1>
+                <img class="card-img-top card-img" th:src="${user.student.image}" alt="Card image cap">
+                <h1 class="card" th:text="${user.student.first_name} +' '+ ${user.student.last_name}"></h1>
                 <a class="card" th:href="@{/signature-page/{id}(id=${user.id})}">Link to Signature Page!</a>
 
 <!--                <div class="card-body mb-2" th:each="student : ${listStudents}">-->
