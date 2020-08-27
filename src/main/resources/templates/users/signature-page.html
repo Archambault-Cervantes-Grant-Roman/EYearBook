@@ -8,11 +8,11 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
             integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
 
-    <!--    filestack -->
     <script type="text/javascript" src="https://static.filestackapi.com/v3/filestack.js"></script>
     <!--    css styling-->
     <link href="/eyearbook.css" type="text/css" rel="stylesheet"/>
 
+    <!--    filestack -->
     <script type='text/javascript' th:src="@{/js/keys.js}"></script>
     <script type='text/javascript' th:src="@{/js/script.js}"></script>
 
@@ -131,24 +131,14 @@
             <div class="form-group ">
                 <input type="BUTTON" class="btn btn-primary mx-sm-1" value="Upload an Image" id="image" onclick="pickMark()">
             </div>
+            <h1 th:text="${pageOwner.id}"></h1>
             <form th:action="@{/bannerImg}" method="post" th:object="${pageOwner}">
                 <button id="submit" type="submit" class="btn btn-primary mx-sm-1">Submit</button>
-
                 <input type="hidden" th:field="*{id}">
                 <div class="form-group">
                     <label for="sign_page_banner_image"></label>
                     <input type="hidden" class="form-control" id="sign_page_banner_image"
                            th:field="*{sign_page_banner_image}">
-                    <label for="password"></label>
-                    <input type="hidden" class="form-control" id="password" th:field="*{password}">
-                    <label for="username"></label>
-                    <input type="hidden" class="form-control" id="username" th:field="*{username}">
-                    <label for="email"></label>
-                    <input type="hidden" class="form-control" id="email" th:field="*{email}">
-                    <label for="parent_id"></label>
-                    <input type="hidden" class="form-control" id="parent_id" th:field="*{parent_id}">
-                    <label for="owns_yearbook"></label>
-                    <input type="hidden" class="form-control" id="owns_yearbook" th:field="*{owns_yearbook}">
                 </div>
             </form>
         </div>
@@ -173,7 +163,7 @@
                     <div class="card-title" th:each="pageOwner : ${pageOwner.myPageSignatures}">
             <div class="row border no-gutters">
                 <div class="col-sm-5" style="background: #868e96;">
-                    <img class="card-img-top h-100" th:src="${pageOwner.signer.sign_page_banner_image}" alt="profile-img"/>
+                    <img class="card-img-top h-100" th:src="${pageOwner.signer.student.image}" alt="profile-img"/>
                 </div>
                 <div class="col-sm-7">
 <!--                            <img th:src="${pageOwner.signer.sign_page_banner_image}"/>-->
