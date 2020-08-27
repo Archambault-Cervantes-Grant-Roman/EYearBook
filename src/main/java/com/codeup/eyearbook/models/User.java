@@ -128,6 +128,14 @@ public class User {
         this.sign_page_banner_image = sign_page_banner_image;
     }
 
+    public boolean isParent() {
+        return isParent;
+    }
+
+    public void setParent(boolean parent) {
+        isParent = parent;
+    }
+
     public String getUsername() {
         return username;
     }
@@ -151,6 +159,8 @@ public class User {
     public void setUserSignatures(List<Signatures> userSignatures) {
         this.userSignatures = userSignatures;
     }
+
+
 
     @Override
     public String toString() {
