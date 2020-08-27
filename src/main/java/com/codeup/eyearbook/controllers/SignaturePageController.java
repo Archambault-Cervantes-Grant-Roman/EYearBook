@@ -66,7 +66,7 @@ public String redirectThisPage (){
         User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User profileUser = userDao.getOne(ownerId);
 
-        if(!loggedInUser.getUsername().equals(profileUser.getUsername()) && !profileUser.hasSignature(loggedInUser)){
+        if(!loggedInUser.getUsername().equals(profileUser.getUsername()) && !profileUser.hasSignature(loggedInUser) && (!loggedInUser.isParent())){
             signatures.setProfile_user(profileUser);
             signatures.setSigner(loggedInUser);
             signatureDao.save(signatures);
