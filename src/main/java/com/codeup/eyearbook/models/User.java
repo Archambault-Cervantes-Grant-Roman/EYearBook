@@ -160,6 +160,7 @@ public class User {
         this.userSignatures = userSignatures;
     }
 
+
 public boolean hasSignature(User user){
         boolean duplicateComment = false;
         for(Signatures signature : this.myPageSignatures){
