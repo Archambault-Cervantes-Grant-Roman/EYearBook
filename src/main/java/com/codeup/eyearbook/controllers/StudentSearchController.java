@@ -53,21 +53,31 @@ public class StudentSearchController {
 //                filteredResults = students;
             for (User user: students) {
 
-                if (keyword != null) {
+//                if      (keyword != null) {
                     System.out.println(keyword);
-                    if (user.getUsername().equals(keyword)) {
+                    if (user.getUsername().equals(keyword) || (user.getStudent().getFirst_name().equals(keyword))) {
                         filteredResults.add(user);
-                    } else {
-                        filteredResults = students;
                     }
-                }
-            }
+//                    else {
+//                        filteredResults = students;
+                    }
+//                }
+
+
+//        for (student : students) {
+//            if (student.getUsername().equals(query) || student.getStudent().getFirst_name().equals(query) || etc...) {
+//                filteredResults.add(student);
+//            }
+//        }
+
 //        for (User user : students) {
 //            if (user.getUsername().equals(query) || user.getStudent().getFirst_name().equals(query) ) {
 //                filteredResults.add(user);
 //            }
 //        }
-
+                if (keyword == null || keyword.isEmpty()) {
+                    filteredResults = students;
+                }
                     model.addAttribute("filteredResults", filteredResults);
 //        model.addAttribute("students", studentDao.findAllByOrderByIdDesc());
 
