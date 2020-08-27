@@ -12,9 +12,15 @@
     <script type="text/javascript" src="https://static.filestackapi.com/v3/filestack.js"></script>
     <!--    css styling-->
     <link href="/eyearbook.css" type="text/css" rel="stylesheet"/>
+
+    <script type='text/javascript' th:src="@{/js/keys.js}"></script>
+    <script type='text/javascript' th:src="@{/js/script.js}"></script>
+
     <link rel="stylesheet" href="/SignaturePage.css"/>
+
     <link href="/filestack.js"  rel="stylesheet"/>
-<!--    <link href="/keys.js" rel="script">-->
+
+
 
     <meta charset="UTF-8">
 
@@ -27,7 +33,6 @@
     // var client = filestack.init(FILESTACK_KEY);
 
 
-    // var client = filestack.init("PUT THE API KEY HERE");
 
     //The function pickMark()
     let imgUrl;
@@ -39,6 +44,8 @@
     // }
 
     function pickMark() {
+        var client = filestack.init(FILESTACK_KEY);
+
         console.log("Picking Watermark");
         //Limiting file types and number for uploading in the picker
         client.pick({
