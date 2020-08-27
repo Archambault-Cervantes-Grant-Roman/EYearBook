@@ -175,6 +175,8 @@ public class UserController {
 
 //        boolean isParent = loggedInUser.isIsParent();
 //        return !isParent  ? "users/child-register2" : "/home";
+
+
                 return "users/child-register2";
             }
 
