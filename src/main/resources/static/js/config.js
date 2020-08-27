@@ -1,5 +1,5 @@
 const config = {
-    FILESTACK : 'APJwcTjQWQrG8BahkFJh2z',
+    FILESTACK : '',
     SECRET_KEY : '56789',
     KEY_2 : '101010'
 }
