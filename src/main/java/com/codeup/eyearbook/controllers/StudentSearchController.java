@@ -52,9 +52,9 @@ public class StudentSearchController {
         }
                 filteredResults = students;
 //            for (User user: students) {
-//
+
 //                if (keyword != null) {
-//                    if (user.getUsername().contains(keyword)) {
+//                    if (user.getUsername().equals(keyword)) {
 //                        filteredResults.add(user);
 //                    } else {
 //                        filteredResults = students;
