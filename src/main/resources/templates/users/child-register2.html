@@ -30,6 +30,7 @@
                 <div class="card-body">
 <!--   <form th:action="@{/register-child}" method="POST">-->
                     <form th:action="@{/child-register2}" method="POST" th:object="${user}">
+                        <input th:type="hidden" th:name="studentId" th:value="${studentId}"/>
 <!--                        <input class="text-hide" id="studentId" th:field="*{student.student_id}"/>-->
                         <div class="input-group form-group">
                             <div class="input-group-prepend">

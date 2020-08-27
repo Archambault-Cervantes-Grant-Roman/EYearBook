@@ -159,11 +159,19 @@ public class UserController {
 
                 loggedInUser.getId();
                 Student s = studentsDao.getByStudent_id(id);
+
                 model.addAttribute("studentId", s.getStudent_id());
                 model.addAttribute("firstName", s.getFirst_name());
                 model.addAttribute("lastName", s.getLast_name());
 //        this creates a new user from the student record
                 model.addAttribute("user", new User());
+//                User childuser = new User();
+//
+//                long parentId = loggedInUser.getId();
+//                user.setParent_id(parentId);
+//                user.setPassword(hash);
+//                userDao.save(user);
+//                return "redirect:/parent-profile";
 
 //        boolean isParent = loggedInUser.isIsParent();
 //        return !isParent  ? "users/child-register2" : "/home";
@@ -172,14 +180,19 @@ public class UserController {
 
 
             @PostMapping("/child-register2")
-            public String saveChildUser (@ModelAttribute User user){
+            public String saveChildUser (@RequestParam(name="studentId") long studentId, @ModelAttribute User user){
+
+//
                 String hash = passwordEncoder.encode(user.getPassword());
 //        get the parents id
                 User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
                 long parentId = loggedInUser.getId();
                 user.setParent_id(parentId);
+                user.setStudent(studentsDao.getByStudent_id(studentId));
                 user.setPassword(hash);
                 userDao.save(user);
+
+//                System.out.println(studentId);
                 return "redirect:/parent-profile";
             }
 

@@ -161,7 +161,15 @@ public class User {
     }
 
 
-
+public boolean hasSignature(User user){
+        boolean duplicateComment = false;
+        for(Signatures signature : this.myPageSignatures){
+            if(signature.getSigner().getUsername().equals(user.getUsername())){
+             duplicateComment = true;
+         }
+        }
+        return duplicateComment;
+}
     @Override
     public String toString() {
         return "User{" +
