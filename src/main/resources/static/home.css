@@ -1,7 +1,8 @@
 
 
 .jumbotron-fluid {
-    background-image: linear-gradient(#d6fee4, #d6fbfe);
+    background-image: url("img/Screen Shot 2020-08-27 at 9.22.21 AM.png");
+    background-size: 100%;
 }
 
 /*body {*/
@@ -17,13 +18,13 @@ h4 {
 /*}*/
 
 .fas, .far {
-    color: limegreen;
+    color: #007bff;
 }
 
-h1 {
-    font-weight: bold;
-    font-family: 'Patua One', serif;
-    background: -webkit-linear-gradient(springgreen, forestgreen);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
+/*h1 {*/
+/*    font-weight: bold;*/
+/*    font-family: 'Patua One', serif;*/
+/*    background: -webkit-linear-gradient(springgreen, forestgreen);*/
+/*    -webkit-background-clip: text;*/
+/*    -webkit-text-fill-color: transparent;*/
+/*}*/
