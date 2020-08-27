@@ -29,3 +29,4 @@ insert into student_records (first_name, image, last_name,  student_id) values
 ('Larry', 'https://cdn.filestackcontent.com/6CiB8CxsQhiBa3DFxxDw', 'Castillo', '12100'),
 ('Michael', 'https://cdn.filestackcontent.com/mySC5BXRbuS5mV7F1wLR', 'Garrison', '22200'),
 ('Trevor', 'https://cdn.filestackcontent.com/76guinqQmegzFUQFdJxE', 'Mullis', '32300');
+
