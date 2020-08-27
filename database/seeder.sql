@@ -3,6 +3,7 @@
 
 
 USE eyearbook_db;
+
 TRUNCATE student_records;
 insert into student_records (first_name, image, last_name,  student_id) values
 ('Leroy', 'https://cdn.filestackcontent.com/ybzvHNRA6wXUtxB6V1EQ', 'Grant', '10100'),
