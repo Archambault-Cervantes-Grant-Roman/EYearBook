@@ -58,7 +58,7 @@ public String redirectThisPage (){
 
     /* Armando : I set the path variable as a parameter for the setProfile_User (which is the profile that you are signing
     but the parameter type for setProfile_user needs to be a User
-    If I leave postMapping to ("/signature-page") without the path variable itll post but I have to set profile_user manual
+    If I leave postMapping to ("/signature-page") without the path variable it'll post but I have to set profile_user manual
      */
 
     @PostMapping("/signature-page/{id}")
@@ -73,23 +73,23 @@ public String redirectThisPage (){
 
         return "redirect:/signature-page/{id}";
     }
+//
+//    @GetMapping("/bannerImg/{id}")
+//    public String imageForm(@PathVariable("id")long id, Model model) {
+//        User pageOwner = userDao.getOne(id);
+//
+//        model.addAttribute("pageOwner", pageOwner);
+//        return "users/banner";
+//    }
 
-    @GetMapping("/fileStack/{id}")
-    public String imageForm(@PathVariable("id")long id, Model model) {
-        User user = userDao.getOne(id);
+    @PostMapping("/bannerImg")
+    public String saveUserImage(@ModelAttribute User pageOwner){
+//        System.out.println(user.getId());
 
-        model.addAttribute("user", user);
-        return "users/file-stack";
-    }
-
-    @PostMapping("/fileStack")
-    public String saveUserImage(@ModelAttribute User user){
-        System.out.println(user.getId());
-
-        if(user.getEmail().isEmpty()){
-            user.setEmail(null);
+        if(pageOwner.getEmail().isEmpty()){
+            pageOwner.setEmail(null);
         }
-        userDao.save(user);
+        userDao.save(pageOwner);
         return "redirect:/signature-page";
     }
 
