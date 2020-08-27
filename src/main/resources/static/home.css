@@ -1,19 +1,30 @@
 
 
 .jumbotron-fluid {
-    background-image: url("https://cdn.filestackcontent.com/LB12gU0rSFSLFBdrskkm");
-    background-size: 100% 100%;
+    background-image: url("img/Screen Shot 2020-08-27 at 9.22.21 AM.png");
+    background-size: 100%;
 }
 
-body {
-    background-color: black;
+/*body {*/
+/*    background-color: black;*/
+/*}*/
+
+h4 {
+    font-family: 'Bebas Neue', cursive;
 }
 
-h1, h4 {
-    color: ghostwhite;
+/*#title {*/
+/*    color: ghostwhite;*/
+/*}*/
+
+.fas, .far {
+    color: #007bff;
 }
 
-#title {
-    color: ghostwhite;
-}
-
+/*h1 {*/
+/*    font-weight: bold;*/
+/*    font-family: 'Patua One', serif;*/
+/*    background: -webkit-linear-gradient(springgreen, forestgreen);*/
+/*    -webkit-background-clip: text;*/
+/*    -webkit-text-fill-color: transparent;*/
+/*}*/

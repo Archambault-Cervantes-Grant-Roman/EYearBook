@@ -22,6 +22,10 @@
 
 
 
+
+    <script type='text/javascript' th:src="@{/js/keys.js}"></script>
+    <script type='text/javascript' th:src="@{/js/script.js}"></script>
+
     <meta charset="UTF-8">
 
     <title>Signature Page</title>
@@ -129,6 +133,8 @@
 
     <br>
 
+<!--    if luggedInUser{id} not equal to signature-page{id} dont show the following info-->
+
         <div class="d-flex justify-content-center">
             <div class="form-group ">
                 <input type="BUTTON" class="btn btn-primary mx-sm-1" value="Upload an Image" id="image" onclick="pickMark()">
@@ -161,9 +167,8 @@
         <h3 class="text-center">Who signed your page:</h3>
 
         <div class="card" style="max-width: 500px;">
-
-                    <div class="card-title" th:each="pageOwner : ${pageOwner.myPageSignatures}">
-            <div class="row border no-gutters">
+            <div class="card-title" th:each="pageOwner : ${pageOwner.myPageSignatures}">
+                <div class="row border no-gutters">
                 <div class="col-sm-5" style="background: #868e96;">
                     <img class="card-img-top h-100" th:src="${pageOwner.signer.student.image}" alt="profile-img"/>
                 </div>
@@ -188,7 +193,8 @@
 
                         <div class="card-body">
 
-
+<!--                            if loggedInUser{id} equals the signature-page{id} -->
+<!--                            dont show this form so that way a user cant sign own page-->
                             <form th:action="@{/signature-page/{id}(id=${pageOwner.id})}" method="POST"
                                   th:object="${signatures}" id="commentform">
 
