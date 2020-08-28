@@ -12,6 +12,12 @@
     <link href="/eyearbook.css" rel="stylesheet"/>
     <meta charset="UTF-8">
 
+    <style>
+        .sidenavP{
+            top: 55px;
+            left: 4px;
+        }
+    </style>
     <title>Parent Profile Page</title>
 </head>
 
@@ -58,23 +64,22 @@
 <div class="container-fluid container w-75 ">
     <div class="main">
         <h3 class="text-center">Your Childs Comments:</h3>
-<br>
         <br>
         <br>
-        <br>
-        <br>
-        <br>
+
         <div class="card mb-3" >
                 <div class="col-12" th:each="child : ${children}">
             <div>
                     <div class="card-body" th:each="userSignature : ${child.userSignatures}">
                         <div class="row border no-gutters">
                             <div class="col-sm-7">
-                                <div class="card-body" id="userChildPostedOn"><span
-                                        th:text="${userSignature.profile_user.username}"></span>
-                                    <div class="card-text" id="commentChildPosted"><span
-                                            th:text="${userSignature.yearbook_comment}"></span></div>
-                                </div>
+<!--                                <div class="card-body" id="userChildPostedOn" ">, posted on <span-->
+<!--                                        th:text="${userSignature.profile_user.username}">'s page:</span>-->
+<!--                                    <div class="card-text" id="commentChildPosted"><span-->
+<!--                                            th:text="${userSignature.yearbook_comment}"></span></div>-->
+<!--                                </div>-->
+                                <h3><a th:text="${child.username}"></a> posted on <a th:text="${userSignature.profile_user.username}"></a>'s profile</h3>
+                                <h3><a th:text="${userSignature.yearbook_comment}"></a></h3>
                             </div>
                         </div>
                     </div>
@@ -83,10 +88,6 @@
 
                 <div class="col-md-8">
                     <div class="card-body">
-                        <h5 class="card-title">NAME OF THE CHILD COMMENT WAS POSTED TO</h5>
-                        <p class="card-text">Sample of signing a yearbook. "Have a great summer!"</p>
-                        <p class="card-text"><small class="text-muted">created at ?? </small></p>
-
                         <ul>
                             <li class="col-12" th:each="comment : ${user.userSignatures}">
                                 <h2> Comment: <span th:text="${comment.yearbook_comment}"></span></h2>
