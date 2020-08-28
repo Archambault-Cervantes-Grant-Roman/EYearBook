@@ -8,12 +8,15 @@
 
 
 
-<footer th:fragment="footer" class="navbar fixed-bottom d-flex justify-content-center">
+<footer th:fragment="footer" class="navbar fixed-bottom d-flex justify-content-center ">
 
-                <h6 class="text-uppercase font-weight-bold">
-                    <a th:href="@{|/about|}">About</a>
-                    <a th:href="@{#topOfPage}">Top Of Page</a>
-                </h6>
+
+                    <ul class="text-uppercase font-weight-bold list-unstyled">
+                    <li><a th:href="@{|/about|}">About</a></li>
+
+                    <li><a th:href="@{#topOfPage}">Top Of Page</a></li>
+                    </ul>
+
 </footer>
 
 </body>
