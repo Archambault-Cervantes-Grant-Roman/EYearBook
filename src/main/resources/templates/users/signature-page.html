@@ -142,51 +142,54 @@
 <div class="d-flex justify-content-center" style="width: 100%; height: 200px;">
     <img th:src="${pageOwner.getSign_page_banner_image()}"/>
 </div>
-<div class="card-body d-flex justify-content-center">
 
-    <h5 class="card-title">Upload and image and click submit</h5>
-    <div class="form-group"><input type="BUTTON" class="btn btn-primary mx-sm-1" value="Upload an Image"
-                                   id="image" onclick="pickMark()">
+
+
+    <!--    if luggedInUser{id} not equal to signature-page{id} dont show the following info-->
+
+    <div class="d-flex justify-content-center">
+        <div class="form-group ">
+            <input type="BUTTON" class="btn btn-primary mx-sm-1" value="Upload an Image" id="image"
+                   onclick="pickMark()">
+        </div>
+        <h1 th:text="${pageOwner.id}"></h1>
+        <form th:action="@{/bannerImg}" method="post" th:object="${pageOwner}">
+            <button id="submit" type="submit" class="btn btn-primary mx-sm-1">Submit</button>
+            <input type="hidden" th:field="*{id}">
+            <div class="form-group">
+                <label for="sign_page_banner_image"></label>
+                <input type="hidden" class="form-control" id="sign_page_banner_image"
+                       th:field="*{sign_page_banner_image}">
+            </div>
+        </form>
     </div>
 
-
-    <h1 th:text="${pageOwner.id}"></h1>
-
-    <form th:action="@{/bannerImg}" method="post" th:object="${pageOwner}">
-        <input type="hidden" th:name="imageOwnerId" th:value="${pageOwner.id}">
-
-        <button id="submit" type="submit" class="btn btn-primary mx-sm-1">Submit</button>
-        <input type="hidden" th:field="*{id}">
-        <div class="form-group">
-            <label for="sign_page_banner_image"></label>
-            <input type="hidden" class="form-control" id="sign_page_banner_image"
-                   th:field="*{sign_page_banner_image}">
-        </div>
-     </form>
-</div>
 
 <!--    </div>-->
 <!--</div>-->
 
 <!--</div>-->
 <br>
-<div th:if="${!pageOwner.owns_yearbook}">
-    <h4 class="text-center">Please ask a parent to purchase a yearbook</h4>
+<div class="justify-content-center" th:if="${!pageOwner.owns_yearbook}">
+    <h4 class="">Please ask a parent to purchase a yearbook</h4>
 </div>
 <br>
 
 <!--  COMMENTS SECTION-->
 
 
-<div class="container-fluid container">
+<div class="container-fluid container w-75">
+
     <div class="main">
         <h3 class="text-center">Who signed your page:</h3>
 
-        <div class="card" style="max-width: 500px;">
+        <div class="card mb-3" style="">
             <div class="card-title" th:each="pageOwner : ${pageOwner.myPageSignatures}">
                 <div class="row border no-gutters">
-                    <div class="col-sm-5" style="background: #868e96;">
-                        <img class="card-img-top h-100" th:src="${pageOwner.signer.student.image}" alt="profile-img"/>
+
+                    <div class="col-sm-7" style="background: #868e96;">
+                        <img class="card-img-top h-100" th:src="${pageOwner.signer.student.image}"/>
+
                     </div>
                     <div class="col-sm-7">
                         <!--                            <img th:src="${pageOwner.signer.sign_page_banner_image}"/>-->
@@ -203,14 +206,14 @@
             <div class="card mb-3" style="max-width: 700px;">
                 <div class="row no-gutters">
                     <div class="col-md-4">
-                        <img src="..." class="card-img" alt="...">
+                        <img src="" class="card-img" alt="">
                     </div>
                     <div class="col-md-8">
 
                         <div class="card-body">
 
-<!--                            if loggedInUser{id} equals the signature-page{id} -->
-<!--                            dont show this form so that way a user cant sign own page-->
+                            <!--                            if loggedInUser{id} equals the signature-page{id} -->
+                            <!--                            dont show this form so that way a user cant sign own page-->
                             <form th:action="@{/signature-page}" method="POST"
                                   
                                   th:object="${signatures}" id="commentform">
@@ -229,6 +232,7 @@
                 </div>
             </div>
         </div>
+
     </div>
 </div>
 

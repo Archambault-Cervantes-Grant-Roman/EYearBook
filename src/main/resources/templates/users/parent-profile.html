@@ -28,17 +28,17 @@
 <div class="sidenavP">
     <h5>Your Child(ren):</h5>
     <div>
-    <a href="" class="btn btn-default btn-rounded" data-toggle="modal" data-target="#modalRegisterChild">Register a
-        child</a>
+        <a href="" class="btn btn-default btn-rounded" data-toggle="modal" data-target="#modalRegisterChild">Register a
+            child</a>
     </div>
 
     <div th:each="child : ${children}">
         <a th:href="@{signature-page/{id} (id=${child.id})}">See <span th:text="${child.username}"></span>'s page </a>
     </div>
-<br>
+    <br>
     <h5>Your Profile:</h5>
     <a th:href="@{|/edit-profile|}">Update your profile</a>
-<br>
+    <br>
     <h5>Yearbook:</h5>
     <div th:if="${!user.owns_yearbook}">
         <a href="/mock-site">purchase a yearbook</a>
@@ -58,16 +58,16 @@
     <div class="main">
         <h3 class="text-center">Your Childs Comments:</h3>
 
-        <div class="card mb-3 " >
-                <div class="col-12" th:each="child : ${children}">
-            <div>
+        <div class="card mb-3 ">
+            <div class="col-12" th:each="child : ${children}">
+                <div>
                     <div class="card-body" th:each="userSignature : ${child.userSignatures}">
                         <div class="row border no-gutters">
                             <div class="col-sm-7">
                                 <div class="card-body" id="userChildPostedOn"><span
                                         th:text="${userSignature.profile_user.username}"></span>
-                                <div class="card-text" id="commentChildPosted"><span
-                                        th:text="${userSignature.yearbook_comment}"></span></div>
+                                    <div class="card-text" id="commentChildPosted"><span
+                                            th:text="${userSignature.yearbook_comment}"></span></div>
                                 </div>
                             </div>
                         </div>
@@ -137,7 +137,7 @@
 <div class="modal fade " id="modalRegisterChild" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
      aria-hidden="true">
 
-    <form th:action="@{/register-child}" method="POST" >
+    <form th:action="@{/register-child}" method="POST">
         <div class="modal-dialog p-2 modal-sm" role="document">
             <div class="modal-content">
                 <div class="modal-header text-center">
