@@ -1,5 +1,5 @@
 html,body{
-    background-image: url('img/final-10.jpg');
+    background-image: url('img/david-pennington-T-GjUWPW-oI-unsplash.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     height: 100%;
@@ -19,6 +19,6 @@ html,body{
 }
 
 
-.card-header h3{
+.card-header h3, label {
     color: white;
 }

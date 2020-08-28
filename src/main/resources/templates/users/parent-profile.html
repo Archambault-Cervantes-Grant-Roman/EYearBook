@@ -14,7 +14,8 @@
 
     <title>Parent Profile Page</title>
 </head>
-<body>
+
+<body class="p-profile-page">
 <th:block th:insert="partials/topOfPage :: topOfPage"></th:block>
 
 <nav th:replace="partials/navbar :: navbar"/>
@@ -57,10 +58,15 @@
 <div class="container-fluid container w-75 ">
     <div class="main">
         <h3 class="text-center">Your Childs Comments:</h3>
-
-        <div class="card mb-3 ">
-            <div class="col-12" th:each="child : ${children}">
-                <div>
+<br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="card mb-3" >
+                <div class="col-12" th:each="child : ${children}">
+            <div>
                     <div class="card-body" th:each="userSignature : ${child.userSignatures}">
                         <div class="row border no-gutters">
                             <div class="col-sm-7">
@@ -163,48 +169,6 @@
     </form>
 </div>
 <footer th:replace="partials/footer :: footer"></footer>
-
-<!--modal code for making a student a new user-->
-
-
-<!--<div class="modal fade " id="modalRegisterChildUser" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"-->
-<!--     aria-hidden="true">-->
-
-
-<!--        <div class="modal-dialog p-2 modal-sm" role="document">-->
-<!--            <div class="modal-content">-->
-<!--                <div class="modal-header text-center">-->
-<!--                    <h3>Child Registration</h3>-->
-<!--                    <h4 class="modal-title w-100 font-weight-bold">Student id:  <span th:text="${studentId}"></span></h4>-->
-<!--                    <h4 class="modal-title w-100 font-weight-bold">First Name:  <span th:text="${firstName}"></span></h4>-->
-<!--                    <h4 class="modal-title w-100 font-weight-bold">Last Name:  <span th:text="${lastName}"></span></h4>-->
-<!--                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
-<!--                        <span aria-hidden="true">&times;</span>-->
-<!--                    </button>-->
-<!--                </div>-->
-<!--                <form th:action="@{/register-child2}" method="POST" th:object="${user}">-->
-<!--                <div class="modal-body mx-3">-->
-<!--                    <div class="md-form mb-4">-->
-<!--                        <input th:field="*{username}" id="username" class="form-control validate" name="username"/>-->
-<!--                        <label data-error="wrong" data-success="right" for="username">Username</label>-->
-<!--                        <br>-->
-<!--                        <input th:field="*{password}" id="password" class="form-control validate" name="password"/>-->
-<!--                        <label data-error="wrong" data-success="right" for="password">Password</label>-->
-<!--                        <br>-->
-<!--                        <input type="password" id="confirmPassword" class="form-control validate" name="confirmPassword"/>-->
-<!--                        <label data-error="wrong" data-success="right" for="confirmPassword">Confirm Password</label>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                <div class="modal-footer d-flex justify-content-center">-->
-<!--                    &lt;!&ndash;                <div class="modal-footer ">&ndash;&gt;-->
-<!--                    <button type="submit" class="btn btn-primary"> Submit </button>-->
-<!--                </div>-->
-<!--                </form>-->
-<!--            </div>-->
-<!--        </div>-->
-
-<!--</div>-->
-<!--</div>-->
 
 <!--    bootstrap js-->
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
