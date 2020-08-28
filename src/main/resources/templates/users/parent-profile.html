@@ -66,8 +66,8 @@
                     <div class="card-body" th:each="userSignature : ${child.userSignatures}">
                         <div class="row border no-gutters">
                             <div class="col-sm-7">
-                                <div class="card-body" id="userChildPostedOn"><span
-                                        th:text="${userSignature.profile_user.username}"></span>
+                                <div class="card-body" id="userChildPostedOn">Posted on <span
+                                        th:text="${userSignature.profile_user.username}">'s page:</span>
                                     <div class="card-text" id="commentChildPosted"><span
                                             th:text="${userSignature.yearbook_comment}"></span></div>
                                 </div>
