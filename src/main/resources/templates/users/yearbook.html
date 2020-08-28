@@ -1,6 +1,10 @@
 <!doctype html>
-<<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thyme leaf.org/extras/spring-security" lang="en">>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thyme leaf.org/extras/spring-security" lang="en">
 <head>
+<!--    <link th:href="@{/eyearbook.css}" rel="stylesheet"/>-->
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="/js/turn.js"></script>
 
@@ -47,6 +51,8 @@
         }
     </style>
 </head>
+<nav th:replace="partials/navbar :: navbar"/>
+
 <body th:style="'background: url(/img/cool-background.png)'">
 
 <div id="wrapper" class="">

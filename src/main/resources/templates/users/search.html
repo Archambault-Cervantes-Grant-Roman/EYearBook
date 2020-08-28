@@ -5,6 +5,11 @@
           integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <title>View Students</title>
     <link rel="stylesheet" href="/search.css">
+    <style>
+        .profileLink{
+            color: white;
+        }
+    </style>
 </head>
 <body>
 <nav th:replace="partials/navbar :: navbar"/>
@@ -20,17 +25,24 @@
 </div>
 <section class="row">
 <div class="container" th:each="user : ${filteredResults}">
-    <div class="">
-        <div class="card profile-card-1" >
+<!--    <div class="">-->
+<!--        <div class="card profile-card-1" >-->
 
-                <img class="card-img-top" th:src="${user.student.image}" alt="Card image cap" style="">
+<!--                <img class="card-img-top" th:src="${user.student.image}" alt="Card image cap" style="">-->
 
 
-                <h2 class="card" th:text="${user.student.first_name} +' '+ ${user.student.last_name}"></h2>
+<!--                <h2 class="card" th:text="${user.student.first_name} +' '+ ${user.student.last_name}"></h2>-->
 
-            <a class="card card-footer" th:href="@{/signature-page/{id}(id=${user.id})}">Link to Signature Page!</a>
+<!--            <a class="card card-footer" th:href="@{/signature-page/{id}(id=${user.id})}">Link to Signature Page!</a>-->
+<!--        </div>-->
+
+<!--    </div>-->
+    <div class="card mt-3" style="width: 18rem;">
+        <img class="card-img-top" th:src="${user.student.image}" alt="Card image cap">
+        <div class="card-body">
+            <h3 class="card-title" th:text="${user.student.first_name} +' '+ ${user.student.last_name}"></h3>
+            <a class="card card-footer profileLink" th:href="@{/signature-page/{id}(id=${user.id})}">Link to Signature Page!</a>
         </div>
-
     </div>
 
 </div>
