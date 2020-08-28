@@ -8,20 +8,12 @@
 
 
 
-<footer th:fragment="footer">
-    <div class="container">
-        <hr class="clearfix d-md-none" color="white" style="margin: 10% 15% 5%;">
-        <div class="row text-center d-flex justify-content-center pt-4 mb-3">
-            <div class="col-md-2 mb-3">
+<footer th:fragment="footer" class="navbar fixed-bottom d-flex justify-content-center">
+
                 <h6 class="text-uppercase font-weight-bold">
                     <a th:href="@{|/about|}">About</a>
                     <a th:href="@{#topOfPage}">Top Of Page</a>
                 </h6>
-            </div>
-        </div>
-        <hr class="rgba-white" color="white" style="margin: 0 15%;">
-    </div>
-    </div>
 </footer>
 
 </body>
