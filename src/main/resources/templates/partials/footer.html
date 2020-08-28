@@ -3,9 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <title>footer</title>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+
 </head>
 <body>
-
+<!--<footer th:fragment="footer">-->
+<!--    &lt;!&ndash; collapsing navbar elements &ndash;&gt;-->
+<!--    <div class="container">-->
+<!--        &lt;!&ndash; left side content &ndash;&gt;-->
+<!--        <ul class="navbar-nav mr-auto" id="footer-nav">-->
+<!--            &lt;!&ndash;  Everyone can see  &ndash;&gt;-->
+<!--            <li class="nav-item"><a class="nav-link text-light" href="/about">About Us</a></li>-->
+<!--            <li class="nav-item"><a class="nav-link text-light" href="#topOfPage">Back to Top</a></li>-->
+<!--        </ul>-->
+<!--    </div>-->
+<!--</footer>-->
 
 
 <footer th:fragment="footer">
@@ -15,6 +27,7 @@
             <div class="col-md-2 mb-3">
                 <h6 class="text-uppercase font-weight-bold">
                     <a th:href="@{|/about|}">About</a>
+                    <a th:href="@{#topOfPage}">Top Of Page</a>
                 </h6>
             </div>
         </div>

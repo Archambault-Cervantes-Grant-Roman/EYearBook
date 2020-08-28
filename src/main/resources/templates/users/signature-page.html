@@ -44,7 +44,7 @@
     // }
     const fsak = $("#fsak").attr("content")
     function pickMark() {
-        var client = filestack.init(FILESTACK_KEY);
+        var client = filestack.init(fsak);
 
         console.log("Picking Watermark");
         //Limiting file types and number for uploading in the picker
@@ -69,9 +69,11 @@
             console.log(imgUrl);
         })
     }</script>
+<th:block th:insert="partials/topOfPage :: topOfPage"></th:block>
+
 <nav th:replace="partials/navbar :: navbar"/>
 
-
+<div id="top"></div>
 <!--side nav bar-->
 <div class="sidenav">
 
@@ -267,6 +269,7 @@
 </div>
 </div>
 
+<footer th:replace="partials/footer :: footer"></footer>
 
 <!--    bootstrap js-->
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
