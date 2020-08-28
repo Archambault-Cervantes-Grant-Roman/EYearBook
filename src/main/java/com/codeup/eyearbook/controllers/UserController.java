@@ -92,7 +92,7 @@ public class UserController {
         }
         userDao.save(user);
         boolean isParent = loggedInUser.getIsParent();
-        return isParent ? "users/parent-profile" : "users/signature-page";
+        return isParent ? "users/parent-profile" : "users/signature-page/" + id;
 //        return "redirect:/parent-profile";
     }
 

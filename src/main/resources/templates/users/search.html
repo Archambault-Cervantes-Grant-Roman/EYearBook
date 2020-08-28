@@ -4,6 +4,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
           integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <title>View Students</title>
+    <link rel="stylesheet" href="/search.css">
 </head>
 <body>
 <nav th:replace="partials/navbar :: navbar"/>
@@ -19,14 +20,14 @@
 </div>
 <div class="mt-5">
     <div class="col">
-        <div class="card d-flex d-flex align-items-center" th:each="user : ${filteredResults}">
+        <div class="card card-body d-flex d-flex align-items-center" th:each="user : ${filteredResults}">
             <div>
                 <img class="card-img-top card-img" th:src="${user.student.image}" alt="Card image cap" style="">
             </div>
 
                 <h1 class="col p-2 m-0" th:text="${user.student.first_name} +' '+ ${user.student.last_name}"></h1>
 
-            <a class="card" th:href="@{/signature-page/{id}(id=${user.id})}">Link to Signature Page!</a>
+            <a class="card-footer" th:href="@{/signature-page/{id}(id=${user.id})}">Link to Signature Page!</a>
         </div>
     </div>
 </div>
