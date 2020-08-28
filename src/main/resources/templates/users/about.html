@@ -10,6 +10,7 @@
     <title>About Us</title>
 </head>
 <body>
+<th:block th:insert="partials/topOfPage :: topOfPage"></th:block>
 
 <nav th:replace="partials/navbar :: navbar"/>
 
@@ -79,5 +80,8 @@
     </div>
 </div>
 </div>
+
+<footer th:replace="partials/footer :: footer"></footer>
+
 </body>
 </html>

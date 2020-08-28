@@ -14,7 +14,10 @@
 
     <title>Parent Profile Page</title>
 </head>
+
 <body class="p-profile-page">
+<th:block th:insert="partials/topOfPage :: topOfPage"></th:block>
+
 <nav th:replace="partials/navbar :: navbar"/>
 
 
@@ -26,17 +29,17 @@
 <div class="sidenavP">
     <h5>Your Child(ren):</h5>
     <div>
-    <a href="" class="btn btn-default btn-rounded" data-toggle="modal" data-target="#modalRegisterChild">Register a
-        child</a>
+        <a href="" class="btn btn-default btn-rounded" data-toggle="modal" data-target="#modalRegisterChild">Register a
+            child</a>
     </div>
 
     <div th:each="child : ${children}">
         <a th:href="@{signature-page/{id} (id=${child.id})}">See <span th:text="${child.username}"></span>'s page </a>
     </div>
-<br>
+    <br>
     <h5>Your Profile:</h5>
     <a th:href="@{|/edit-profile|}">Update your profile</a>
-<br>
+    <br>
     <h5>Yearbook:</h5>
     <div th:if="${!user.owns_yearbook}">
         <a href="/mock-site">purchase a yearbook</a>
@@ -69,8 +72,8 @@
                             <div class="col-sm-7">
                                 <div class="card-body" id="userChildPostedOn"><span
                                         th:text="${userSignature.profile_user.username}"></span>
-                                <div class="card-text" id="commentChildPosted"><span
-                                        th:text="${userSignature.yearbook_comment}"></span></div>
+                                    <div class="card-text" id="commentChildPosted"><span
+                                            th:text="${userSignature.yearbook_comment}"></span></div>
                                 </div>
                             </div>
                         </div>
@@ -140,7 +143,7 @@
 <div class="modal fade " id="modalRegisterChild" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
      aria-hidden="true">
 
-    <form th:action="@{/register-child}" method="POST" >
+    <form th:action="@{/register-child}" method="POST">
         <div class="modal-dialog p-2 modal-sm" role="document">
             <div class="modal-content">
                 <div class="modal-header text-center">
@@ -165,48 +168,7 @@
         </div>
     </form>
 </div>
-
-<!--modal code for making a student a new user-->
-
-
-<!--<div class="modal fade " id="modalRegisterChildUser" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"-->
-<!--     aria-hidden="true">-->
-
-
-<!--        <div class="modal-dialog p-2 modal-sm" role="document">-->
-<!--            <div class="modal-content">-->
-<!--                <div class="modal-header text-center">-->
-<!--                    <h3>Child Registration</h3>-->
-<!--                    <h4 class="modal-title w-100 font-weight-bold">Student id:  <span th:text="${studentId}"></span></h4>-->
-<!--                    <h4 class="modal-title w-100 font-weight-bold">First Name:  <span th:text="${firstName}"></span></h4>-->
-<!--                    <h4 class="modal-title w-100 font-weight-bold">Last Name:  <span th:text="${lastName}"></span></h4>-->
-<!--                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
-<!--                        <span aria-hidden="true">&times;</span>-->
-<!--                    </button>-->
-<!--                </div>-->
-<!--                <form th:action="@{/register-child2}" method="POST" th:object="${user}">-->
-<!--                <div class="modal-body mx-3">-->
-<!--                    <div class="md-form mb-4">-->
-<!--                        <input th:field="*{username}" id="username" class="form-control validate" name="username"/>-->
-<!--                        <label data-error="wrong" data-success="right" for="username">Username</label>-->
-<!--                        <br>-->
-<!--                        <input th:field="*{password}" id="password" class="form-control validate" name="password"/>-->
-<!--                        <label data-error="wrong" data-success="right" for="password">Password</label>-->
-<!--                        <br>-->
-<!--                        <input type="password" id="confirmPassword" class="form-control validate" name="confirmPassword"/>-->
-<!--                        <label data-error="wrong" data-success="right" for="confirmPassword">Confirm Password</label>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                <div class="modal-footer d-flex justify-content-center">-->
-<!--                    &lt;!&ndash;                <div class="modal-footer ">&ndash;&gt;-->
-<!--                    <button type="submit" class="btn btn-primary"> Submit </button>-->
-<!--                </div>-->
-<!--                </form>-->
-<!--            </div>-->
-<!--        </div>-->
-
-<!--</div>-->
-<!--</div>-->
+<footer th:replace="partials/footer :: footer"></footer>
 
 <!--    bootstrap js-->
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
