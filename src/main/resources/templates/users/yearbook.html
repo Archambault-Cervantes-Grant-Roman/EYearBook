@@ -75,7 +75,7 @@
             <input id="rightArrow" value="RIGHT" type="button" class="turn-page"/>
 
 
-            <div id="magazine" class="">
+            <div id="magazine" class="zoom">
                 <!--                cover-->
                 <div class="rotate" style="background-image:url(https://cdn.filestackcontent.com/ZBmfxl2lT4iDUpg23TH5
 );"></div>
@@ -165,7 +165,7 @@
             function setZoom(zoom, e) {
 
                 transformOrigin = [0, 0];
-                e = e || instance.getContainer();
+                e = e || instance.getElementsByClassName(zoom);
                 var p = ["webkit", "moz", "ms", "o"],
                     s = "scale(" + zoom + ")",
                     oString = (transformOrigin[0] * 100) + "% " + (transformOrigin[1] * 100) + "%";
@@ -182,7 +182,7 @@
 
             function showVal(a) {
                 var zoomScale = Number(a) / 10;
-                setZoom(zoomScale, document.getElementsByClassName('container')[0])
+                setZoom(zoomScale, document.getElementsByClassName('zoom')[0])
 
 
             }
