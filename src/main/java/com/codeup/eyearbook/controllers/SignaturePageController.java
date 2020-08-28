@@ -29,19 +29,19 @@ public class SignaturePageController {
     }
 
     @Value("${filestack.api.key}")
-    
+
     private String fsak;
-    
 
-@GetMapping("signature-page")
-public String redirectThisPage (){
+
+    @GetMapping("signature-page")
+    public String redirectThisPage (){
         return "redirect:/";
-}
+    }
 
-//    THIS CURRENTLY PREVENTS A PARENT FROM SEEING THE SIGNATURE PAGE, BUT REDIRECT DOES NOT WORK.  -----
+    //    THIS CURRENTLY PREVENTS A PARENT FROM SEEING THE SIGNATURE PAGE, BUT REDIRECT DOES NOT WORK.  -----
     @GetMapping("/signature-page/{id}")
     public String signatureForm(@PathVariable("id") long profileId,Model model) {
-        
+
         User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         loggedInUser = userDao.getOne(loggedInUser.getId());
 
@@ -51,7 +51,7 @@ public String redirectThisPage (){
         model.addAttribute("signatures", new Signatures());
         String username = pageOwner.getUsername();
         model.addAttribute("username", username);
-        
+
         model.addAttribute("fsak", fsak);
 //psuedo code:  if user id=parent id, allow the parent to see this signature page
 //IF IS PARENT REDIRECT TO HOME PAGE.....
@@ -72,7 +72,7 @@ public String redirectThisPage (){
         User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User profileUser = userDao.getOne(ownerId);
 
-        if(!loggedInUser.getUsername().equals(profileUser.getUsername()) && !profileUser.hasSignature(loggedInUser) && (loggedInUser.isParent())){
+        if(!loggedInUser.getUsername().equals(profileUser.getUsername()) && !profileUser.hasSignature(loggedInUser) && (!loggedInUser.isParent())){
             signatures.setProfile_user(profileUser);
             signatures.setSigner(loggedInUser);
             signatureDao.save(signatures);
