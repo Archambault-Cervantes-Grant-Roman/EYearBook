@@ -111,16 +111,17 @@
 
 
 
-<div class="d-flex justify-content-center h-25" >
+<div class="d-flex justify-content-center h-25 bannerImg" th:style="'background-image: url(' + '${pageOwner.getSign_page_banner_image()}' + ')'" >
 
-    <img class=" max-width: 100%; " th:src="${pageOwner.getSign_page_banner_image()}"/>
+<!--    <img class=" img-thumbnail " th:src="${pageOwner.getSign_page_banner_image()}"/>-->
+<!--    <img class=" max-width: 100%; " th:src="${pageOwner.getSign_page_banner_image()}"/>-->
 <!--    <img height="200px" width="400px" th:src="${pageOwner.getSign_page_banner_image()}"/>-->
 </div>
     <div class="text-center">
-        <h3>Hello, <a th:text="${username}"></a></h3>
+        <h3>HAPPY BIRTHDAY, <a th:text="${username}"></a></h3>
     </div>
 
-
+<h4>YOU'RE SO BEAUTIFUL AND I LOVE YOU!!  TELLING THE WORLD</h4>
     <!--    if luggedInUser{id} not equal to signature-page{id} dont show the following info-->
 
     <div class="d-flex justify-content-center">
