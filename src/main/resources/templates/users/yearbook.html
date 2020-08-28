@@ -1,5 +1,5 @@
 <!doctype html>
-<<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thyme leaf.org/extras/spring-security" lang="en">>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thyme leaf.org/extras/spring-security" lang="en">
 <head>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="/js/turn.js"></script>
@@ -47,47 +47,54 @@
         }
     </style>
 </head>
+
+
 <body th:style="'background: url(/img/cool-background.png)'">
 
+
 <div id="wrapper" class="">
-<div>
+
+
+
+
+
 
 <input id="test" min="1" max="16" value='10' step="1" onchange="showVal(this.value)" type="range"/>
 <input id="rotate"  type="button" value="ROTATE" class="rotateButton"/>
 <input id="leftArrow" value="LEFT" type="button" class="turn-page" />
 <input id="rightArrow" value="RIGHT"  type="button" class="turn-page" />
-<div id="controls">
-    <label for="page-number">Page:</label> <input type="text" size="3" id="page-number"> of <span id="number-pages"></span>
-</div>
+
 
 
             <div id="magazine" class="container yearbook rotate1 d-flex align-items-center">
-                //cover
+<!--                cover-->
     <div class="rotate" style="background-image:url(https://cdn.filestackcontent.com/ZBmfxl2lT4iDUpg23TH5
 );"></div>
-                // white page
+<!--                 white page-->
     <div class="rotate" style="background-image:url(https://cdn.filestackcontent.com/XfPCRH6WQ2CoGnjlmkLO);"></div>
-                // 1 quotes
+<!--                 1 quotes-->
     <div class="rotate" style="background-image:url(https://cdn.filestackcontent.com/ZAgxwuDFSt2F1h071a00);"></div>
-                // 2 socializing
+
+                <!--                 3 sports-->
+                <div class="rotate" style="background-image:url(https://cdn.filestackcontent.com/If9nPUETH2SE8IvsAdgN);"></div>
+                <!--                 2 socializing-->
     <div class="rotate" style="background-image:url(https://cdn.filestackcontent.com/uAE9LSuIQDCLBqMmHJvu);"></div>
-                // 3 sports
-    <div class="rotate" style="background-image:url(https://cdn.filestackcontent.com/If9nPUETH2SE8IvsAdgN);"></div>
-                // 4
+
+<!--                 4-->
     <div class="rotate" style="background-image:url(https://cdn.filestackcontent.com/5z4YHX8ZQW8gVH5owxNb);"></div>
-                // 5
+<!--                 5-->
     <div class="rotate" style="background-image:url(https://cdn.filestackcontent.com/ojCbfodfTx2r2guTjj8Z);"></div>
-                // 6 missing
+<!--                 6 missing-->
 <!--    <div class="rotate" style="background-image:url(https://cdn.filestackcontent.com/uvu5nWE7RnGnFVInAzpI);"></div>-->
-                // 7
+<!--                // 7-->
     <div class="rotate" style="background-image:url(https://cdn.filestackcontent.com/6LBZz6B6QsiMGiUwN7i8);"></div>
-                // 8
+<!--                 8-->
     <div class="rotate" style="background-image:url(https://cdn.filestackcontent.com/5xnDG3OqSvmq2ULt1EB8);"></div>
-                // 9
+<!--                // 9-->
     <div class="rotate" style="background-image:url(https://cdn.filestackcontent.com/klzufXqFS8qc4361iCH6);"></div>
-                // 10
+<!--                 10-->
     <div class="rotate" style="background-image:url(https://cdn.filestackcontent.com/aDFEl9MhR02fSfmqsl3i);"></div>
-                // 11
+<!--                 11-->
     <div class="rotate" style="background-image:url(https://cdn.filestackcontent.com/WKv5diA9Q3atmJtI148I);"></div>
 
     <div class="rotate" style="background-image:url(https://cdn.filestackcontent.com/hPhoy84nSWWU5AG0WOjx);"></div>
@@ -98,7 +105,7 @@
 
 </div>
 </div>
-</div>
+
 
 <script type="text/javascript">
 
@@ -157,20 +164,6 @@
 
     }
 
-    //setZoom(5,document.getElementsByClassName('container')[0]);
-      function RotateYearbook() {
-
-        let div = document.getElementsByClassName('magazine'),
-            deg = rotated ? 0 : 120;
-
-
-        div.style.mozTransform    = 'rotate('+deg+'deg)';
-        div.style.msTransform     = 'rotate('+deg+'deg)';
-        div.style.oTransform      = 'rotate('+deg+'deg)';
-        div.style.transform       = 'rotate('+deg+'deg)';
-
-           rotated = !rotated;
-    }
     function showVal(a){
         var zoomScale = Number(a)/10;
         setZoom(zoomScale,document.getElementsByClassName('container')[0])
@@ -187,7 +180,7 @@
     });
 
 
-    // document.getElementsByClassName("rotate1").style.transform = "rotate(90deg)";
+
 
 </script>
 
