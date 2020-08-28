@@ -12,6 +12,7 @@
     <title>Landing Page</title>
 </head>
 <body>
+<th:block th:insert="partials/topOfPage :: topOfPage"></th:block>
 
 <nav th:replace="partials/navbar :: navbar"/>
 
@@ -60,7 +61,7 @@
 <br>
 <br>
 <br>
-<footer th:replace="partials/footer :: footer" />
+<footer th:replace="partials/footer :: footer"></footer>
 <br>
 </body>
 </html>

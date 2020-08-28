@@ -70,6 +70,8 @@
             console.log(imgUrl);
         })
     }</script>
+<th:block th:insert="partials/topOfPage :: topOfPage"></th:block>
+
 <nav th:replace="partials/navbar :: navbar"/>
 
 
@@ -268,6 +270,7 @@
 </div>
 </div>
 
+<footer th:replace="partials/footer :: footer"></footer>
 
 <!--    bootstrap js-->
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
