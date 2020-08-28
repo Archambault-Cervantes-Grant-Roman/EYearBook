@@ -18,20 +18,23 @@
         <input type="button" value="Clear" id="btnClear" onclick="clearSearch()"/>
     </form>
 </div>
-<div class="mt-5">
-    <div class="col">
-        <div class="card card-body d-flex d-flex align-items-center" th:each="user : ${filteredResults}">
-            <div>
-                <img class="card-img-top card-img" th:src="${user.student.image}" alt="Card image cap" style="">
-            </div>
+<section class="row">
+<div class="container" th:each="user : ${filteredResults}">
+    <div class="">
+        <div class="card profile-card-1" >
 
-                <h1 class="col p-2 m-0" th:text="${user.student.first_name} +' '+ ${user.student.last_name}"></h1>
+                <img class="card-img-top" th:src="${user.student.image}" alt="Card image cap" style="">
 
-            <a class="card-footer" th:href="@{/signature-page/{id}(id=${user.id})}">Link to Signature Page!</a>
+
+                <h2 class="card" th:text="${user.student.first_name} +' '+ ${user.student.last_name}"></h2>
+
+            <a class="card card-footer" th:href="@{/signature-page/{id}(id=${user.id})}">Link to Signature Page!</a>
         </div>
-    </div>
-</div>
 
+    </div>
+
+</div>
+</section>
 
 <script type="text/javascript">
     function clearSearch() {
