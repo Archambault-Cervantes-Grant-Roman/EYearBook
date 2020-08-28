@@ -1,0 +1,33 @@
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    position: fixed;
+    height: 200px;
+    background-color: #999999;
+}
+footer ul.footerleft{
+    margin-left: 150px;
+    margin-top: 10px;
+}
+footer ul.footerleft li{
+    display: inline;
+    margin-right: 25px;
+}
+footer a{
+    color: #222;
+}
+
+footer a:hover{
+    color: #ffffff;
+    text-decoration: none;
+}
+.social:hover {
+    -webkit-transform: scale(1.0);
+    -webkit-transition-duration: 0.5s;
+}
+.social {
+    -webkit-transform: scale(0.8);
+    color: #222;
+
+}
