@@ -51,10 +51,8 @@
 /************************************************************/
 
 .p-profile-page {
-        /*background: url("img/benedikt-geyer-wkRT7FHQEmE-unsplash.jpg") no-repeat center center fixed;*/
-    background: url("img/happy-birthday.webp") no-repeat center center fixed;
-
-    -webkit-background-size: cover;
+        background: url("img/benedikt-geyer-wkRT7FHQEmE-unsplash.jpg") no-repeat center center fixed;
+        -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;
         background-size: cover;
