@@ -4,10 +4,9 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
           integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <title>View Students</title>
+    <link rel="stylesheet" href="/search.css">
 </head>
 <body>
-<th:block th:insert="partials/topOfPage :: topOfPage"></th:block>
-
 <nav th:replace="partials/navbar :: navbar"/>
 <div class="container mt-5">
     <h1>Showing Students</h1>
@@ -18,31 +17,29 @@
         &nbsp;
         <input type="button" value="Clear" id="btnClear" onclick="clearSearch()"/>
     </form>
-    <div class="row mt-5">
-        <div class="col">
-            <div class="card" th:each="user : ${filteredResults}">
-                <img class="card-img-top card-img" th:src="${user.student.image}" alt="Card image cap" style="width: 200px; height: 200px;">
-                <h1 class="card" th:text="${user.student.first_name} +' '+ ${user.student.last_name}"></h1>
-                <a class="card" th:href="@{/signature-page/{id}(id=${user.id})}">Link to Signature Page!</a>
-
-<!--                <div class="card-body mb-2" th:each="student : ${listStudents}">-->
-<!--                    <div class="card-body">-->
-<!--                        <img class="card-img-top card-img" th:src="${student.image}" alt="Card image cap">-->
-<!--                        <h5 class="card-title" th:text="${student.first_name} +' '+ ${student.last_name}"></h5>-->
-<!--                        <h5 class="card-title" th:text="${user.id}"></h5>-->
-<!--                    </div>-->
-<!--                </div>-->
-            </div>
-        </div>
-    </div>
 </div>
+<section class="row">
+<div class="container" th:each="user : ${filteredResults}">
+    <div class="">
+        <div class="card profile-card-1" >
+
+                <img class="card-img-top" th:src="${user.student.image}" alt="Card image cap" style="">
+
+
+                <h2 class="card" th:text="${user.student.first_name} +' '+ ${user.student.last_name}"></h2>
+
+            <a class="card card-footer" th:href="@{/signature-page/{id}(id=${user.id})}">Link to Signature Page!</a>
+        </div>
+
+    </div>
+
+</div>
+</section>
 
 <script type="text/javascript">
     function clearSearch() {
         window.location = "[[@{/search}]]";
     }
 </script>
-<footer th:replace="partials/footer :: footer"></footer>
-
 </body>
 </html>
