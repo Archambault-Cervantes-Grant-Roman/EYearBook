@@ -12,6 +12,7 @@
     <title>Landing Page</title>
 </head>
 <body>
+<th:block th:insert="partials/topOfPage :: topOfPage"></th:block>
 
 <nav th:replace="partials/navbar :: navbar"/>
 
@@ -48,6 +49,8 @@
 </div>
 <br>
 <br>
+<br>
+
 <div class="container">
     <div class="container body">
         <h1 class="d-flex justify-content-center"><i class="far fa-eye"></i></h1>
@@ -60,7 +63,7 @@
 <br>
 <br>
 <br>
-<footer th:replace="partials/footer :: footer" />
+<footer th:replace="partials/footer :: footer"></footer>
 <br>
 </body>
 </html>

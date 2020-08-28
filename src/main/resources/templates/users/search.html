@@ -6,6 +6,8 @@
     <title>View Students</title>
 </head>
 <body>
+<th:block th:insert="partials/topOfPage :: topOfPage"></th:block>
+
 <nav th:replace="partials/navbar :: navbar"/>
 <div class="container mt-5">
     <h1>Showing Students</h1>
@@ -40,5 +42,7 @@
         window.location = "[[@{/search}]]";
     }
 </script>
+<footer th:replace="partials/footer :: footer"></footer>
+
 </body>
 </html>

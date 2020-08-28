@@ -49,6 +49,15 @@
 
 /*PARENT-PROFILE PAGE*/
 /************************************************************/
+
+.p-profile-page {
+        background: url("img/benedikt-geyer-wkRT7FHQEmE-unsplash.jpg") no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+}
+
 .sidenavP {
     height: 100%; /* Full-height: remove this if you want "auto" height */
     width: 200px; /* Set the width of the sidebar */
@@ -56,7 +65,7 @@
     z-index: 1; /* Stay on top */
     top: 90px; /* from the top */
     left: 10px;
-    background-color: rgb(191, 154, 151); /* dull pink */
+    background-color: lightblue; /* dull pink */
     overflow-x: hidden; /* Disable horizontal scroll */
     padding-top: 20px;
 }
