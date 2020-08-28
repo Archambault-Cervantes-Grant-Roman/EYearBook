@@ -1,4 +1,11 @@
-
+/*body, html {*/
+/*    background: url("img/john-schnobrich-2FPjlAyMQTA-unsplash.jpg") no-repeat center center fixed;*/
+/*    background: url("img/moren-hsu-VLaKsTkmVhk-unsplash.jpg") no-repeat center center fixed;*/
+/*    -webkit-background-size: cover;*/
+/*    -moz-background-size: cover;*/
+/*    -o-background-size: cover;*/
+/*    background-size: cover;*/
+/*}*/
 
 .jumbotron-fluid {
     background-image: url("img/Screen Shot 2020-08-27 at 9.22.21 AM.png");
@@ -10,21 +17,15 @@
 /*}*/
 
 h4 {
-    font-family: 'Bebas Neue', cursive;
+    font-family: 'Yatra One', Times, serif;
+    color: black;
+    font-weight: bolder;
 }
-
-/*#title {*/
-/*    color: ghostwhite;*/
-/*}*/
 
 .fas, .far {
     color: #007bff;
 }
 
-/*h1 {*/
-/*    font-weight: bold;*/
-/*    font-family: 'Patua One', serif;*/
-/*    background: -webkit-linear-gradient(springgreen, forestgreen);*/
-/*    -webkit-background-clip: text;*/
-/*    -webkit-text-fill-color: transparent;*/
-/*}*/
+h1 {
+    font-family: 'Yatra One', Times, serif;
+}

@@ -9,63 +9,30 @@
           integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="/edit-profile.css"/>
     <title>Edit Profile</title>
 </head>
 <body>
 
 <nav th:replace="partials/navbar :: navbar" />
 
-        <div class="col">
-            <div class="row">
-                <div class="col mb-3">
+<!--        <div class="col">-->
+            <div class="container">
+                <div class="d-flex justify-content-center h-100">
                     <div class="card">
                         <div class="card-body">
                             <div class="e-profile">
                                 <div class="row">
-<!--                                    <div class="col-12 col-sm-auto mb-3">-->
-<!--                                        <div class="mx-auto" style="width: 140px;">-->
-<!--                                            <div class="d-flex justify-content-center align-items-center rounded" style="height: 140px; background-color: rgb(233, 236, 239);">-->
-<!--                                                <span style="color: rgb(166, 168, 170); font: bold 8pt Arial;">140x140</span>-->
-<!--                                            </div>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!--                                    <div class="col d-flex flex-column flex-sm-row justify-content-between mb-3">-->
-<!--                                        <div class="text-center text-sm-left mb-2 mb-sm-0">-->
-<!--                                            <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap"></h4>-->
-<!--                                            <div class="mt-2">-->
-<!--                                                <button class="btn btn-primary" type="button">-->
-<!--                                                    <i class="fa fa-fw fa-camera"></i>-->
-<!--                                                    <span>Change Photo</span>-->
-<!--                                                </button>-->
-<!--                                            </div>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
                                 </div>
                                 <div class="tab-content pt-3">
                                     <div class="tab-pane active">
 
                                         <form th:action="@{editUser}" th:method="post"  class="form"  th:object="${user}">
 
-                                            <input type="text" th:field="*{id}">
-                                       
+<!--                                            <input type="text" th:field="*{id}">-->
+
                                             <div class="row  d-flex justify-content-center">
                                                 <div class="col-12 col-sm-6 mb-3">
-<!--                                                    <div class="row">-->
-<!--                                                        <div class="col">-->
-<!--                                                            <div class="form-group">-->
-<!--                                                                <label>First Name</label>-->
-<!--                                                                <input class="form-control" type="text" name="name" placeholder="John" value="John">-->
-<!--                                                            </div>-->
-<!--                                                        </div>-->
-<!--                                                    </div>-->
-<!--                                                    <div class="row">-->
-<!--                                                        <div class="col">-->
-<!--                                                            <div class="form-group">-->
-<!--                                                                <label>Last Name</label>-->
-<!--                                                                <input class="form-control" type="text" name="name" placeholder="Smith" value="Smith">-->
-<!--                                                            </div>-->
-<!--                                                        </div>-->
-<!--                                                    </div>-->
                                                     <div class="row">
                                                         <div class="col">
                                                             <div class="form-group">
@@ -118,7 +85,7 @@
 
         </div>
     </div>
-</div>
+<!--</div>-->
 
 
 </body>

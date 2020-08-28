@@ -14,7 +14,7 @@
 
     <title>Parent Profile Page</title>
 </head>
-<body>
+<body class="p-profile-page">
 <nav th:replace="partials/navbar :: navbar"/>
 
 
@@ -55,8 +55,13 @@
 <div class="container-fluid container w-75 ">
     <div class="main">
         <h3 class="text-center">Your Childs Comments:</h3>
-
-        <div class="card mb-3 " >
+<br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="card mb-3" >
                 <div class="col-12" th:each="child : ${children}">
             <div>
                     <div class="card-body" th:each="userSignature : ${child.userSignatures}">
