@@ -58,23 +58,22 @@
 <div class="container-fluid container w-75 ">
     <div class="main">
         <h3 class="text-center">Your Childs Comments:</h3>
-<<<<<<< HEAD
-
         <br>
-=======
-<br>
->>>>>>> 06ef948d316a46b7e1b333878b0e78fcb99b01fb
+        <br>
+
         <div class="card mb-3" >
                 <div class="col-12" th:each="child : ${children}">
             <div>
                     <div class="card-body" th:each="userSignature : ${child.userSignatures}">
                         <div class="row border no-gutters">
                             <div class="col-sm-7">
-                                <div class="card-body" id="userChildPostedOn">Posted on <span
-                                        th:text="${userSignature.profile_user.username}">'s page:</span>
-                                    <div class="card-text" id="commentChildPosted"><span
-                                            th:text="${userSignature.yearbook_comment}"></span></div>
-                                </div>
+<!--                                <div class="card-body" id="userChildPostedOn" ">, posted on <span-->
+<!--                                        th:text="${userSignature.profile_user.username}">'s page:</span>-->
+<!--                                    <div class="card-text" id="commentChildPosted"><span-->
+<!--                                            th:text="${userSignature.yearbook_comment}"></span></div>-->
+<!--                                </div>-->
+                                <h3><a th:text="${child.username}"></a> posted on <a th:text="${userSignature.profile_user.username}"></a>'s profile</h3>
+                                <h3><a th:text="${userSignature.yearbook_comment}"></a></h3>
                             </div>
                         </div>
                     </div>
