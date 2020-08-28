@@ -74,7 +74,12 @@
 <nav th:replace="partials/navbar :: navbar"/>
 
 
+
+<div class="d-flex justify-content-center" style="width: 100%; height: 200px;">
+    <img th:src="${pageOwner.student.image}"/>
+</div>
 <!--side nav bar-->
+
 <div class="sidenav">
 
     <a href="/search">Search Registered Student</a>
