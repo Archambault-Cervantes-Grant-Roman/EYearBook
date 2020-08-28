@@ -53,9 +53,13 @@ public class StudentSearchController {
 //                filteredResults = students;
             for (User user: students) {
 
+                    String studentFirstName = user.getStudent().getFirst_name();
+                    String studentLastName = user.getStudent().getLast_name();
+
+
 //                if      (keyword != null) {
                     System.out.println(keyword);
-                    if (user.getUsername().equals(keyword) || (user.getStudent().getFirst_name().equals(keyword))) {
+                    if (user.getUsername().equals(keyword) || studentFirstName.equalsIgnoreCase(keyword) || studentLastName.equalsIgnoreCase(keyword) ) {
                         filteredResults.add(user);
                     }
 //                    else {
