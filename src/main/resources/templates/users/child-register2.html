@@ -8,7 +8,7 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
             integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
     <!--    css styling-->
-    <link href="/eyearbook.css" type="text/css" rel="stylesheet"/>
+    <link href="/edit-profile.css" type="text/css" rel="stylesheet"/>
     <meta charset="UTF-8">
     <head>
         <meta charset="UTF-8">
@@ -28,37 +28,49 @@
                 <h4>Last Name <span th:text="${lastName}"></span>:</h4>
 
                 <div class="card-body">
-<!--   <form th:action="@{/register-child}" method="POST">-->
+                    <!--   <form th:action="@{/register-child}" method="POST">-->
                     <form th:action="@{/child-register2}" method="POST" th:object="${user}">
                         <input th:type="hidden" th:name="studentId" th:value="${studentId}"/>
-<!--                        <input class="text-hide" id="studentId" th:field="*{student.student_id}"/>-->
-                        <div class="input-group form-group">
-                            <div class="input-group-prepend">
-                                <label class="input-group-text bg-info text-white" for="username">Username</label>
+                        <!--                        <input class="text-hide" id="studentId" th:field="*{student.student_id}"/>-->
+                        <div class="row d-flex justify-content-center">
+                            <div class="col-12 col-sm-6 mb-3">
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label> Username</label>
+                                            <input class="form-control" id="username" th:field="*{username}"/>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-
-                            <input class="form-control" id="username" th:field="*{username}"/>
-                        </div>
-
-                        <div class="input-group form-group">
-                            <div class="input-group-prepend">
-                                <label class="input-group-text bg-info text-white" for="password">Password</label>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="password">Password</label>
+                                        <input class="form-control" id="password" type="password"
+                                               th:field="*{password}">
+                                    </div>
+                                </div>
                             </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label class="input-group-text bg-info text-white" for="confirmPassword">Confirm
+                                            Password</label>
 
-                            <input class="form-control" id="password" type="password" th:field="*{password}"/>
-                        </div>
 
-                        <div class="input-group form-group">
-                            <div class="input-group-prepend">
-                                <label class="input-group-text bg-info text-white" for="confirmPassword">Confirm Password</label>
+                                        <input class="form-control" type="password" name="confirmPassword"
+                                               id="confirmPassword"/>
+                                             <input id="isParent" type="hidden" name="isParent" th:value="0"/>
+                                    </div>
+                                </div>
                             </div>
-                            <input class="form-control" type="password" name="confirmPassword" id="confirmPassword"/>
-                            <input id="isParent" type="hidden" name="isParent" th:value="0"/>
-                        </div>
-                        <input  id="parentId" type="hidden"  name="parentId" th:field="*{parent_id}"/>
-                        <div class="form-group">
-                            <input class="btn float-right login_btn bg-primary text-white" value="Register my child!"
-                                   type="submit"/>
+                            <input id="parentId" type="hidden" name="parentId" th:field="*{parent_id}"/>
+                            <div class="form-group">
+                                <input class="btn float-right login_btn bg-primary text-white"
+                                       value="Register my child!"
+                                       type="submit"/>
+                            </div>
                         </div>
 
                     </form>
@@ -76,6 +88,7 @@
                                     confirmPassword.setCustomValidity('');
                                 }
                             }
+
                             password.onchange = validatePassword;
                             confirmPassword.onkeyup = validatePassword;
                         });
