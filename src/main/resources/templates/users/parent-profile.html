@@ -58,11 +58,7 @@
 <div class="container-fluid container w-75 ">
     <div class="main">
         <h3 class="text-center">Your Childs Comments:</h3>
-<br>
-        <br>
-        <br>
-        <br>
-        <br>
+
         <br>
         <div class="card mb-3" >
                 <div class="col-12" th:each="child : ${children}">
@@ -83,10 +79,6 @@
 
                 <div class="col-md-8">
                     <div class="card-body">
-                        <h5 class="card-title">NAME OF THE CHILD COMMENT WAS POSTED TO</h5>
-                        <p class="card-text">Sample of signing a yearbook. "Have a great summer!"</p>
-                        <p class="card-text"><small class="text-muted">created at ?? </small></p>
-
                         <ul>
                             <li class="col-12" th:each="comment : ${user.userSignatures}">
                                 <h2> Comment: <span th:text="${comment.yearbook_comment}"></span></h2>
