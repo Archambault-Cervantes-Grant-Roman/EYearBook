@@ -1,7 +1,7 @@
 <!doctype html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thyme leaf.org/extras/spring-security" lang="en">
 <head>
-<!--    <link th:href="@{/eyearbook.css}" rel="stylesheet"/>-->
+    <!--    <link th:href="@{/eyearbook.css}" rel="stylesheet"/>-->
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
           integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
@@ -9,39 +9,43 @@
     <script type="text/javascript" src="/js/turn.js"></script>
 
 
-<!--<script> alert("Test");</script>-->
+    <!--<script> alert("Test");</script>-->
     <style type="text/css">
-        body{
-            margin:0;
-            overflow:hidden;
+        body {
+            margin: 0;
+            overflow: hidden;
             /*background-image: url("static/img/cool-background.png");*/
 
         }
-        .wrapper{
-            transform: rotate(90deg);
-            transform-origin:bottom left;
 
-            position:absolute;
+        .wrapper {
+            transform: rotate(90deg);
+            transform-origin: bottom left;
+
+            position: absolute;
             top: -100vw;
             left: 0;
 
-            height:100vw;
-            width:100vh;
+            height: 100vw;
+            width: 100vh;
 
-            background-color:#000;
-            color:#fff;
+            background-color: #000;
+            color: #fff;
 
-            overflow:auto;
+            overflow: auto;
         }
-        #magazine{
-            width:1152px;
-            height:752px;
+
+        #magazine {
+            width: 1152px;
+            height: 752px;
         }
-        #magazine .turn-page{
-            background-color:#ccc;
-            background-size:100% 100%;
+
+        #magazine .turn-page {
+            background-color: #ccc;
+            background-size: 100% 100%;
         }
-        #magazine, #rotate1{
+
+        #magazine, #rotate1 {
             -webkit-transform: rotate(90deg);
             -moz-transform: rotate(90deg);
             -o-transform: rotate(90deg);
@@ -56,145 +60,144 @@
 
 <body th:style="'background: url(/img/cool-background.png)'">
 
-<div id="wrapper" class="">
-<div>
-
-
-
-<body th:style="'background: url(/img/cool-background.png)'">
-
-
-<div id="wrapper" class="">
 
 
 
 
 
 
-<input id="test" min="1" max="16" value='10' step="1" onchange="showVal(this.value)" type="range"/>
-<input id="rotate"  type="button" value="ROTATE" class="rotateButton"/>
-<input id="leftArrow" value="LEFT" type="button" class="turn-page" />
-<input id="rightArrow" value="RIGHT"  type="button" class="turn-page" />
+        <div id="wrapper" class="">
 
 
+            <input id="test" min="1" max="16" value='10' step="1" onchange="showVal(this.value)" type="range"/>
+            <input id="rotate" type="button" value="ROTATE" class="rotateButton"/>
+            <input id="leftArrow" value="LEFT" type="button" class="turn-page"/>
+            <input id="rightArrow" value="RIGHT" type="button" class="turn-page"/>
 
-            <div id="magazine" class="container yearbook rotate1 d-flex align-items-center">
-<!--                cover-->
-    <div class="rotate" style="background-image:url(https://cdn.filestackcontent.com/ZBmfxl2lT4iDUpg23TH5
+
+            <div id="magazine" class="">
+                <!--                cover-->
+                <div class="rotate" style="background-image:url(https://cdn.filestackcontent.com/ZBmfxl2lT4iDUpg23TH5
 );"></div>
-<!--                 white page-->
-    <div class="rotate" style="background-image:url(https://cdn.filestackcontent.com/XfPCRH6WQ2CoGnjlmkLO);"></div>
-<!--                 1 quotes-->
-    <div class="rotate" style="background-image:url(https://cdn.filestackcontent.com/ZAgxwuDFSt2F1h071a00);"></div>
+                <!--                 white page-->
+                <div class="rotate"
+                     style="background-image:url(https://cdn.filestackcontent.com/XfPCRH6WQ2CoGnjlmkLO);"></div>
+                <!--                 1 quotes-->
+                <div class="rotate"
+                     style="background-image:url(https://cdn.filestackcontent.com/ZAgxwuDFSt2F1h071a00);"></div>
 
                 <!--                 3 sports-->
-                <div class="rotate" style="background-image:url(https://cdn.filestackcontent.com/If9nPUETH2SE8IvsAdgN);"></div>
+                <div class="rotate"
+                     style="background-image:url(https://cdn.filestackcontent.com/If9nPUETH2SE8IvsAdgN);"></div>
                 <!--                 2 socializing-->
-    <div class="rotate" style="background-image:url(https://cdn.filestackcontent.com/uAE9LSuIQDCLBqMmHJvu);"></div>
+                <div class="rotate"
+                     style="background-image:url(https://cdn.filestackcontent.com/uAE9LSuIQDCLBqMmHJvu);"></div>
 
-<!--                 4-->
-    <div class="rotate" style="background-image:url(https://cdn.filestackcontent.com/5z4YHX8ZQW8gVH5owxNb);"></div>
-<!--                 5-->
-    <div class="rotate" style="background-image:url(https://cdn.filestackcontent.com/ojCbfodfTx2r2guTjj8Z);"></div>
-<!--                 6 missing-->
-<!--    <div class="rotate" style="background-image:url(https://cdn.filestackcontent.com/uvu5nWE7RnGnFVInAzpI);"></div>-->
-<!--                // 7-->
-    <div class="rotate" style="background-image:url(https://cdn.filestackcontent.com/6LBZz6B6QsiMGiUwN7i8);"></div>
-<!--                 8-->
-    <div class="rotate" style="background-image:url(https://cdn.filestackcontent.com/5xnDG3OqSvmq2ULt1EB8);"></div>
-<!--                // 9-->
-    <div class="rotate" style="background-image:url(https://cdn.filestackcontent.com/klzufXqFS8qc4361iCH6);"></div>
-<!--                 10-->
-    <div class="rotate" style="background-image:url(https://cdn.filestackcontent.com/aDFEl9MhR02fSfmqsl3i);"></div>
-<!--                 11-->
-    <div class="rotate" style="background-image:url(https://cdn.filestackcontent.com/WKv5diA9Q3atmJtI148I);"></div>
+                <!--                 4-->
+                <div class="rotate"
+                     style="background-image:url(https://cdn.filestackcontent.com/5z4YHX8ZQW8gVH5owxNb);"></div>
+                <!--                 5-->
+                <div class="rotate"
+                     style="background-image:url(https://cdn.filestackcontent.com/ojCbfodfTx2r2guTjj8Z);"></div>
 
-    <div class="rotate" style="background-image:url(https://cdn.filestackcontent.com/hPhoy84nSWWU5AG0WOjx);"></div>
+                <div class="rotate"
+                     style="background-image:url(https://cdn.filestackcontent.com/6LBZz6B6QsiMGiUwN7i8);"></div>
+                <!--                 8-->
+                <div class="rotate"
+                     style="background-image:url(https://cdn.filestackcontent.com/5xnDG3OqSvmq2ULt1EB8);"></div>
+                <!--                // 9-->
+                <div class="rotate"
+                     style="background-image:url(https://cdn.filestackcontent.com/klzufXqFS8qc4361iCH6);"></div>
+                <!--                 10-->
+                <div class="rotate"
+                     style="background-image:url(https://cdn.filestackcontent.com/aDFEl9MhR02fSfmqsl3i);"></div>
+                <!--                 11-->
+                <div class="rotate"
+                     style="background-image:url(https://cdn.filestackcontent.com/WKv5diA9Q3atmJtI148I);"></div>
 
-    <div class="rotate" style="background-image:url(https://cdn.filestackcontent.com/ncu5kzCQWWOv273H1xyw);"></div>
+                <div class="rotate"
+                     style="background-image:url(https://cdn.filestackcontent.com/hPhoy84nSWWU5AG0WOjx);"></div>
+
+                <div class="rotate"
+                     style="background-image:url(https://cdn.filestackcontent.com/ncu5kzCQWWOv273H1xyw);"></div>
 
 
+            </div>
+        </div>
 
-</div>
-</div>
+
+        <script type="text/javascript">
+
+            $(window).ready(function () {
+                $('#magazine').turn({
+                    display: 'double',
+                    acceleration: true,
+                    gradients: !$.isTouch,
+                    elevation: 50,
+                    when: {
+                        turned: function (e, page) {
+                            /*console.log('Current view: ', $(this).turn('view'));*/
+                        }
+                    }
+                });
+            });
 
 
-<script type="text/javascript">
+            $(window).bind('keydown', function (e) {
 
-    $(window).ready(function() {
-        $('#magazine').turn({
-            display: 'double',
-            acceleration: true,
-            gradients: !$.isTouch,
-            elevation:50,
-            when: {
-                turned: function(e, page) {
-                    /*console.log('Current view: ', $(this).turn('view'));*/
+                if (e.keyCode == 37)
+                    $('#magazine').turn('previous');
+                else if (e.keyCode == 39)
+                    $('#magazine').turn('next');
+
+            });
+            $('#leftArrow').click(function () {
+
+                $('#magazine').turn('previous');
+
+            });
+
+            $('#rightArrow').click(function () {
+                $('#magazine').turn('next');
+            });
+
+
+            function setZoom(zoom, e) {
+
+                transformOrigin = [0, 0];
+                e = e || instance.getContainer();
+                var p = ["webkit", "moz", "ms", "o"],
+                    s = "scale(" + zoom + ")",
+                    oString = (transformOrigin[0] * 100) + "% " + (transformOrigin[1] * 100) + "%";
+
+                for (var i = 0; i < p.length; i++) {
+                    e.style[p[i] + "Transform"] = s;
+                    e.style[p[i] + "TransformOrigin"] = oString;
                 }
+
+                el.style["transform"] = s;
+                el.style["transformOrigin"] = oString;
+
             }
-        });
-    });
+
+            function showVal(a) {
+                var zoomScale = Number(a) / 10;
+                setZoom(zoomScale, document.getElementsByClassName('container')[0])
 
 
-    $(window).bind('keydown', function(e){
+            }
 
-        if (e.keyCode==37)
-            $('#magazine').turn('previous');
-        else if (e.keyCode==39)
-            $('#magazine').turn('next');
+            function rotateImage() {
+                var img = document.getElementById('rotate2');
+                img.style.transform = 'rotate(180deg)';
+            }
 
-    });
-    $('#leftArrow').click( function(){
-
-            $('#magazine').turn('previous');
-
-    });
-
-    $('#rightArrow').click( function(){
-        $('#magazine').turn('next');
-    });
+            $("#rotate").on('click', function () {
+                $("#wrapper").toggleClass("wrapper");
+            });
 
 
+        </script>
 
-
-
-    function setZoom(zoom,e) {
-
-        transformOrigin = [0,0];
-        e = e || instance.getContainer();
-        var p = ["webkit", "moz", "ms", "o"],
-            s = "scale(" + zoom + ")",
-            oString = (transformOrigin[0] * 100) + "% " + (transformOrigin[1] * 100) + "%";
-
-        for (var i = 0; i < p.length; i++) {
-            e.style[p[i] + "Transform"] = s;
-            e.style[p[i] + "TransformOrigin"] = oString;
-        }
-
-        el.style["transform"] = s;
-        el.style["transformOrigin"] = oString;
-
-    }
-
-    function showVal(a){
-        var zoomScale = Number(a)/10;
-        setZoom(zoomScale,document.getElementsByClassName('container')[0])
-
-
-    }
-    function rotateImage() {
-        var img = document.getElementById('rotate2');
-        img.style.transform = 'rotate(180deg)';
-    }
-
-    $("#rotate").on('click', function(){
-        $("#wrapper").toggleClass("wrapper");
-    });
-
-
-
-
-</script>
-
-</body>
+        </body>
 </html>
