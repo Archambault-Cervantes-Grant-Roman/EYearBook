@@ -12,6 +12,7 @@
     <title>Edit Profile</title>
 </head>
 <body>
+<th:block th:insert="partials/topOfPage :: topOfPage"></th:block>
 
 <nav th:replace="partials/navbar :: navbar" />
 
@@ -46,7 +47,7 @@
 
                                         <form th:action="@{editUser}" th:method="post"  class="form"  th:object="${user}">
 
-                                            <input type="text" th:field="*{id}">
+                                            <input type="hidden" th:field="*{id}">
                                        
                                             <div class="row  d-flex justify-content-center">
                                                 <div class="col-12 col-sm-6 mb-3">
@@ -119,6 +120,7 @@
         </div>
     </div>
 </div>
+<footer th:replace="partials/footer :: footer"></footer>
 
 
 </body>

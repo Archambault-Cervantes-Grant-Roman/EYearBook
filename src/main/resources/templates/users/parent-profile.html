@@ -15,6 +15,8 @@
     <title>Parent Profile Page</title>
 </head>
 <body>
+<th:block th:insert="partials/topOfPage :: topOfPage"></th:block>
+
 <nav th:replace="partials/navbar :: navbar"/>
 
 
@@ -160,6 +162,7 @@
         </div>
     </form>
 </div>
+<footer th:replace="partials/footer :: footer"></footer>
 
 <!--modal code for making a student a new user-->
 
