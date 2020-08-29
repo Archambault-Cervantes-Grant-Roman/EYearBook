@@ -17,56 +17,53 @@
     <div class="d-flex justify-content-center h-100">
         <div class="card">
             <div class="card-header">
-                <h3 class="d-flex justify-content-center">Parent Register Form</h3>
+                <h2 class="d-flex justify-content-center">Parent Register Form</h2>
             </div>
 
             <div class="card-body">
                 <form th:action="@{/sign-up}" method="POST" th:object="${user}">
-                    <div class="input-group form-group">
-                        <div class="input-group-prepend">
-                            <label class="input-group-text bg-info text-white" for="username">Username</label>
+                    <div class="container">
+                        <div class="form-group">
+                            <label class="input-group" for="username">Username</label>
+                            <input class="form-control" id="username" th:field="*{username}"/>
                         </div>
-                        <input class="form-control" id="username" th:field="*{username}"/>
                     </div>
-
-                    <div class="input-group form-group">
-                        <div class="input-group-prepend">
-                            <label class="input-group-text bg-info text-white" for="email">Email</label>
+                    <div class="container">
+                        <div class="form-group">
+                            <label class="input-group" for="email">Email</label>
+                            <input class="form-control" id="email" th:field="*{email}"/>
                         </div>
-                        <input class="form-control" id="email" th:field="*{email}"/>
                     </div>
-
-                    <div class="input-group form-group">
-                        <div class="input-group-prepend">
-                            <label class="input-group-text bg-info text-white" for="password">Password</label>
+                    <div class="container">
+                        <div class="form-group">
+                            <label class="input-group" for="password">Password</label>
+                            <input class="form-control" id="password" type="password" th:field="*{password}"/>
                         </div>
-                        <input class="form-control" id="password" type="password" th:field="*{password}"/>
                     </div>
-
-                    <div class="input-group form-group">
-                        <div class="input-group-prepend">
-                            <label class="input-group-text bg-info text-white" for="confirmPassword">Confirm Password</label>
-                        </div>
+                    <div class="container">
+                        <div class="form-group">
+                            <label class="input-group" for="confirmPassword">Confirm Password</label>
                         <input class="form-control" type="password" name="confirmPassword" id="confirmPassword"/>
-                        <input id="isParent" type="hidden" name="isParent" th:value="1" />
+                        <input id="isParent" type="hidden" name="isParent" th:value="1"/>
+                        </div>
                     </div>
-
-                    <div class="form-group">
-                        <input class="btn float-right login_btn bg-primary text-white" value="Sign me up!" type="submit"/>
+                    <div class="col text-center">
+                        <input class="btn login_btn bg-primary text-white" value="Sign me up!" type="submit"/>
                     </div>
-
                 </form>
                 <script>
-                    $('document').ready(function(){
+                    $('document').ready(function () {
                         var password = document.getElementById("password")
                         var confirmPassword = document.getElementById("confirmPassword");
-                        function validatePassword(){
-                            if(password.value !== confirmPassword.value) {
+
+                        function validatePassword() {
+                            if (password.value !== confirmPassword.value) {
                                 confirmPassword.setCustomValidity("Passwords Don't Match");
                             } else {
                                 confirmPassword.setCustomValidity('');
                             }
                         }
+
                         password.onchange = validatePassword;
                         confirmPassword.onkeyup = validatePassword;
                     });

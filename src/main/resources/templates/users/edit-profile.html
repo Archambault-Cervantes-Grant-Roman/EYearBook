@@ -33,17 +33,15 @@
 
                                 <input type="hidden" th:field="*{id}">
 
-                                <div class="row  d-flex justify-content-center">
-                                    <div class="col-12 col-sm-6 mb-3">
-                                        <div class="row">
-                                            <div class="col">
+
+                                <div class="row d-flex justify-content-center">
+                                    <div class="container">
                                                 <div class="form-group">
                                                     <label>New Username</label>
                                                     <input class="form-control" type="text" name="username"
                                                            th:field="*{username}">
                                                 </div>
-                                            </div>
-                                        </div>
+
                                         <div class="row">
                                             <div class="col">
                                                 <div class="form-group">
@@ -57,7 +55,8 @@
                                             <div class="col">
                                                 <div class="form-group">
                                                     <label>New Password</label>
-                                                    <input class="form-control" type="password" placeholder="Password" name="password" th:field="*{password}">
+                                                    <input class="form-control" type="password" placeholder="Password"
+                                                           name="password" th:field="*{password}">
                                                 </div>
                                             </div>
                                         </div>
@@ -78,9 +77,10 @@
                                            type="submit">Cancel</a>
                                     </div>
                                     <div class="col d-flex justify-content-end">
-                                        <button class="btn btn-primary" type="submit">Save Changes</button>
+                                        <button class="btn btn-primary" type="submit">Save</button>
                                     </div>
                                 </div>
+
                             </form>
                         </div>
                     </div>
@@ -90,11 +90,7 @@
     </div>
 </div>
 
-</div>
-</div>
-</div>
 <footer th:replace="partials/footer :: footer"></footer>
-
 
 </body>
 </html>
