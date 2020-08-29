@@ -27,7 +27,7 @@
 <nav th:replace="partials/navbar :: navbar"/>
 
 
-<h1 class="text-center">Username: <span th:text="${user != null} ? ${user.username} : 'user is null'"></span></h1>
+<h1 class="text-center">Welcome <span th:text="${user != null} ? ${user.username} : 'user is null'"></span></h1>
 
 
 <!--SIDE NAVBAR-->
