@@ -8,7 +8,7 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
             integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
     <!--    css styling-->
-    <link href="/edit-profile.css" type="text/css" rel="stylesheet"/>
+    <link href="/register-child.css" type="text/css" rel="stylesheet"/>
     <meta charset="UTF-8">
     <head>
         <meta charset="UTF-8">
@@ -22,10 +22,10 @@
     <div class="d-flex justify-content-center h-100">
         <div class="card">
             <div class="card-header justify-content-center">
-                <h3>Child Registration</h3>
+                <h3 class="text-center">Child Registration</h3>
                 <h4>Student id: <span th:text="${studentId}"></span></h4>
-                <h4>First Name <span th:text="${firstName}"></span>:</h4>
-                <h4>Last Name <span th:text="${lastName}"></span>:</h4>
+                <h4>First Name: <span th:text="${firstName}"></span></h4>
+                <h4>Last Name: <span th:text="${lastName}"></span></h4>
 
                 <div class="card-body">
                     <!--   <form th:action="@{/register-child}" method="POST">-->
@@ -33,19 +33,19 @@
                         <input th:type="hidden" th:name="studentId" th:value="${studentId}"/>
                         <!--                        <input class="text-hide" id="studentId" th:field="*{student.student_id}"/>-->
                         <div class="row d-flex justify-content-center">
-                            <div class="col-12 col-sm-6 mb-3">
+<!--                            <div class="col-12 col-sm-6 mb-3">-->
                                 <div class="row">
                                     <div class="col">
-                                        <div class="form-group">
+                                        <div class="form-group text-center">
                                             <label> Username</label>
                                             <input class="form-control" id="username" th:field="*{username}"/>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+
                             <div class="row">
                                 <div class="col">
-                                    <div class="form-group">
+                                    <div class="form-group text-center">
                                         <label for="password">Password</label>
                                         <input class="form-control" id="password" type="password"
                                                th:field="*{password}">
@@ -54,8 +54,8 @@
                             </div>
                             <div class="row">
                                 <div class="col">
-                                    <div class="form-group">
-                                        <label class="input-group-text bg-info text-white" for="confirmPassword">Confirm
+                                    <div class="form-group text-center">
+                                        <label class="text-white" for="confirmPassword">Confirm
                                             Password</label>
 
 
@@ -72,7 +72,7 @@
                                        type="submit"/>
                             </div>
                         </div>
-
+<!--                        </div>-->
                     </form>
 
 
