@@ -85,11 +85,20 @@ public class UserController {
         long id = loggedInUser.getId();
         user = userDao.getOne(id);
 
-        code = "DX978J3";
+//        code = "DX978J3";
 
         if (code.equals("DX978J3")) {
             user.setOwns_yearbook(true);
+            List<User> children = userDao.findByParent_id(id);
+            for(User child : children){
+                child.setOwns_yearbook(true);
+            }
         }
+
+
+
+
+        System.out.println(user.isOwns_yearbook());
         userDao.save(user);
         boolean isParent = loggedInUser.getIsParent();
         return isParent ? "users/parent-profile" : "redirect:/signature-page/" + id;
@@ -116,55 +125,55 @@ public class UserController {
 
 
 
-        //this is to change username, email, and password
-        @PostMapping("editUser")
-        public String updateUserInfo (@ModelAttribute("user") User user){
-            User loggedIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-            long id = loggedIn.getId();
-            User existing = userDao.getOne(id);
-            existing.setUsername(user.getUsername());
-            existing.setEmail(user.getEmail());
-            String hash = passwordEncoder.encode(user.getPassword());
-            existing.setPassword(hash);
-            userDao.save(existing);
+    //this is to change username, email, and password
+    @PostMapping("editUser")
+    public String updateUserInfo (@ModelAttribute("user") User user){
+        User loggedIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        long id = loggedIn.getId();
+        User existing = userDao.getOne(id);
+        existing.setUsername(user.getUsername());
+        existing.setEmail(user.getEmail());
+        String hash = passwordEncoder.encode(user.getPassword());
+        existing.setPassword(hash);
+        userDao.save(existing);
 
-            return "redirect:/parent-profile";
-        }
+        return "redirect:/parent-profile";
+    }
 
 
-        //*****************---END----PARENT PROFILE PAGE******************************
+    //*****************---END----PARENT PROFILE PAGE******************************
 
 
 //****************CHILD REGISTRATION PART ONE - STUDENT ID********************
 
-            @GetMapping("/register-child")
-            public String childRegister () {
-                Authentication token = SecurityContextHolder.getContext().getAuthentication();
-                boolean AnonCheck = token instanceof AnonymousAuthenticationToken;
-                if (AnonCheck) return "users/login";
-                User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    @GetMapping("/register-child")
+    public String childRegister () {
+        Authentication token = SecurityContextHolder.getContext().getAuthentication();
+        boolean AnonCheck = token instanceof AnonymousAuthenticationToken;
+        if (AnonCheck) return "users/login";
+        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
-                boolean isParent = loggedInUser.getIsParent();
-                return isParent ? "users/register-child" : "/home";
+        boolean isParent = loggedInUser.getIsParent();
+        return isParent ? "users/register-child" : "/home";
 //        return "users/register-child";
-            }
+    }
 
-//APPLYS THE CHILDS INFO ONTO THE CARD FOR PART 2 OF CHILD REGISTRATION**************
-            @PostMapping("/register-child")
-            public String locateByStudentId ( @RequestParam long id, Model model){
+    //APPLYS THE CHILDS INFO ONTO THE CARD FOR PART 2 OF CHILD REGISTRATION**************
+    @PostMapping("/register-child")
+    public String locateByStudentId ( @RequestParam long id, Model model){
 //        Authentication token = SecurityContextHolder.getContext().getAuthentication();
 //        boolean AnonCheck = token instanceof AnonymousAuthenticationToken;
 //        if (AnonCheck) return "users/login";
-                User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
-                loggedInUser.getId();
-                Student s = studentsDao.getByStudent_id(id);
+        loggedInUser.getId();
+        Student s = studentsDao.getByStudent_id(id);
 
-                model.addAttribute("studentId", s.getStudent_id());
-                model.addAttribute("firstName", s.getFirst_name());
-                model.addAttribute("lastName", s.getLast_name());
+        model.addAttribute("studentId", s.getStudent_id());
+        model.addAttribute("firstName", s.getFirst_name());
+        model.addAttribute("lastName", s.getLast_name());
 //        this creates a new user from the student record
-                model.addAttribute("user", new User());
+        model.addAttribute("user", new User());
 //                User childuser = new User();
 //
 //                long parentId = loggedInUser.getId();
@@ -177,26 +186,26 @@ public class UserController {
 //        return !isParent  ? "users/child-register2" : "/home";
 
 
-                return "users/child-register2";
-            }
+        return "users/child-register2";
+    }
 
 
-            @PostMapping("/child-register2")
-            public String saveChildUser (@RequestParam(name="studentId") long studentId, @ModelAttribute User user){
+    @PostMapping("/child-register2")
+    public String saveChildUser (@RequestParam(name="studentId") long studentId, @ModelAttribute User user){
 
 //
-                String hash = passwordEncoder.encode(user.getPassword());
+        String hash = passwordEncoder.encode(user.getPassword());
 //        get the parents id
-                User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-                long parentId = loggedInUser.getId();
-                user.setParent_id(parentId);
-                user.setStudent(studentsDao.getByStudent_id(studentId));
-                user.setPassword(hash);
-                userDao.save(user);
+        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        long parentId = loggedInUser.getId();
+        user.setParent_id(parentId);
+        user.setStudent(studentsDao.getByStudent_id(studentId));
+        user.setPassword(hash);
+        userDao.save(user);
 
 //                System.out.println(studentId);
-                return "redirect:/parent-profile";
-            }
+        return "redirect:/parent-profile";
+    }
 
 
-        }
+}
