@@ -7,6 +7,7 @@ import com.codeup.eyearbook.repositories.StudentRepository;
 import com.codeup.eyearbook.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -43,6 +44,8 @@ public class StudentSearchController {
         List<User> students = new ArrayList<>();
 
         List<User> filteredResults = new ArrayList<>();
+
+        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
         //Controller filter method
         for (User user : users) {
@@ -98,9 +101,12 @@ public class StudentSearchController {
 //        model.addAttribute("listUsers", listUsers);
 //        System.out.println(listStudents);
 //        System.out.println(listStudents);
-                    System.out.println(users.toString());
-                    System.out.println(students.toString());
-                    return "users/search";
+//                    System.out.println(users.toString());
+//                    System.out.println(students.toString());
+        boolean isParent = loggedInUser.getIsParent();
+
+        return !isParent ? "users/search" : "/home";
+//                    return "users/search";
                 }
 
 
