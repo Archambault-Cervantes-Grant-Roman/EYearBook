@@ -22,10 +22,10 @@
     <div class="d-flex justify-content-center h-100">
         <div class="card">
             <div class="card-header justify-content-center">
-                <h3 class="text-center">Child Registration</h3>
-                <h4>Student id: <span th:text="${studentId}"></span></h4>
-                <h4>First Name: <span th:text="${firstName}"></span></h4>
-                <h4>Last Name: <span th:text="${lastName}"></span></h4>
+                <h3 class="text-center py-3">Child Registration</h3>
+                <h4 class="text-center">Student id: <span th:text="${studentId}"></span></h4>
+                <h5 class="text-center">First Name: <span th:text="${firstName}"></span></h5>
+                <h5 class="text-center">Last Name: <span th:text="${lastName}"></span></h5>
 
                 <div class="card-body">
                     <!--   <form th:action="@{/register-child}" method="POST">-->
@@ -33,46 +33,47 @@
                         <input th:type="hidden" th:name="studentId" th:value="${studentId}"/>
                         <!--                        <input class="text-hide" id="studentId" th:field="*{student.student_id}"/>-->
                         <div class="row d-flex justify-content-center">
-<!--                            <div class="col-12 col-sm-6 mb-3">-->
+                            <div class="container">
                                 <div class="row">
                                     <div class="col">
-                                        <div class="form-group text-center">
+                                        <div class="form-group">
                                             <label> Username</label>
                                             <input class="form-control" id="username" th:field="*{username}"/>
                                         </div>
                                     </div>
                                 </div>
 
-                            <div class="row">
-                                <div class="col">
-                                    <div class="form-group text-center">
-                                        <label for="password">Password</label>
-                                        <input class="form-control" id="password" type="password"
-                                               th:field="*{password}">
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label for="password">Password</label>
+                                            <input class="form-control" id="password" type="password"
+                                                   th:field="*{password}">
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col">
-                                    <div class="form-group text-center">
-                                        <label class="text-white" for="confirmPassword">Confirm
-                                            Password</label>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label class="text-white" for="confirmPassword">Confirm
+                                                Password</label>
 
 
-                                        <input class="form-control" type="password" name="confirmPassword"
-                                               id="confirmPassword"/>
-                                             <input id="isParent" type="hidden" name="isParent" th:value="0"/>
+                                            <input class="form-control" type="password" name="confirmPassword"
+                                                   id="confirmPassword"/>
+                                            <input id="isParent" type="hidden" name="isParent" th:value="0"/>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <input id="parentId" type="hidden" name="parentId" th:field="*{parent_id}"/>
-                            <div class="form-group">
-                                <input class="btn float-right login_btn bg-primary text-white"
-                                       value="Register my child!"
-                                       type="submit"/>
+                                <input id="parentId" type="hidden" name="parentId" th:field="*{parent_id}"/>
+                                <div class="form-group text-center">
+                                    <input class="btn login_btn bg-primary text-white"
+                                           value="Register my child!"
+                                           type="submit"/>
+                                </div>
                             </div>
                         </div>
-<!--                        </div>-->
+                        <!--                        </div>-->
                     </form>
 
 
