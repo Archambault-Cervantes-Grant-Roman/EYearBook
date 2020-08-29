@@ -72,5 +72,30 @@
 <footer class="footer">
 <footer th:replace="partials/footer :: footer"></footer>
 </footer>
+
+
 </body>
+<script>
+    $(function(){
+
+        let limit = 0; // 0 = infinite.
+        let interval = 5;// Secs
+        let images = [
+            "http://www.bcat.eu/data/demo/jquery-bg-switcher/links/images/img-slider-1.jpg"
+            ,"https://www.tipsandtricks-hq.com/images/amazing-photos/group1/tips_background_image4.jpg"
+            ,"http://www.kriesi.at/themes/corona/files/2011/09/kode.jpg"
+            ,"http://www.bcat.eu/data/demo/jquery-bg-switcher/links/images/img-slider-2.jpg"
+        ];
+
+        let index = 0;
+        let limitCount = 0;
+        let myInterval = setInterval(function() {
+            if (limit && limitCount >= limit-1) clearTimeout(myInterval);
+            if (index >= images.length) index = 0;
+            $('body').css({ "background-image":"url(" + images[index]+ ")" });
+            index++;
+            limitCount++;
+        }, interval*1000);
+    });
+</script>
 </html>
