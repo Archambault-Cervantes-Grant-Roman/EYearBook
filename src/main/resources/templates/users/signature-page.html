@@ -187,7 +187,7 @@
                                 <img src="" class="card-img" alt="">
                             </div>
                             <div class="col-md-8">
-                                <div th:if="${#authentication.principal.id != pageOwner.id}">
+                                <div th:if="${#authentication.principal.id != pageOwner.parent_id && #authentication.principal.id != pageOwner.id}">
                                     <div class="card-body">
 
                                         <!--                            if loggedInUser{id} equals the signature-page{id} -->
