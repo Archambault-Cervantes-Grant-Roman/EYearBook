@@ -101,7 +101,10 @@ public class UserController {
         System.out.println(user.isOwns_yearbook());
         userDao.save(user);
         boolean isParent = loggedInUser.getIsParent();
-        return isParent ? "users/parent-profile" : "redirect:/signature-page/" + id;
+        // Armando made a change to the redirect 8/28
+        return "redirect:/parent-profile";
+
+//        return isParent ? "users/parent-profile" : "redirect:/signature-page/" + id;
 //        return "redirect:/parent-profile";
     }
 
