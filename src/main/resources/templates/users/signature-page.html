@@ -102,24 +102,24 @@
 
     <!--side nav bar-->
 
-    <div class="sidenav">
-        <div class="text-center">
-<!--            <img  th:src="${pageOwner.student.image}" class="img-thumbnail" alt="avatar">-->
-            <!--        <img  th:src="${pageOwner.student.image}" height="200px" width="200px"  alt="avatar">-->
-        </div>
-        <a href="/search">Search Registered Student</a>
+<!--    <div class="sidenav">-->
+<!--        <div class="text-center">-->
+<!--&lt;!&ndash;            <img  th:src="${pageOwner.student.image}" class="img-thumbnail" alt="avatar">&ndash;&gt;-->
+<!--            &lt;!&ndash;        <img  th:src="${pageOwner.student.image}" height="200px" width="200px"  alt="avatar">&ndash;&gt;-->
+<!--        </div>-->
+<!--        <a href="/search">Search Registered Student</a>-->
 
-        <div th:if="${pageOwner.owns_yearbook}">
-            <a href="/yearbook">View Your Yearbook</a>
-        </div>
+<!--        <div th:if="${pageOwner.owns_yearbook}">-->
+<!--            <a href="/yearbook">View Your Yearbook</a>-->
+<!--        </div>-->
 
-        <div th:if="${!pageOwner.owns_yearbook}">
-            <p>Please get your purchase code <br> from a parent to view your yearbook</p>
-            <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal"
-               data-target="#modalEnterPurchaseCodeForm">enter yearbook purchase code</a>
-        </div>
+<!--        <div th:if="${!pageOwner.owns_yearbook}">-->
+<!--            <p>Please get your purchase code <br> from a parent to view your yearbook</p>-->
+<!--            <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal"-->
+<!--               data-target="#modalEnterPurchaseCodeForm">enter yearbook purchase code</a>-->
+<!--        </div>-->
 
-    </div>
+<!--    </div>-->
 
 
 
