@@ -12,61 +12,23 @@
     <link href="/eyearbook.css" rel="stylesheet"/>
     <meta charset="UTF-8">
 
-    <style>
-        .sidenavP{
-            top: 55px;
-            left: 4px;
-        }
-    </style>
+
     <title>Parent Profile Page</title>
 </head>
 
 <body class="p-profile-page">
 <th:block th:insert="partials/topOfPage :: topOfPage"></th:block>
 
-<nav th:replace="partials/navbar :: navbar"/>
+<nav th:replace="partials/navbarParent :: navbarParent"/>
 
-
-<h1 class="text-center">Welcome <span th:text="${user != null} ? ${user.username} : 'user is null'"></span></h1>
-
-
-<!--SIDE NAVBAR-->
-
-<div class="sidenavP">
-    <h5>Your Child(ren):</h5>
-    <div>
-        <a href="" class="btn btn-default btn-rounded" data-toggle="modal" data-target="#modalRegisterChild">Register a
-            child</a>
-    </div>
-
-    <div th:each="child : ${children}">
-        <a th:href="@{signature-page/{id} (id=${child.id})}">See <span th:text="${child.username}"></span>'s page </a>
-    </div>
-    <br>
-    <h5>Your Profile:</h5>
-    <a th:href="@{|/edit-profile|}">Update your profile</a>
-    <br>
-    <h5>Yearbook:</h5>
-    <div th:if="${!user.owns_yearbook}">
-        <a href="/mock-site">purchase a yearbook</a>
-        <a href="" class="btn btn-default btn-rounded " data-toggle="modal"
-           data-target="#modalEnterPurchaseCodeForm">enter yearbook purchase code</a>
-    </div>
-
-    <div th:if="${user.owns_yearbook}">
-        <a href="/yearbook">View Yearbook</a>
-    </div>
-
+<div class="container-sm">
+<h1 class="text-center welcome">Welcome <span th:text="${user != null} ? ${user.username} : 'user is null'"></span></h1>
 </div>
 
-<br>
 
-<div class="container-fluid container w-75 ">
-    <div class="main">
+<div class="container-fluid ">
+    <div>
         <h3 class="text-center">Your Childs Comments:</h3>
-        <br>
-        <br>
-
         <div class="card mb-3" >
                 <div class="col-12" th:each="child : ${children}">
             <div>
@@ -160,9 +122,12 @@
     </form>
 
 </div>
-<div class="container">
-<footer th:replace="partials/footer :: footer"></footer>
+<br>
+<div class="container mb-sm-0 ">
+<footer  th:replace="partials/footer :: footer"></footer>
 </div>
+
+
 <!--    bootstrap js-->
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
