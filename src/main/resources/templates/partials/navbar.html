@@ -25,26 +25,37 @@
 
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <ul class="navbar-nav ml-auto topNav">
+
             <th:block sec:authorize="!isAuthenticated()">
-                <!--                <li class="nav-item active">-->
-                <!--                    <a class="nav-link" th:href="@{/}">EYEARBOOK<span class="sr-only"></span></a>-->
-                <!--                </li>-->
                 <li class="nav-item">
                     <a class="nav-link btn-link btn" th:href="@{/login}">Login</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link btn-link btn" th:href="@{/sign-up}">Sign Up</a>
+                    <a class="nav-link btn-link btn" th:href="@{/sign-up}">Parent Registration</a>
                 </li>
             </th:block>
+
             <th:block sec:authorize="isAuthenticated()">
                 <li class="nav-item" th:if="${#authentication.principal.isParent}">
                     <a class="nav-link btn-link btn" th:href="@{|/parent-profile|}">My Profile</a>
                 </li>
+
                 <li class="nav-item" th:if="${!#authentication.principal.isParent}">
-                    <a class="nav-link btn-link btn" th:href="@{/signature-page/{id} (id = ${#authentication.principal.id})}">My
+                    <a class="nav-link btn-link btn"
+                       th:href="@{/signature-page/{id} (id = ${#authentication.principal.id})}">My
                         Student Profile</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link btn-link btn" th:href="@{|/search|}">Search Registered Student</a>
+                </li>
             </th:block>
+
+            <th:block sec:authorize="isAuthenticated()">
+                <li class="nav-item" th:if="${#authentication.principal.owns_yearbook}">
+                    <a class="nav-link btn-link btn" th:href="@{|/yearbook|}">View Yearbook</a>
+                </li>
+                </th:block>
+
             <th:block sec:authorize="isAuthenticated()">
                 <li class="nav-item ">
                     <form th:action="@{/logout}" th:method="post">
@@ -56,72 +67,17 @@
     </div>
 </nav>
 
-<!--    <nav th:fragment="navbar" class="navbar navbar-expand-lg navbar-light bg-light">-->
-<!--        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"-->
-<!--                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">-->
-<!--            <span class="navbar-toggler-icon"></span>-->
-<!--        </button>-->
 
-<!--        <div class="collapse navbar-collapse" id="navbarNav">-->
-<!--            <div class="navbar-nav ">-->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
 
-
-<!--                <li class="nav-item active"><a class="nav-link" th:href="@{/}">Home<span class="sr-only"></span></a>-->
-<!--                </li>-->
-
-
-<!--                <ul class="navbar-nav ">-->
-<!--                    <th:block sec:authorize="!isAuthenticated()">-->
-<!--                        <li class="nav-item ">-->
-<!--                            <a class="nav-link " th:href="@{/login}">Login</a>-->
-<!--                        </li>-->
-<!--                        <li class="nav-item ">-->
-<!--                            <a class="nav-link " th:href="@{/sign-up}">Sign Up</a>-->
-<!--                        </li>-->
-
-<!--                    </th:block>-->
-
-<!--                    <th:block sec:authorize="isAuthenticated()">-->
-<!--                        <li class="nav-item ">-->
-<!--                            <form th:action="@{/logout}" th:method="post">-->
-<!--                                <button class="nav-link btn-link btn ">Logout</button>-->
-<!--                            </form>-->
-<!--                        </li>-->
-<!--                    </th:block>-->
-
-<!--                    &lt;!&ndash;            <div th:object="${user}">&ndash;&gt;-->
-
-<!--                    <th:block sec:authorize="isAuthenticated()">-->
-
-<!--                        <li class="nav-item" th:if="${#authentication.principal.isParent}">-->
-<!--                            <a class="nav-link " th:href="@{|/parent-profile|}">My Profile</a>-->
-<!--                        </li>-->
-
-
-<!--                        <li class="nav-item " th:if="${!#authentication.principal.isParent}">-->
-<!--                            <a class="nav-link "-->
-<!--                               th:href="@{/signature-page/{id} (id = ${#authentication.principal.id})}">My-->
-<!--                                Student Profile</a>-->
-<!--                        </li>-->
-
-<!--                    </th:block>-->
-<!--                </ul>-->
-
-<!--            </div>-->
-
-<!--            &lt;!&ndash;            <c:choose>&ndash;&gt;-->
-<!--            &lt;!&ndash;                <%&#45;&#45;            no method so by default they get handled in the doGet of the servlet&#45;&#45;%>&ndash;&gt;-->
-<!--            &lt;!&ndash;                <c:when test="${sessionScope['user']!=null }">&ndash;&gt;-->
-<!--            &lt;!&ndash;                    <li><a href="/logout">Logout</a></li>&ndash;&gt;-->
-<!--            &lt;!&ndash;                </c:when>&ndash;&gt;-->
-<!--            &lt;!&ndash;                <c:otherwise>&ndash;&gt;-->
-<!--            &lt;!&ndash;                    <li><a href="/login">Login</a></li>&ndash;&gt;-->
-<!--            &lt;!&ndash;                </c:otherwise>&ndash;&gt;-->
-<!--            &lt;!&ndash;            </c:choose>&ndash;&gt;-->
-<!--            &lt;!&ndash;            &ndash;&gt;-->
-<!--        </div>-->
-<!--        </div>-->
-<!--    </nav>-->
 
 </body>
 </html>
