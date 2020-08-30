@@ -131,19 +131,23 @@
 .uploadButton{
     position: relative;
     margin-left: 600px;
-    margin-top: -8rem;
+    margin-top: -5rem;
 }
 .bannerImage{
-    position: absolute;
-    top: 0;
+    position: relative;
+    top: 19rem;
+    left: 41%;
+    margin-top: -250px; /* Half the height */
+    margin-left: -19em; /* Half the width */
+    /*top: 0;*/
     /*display: block;*/
-    margin-left: 33rem;
+    /*margin-left: 33rem;*/
     /*width: 50%;*/
 }
-.footerPage{
-    margin-top: 80px;
-    padding-top: 16rem;
-}
+/*.footerPage{*/
+/*    margin-top: 80px;*/
+/*    padding-top: 16rem;*/
+/*}*/
 .container-fluid{
     padding-left: 0;
     padding-right: 0;
@@ -152,7 +156,24 @@
 .signerImage{
     height: 150px;
     width: 150px;
+    border-left: 10px solid blue;
 }
+.middle{
+    top: -4em;
+}
+.middleScroll{
+    margin-left: 11rem;
+
+    /*padding:4px;*/
+    background-color: white;
+    width: 950px;
+    height: 500px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    text-align:justify;
+}
+/*.commentPadding{*/
+/*}*/
 
 /***************************************************************/
 /* END OF PARENT-PROFILE-PAGE CSS*/
