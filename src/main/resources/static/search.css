@@ -1,6 +1,11 @@
-body{
-    background-image: linear-gradient(#40798D, #2D3244);
+body, html {
+    /*background-image: url("img/84121E17-DEDA-4942-8BD6-2F61924472C3_1_105_c.jpeg");*/
+    /*background-image: url("img/A4209186-9CA6-49AF-B6CF-E141738548F9_1_105_c.jpeg");*/
+    background-image: url("img/37BA0F73-71D8-4864-942E-4BDEF2B2EE03.jpeg");
+    /*background-image: url("img/A60952B9-0C51-4A63-B3E6-20B1620F6324_1_105_c.jpeg");*/
+    background-size: cover;
     background-repeat: no-repeat;
+    height: 100%;
 }
 
 h5, h1 {
@@ -14,14 +19,16 @@ h5, h1 {
 }
 
 .card-body {
-    /*background-image: linear-gradient(to right, #3bb2b8 , #42e395);*/
-    /*background-image: linear-gradient(to right, #6078ea , #17ead9);*/
-    background-image: linear-gradient(to right, #6078ea , #42e395);
+    background-image: url("img/codeup-arrow.jpg");
+    background-size: initial;
+    background-repeat: no-repeat;
+    height: 100%;
+    background-position: right top;
 }
 
-.card-title:hover {
-    color: #57ca85;
-}
+/*.card-title:hover {*/
+/*    color: #57ca85;*/
+/*}*/
 
 .text-white {
     background-color: #4F9D85;
