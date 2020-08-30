@@ -158,6 +158,17 @@
     width: 150px;
     border-left: 10px solid blue;
 }
+.middle{
+    margin-left: 25%;
+    padding:4px;
+    background-color: white;
+    left: 40em;
+    width: 950px;
+    height: 30rem;
+    overflow-x: hidden;
+    overflow-y: auto;
+    text-align:justify;
+}
 
 /***************************************************************/
 /* END OF PARENT-PROFILE-PAGE CSS*/

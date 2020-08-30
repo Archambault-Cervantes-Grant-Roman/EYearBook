@@ -149,9 +149,9 @@
         <h3 class="text-center">Who signed your page:</h3>
     </div>
     <!--  COMMENTS SECTION-->
-
+    <div class="middle">
     <div th:if="${pageOwner.owns_yearbook}">
-        <div class="container-fluid container w-75">
+        <div class="container-fluid container">
 
 
             <div class="card mb-3 h-25" style="">
@@ -180,9 +180,6 @@
 
                 <div class="card" style="max-width: 700px;">
                     <div class="row no-gutters">
-                        <div class="col-md-4">
-                            <img src="" class="card-img" alt="">
-                        </div>
                         <div class="col-md-8">
                             <div th:if="${#authentication.principal.id != pageOwner.parent_id && #authentication.principal.id != pageOwner.id}">
                                 <div class="card-body">
@@ -210,7 +207,7 @@
 
 
         </div>
-
+    </div>
     </div>
     <!--modal code for purchase code-->
     <div class="container footerPage">
