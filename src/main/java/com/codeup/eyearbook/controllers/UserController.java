@@ -85,8 +85,6 @@ public class UserController {
         long id = loggedInUser.getId();
         user = userDao.getOne(id);
 
-//        code = "DX978J3";
-
         if (code.equals("DX978J3")) {
             user.setOwns_yearbook(true);
             List<User> children = userDao.findByParent_id(id);
@@ -94,18 +92,9 @@ public class UserController {
                 child.setOwns_yearbook(true);
             }
         }
-
-
-
-
-        System.out.println(user.isOwns_yearbook());
         userDao.save(user);
         boolean isParent = loggedInUser.getIsParent();
-        // Armando made a change to the redirect 8/28
-        return "redirect:/parent-profile";
-
-//        return isParent ? "users/parent-profile" : "redirect:/signature-page/" + id;
-//        return "redirect:/parent-profile";
+        return isParent ? "redirect:/parent-profile" : "redirect:/home";
     }
 
     @GetMapping("edit-profile")
