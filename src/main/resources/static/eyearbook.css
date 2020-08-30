@@ -134,11 +134,11 @@
     margin-top: -5rem;
 }
 .bannerImage{
-    position: absolute;
+    position: relative;
     top: 19rem;
     left: 41%;
     margin-top: -250px; /* Half the height */
-    margin-left: -250px; /* Half the width */
+    margin-left: -19em; /* Half the width */
     /*top: 0;*/
     /*display: block;*/
     /*margin-left: 33rem;*/
@@ -159,16 +159,21 @@
     border-left: 10px solid blue;
 }
 .middle{
-    margin-left: 25%;
-    padding:4px;
+    top: -4em;
+}
+.middleScroll{
+    margin-left: 11rem;
+
+    /*padding:4px;*/
     background-color: white;
-    left: 40em;
     width: 950px;
-    height: 30rem;
+    height: 800px;
     overflow-x: hidden;
     overflow-y: auto;
     text-align:justify;
 }
+/*.commentPadding{*/
+/*}*/
 
 /***************************************************************/
 /* END OF PARENT-PROFILE-PAGE CSS*/
