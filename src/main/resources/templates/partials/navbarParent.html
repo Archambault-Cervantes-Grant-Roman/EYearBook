@@ -46,7 +46,7 @@
                 <!--=======================================================-->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Dropdown
+                        Your Children
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <th:block th:each="child : ${children}">
@@ -59,20 +59,22 @@
                 <!--======================================================================-->
 
                 <th:block sec:authorize="isAuthenticated()">
-                    <li class="nav-item" th:if="${#authentication.principal.owns_yearbook}">
+                    <li class="nav-item" th:if="${user.owns_yearbook}">
                         <a class="nav-link btn-link btn" th:href="@{|/yearbook|}">View Yearbook</a>
+                    </li>
 
-                    <li class="nav-item" th:if="${!#authentication.principal.owns_yearbook}">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <li class="nav-item dropdown" th:if="${!user.owns_yearbook}">
+<!--                    <li class="nav-item ">-->
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarYearbookDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Yearbook
                         </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <div class="dropdown-menu" aria-labelledby="navbarYearbookDropdown">
                             <a class="dropdown-item"  href="/mock-site">Purchase Yearbook Here</a>
                             <a class="dropdown-item" href=""  data-toggle="modal"
                                data-target="#modalEnterPurchaseCodeForm">Yearbook Purchase Code</a>
                         </div>
-                    </li>
+                </li>
+
                 </th:block>
 
 
