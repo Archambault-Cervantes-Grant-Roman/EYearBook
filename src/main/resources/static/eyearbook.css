@@ -144,10 +144,10 @@
     /*margin-left: 33rem;*/
     /*width: 50%;*/
 }
-.footerPage{
-    margin-top: 80px;
-    padding-top: 16rem;
-}
+/*.footerPage{*/
+/*    margin-top: 80px;*/
+/*    padding-top: 16rem;*/
+/*}*/
 .container-fluid{
     padding-left: 0;
     padding-right: 0;
@@ -167,7 +167,7 @@
     /*padding:4px;*/
     background-color: white;
     width: 950px;
-    height: 800px;
+    height: 500px;
     overflow-x: hidden;
     overflow-y: auto;
     text-align:justify;
