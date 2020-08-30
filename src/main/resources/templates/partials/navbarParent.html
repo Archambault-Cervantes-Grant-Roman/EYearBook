@@ -59,11 +59,11 @@
                 <!--======================================================================-->
 
                 <th:block sec:authorize="isAuthenticated()">
-                    <li class="nav-item" th:if="${#authentication.principal.owns_yearbook}">
+                    <li class="nav-item" th:if="${user.owns_yearbook}">
                         <a class="nav-link btn-link btn" th:href="@{|/yearbook|}">View Yearbook</a>
                     </li>
 
-                    <li class="nav-item dropdown" th:if="${!#authentication.principal.owns_yearbook}">
+                    <li class="nav-item dropdown" th:if="${!user.owns_yearbook}">
 <!--                    <li class="nav-item ">-->
                         <a class="nav-link dropdown-toggle" href="#" id="navbarYearbookDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Yearbook
