@@ -51,16 +51,16 @@
 /*PARENT-PROFILE PAGE*/
 /************************************************************/
 
-/*.p-profile-page {*/
-/*        background: url("img/yearbookWhiteBlock.jpg") no-repeat center center fixed;*/
-/*        -webkit-background-size: cover;*/
-/*        -moz-background-size: cover;*/
-/*        -o-background-size: cover;*/
-/*        background-size: cover;*/
-/*}*/
-/*.welcome {*/
-/*    background-color: cornflowerblue;*/
-/*}*/
+.p-profile-page {
+        background: url("img/yearbookWhiteBlock.jpg") no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+}
+.welcome {
+    background-color: cornflowerblue;
+}
 
 /*.sidenavPL  {*/
 /*    !*height: 100%; !* Full-height: remove this if you want "auto" height *!*!*/
