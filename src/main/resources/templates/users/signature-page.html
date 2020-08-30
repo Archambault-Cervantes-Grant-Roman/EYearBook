@@ -71,7 +71,7 @@
 <div class ="container-fluid">
     <th:block th:insert="partials/topOfPage :: topOfPage"></th:block>
 
-    <nav th:replace="partials/navbar :: navbar"/>
+    <nav th:replace="partials/signaturePageNavbar :: signaturePageNavbar"/>
 
 
     <!--<div class="d-flex justify-content-center" style="width: 100%; height: 200px;">-->
@@ -80,24 +80,26 @@
 
     <!--side nav bar-->
 
-    <div class="sidenav">
-        <div class="text-center">
-            <!--            <img  th:src="${pageOwner.student.image}" class="img-thumbnail" alt="avatar">-->
-            <!--        <img  th:src="${pageOwner.student.image}" height="200px" width="200px"  alt="avatar">-->
-        </div>
-        <a href="/search">Search Registered Student</a>
 
-        <div th:if="${pageOwner.owns_yearbook}">
-            <a href="/yearbook">View Your Yearbook</a>
-        </div>
+<!--    <div class="sidenav">-->
+<!--        <div class="text-center">-->
+<!--&lt;!&ndash;            <img  th:src="${pageOwner.student.image}" class="img-thumbnail" alt="avatar">&ndash;&gt;-->
+<!--            &lt;!&ndash;        <img  th:src="${pageOwner.student.image}" height="200px" width="200px"  alt="avatar">&ndash;&gt;-->
+<!--        </div>-->
+<!--        <a href="/search">Search Registered Student</a>-->
 
-        <div th:if="${!pageOwner.owns_yearbook}">
-            <p>Please get your purchase code <br> from a parent to view your yearbook</p>
-            <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal"
-               data-target="#modalEnterPurchaseCodeForm">enter yearbook purchase code</a>
-        </div>
 
-    </div>
+<!--        <div th:if="${pageOwner.owns_yearbook}">-->
+<!--            <a href="/yearbook">View Your Yearbook</a>-->
+<!--        </div>-->
+
+<!--        <div th:if="${!pageOwner.owns_yearbook}">-->
+<!--            <p>Please get your purchase code <br> from a parent to view your yearbook</p>-->
+<!--            <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal"-->
+<!--               data-target="#modalEnterPurchaseCodeForm">enter yearbook purchase code</a>-->
+<!--        </div>-->
+
+<!--    </div>-->
 
 
 

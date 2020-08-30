@@ -1,31 +1,32 @@
 /****************************************************************/
 /*signature page*/
 /*****************************************************************/
-.sidenav {
-    height: 100%; /* Full-height: remove this if you want "auto" height */
-    width: 200px; /* Set the width of the sidebar */
-    position: fixed; /* Fixed Sidebar (stay in place on scroll) */
-    z-index: 1; /* Stay on top */
-    top: 150px; /* from the top */
-    left: 10px;
-    background-color: rgb(186, 227, 224); /* light blue */
-    overflow-x: hidden; /* Disable horizontal scroll */
-    padding-top: 20px;
-}
+/*.sidenav {*/
+/*    !*height: 100%; !* Full-height: remove this if you want "auto" height *!*!*/
+/*    height: auto;*/
+/*    width: 200px; !* Set the width of the sidebar *!*/
+/*    position: fixed; !* Fixed Sidebar (stay in place on scroll) *!*/
+/*    z-index: 1; !* Stay on top *!*/
+/*    top: 150px; !* from the top *!*/
+/*    left: 10px;*/
+/*    background-color: rgb(172, 193, 227); !* light blue *!*/
+/*    overflow-x: hidden; !* Disable horizontal scroll *!*/
+/*    padding-top: 20px;*/
+/*}*/
 
-/* The navigation menu links*/
-.sidenav a {
-    padding: 6px 8px 6px 16px;
-    text-decoration: none;
-    font-size: 18px;
-    color: #818181;
-    display: block;
-}
+/*!* The navigation menu links*!*/
+/*.sidenav a {*/
+/*    padding: 6px 8px 6px 16px;*/
+/*    text-decoration: none;*/
+/*    font-size: 18px;*/
+/*    color: #818181;*/
+/*    display: block;*/
+/*}*/
 
-/* When you mouse over the navigation links, change their color*/
-.sidenav a:hover {
-    color: #f1f1f1;
-}
+/*!* When you mouse over the navigation links, change their color*!*/
+/*.sidenav a:hover {*/
+/*    color: #f1f1f1;*/
+/*}*/
 
 .student_pic {
     height: 100px;
@@ -51,35 +52,60 @@
 /************************************************************/
 
 .p-profile-page {
-        background: url("img/benedikt-geyer-wkRT7FHQEmE-unsplash.jpg") no-repeat center center fixed;
+        background: url("img/yearbookWhiteBlock.jpg") no-repeat center center fixed;
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;
         background-size: cover;
 }
-
-.sidenavP {
-    height: 100%; /* Full-height: remove this if you want "auto" height */
-    width: 200px; /* Set the width of the sidebar */
-    position: fixed; /* Fixed Sidebar (stay in place on scroll) */
-    z-index: 1; /* Stay on top */
-    top: 90px; /* from the top */
-    left: 10px;
-    background-color: lightblue; /* dull pink */
-    overflow-x: hidden; /* Disable horizontal scroll */
-    padding-top: 20px;
+.welcome {
+    background-color: cornflowerblue;
 }
+
+/*.sidenavPL  {*/
+/*    !*height: 100%; !* Full-height: remove this if you want "auto" height *!*!*/
+/*    !*height: 50%;*!*/
+/*    width: 200px; !* Set the width of the sidebar *!*/
+/*    position: fixed; !* Fixed Sidebar (stay in place on scroll) *!*/
+/*    z-index: 1; !* Stay on top *!*/
+/*    top: 90px; !* from the top *!*/
+/*    left: 1px;*/
+/*    !*background-color: lightblue; !* dull pink *!*!*/
+/*background-color:rgb(172, 193, 227);*/
+/*    overflow-x: hidden; !* Disable horizontal scroll *!*/
+/*    padding-top: 20px;*/
+/*}*/
 
 /* The navigation menu links*/
-.sidenavP a {
-    padding: 6px 8px 6px 16px;
-    text-decoration: none;
-    font-size: 18px;
-    color: black;
-    display: block;
-}
+/*.sidenavPL  a {*/
+/*    padding: 6px 8px 6px 16px;*/
+/*    text-decoration: none;*/
+/*    font-size: 18px;*/
+/*    color: black;*/
+/*    display: block;*/
+/*}*/
 
 /* When you mouse over the navigation links, change their color*/
+
+/*.sidenavPL  a:hover {*/
+/*    color: #f1f1f1;*/
+/*}*/
+/*.sidenavPR {*/
+    /*height: 100%; !* Full-height: remove this if you want "auto" height *!*/
+    /*!*height: 50%;*!*/
+    /*width: 200px; !* Set the width of the sidebar *!*/
+    /*position: fixed; !* Fixed Sidebar (stay in place on scroll) *!*/
+    /*z-index: 1; !* Stay on top *!*/
+    /*top: 100px; !* from the top *!*/
+    /*right: 2px;*/
+    /*background-color: lightblue; !* dull pink *!*/
+    /*background-color: rgba(230, 161, 180, 0.3);*/
+    /*overflow-x: hidden; !* Disable horizontal scroll *!*/
+    /*padding-top: 20px;*/
+/*}*/
+
+
+
 .sidenavP a:hover {
     color: #f1f1f1;
 }
@@ -116,7 +142,7 @@
 }
 .footerPage{
     margin-top: 80px;
-    padding-top: 8rem;
+    padding-top: 16rem;
 }
 .container-fluid{
     padding-left: 0;
@@ -127,7 +153,10 @@
     height: 150px;
     width: 150px;
 }
+
 /***************************************************************/
 /* END OF PARENT-PROFILE-PAGE CSS*/
 
-
+.foot{
+    margin-bottom: 0 !important;
+}
