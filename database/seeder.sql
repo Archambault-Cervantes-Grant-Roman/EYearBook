@@ -1,7 +1,4 @@
 
-
-
-
 USE eyearbook_db;
 
 TRUNCATE student_records;
