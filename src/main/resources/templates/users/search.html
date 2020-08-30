@@ -9,6 +9,16 @@
         .profileLink{
             color: white;
         }
+        .searchScroll{
+            margin-top: 2rem;
+            margin-left: 12em;
+            background-color: rgba(0,0,0,0.5) !important;
+            width: 80%;
+            height: 80%;
+            overflow-x: hidden;
+            overflow-y: auto;
+            text-align:justify;
+        }
     </style>
 </head>
 <body>
@@ -23,7 +33,7 @@
         <input type="button" value="Clear" id="btnClear" onclick="clearSearch()"/>
     </form>
 </div>
-<section class="row">
+<section class="searchScroll row">
 <div class="container" th:each="user : ${filteredResults}">
 <!--    <div class="">-->
 <!--        <div class="card profile-card-1" >-->
