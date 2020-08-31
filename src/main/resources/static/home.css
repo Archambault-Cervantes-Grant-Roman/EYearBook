@@ -17,7 +17,7 @@ body, html {
     -ms-transition:background 0.5s ease-in;
     transition:background 0.5s ease-in;
     height: 100%;
-
+    background-image: url("img/yearbookWhiteBlock.jpg");
 }
 #rotimages {
     /*background: url("img/john-schnobrich-2FPjlAyMQTA-unsplash.jpg") no-repeat center center fixed;*/
@@ -27,8 +27,9 @@ body, html {
 }
 
 .jumbotron-fluid {
-    background-image: url("img/Screen Shot 2020-08-27 at 9.22.21 AM.png");
-    background-size: 100%;
+    /*background-image: url("img/teen-titans.png");*/
+    /*background-size: 100%;*/
+    background-color: rgba(255, 255, 255, 0.5) !important;
 }
 
 /*body {*/
