@@ -1,4 +1,6 @@
 body, html {
+    font-family: 'Shadows Into Light', cursive;
+
     background: url("img/john-schnobrich-2FPjlAyMQTA-unsplash.jpg") no-repeat center center fixed;
     /*background: url("img/moren-hsu-VLaKsTkmVhk-unsplash.jpg") no-repeat center center fixed;*/
     -webkit-background-size: cover;

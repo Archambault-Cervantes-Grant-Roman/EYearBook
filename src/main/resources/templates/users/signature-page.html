@@ -1,24 +1,25 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thyme leaf.org/extras/spring-security" lang="en">
 <head>
+
     <!--    bootstrap-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
           integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <!--    jquery-->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
             integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+    <!--    filestack -->
+    <script type='text/javascript' th:src="@{/js/config.js}"></script>
 
     <script type="text/javascript" src="https://static.filestackapi.com/v3/filestack.js"></script>
     <!--    css styling-->
 
-    <!--    filestack -->
-    <script type='text/javascript' th:src="@{/js/config.js}"></script>
     <script type='text/javascript' th:src="@{/js/script.js}"></script>
 
-<!--    <link href="/SignaturePage.css" type="text/css" rel="stylesheet"/>-->
-    <link href="/eyearbook.css" type="text/css" rel="stylesheet"/>
-    <script type='text/javascript' th:src="@{/js/config.js}"></script>
-    <script type='text/javascript' th:src="@{/js/script.js}"></script>
+<!--    <link th:href="@{/SignaturePage.css}" type='text/css' rel="stylesheet"/>-->
+
+<!--    <link href="/eyearbook.css" type="text/css" rel="stylesheet"/>-->
+
 
     <meta charset="UTF-8">
     <meta id="fsak" th:content="${fsak}">
@@ -40,7 +41,7 @@
     // function updateImage(){
     //     imgUrl = imageSelection.value;
     // }
-    const fsak = $("#fsak").attr("content")
+    const fsak = $("#fsak").attr("content");
 
     function pickMark() {
         var client = filestack.init(fsak);
@@ -74,37 +75,6 @@
 
     <nav th:replace="partials/signaturePageNavbar :: signaturePageNavbar"/>
 
-
-    <!--<div class="d-flex justify-content-center" style="width: 100%; height: 200px;">-->
-    <!--    <img th:src="${pageOwner.student.image}" class="img-thumbnail"/>-->
-    <!--</div>-->
-
-    <!--side nav bar-->
-
-
-    <!--    <div class="sidenav">-->
-    <!--        <div class="text-center">-->
-    <!--&lt;!&ndash;            <img  th:src="${pageOwner.student.image}" class="img-thumbnail" alt="avatar">&ndash;&gt;-->
-    <!--            &lt;!&ndash;        <img  th:src="${pageOwner.student.image}" height="200px" width="200px"  alt="avatar">&ndash;&gt;-->
-    <!--        </div>-->
-    <!--        <a href="/search">Search Registered Student</a>-->
-
-
-    <!--        <div th:if="${pageOwner.owns_yearbook}">-->
-    <!--            <a href="/yearbook">View Your Yearbook</a>-->
-    <!--        </div>-->
-
-    <!--        <div th:if="${!pageOwner.owns_yearbook}">-->
-    <!--            <p>Please get your purchase code <br> from a parent to view your yearbook</p>-->
-    <!--            <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal"-->
-    <!--               data-target="#modalEnterPurchaseCodeForm">enter yearbook purchase code</a>-->
-    <!--        </div>-->
-
-    <!--    </div>-->
-
-
-    <!--        <img class="img-fluid. max-width: 100%; h-25" th:src="${pageOwner.getSign_page_banner_image()}"/>-->
-    <!--            <img  width="851" height="314"  th:src="${pageOwner.getSign_page_banner_image()}"/>-->
     <div class="row">
         <div class="left col">
         </div>
@@ -112,9 +82,6 @@
         <div class="middle col-8">
             <div class="bannerImage">
                 <img width="851px" height="314px" th:src="${pageOwner.sign_page_banner_image}"/>
-                <!--            <body th:style="'background: url(' + ${pageOwner.sign_page_banner_image} + ') no-repeat center top;'"/>-->
-                <!--            <body th:style="'background: url(' + ${pageOwner.sign_page_banner_image} + ') no-repeat center top; width: 851px; height: 314px'"/>-->
-
             </div>
 
             <div class="studentImage">
@@ -127,7 +94,6 @@
                                onclick="pickMark()">
                     </div>
 
-                    <!--        <h1 th:text="${pageOwner.id}"></h1>-->
                     <form th:action="@{/bannerImg}" method="post" th:object="${pageOwner}">
                         <input type="hidden" th:name="imageOwnerId" th:value="${pageOwner.id}">
                         <button id="submit" type="submit" class="btn btn-primary mx-sm-1">Submit</button>
@@ -166,11 +132,8 @@
                                              th:src="${pageOwner.signer.student.image}"/>
                                     </div>
                                     <div class="col-sm-9 mt-4">
-                                        <!--                                        <div class="card-body text-center">-->
                                         <h3><a th:text="${pageOwner.signer.username}"></a> says, </h3>
                                         <h3><a th:text="${pageOwner.yearbook_comment}"></a></h3>
-
-                                        <!--                            </div>-->
                                     </div>
                                 </div>
                             </div>
@@ -185,8 +148,7 @@
                                         <div th:if="${#authentication.principal.id != pageOwner.parent_id && #authentication.principal.id != pageOwner.id}">
                                             <div class="card-body">
 
-                                                <!--                            if loggedInUser{id} equals the signature-page{id} -->
-                                                <!--                            dont show this form so that way a user cant sign own page-->
+
                                                 <form th:action="@{/signature-page}" method="POST"
 
                                                       th:object="${signatures}" id="commentform">
@@ -252,30 +214,6 @@
     </form>
 </div>
 
-<!--<script>-->
-<!--    $(function () {-->
-
-<!--        let limit = 0; // 0 = infinite.-->
-<!--        let interval = 5;// Secs-->
-<!--        let images = [-->
-<!--            "faded group at computer.jpg"-->
-<!--            , "img/locker_with_white_block.jpg"-->
-<!--            , "img/faded pencils.jpg"-->
-<!--            , "img/faded10.jpg"-->
-<!--            , "img/aquamanFaded.jpg"-->
-<!--        ];-->
-
-<!--        let index = 0;-->
-<!--        let limitCount = 0;-->
-<!--        let myInterval = setInterval(function () {-->
-<!--            if (limit && limitCount >= limit - 1) clearTimeout(myInterval);-->
-<!--            if (index >= images.length) index = 0;-->
-<!--            $('body').css({"background-image": "url(" + images[index] + ")"});-->
-<!--            index++;-->
-<!--            limitCount++;-->
-<!--        }, interval * 1000);-->
-<!--    });-->
-<!--</script>-->
 <!--    bootstrap js-->
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
