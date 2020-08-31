@@ -1,5 +1,10 @@
 body, html {
-    font-family: 'Yatra One', Times, serif;
+    /*font-family: 'Yatra One', Times, serif;*/
+    /*font-family: 'Indie Flower', cursive;*/
+
+    /*font-family: 'Merienda', cursive;*/
+
+    font-family: 'Shadows Into Light', cursive;
     /*background: url("img/john-schnobrich-2FPjlAyMQTA-unsplash.jpg") no-repeat center center fixed;*/
 /*    background: url("img/moren-hsu-VLaKsTkmVhk-unsplash.jpg") no-repeat center center fixed;*/
 /*    -webkit-background-size: cover;*/
@@ -37,12 +42,13 @@ body, html {
 /*}*/
 
 h4 {
-    color: black;
+    color: #6aa2a4;
     font-weight: bolder;
+    font-size: x-large;
 }
 
 .fas, .far {
-    color: #007bff;
+    color: #22a740;
 }
 
 h1 {

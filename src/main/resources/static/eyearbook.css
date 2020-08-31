@@ -27,7 +27,9 @@
 /*.sidenav a:hover {*/
 /*    color: #f1f1f1;*/
 /*}*/
-
+body{
+    font-family: 'Shadows Into Light', cursive;
+}
 .student_pic {
     height: 100px;
 }
