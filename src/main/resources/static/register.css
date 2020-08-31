@@ -1,4 +1,6 @@
 html,body{
+    font-family: 'Shadows Into Light', cursive;
+
     background-image: url('img/final-10.jpg');
     background-size: cover;
     background-repeat: no-repeat;
