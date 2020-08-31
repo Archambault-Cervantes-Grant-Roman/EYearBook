@@ -141,30 +141,30 @@
 
                             <!--  TO ENTER A COMMENTS SECTION-->
 
-                            <div class="card enterCommentBox" style="width: auto;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card enterCommentBox" style="width: auto;">
 
-                                <div class="row ">
-                                    <div class="col-md-8">
-                                        <div th:if="${#authentication.principal.id != pageOwner.parent_id && #authentication.principal.id != pageOwner.id}">
-                                            <div class="card-body">
+                <div class="row ">
+                    <div class="col-md-8">
+                        <div th:if="${#authentication.principal.id != pageOwner.parent_id && #authentication.principal.id != pageOwner.id}">
+                            <div class="card-body">
 
 
-                                                <form th:action="@{/signature-page}" method="POST"
+                                <form th:action="@{/signature-page}" method="POST"
 
-                                                      th:object="${signatures}" id="commentform">
+                                      th:object="${signatures}" id="commentform">
 
-                                                    <input type="hidden" th:name="ownerId" th:value="${pageOwner.id}">
-                                                    <div class="form-group">
-                                                        <label for="yearbook_comment"></label>
-                                                        <input type="text" class="form-control" id="yearbook_comment"
-                                                               th:field="*{yearbook_comment}">
-                                                    </div>
-                                                    <button value="Submit" type="submit">Comment</button>
-                                                </form>
-                                            </div>
-                                        </div>
+                                    <input type="hidden" th:name="ownerId" th:value="${pageOwner.id}">
+                                    <div class="form-group">
+                                        <label for="yearbook_comment"></label>
+                                        <input type="text" class="form-control" id="yearbook_comment"
+                                               th:field="*{yearbook_comment}">
                                     </div>
-                                </div>
+                                    <button value="Submit" type="submit">Comment</button>
+                                </form>
                             </div>
                         </div>
                     </div>
