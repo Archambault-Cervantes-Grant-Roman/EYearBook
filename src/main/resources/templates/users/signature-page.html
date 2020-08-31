@@ -15,7 +15,7 @@
     <script type='text/javascript' th:src="@{/js/config.js}"></script>
     <script type='text/javascript' th:src="@{/js/script.js}"></script>
 
-    <link rel="stylesheet" href="/SignaturePage.css"/>
+<!--    <link href="/SignaturePage.css" type="text/css" rel="stylesheet"/>-->
     <link href="/eyearbook.css" type="text/css" rel="stylesheet"/>
     <script type='text/javascript' th:src="@{/js/config.js}"></script>
     <script type='text/javascript' th:src="@{/js/script.js}"></script>
@@ -178,7 +178,7 @@
 
                             <!--  TO ENTER A COMMENTS SECTION-->
 
-                            <div class="card enterCommentBox" style="max-width: 700px;">
+                            <div class="card enterCommentBox" style="width: auto;">
                                 <div class="row ">
                                     <div class="col-md-8">
                                         <div th:if="${#authentication.principal.id != pageOwner.parent_id && #authentication.principal.id != pageOwner.id}">
