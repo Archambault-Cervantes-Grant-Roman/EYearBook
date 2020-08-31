@@ -36,7 +36,7 @@
 <div class="container-fluid ">
     <div>
         <h3 class="text-center">Your Childs Comments:</h3>
-        <div class="card mb-3" >
+        <div class="card mb-3 commentCard" >
                 <div class="col-12" th:each="child : ${children}">
             <div>
                     <div class="card-body" th:each="userSignature : ${child.userSignatures}">
@@ -80,7 +80,7 @@
                     <div class="modal-body mx-3">
                         <div class="md-form mb-4">
                             <input type="text" id="purchaseCode" class="form-control validate" name="code"/>
-                            <label data-error="wrong" data-success="right" for="purchaseCode">purchase code</label>
+                            <label data-error="wrong" data-success="right" for="purchaseCode">Purchase Code</label>
                             <br>
 
                         </div>
@@ -107,7 +107,7 @@
         <div class="modal-dialog p-2 modal-sm" role="document">
             <div class="modal-content">
                 <div class="modal-header text-center">
-                    <h4 class="modal-title w-100 font-weight-bold">Enter Student Id: </h4>
+                    <h4 class="modal-title w-100 font-weight-bold">Enter Students Id Number: </h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -116,7 +116,7 @@
                 <div class="modal-body mx-3">
                     <div class="md-form mb-4">
                         <input type="text" id="studentId" class="form-control validate" name="id" required/>
-                        <label data-error="wrong" data-success="right" for="studentId">student id</label>
+                        <label data-error="wrong" data-success="right" for="studentId">student Id</label>
                         <br>
                     </div>
                 </div>
