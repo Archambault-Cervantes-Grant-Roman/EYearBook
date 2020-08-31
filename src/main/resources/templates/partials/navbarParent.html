@@ -16,7 +16,7 @@
     <title>Navbar</title>
 </head>
 <body>
-<nav th:fragment="navbarParent" class="navbar sticky-top navbar-expand-lg navbar-dark" style="background-color: #007bff;">
+<nav th:fragment="navbarParent" class="navbar sticky-top navbar-expand-lg navbar-dark" style="background-color: #accaea;">
     <a class="navbar-brand" th:href="@{/}">E-YEARBOOK<span class="sr-only"></span></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
             aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -30,10 +30,10 @@
                 <!--                    <a class="nav-link" th:href="@{/}">EYEARBOOK<span class="sr-only"></span></a>-->
                 <!--                </li>-->
                 <li class="nav-item">
-                    <a class="nav-link btn-link btn" th:href="@{/login}">Login</a>
+                    <a class="nav-link btn-link btn text-dark" th:href="@{/login}">Login</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link btn-link btn" th:href="@{/sign-up}">Parent Registration</a>
+                    <a class="nav-link btn-link btn text-dark" th:href="@{/sign-up}">Parent Registration</a>
                 </li>
 
 
@@ -41,18 +41,18 @@
 
             <th:block sec:authorize="isAuthenticated()">
                 <li class="nav-item" th:if="${#authentication.principal.isParent}">
-                    <a class="nav-link btn-link btn" th:href="@{|/parent-profile|}">My Profile</a>
+                    <a class="nav-link btn-link btn text-dark" th:href="@{|/parent-profile|}">My Profile</a>
                 </li>
                 <!--=======================================================-->
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Your Children
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <th:block th:each="child : ${children}">
-                            <a class="dropdown-item" th:href="@{signature-page/{id} (id=${child.id})}">Visit <span th:text="${child.username}"></span>'s page </a>
+                            <a class="dropdown-item text-dark" th:href="@{signature-page/{id} (id=${child.id})}">Visit <span th:text="${child.username}"></span>'s page </a>
                         </th:block>
-                        <a class="dropdown-item" href=""  data-toggle="modal" data-target="#modalRegisterChild">Register a
+                        <a class="dropdown-item text-dark" href=""  data-toggle="modal" data-target="#modalRegisterChild">Register a
                             Child</a>
                     </div>
                 </li>
@@ -60,10 +60,10 @@
 <!--testing this merge-->
                 <th:block sec:authorize="isAuthenticated()">
                     <li class="nav-item" th:if="${user.owns_yearbook}">
-                        <a class="nav-link btn-link btn" th:href="@{|/yearbook|}">View Yearbook</a>
+                        <a class="nav-link btn-link btn text-dark" th:href="@{|/yearbook|}">View Yearbook</a>
                     </li>
 
-                    <li class="nav-item dropdown" th:if="${!user.owns_yearbook}">
+                    <li class="nav-item dropdown text-dark" th:if="${!user.owns_yearbook}">
 <!--                    <li class="nav-item ">-->
                         <a class="nav-link dropdown-toggle" href="#" id="navbarYearbookDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Yearbook
