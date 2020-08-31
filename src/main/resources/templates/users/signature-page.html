@@ -166,11 +166,11 @@
                                              th:src="${pageOwner.signer.student.image}"/>
                                     </div>
                                     <div class="col-sm-9 mt-4">
-<!--                                        <div class="card-body text-center">-->
-                                            <h3><a th:text="${pageOwner.signer.username}"></a> says, </h3>
-                                            <h3><a th:text="${pageOwner.yearbook_comment}"></a></h3>
+                                        <!--                                        <div class="card-body text-center">-->
+                                        <h3><a th:text="${pageOwner.signer.username}"></a> says, </h3>
+                                        <h3><a th:text="${pageOwner.yearbook_comment}"></a></h3>
 
-                                            <!--                            </div>-->
+                                        <!--                            </div>-->
                                     </div>
                                 </div>
                             </div>
@@ -179,6 +179,7 @@
                             <!--  TO ENTER A COMMENTS SECTION-->
 
                             <div class="card enterCommentBox" style="width: auto;">
+
                                 <div class="row ">
                                     <div class="col-md-8">
                                         <div th:if="${#authentication.principal.id != pageOwner.parent_id && #authentication.principal.id != pageOwner.id}">

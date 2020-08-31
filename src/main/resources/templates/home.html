@@ -4,11 +4,13 @@
     <meta charset="UTF-8">
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
+          integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" href="/home.css"/>
     <style>
-        .footer {
+        .footer{
             position: absolute;
             bottom: 3em;
             width: 100%;
@@ -31,11 +33,22 @@
     </div>
 
 
+
     <div class="container d-flex justify-content-center">
         <div class="container card-body">
             <h1 class="d-flex justify-content-center"><i class="fas fa-book-reader"></i></h1>
             <div class="container body d-flex justify-content-center">
                 <h4>View your yearbook online.</h4>
+            </div>
+        </div>
+
+
+
+        <div class="container card-body">
+            <!--    <h1 class="d-flex justify-content-center"><i class="far fa-comment-alt"></i></h1>-->
+            <h1 class="d-flex justify-content-center"><i class="far fa-address-book"></i></h1>
+            <div class="container body d-flex justify-content-center">
+                <h4>Search for your friends.</h4>
             </div>
         </div>
 
@@ -45,91 +58,48 @@
                 <h4>Sign your friends yearbook.</h4>
             </div>
         </div>
-
-<<<<<<< HEAD
-
-
-<div class="container card-body">
-<!--    <h1 class="d-flex justify-content-center"><i class="far fa-comment-alt"></i></h1>-->
-    <h1 class="d-flex justify-content-center"><i class="far fa-address-book"></i></h1>
-    <div class="container body d-flex justify-content-center">
-        <h4>Search for your friends.</h4>
-    </div>
-</div>
-
-<div class="container card-body">
-    <h1 class="d-flex justify-content-center"><i class="fas fa-signature"></i></h1>
-    <div class="container body d-flex justify-content-center">
-        <h4>Sign your friends yearbook.</h4>
-=======
-        <div class="container card-body">
-            <h1 class="d-flex justify-content-center"><i class="far fa-comment-alt"></i></h1>
-            <div class="container body d-flex justify-content-center">
-                <h4>Leave a friendly message.</h4>
-            </div>
-        </div>
     </div>
     <br>
     <br>
     <br>
+
+
     <div class="container">
         <div class="container body">
             <h1 class="d-flex justify-content-center"><i class="far fa-eye"></i></h1>
-            <h4 class="d-flex justify-content-center">Parents can sign up and register their child to view the
-                yearbook.</h4>
-            <h4 class="d-flex justify-content-center">Parents can also monitor their child's messages they post.</h4>
+            <h4 class="d-flex justify-content-center">Parents saftey in mind.
+                <h4 class="d-flex justify-content-center"> Restricted access</h4>
+                <h4 class="d-flex justify-content-center"> Monitor content </h4>
         </div>
->>>>>>> 135d631e6642962c8400de6649662e9809253b43
     </div>
 </div>
-
-<<<<<<< HEAD
-<div class="container">
-    <div class="container body">
-        <h1 class="d-flex justify-content-center"><i class="far fa-eye"></i></h1>
-        <h4 class="d-flex justify-content-center">Parents saftey in mind.
-            <h4 class="d-flex justify-content-center"> Restricted access</h4>
-         <h4 class="d-flex justify-content-center"> Monitor content </h4>
-    </div>
-</div>
-</div>
-=======
->>>>>>> 135d631e6642962c8400de6649662e9809253b43
 <footer class="footer">
     <footer th:replace="partials/footer :: footer"></footer>
 </footer>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
-        crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
-        crossorigin="anonymous"></script>
+
+
 </body>
 <script>
-    $(function () {
+    $(function(){
 
         let limit = 0; // 0 = infinite.
         let interval = 5;// Secs
         let images = [
-            "faded group at computer.jpg"
-            , "img/locker_with_white_block.jpg"
-            , "img/faded pencils.jpg"
-            , "img/faded10.jpg"
-            , "img/aquamanFaded.jpg"
+            "http://www.bcat.eu/data/demo/jquery-bg-switcher/links/images/img-slider-1.jpg"
+            ,"https://www.tipsandtricks-hq.com/images/amazing-photos/group1/tips_background_image4.jpg"
+            ,"http://www.kriesi.at/themes/corona/files/2011/09/kode.jpg"
+            ,"http://www.bcat.eu/data/demo/jquery-bg-switcher/links/images/img-slider-2.jpg"
         ];
 
         let index = 0;
         let limitCount = 0;
-        let myInterval = setInterval(function () {
-            if (limit && limitCount >= limit - 1) clearTimeout(myInterval);
+        let myInterval = setInterval(function() {
+            if (limit && limitCount >= limit-1) clearTimeout(myInterval);
             if (index >= images.length) index = 0;
-            $('body').css({"background-image": "url(" + images[index] + ")"});
+            $('body').css({ "background-image":"url(" + images[index]+ ")" });
             index++;
             limitCount++;
-        }, interval * 1000);
+        }, interval*1000);
     });
 </script>
 </html>
