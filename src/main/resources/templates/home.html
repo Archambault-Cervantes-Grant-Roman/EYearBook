@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
@@ -26,51 +26,56 @@
 
 <div class="container">
 
-    <div class="jumbotron jumbotron-fluid">
+    <div class="jumbotron jumbotron-fluid rounded">
         <div class="header d-flex justify-content-center">
-            <h1 class="display-4" id="title">Online Yearbook</h1>
+            <h1 class="display-4" id="title">E ~ Yearbook</h1>
+        </div>
+    </div>
+
+<br>
+
+
+    <br>
+    <div class="container d-flex justify-content-center ">
+        <div class="container card-body rounded-circle ">
+            <h1 class="d-flex justify-content-center"><i class="fas fa-book-reader"></i></h1>
+            <div class="container body d-flex justify-content-center">
+                <h3 class="text-center">View your yearbook online.</h3>
+            </div>
+        </div>
+
+
+
+        <div class="container card-body rounded-circle ">
+            <!--    <h1 class="d-flex justify-content-center"><i class="far fa-comment-alt"></i></h1>-->
+            <h1 class="d-flex justify-content-center"><i class="far fa-address-book"></i></h1>
+            <div class="container body d-flex justify-content-center">
+                <h3 class="text-center">Search for your friends.</h3>
+            </div>
+        </div>
+
+        <div class="container card-body rounded-circle ">
+            <h1 class="d-flex justify-content-center"><i class="fas fa-signature"></i></h1>
+            <div class="container body d-flex justify-content-center">
+                <h3 class="text-center">Sign your friends yearbook.</h3>
+            </div>
         </div>
     </div>
 
 
-
-<div class="container d-flex justify-content-center">
-<div class="container card-body">
-    <h1 class="d-flex justify-content-center"><i class="fas fa-book-reader"></i></h1>
-    <div class="container body d-flex justify-content-center">
-        <h4>View your yearbook online.</h4>
+    <div class="container rounded  info">
+        <div class="container body">
+            <h1 class="d-flex justify-content-center"><i class="far fa-eye"></i></h1>
+            <h3 class="d-flex justify-content-center font-weight-bold ">Parents saftey in mind.</h3>
+                <h3 class="d-flex justify-content-center"> Restricted access</h3>
+                <h3 class="d-flex justify-content-center"> Monitor content </h3>
+        </div>
     </div>
-</div>
-
-<div class="container card-body">
-    <h1 class="d-flex justify-content-center"><i class="fas fa-signature"></i></h1>
-    <div class="container body d-flex justify-content-center">
-        <h4>Sign your friends yearbook.</h4>
-    </div>
-</div>
-
-<div class="container card-body">
-    <h1 class="d-flex justify-content-center"><i class="far fa-comment-alt"></i></h1>
-    <div class="container body d-flex justify-content-center">
-        <h4>Leave a friendly message.</h4>
-    </div>
-</div>
-</div>
-<br>
-<br>
-<br>
 
 
-<div class="container">
-    <div class="container body">
-        <h1 class="d-flex justify-content-center"><i class="far fa-eye"></i></h1>
-        <h4 class="d-flex justify-content-center">Parents can sign up and register their child to view the yearbook.</h4>
-         <h4 class="d-flex justify-content-center">Parents can also monitor their child's messages they post.</h4>
-    </div>
-</div>
 </div>
 <footer class="footer">
-<footer th:replace="partials/footer :: footer"></footer>
+    <footer th:replace="partials/footer :: footer"></footer>
 </footer>
 
 
@@ -79,12 +84,14 @@
     $(function(){
 
         let limit = 0; // 0 = infinite.
-        let interval = 5;// Secs
+        let interval = 7;// Secs
         let images = [
-            "http://www.bcat.eu/data/demo/jquery-bg-switcher/links/images/img-slider-1.jpg"
-            ,"https://www.tipsandtricks-hq.com/images/amazing-photos/group1/tips_background_image4.jpg"
-            ,"http://www.kriesi.at/themes/corona/files/2011/09/kode.jpg"
-            ,"http://www.bcat.eu/data/demo/jquery-bg-switcher/links/images/img-slider-2.jpg"
+            "img/locker_with_white_block.jpg"
+            // ,"img/tankFaded.jpg"
+            ,"img/yearbookWhiteBlock.jpg"
+            ,"img/aquamanFaded.jpg"
+            ,"img/faded group at computer.jpg"
+            // ,"img/greenlaternFaded.jpg"
         ];
 
         let index = 0;

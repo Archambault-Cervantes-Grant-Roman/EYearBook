@@ -4,75 +4,47 @@
     <!--    bootstrap CSS-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
           integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-
-    <!--    jquery-->
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<!--    fonts-->
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
+          integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+<!--  cloudflare-->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!--    jquery-->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
             integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
-    <!--    css styling-->
+<!--    css styling-->
     <link href="/eyearbook.css" rel="stylesheet"/>
     <meta charset="UTF-8">
 
-    <style>
-        .sidenavP{
-            top: 55px;
-            left: 4px;
-        }
-    </style>
+
     <title>Parent Profile Page</title>
 </head>
 
 <body class="p-profile-page">
 <th:block th:insert="partials/topOfPage :: topOfPage"></th:block>
 
-<nav th:replace="partials/navbar :: navbar"/>
+<nav th:replace="partials/navbarParent :: navbarParent"/>
 
-
-<h1 class="text-center">Welcome <span th:text="${user != null} ? ${user.username} : 'user is null'"></span></h1>
-
-
-<!--SIDE NAVBAR-->
-
-<div class="sidenavP">
-    <h5>Your Child(ren):</h5>
-    <div>
-        <a href="" class="btn btn-default btn-rounded" data-toggle="modal" data-target="#modalRegisterChild">Register a
-            child</a>
-    </div>
-
-    <div th:each="child : ${children}">
-        <a th:href="@{signature-page/{id} (id=${child.id})}">See <span th:text="${child.username}"></span>'s page </a>
-    </div>
-    <br>
-    <h5>Your Profile:</h5>
-    <a th:href="@{|/edit-profile|}">Update your profile</a>
-    <br>
-    <h5>Yearbook:</h5>
-    <div th:if="${!user.owns_yearbook}">
-        <a href="/mock-site">purchase a yearbook</a>
-        <a href="" class="btn btn-default btn-rounded " data-toggle="modal"
-           data-target="#modalEnterPurchaseCodeForm">enter yearbook purchase code</a>
-    </div>
-
-    <div th:if="${user.owns_yearbook}">
-        <a href="/yearbook">View Yearbook</a>
-    </div>
-
+<div class="container-sm">
+<h1 class="text-center welcome mb-5">Welcome <span th:text="${user != null} ? ${user.username} : 'user is null'"></span></h1>
 </div>
 
-<br>
 
-<div class="container-fluid container w-75 ">
-    <div class="main">
+<div class="container-fluid ">
+    <div class="childCommentScroll">
         <h3 class="text-center">Your Childs Comments:</h3>
-        <br>
-        <br>
-
-        <div class="card mb-3" >
-                <div class="col-12" th:each="child : ${children}">
-            <div>
+        <div class="card commentCard">
+                <div class="card-title" th:each="child : ${children}">
                     <div class="card-body" th:each="userSignature : ${child.userSignatures}">
-                        <div class="row border no-gutters">
-                            <div class="col-sm-7">
+                        <div class="row border no-gutters individualCommentCard">
+                            <div class="col-sm-3">
+                                <img class="yourChildImage"
+                                     th:src="${child.student.image}"/>
+                            </div>
+                            <div class="col-sm-9 mt-4">
                                 <h3><a th:text="${child.username}"></a> posted on <a th:text="${userSignature.profile_user.username}"></a>'s profile</h3>
                                 <h3><a th:text="${userSignature.yearbook_comment}"></a></h3>
                             </div>
@@ -111,7 +83,7 @@
                     <div class="modal-body mx-3">
                         <div class="md-form mb-4">
                             <input type="text" id="purchaseCode" class="form-control validate" name="code"/>
-                            <label data-error="wrong" data-success="right" for="purchaseCode">purchase code</label>
+                            <label data-error="wrong" data-success="right" for="purchaseCode">Purchase Code</label>
                             <br>
 
                         </div>
@@ -138,7 +110,7 @@
         <div class="modal-dialog p-2 modal-sm" role="document">
             <div class="modal-content">
                 <div class="modal-header text-center">
-                    <h4 class="modal-title w-100 font-weight-bold">Enter Student Id: </h4>
+                    <h4 class="modal-title w-100 font-weight-bold">Enter Students Id Number: </h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -147,7 +119,7 @@
                 <div class="modal-body mx-3">
                     <div class="md-form mb-4">
                         <input type="text" id="studentId" class="form-control validate" name="id" required/>
-                        <label data-error="wrong" data-success="right" for="studentId">student id</label>
+                        <label data-error="wrong" data-success="right" for="studentId">student Id</label>
                         <br>
                     </div>
                 </div>
@@ -160,9 +132,12 @@
     </form>
 
 </div>
-<div class="container">
-<footer th:replace="partials/footer :: footer"></footer>
+<br>
+<div class="container mb-sm-0">
+<footer  th:replace="partials/footer :: footer"></footer>
 </div>
+
+
 <!--    bootstrap js-->
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
@@ -173,8 +148,5 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
-
-
 </body>
-
 </html>

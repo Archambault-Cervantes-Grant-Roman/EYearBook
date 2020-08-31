@@ -1,15 +1,17 @@
 body, html {
-    font-family: 'Yatra One', Times, serif;
+    font-family: 'Shadows Into Light', cursive;
+
     /*background: url("img/john-schnobrich-2FPjlAyMQTA-unsplash.jpg") no-repeat center center fixed;*/
 /*    background: url("img/moren-hsu-VLaKsTkmVhk-unsplash.jpg") no-repeat center center fixed;*/
 /*    -webkit-background-size: cover;*/
 /*    -moz-background-size: cover;*/
 /*    -o-background-size: cover;*/
 /*    background-size: cover;*/
-    background-position: center center;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
+/*    =======================*/
+/*    background-position: center center;*/
+/*    -webkit-background-size: cover;*/
+/*    -moz-background-size: cover;*/
+/*    -o-background-size: cover;*/
     background-size: cover;
     -webkit-transition:background 0.5s ease-in;
     -moz-transition:background 0.5s ease-in;
@@ -17,7 +19,8 @@ body, html {
     -ms-transition:background 0.5s ease-in;
     transition:background 0.5s ease-in;
     height: 100%;
-
+    background-image: url("img/faded group at computer.jpg");
+    /*background-image: url("img/openFaded.jpg");*/
 }
 #rotimages {
     /*background: url("img/john-schnobrich-2FPjlAyMQTA-unsplash.jpg") no-repeat center center fixed;*/
@@ -27,8 +30,12 @@ body, html {
 }
 
 .jumbotron-fluid {
-    background-image: url("img/Screen Shot 2020-08-27 at 9.22.21 AM.png");
-    background-size: 100%;
+    /*background-image: url("img/teen-titans.png");*/
+    /*background-size: 100%;*/
+    /*background-color: rgba(255, 255, 255, 0.5) !important;*/
+    /*background-color: rgba(225, 177, 159, 0.3);*/
+    background-color: rgba(247, 233, 225, 0.3);
+    border: solid 5px #0c0c0c;
 }
 
 /*body {*/
@@ -41,9 +48,17 @@ h4 {
 }
 
 .fas, .far {
-    color: #007bff;
+    color: #df7b7b;
 }
 
 h1 {
+    color: #6a2621;
     font-family: 'Yatra One', Times, serif;
+}
+.info {
+    /*background-color: #f7eeee;*/
+    background-color: rgba(247, 233, 225, 0.3);
+    /*opacity: 0.1%;*/
+    border: solid 5px #0c0c0c;
+    /*border-color: darkgreen; !important;*/
 }
