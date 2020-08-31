@@ -110,6 +110,36 @@
     color: #f1f1f1;
 }
 
+.childCommentScroll{
+    margin: auto;
+    top: 5em;
+    /*padding:4px;*/
+    /*width: 950px;*/
+    height: 500px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    text-align:justify;
+}
+
+.commentCard{
+    background-color: rgba(0,0,0,0.5) !important;
+    width: 50%;
+    left: 30rem;
+}
+
+.individualCommentCard{
+    background-color: white;
+}
+
+.yourChildImage{
+    height: 150px;
+    width: 150px;
+    border-left: 10px solid blue;
+}
+/***************************************************************/
+/* END OF PARENT-PROFILE-PAGE CSS*/
+
+
 /*Armando's css'*/
 
 .sidenav{
@@ -172,11 +202,12 @@
     overflow-y: auto;
     text-align:justify;
 }
+
+
 /*.commentPadding{*/
 /*}*/
 
-/***************************************************************/
-/* END OF PARENT-PROFILE-PAGE CSS*/
+
 
 .foot{
     margin-bottom: 0 !important;
