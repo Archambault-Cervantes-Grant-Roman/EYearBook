@@ -19,7 +19,7 @@ body, html {
     -ms-transition:background 0.5s ease-in;
     transition:background 0.5s ease-in;
     height: 100%;
-    background-image: url("img/openBookFaded.jpg");
+    background-image: url("img/faded group at computer.jpg");
     /*background-image: url("img/openFaded.jpg");*/
 }
 #rotimages {
@@ -52,7 +52,7 @@ h4 {
 }
 
 h1 {
-    color: #2d6a21;
+    color: #6a2621;
     font-family: 'Yatra One', Times, serif;
 }
 .info {
