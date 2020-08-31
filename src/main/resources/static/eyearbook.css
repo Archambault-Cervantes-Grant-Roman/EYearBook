@@ -69,9 +69,9 @@ body{
     background-color: cornflowerblue;
 }
 
-.commentCard{
-    background-color: rgba(152, 148, 148, 0.5) !important;
-}
+/*.commentCard{*/
+/*    background-color: rgba(152, 148, 148, 0.5) !important;*/
+/*}*/
 
 
 /*.sidenavPL  {*/
@@ -122,32 +122,31 @@ body{
     color: #f1f1f1;
 }
 
+/*on parent-profile*/
+
 .childCommentScroll{
     margin: auto;
-    top: 5em;
+    /*top: 5em;*/
     /*padding:4px;*/
     /*width: 950px;*/
-    height: 500px;
+    height: auto;
     overflow-x: hidden;
     overflow-y: auto;
     text-align:justify;
 
 }
-
+.parentCommentCard{
+    background-color: rgba(0,0,0,0.5) !important;
+    width: 1200px;
+}
 .commentCard{
     background-color: rgba(0,0,0,0.5) !important;
-    width: 50%;
-    left: 30rem;
 }
-
-.eachCommentCard{
-    background-color: rgba(0,0,0,0.5) !important;
-}
-
 
 .individualCommentCard{
     background-color: white;
 }
+
 
 .yourChildImage{
     height: 150px;
@@ -218,8 +217,8 @@ body{
 
     justify-content: center;
     /*padding:4px;*/
-    background-color: rgba(0,0,0,0.5) !important;
-    width: 100%;
+    /*background-color: rgba(0,0,0,0.5) !important;*/
+    /*width: 100%;*/
     height: auto;
     overflow-x: hidden;
     overflow-y: auto;
