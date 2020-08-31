@@ -1,6 +1,6 @@
 html,body{
-    font-family: 'Shadows Into Light', cursive;
-
+    /*font-family: 'Shadows Into Light', cursive;*/
+    font-family: 'Playfair Display', serif;
     background-image: url('img/moren-hsu-VLaKsTkmVhk-unsplash.jpg');
     background-size: cover;
     background-repeat: no-repeat;
