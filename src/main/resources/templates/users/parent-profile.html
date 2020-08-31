@@ -29,19 +29,22 @@
 <nav th:replace="partials/navbarParent :: navbarParent"/>
 
 <div class="container-sm">
-<h1 class="text-center welcome">Welcome <span th:text="${user != null} ? ${user.username} : 'user is null'"></span></h1>
+<h1 class="text-center welcome mb-5">Welcome <span th:text="${user != null} ? ${user.username} : 'user is null'"></span></h1>
 </div>
 
 
 <div class="container-fluid ">
-    <div>
+    <div class="childCommentScroll">
         <h3 class="text-center">Your Childs Comments:</h3>
-        <div class="card mb-3 commentCard" >
-                <div class="col-12" th:each="child : ${children}">
-            <div>
+        <div class="card commentCard">
+                <div class="card-title" th:each="child : ${children}">
                     <div class="card-body" th:each="userSignature : ${child.userSignatures}">
-                        <div class="row border no-gutters">
-                            <div class="col-sm-7">
+                        <div class="row border no-gutters individualCommentCard">
+                            <div class="col-sm-3">
+                                <img class="yourChildImage"
+                                     th:src="${child.student.image}"/>
+                            </div>
+                            <div class="col-sm-9 mt-4">
                                 <h3><a th:text="${child.username}"></a> posted on <a th:text="${userSignature.profile_user.username}"></a>'s profile</h3>
                                 <h3><a th:text="${userSignature.yearbook_comment}"></a></h3>
                             </div>
