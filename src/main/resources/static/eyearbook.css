@@ -62,6 +62,11 @@
     background-color: cornflowerblue;
 }
 
+.commentCard{
+    background-color: rgba(152, 148, 148, 0.5) !important;
+}
+
+
 /*.sidenavPL  {*/
 /*    !*height: 100%; !* Full-height: remove this if you want "auto" height *!*!*/
 /*    !*height: 50%;*!*/
