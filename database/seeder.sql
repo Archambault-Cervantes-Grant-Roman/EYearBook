@@ -21,7 +21,7 @@ insert into student_records (first_name, image, last_name,  student_id) values
 ('Jahziel', 'https://cdn.filestackcontent.com/sUbfSua4QFe8diJUmmbN', 'Baez', '51500'),
 ('Jay', 'https://cdn.filestackcontent.com/RfWmp0cTWuoB5r4ibLyi', 'Arredondo', '61600'),
 ('Julia', 'https://cdn.filestackcontent.com/rigIU0woS1eynJeeXX0r', 'Contreras', '71700'),
-('Chris', 'https://cdn.filestackcontent.com/HNtWZe2lS6PEzNBND0fs', 'Eckert', '81800'),
+('Chris', 'https://cdn.filestackcontent.com/6EBpDBzRtKbQpqG9CTXa', 'Eckert', '81800'),
 ('Justin', 'https://cdn.filestackcontent.com/TB1x3PqvQju6TJqRACuB', 'McCaleb', '91900'),
 ('Larry', 'https://cdn.filestackcontent.com/QDG5paORTmuRyS4iI0yw', 'Castillo', '12100'),
 ('Michael', 'https://cdn.filestackcontent.com/KwGnq5l1RGyTd0Yqbqmm', 'Garrison', '22200'),
