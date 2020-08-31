@@ -1,24 +1,20 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thyme leaf.org/extras/spring-security" lang="en">
 <head>
+<!--    X-Content-Type-Options: nosniff-->
     <!--    bootstrap-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
           integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <!--    jquery-->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
             integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
-
-    <script type="text/javascript" src="https://static.filestackapi.com/v3/filestack.js"></script>
-    <!--    css styling-->
-
     <!--    filestack -->
     <script type='text/javascript' th:src="@{/js/config.js}"></script>
-    <script type='text/javascript' th:src="@{/js/script.js}"></script>
-
+    <script type="text/javascript" src="https://static.filestackapi.com/v3/filestack.js"></script>
+    <!--    css styling-->
     <link rel="stylesheet" type="text/css" href="/SignaturePage.css"/>
     <link href="/eyearbook.css" type="text/css" rel="stylesheet"/>
-    <script type='text/javascript' th:src="@{/js/config.js}"></script>
-    <script type='text/javascript' th:src="@{/js/script.js}"></script>
+
 
     <meta charset="UTF-8">
     <meta id="fsak" th:content="${fsak}">
