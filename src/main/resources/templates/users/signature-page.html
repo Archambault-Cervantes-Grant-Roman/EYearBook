@@ -156,23 +156,21 @@
                     <div class="container-fluid container">
 
 
-                        <div class="card mb-3 h-25">
-                            <div class="card-title" th:each="pageOwner : ${pageOwner.myPageSignatures}">
-                                <div class=" row border no-gutters">
 
-                                    <div class="imageOfCommentPoster">
+                        <div class="eachCommentCard  mb-3 h-25">
+                            <div class="card-body" th:each="pageOwner : ${pageOwner.myPageSignatures}">
+                                <div class="row border no-gutters imageOfCommentPoster">
+
+                                    <div class="col-sm-3 ">
                                         <img class="signerImage img-thumbnail-sm"
                                              th:src="${pageOwner.signer.student.image}"/>
                                     </div>
-                                    <div class="col-sm-7">
-                                        <!--                            <img th:src="${pageOwner.signer.sign_page_banner_image}"/>-->
-                                        <div class="card-body text-center">
+                                    <div class="col-sm-9 mt-4">
+<!--                                        <div class="card-body text-center">-->
                                             <h3><a th:text="${pageOwner.signer.username}"></a> says, </h3>
                                             <h3><a th:text="${pageOwner.yearbook_comment}"></a></h3>
-                                            <!--                            <div class="card-text text-center">-->
-                                            <!--                                -->
+
                                             <!--                            </div>-->
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -206,7 +204,6 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -254,7 +251,30 @@
     </form>
 </div>
 
+<!--<script>-->
+<!--    $(function () {-->
 
+<!--        let limit = 0; // 0 = infinite.-->
+<!--        let interval = 5;// Secs-->
+<!--        let images = [-->
+<!--            "faded group at computer.jpg"-->
+<!--            , "img/locker_with_white_block.jpg"-->
+<!--            , "img/faded pencils.jpg"-->
+<!--            , "img/faded10.jpg"-->
+<!--            , "img/aquamanFaded.jpg"-->
+<!--        ];-->
+
+<!--        let index = 0;-->
+<!--        let limitCount = 0;-->
+<!--        let myInterval = setInterval(function () {-->
+<!--            if (limit && limitCount >= limit - 1) clearTimeout(myInterval);-->
+<!--            if (index >= images.length) index = 0;-->
+<!--            $('body').css({"background-image": "url(" + images[index] + ")"});-->
+<!--            index++;-->
+<!--            limitCount++;-->
+<!--        }, interval * 1000);-->
+<!--    });-->
+<!--</script>-->
 <!--    bootstrap js-->
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
