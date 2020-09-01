@@ -1,8 +1,9 @@
-.nav-item:hover {
-    border-bottom: 3px solid black;
+.nav-link:hover {
+    border-bottom: 3px solid white;
 }
 
 nav {
-    font-family: 'Josefin Sans', sans-serif;
+    /*font-family: 'Josefin Sans', sans-serif;*/
+    border-bottom: 3px #789f83;
 }
 
