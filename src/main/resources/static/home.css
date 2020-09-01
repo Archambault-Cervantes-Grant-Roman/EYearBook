@@ -3,7 +3,7 @@ body, html {
     /*font-family: 'Playfair Display', serif;*/
     font-family: 'Yanone Kaffeesatz', sans-serif;
 
-    /*background: url("img/john-schnobrich-2FPjlAyMQTA-unsplash.jpg") no-repeat center center fixed;*/
+    /*background: url("img/groupComputer.jpg") no-repeat center center fixed;*/
 /*    background: url("img/moren-hsu-VLaKsTkmVhk-unsplash.jpg") no-repeat center center fixed;*/
 /*    -webkit-background-size: cover;*/
 /*    -moz-background-size: cover;*/
@@ -21,11 +21,11 @@ body, html {
     -ms-transition:background 0.5s ease-in;
     transition:background 0.5s ease-in;
     height: 100%;
-    background-image: url("img/faded group at computer.jpg");
+    background-image: url("img/groupComputer.jpg");
     /*background-image: url("img/openFaded.jpg");*/
 }
 #rotimages {
-    /*background: url("img/john-schnobrich-2FPjlAyMQTA-unsplash.jpg") no-repeat center center fixed;*/
+    /*background: url("img/groupComputer.jpg") no-repeat center center fixed;*/
     /*background-repeat: no-repeat;*/
     /*background-attachment: fixed;*/
 
@@ -36,8 +36,9 @@ body, html {
     /*background-size: 100%;*/
     /*background-color: rgba(255, 255, 255, 0.5) !important;*/
     /*background-color: rgba(225, 177, 159, 0.3);*/
-    background-color: rgba(247, 233, 225, 0.3);
-    border: solid 5px #0c0c0c;
+    /*background-color: rgba(247, 233, 225, 0.3);*/
+    /*border: solid 5px #0c0c0c;*/
+    background-color: white;
 }
 
 /*body {*/
@@ -57,14 +58,18 @@ h4 {
 /*.iconR2 {*/
 /*    color: olivedrab;*/
 /*}*/
-/*.fas, .far {*/
-/*    !*color: #df7b7b;*!*/
-/*    color: olivedrab;*/
-/*}*/
+.fas, .far {
+    /*color: #df7b7b;*/
+    color: darkolivegreen;
+}
 
-h1 {
-    color: #6a2621;
-    font-family: 'Yatra One', Times, serif;
+#title {
+    color: #8a1f0a;
+    /*font-family: 'Yatra One', Times, serif;*/
+    font-family: 'Open Sans', sans-serif;
+    /*font-size: xx-large;*/
+    /*font-weight: bolder;*/
+    text-decoration: underline;
 }
 .info {
     /*background-color: #f7eeee;*/
