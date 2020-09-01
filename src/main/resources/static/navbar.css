@@ -2,8 +2,17 @@
     border-bottom: 3px solid white;
 }
 
+.nav-link {
+    border-bottom: 3px solid #789f83;
+}
+
 nav {
     /*font-family: 'Josefin Sans', sans-serif;*/
     border-bottom: 3px #789f83;
 }
+
+/*.nav-link {*/
+/*    border-bottom: 3px solid #B1CAE8;*/
+/*}*/
+
 
