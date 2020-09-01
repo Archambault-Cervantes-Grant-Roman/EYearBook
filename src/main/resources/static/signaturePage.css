@@ -20,11 +20,17 @@
 }
 
 body, html {
+    /*background-position: center center;*/
+    /*background-size: cover;*/
+    /*height: 100%;*/
+    /*margin: 0;*/
+    /*height: 100%;*/
     background-position: center center;
     background-size: cover;
+
     height: 100%;
     background-image: url("img/yearbookWhiteBlock.jpg");
     /*font-family: 'Shadows Into Light', cursive;*/
     background-color: ghostwhite;
-    font-family: 'Playfair Display', serif;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
 }
