@@ -21,7 +21,17 @@
     <link th:href="@{/signaturePage.css}" type='text/css' rel="stylesheet"/>
 
     <link th:href="@{/eyearbook.css}" th:rel="stylesheet"/>
+<style>
+    .btn-lg{
+        padding: 10px 20px;
+        font-size: 20px;
+        border-radius: 10px;
+        width:50%;    //Specify your width here
+        /*display: flex;*/
+        /*justify-content: center;*/
+    }
 
+</style>
 
     <meta charset="UTF-8">
     <meta id="fsak" th:content="${fsak}">
@@ -170,7 +180,9 @@
                                        placeholder="Sign My Yearbook"
                                        th:field="*{yearbook_comment}">
                             </div>
-                            <button class="btn btn-primary" value="Submit" type="submit">Sign</button>
+                            <div class="container-fluid d-flex justify-content-center">
+                            <button class="btn-primary btn-lg" value="Submit" type="submit">Click here to sign</button>
+                            </div>
                         </form>
                     </div>
                 </div>
