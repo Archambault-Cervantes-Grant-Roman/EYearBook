@@ -5,6 +5,8 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
           integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
+          integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="/js/turn.js"></script>
     <link th:rel="stylesheet" th:href="@{/navbar.css}" />
@@ -73,11 +75,13 @@
 
         <div id="wrapper" class="">
 
-
+<div class="d-flex justify-content-center">
             <input id="test" min="1" max="16" value='10' step="1" onchange="showVal(this.value)" type="range"/>
-            <input id="leftArrow" value="LEFT" type="button" class="turn-page"/>
-            <input id="rightArrow" value="RIGHT" type="button" class="turn-page"/>
-
+<!--            <input id="leftArrow" value="LEFT" type="button" class="turn-page"/><i class="fa fa-arrow-left" aria-hidden="true"></i>-->
+    <span id='leftArrow'><i class="fa fa-arrow-left fa-5x clickableArrow clickableHover" aria-hidden="true"></i></span>
+<!--            <input id="rightArrow" value="RIGHT" type="button" class="turn-page"/>-->
+    <span id='rightArrow'><i class="fa fa-arrow-right fa-5x clickableArrow clickableHover" aria-hidden="true"></i></span>
+</div>
 
             <div id="magazine" class="zoom">
                 <!--                cover-->
@@ -164,9 +168,23 @@
                 if (e.keyCode == 37)
                     $('#magazine').turn('previous');
                 else if (e.keyCode == 39)
+
                     $('#magazine').turn('next');
 
             });
+            $(window).bind('keydown', function (e) {
+
+                if (e.keyCode == 37)
+                    $('.clickableArrow').toggleClass("green");
+                // else if (e.keyCode == 39)
+
+
+
+            });
+
+
+
+
             $('#leftArrow').click(function () {
 
                 $('#magazine').turn('previous');
