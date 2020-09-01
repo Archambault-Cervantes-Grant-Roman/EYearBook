@@ -16,7 +16,8 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
             integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
 <!--    css styling-->
-    <link href="/eyearbook.css" rel="stylesheet"/>
+    <link th:href="@{/eyearbook.css}" th:rel="stylesheet"/>
+
     <meta charset="UTF-8">
 
 
@@ -27,6 +28,7 @@
 <th:block th:insert="partials/topOfPage :: topOfPage"></th:block>
 
 <nav th:replace="partials/navbarParent :: navbarParent"/>
+
 
 <div class="container-sm pt-2">
 <h1 class="text-center welcome mb-5">Welcome <span th:text="${user != null} ? ${user.username} : 'user is null'"></span> to your parent profile page.  </h1>
