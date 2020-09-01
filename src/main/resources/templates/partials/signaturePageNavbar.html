@@ -28,38 +28,38 @@
 
             <th:block sec:authorize="!isAuthenticated()">
                 <li class="nav-item">
-                    <a class="nav-link btn-link btn" th:href="@{/login}">Login</a>
+                    <a class="nav-link btn-link btn text-white nav-font" th:href="@{/login}">Login</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link btn-link btn" th:href="@{/sign-up}">Parent Registration</a>
+                    <a class="nav-link btn-link btn text-white nav-font" th:href="@{/sign-up}">Parent Registration</a>
                 </li>
             </th:block>
 
             <th:block sec:authorize="isAuthenticated()">
                 <li class="nav-item" th:if="${#authentication.principal.isParent}">
-                    <a class="nav-link btn-link btn" th:href="@{|/parent-profile|}">My Profile</a>
+                    <a class="nav-link btn-link btn text-white nav-font" th:href="@{|/parent-profile|}">My Profile</a>
                 </li>
 
                 <li class="nav-item" th:if="${!#authentication.principal.isParent}">
-                    <a class="nav-link btn-link btn"
+                    <a class="nav-link btn-link btn text-white nav-font"
                        th:href="@{/signature-page/{id} (id = ${#authentication.principal.id})}">My
                         Student Profile</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link btn-link btn" th:href="@{|/search|}">Search Registered Student</a>
+                    <a class="nav-link btn-link btn text-white nav-font" th:href="@{|/search|}">Search Registered Student</a>
                 </li>
             </th:block>
 
             <th:block sec:authorize="isAuthenticated()">
                 <li class="nav-item" th:if="${pageOwner.owns_yearbook}">
-                    <a class="nav-link btn-link btn" th:href="@{|/yearbook|}">View Yearbook</a>
+                    <a class="nav-link btn-link btn text-white nav-font" th:href="@{|/yearbook|}">View Yearbook</a>
                 </li>
             </th:block>
 
             <th:block sec:authorize="isAuthenticated()">
                 <li class="nav-item ">
                     <form th:action="@{/logout}" th:method="post">
-                        <button class="nav-link btn-link btn">Logout</button>
+                        <button class="nav-link btn-link btn text-white nav-font">Logout</button>
                     </form>
                 </li>
             </th:block>
