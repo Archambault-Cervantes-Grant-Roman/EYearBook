@@ -37,6 +37,7 @@ h5, h1 {
 .container {
     height: max-content;
     width: max-content;
+    position: center;
 }
 
 html {

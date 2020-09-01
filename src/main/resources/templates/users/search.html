@@ -35,7 +35,8 @@
     </form>
 </div>
 <section class="searchScroll row">
-<div class="container pl-0 pr-1" th:each="user : ${filteredResults}">
+<div class="container" style="padding-right: 10px; padding-left: 10px; margin-left: 10px; margin-right: 10px" th:each="user : ${filteredResults}">
+    <div class="d-flex justify-content-center">
 <!--    <div class="">-->
 <!--        <div class="card profile-card-1" >-->
 
@@ -54,6 +55,7 @@
             <h4 class="card-title" th:text="${user.student.first_name} +' '+ ${user.student.last_name}"></h4>
             <a class="d-flex justify-content-center card-footer profileLink" style="background-color: #789f83;" th:href="@{/signature-page/{id}(id=${user.id})}">Visit This Friends Page!</a>
         </div>
+    </div>
     </div>
 
 </div>
