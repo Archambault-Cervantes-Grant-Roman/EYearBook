@@ -23,6 +23,7 @@
 
 
     <title>Parent Profile Page</title>
+
 </head>
 
 <body class="p-profile-page">
@@ -40,7 +41,9 @@
 
 <div class="container-fluid d-flex justify-content-center">
     <div class="childCommentScroll">
-        <h3 class="text-center">Your Childs Comments:</h3>
+        <div th:if="${user.userSignatures == empty}">
+        <h3 class="text-center">Your Child's Comments:</h3>
+        </div>
                 <div class="card-title" th:each="child : ${children}">
                     <div class="card-body parentCommentCard" th:each="userSignature : ${child.userSignatures}">
                         <div class="row border no-gutters individualCommentCard">
