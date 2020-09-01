@@ -13,7 +13,7 @@
         .searchScroll{
             margin-top: 2rem;
             margin-left: 12em;
-            background-color: rgba(0,0,0,0.5) !important;
+            /*background-color: rgba(0,0,0,0.5) !important;*/
             width: 80%;
             height: 80%;
             overflow-x: hidden;
@@ -35,7 +35,7 @@
     </form>
 </div>
 <section class="searchScroll row">
-<div class="container" th:each="user : ${filteredResults}">
+<div class="container pl-0 pr-1" th:each="user : ${filteredResults}">
 <!--    <div class="">-->
 <!--        <div class="card profile-card-1" >-->
 
@@ -48,11 +48,11 @@
 <!--        </div>-->
 
 <!--    </div>-->
-    <div class="card mt-3 border-dark" style="width: 18rem;">
-        <img class="card-img-top img-thumbnail" th:src="${user.student.image}" alt="Card image cap">
+    <div class="card mt-3 k text-center m-0 px-1 py-1" style="width: 18rem;">
+        <img class="card-img-top img-thumbnail border-0" th:src="${user.student.image}" alt="Card image cap">
         <div class="card-body">
             <h4 class="card-title" th:text="${user.student.first_name} +' '+ ${user.student.last_name}"></h4>
-            <a class="d-flex justify-content-center card-footer profileLink badge badge-pill badge-success" th:href="@{/signature-page/{id}(id=${user.id})}">Visit This Friends Page!</a>
+            <a class="d-flex justify-content-center card-footer profileLink" style="background-color: #789f83;" th:href="@{/signature-page/{id}(id=${user.id})}">Visit This Friends Page!</a>
         </div>
     </div>
 

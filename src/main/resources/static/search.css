@@ -1,7 +1,7 @@
 body, html {
     /*background-image: url("img/84121E17-DEDA-4942-8BD6-2F61924472C3_1_105_c.jpeg");*/
     /*background-image: url("img/A4209186-9CA6-49AF-B6CF-E141738548F9_1_105_c.jpeg");*/
-    background-image: url("img/37BA0F73-71D8-4864-942E-4BDEF2B2EE03.jpeg");
+    background-image: url("img/locker_with_white_block.jpg");
     /*background-image: url("img/A60952B9-0C51-4A63-B3E6-20B1620F6324_1_105_c.jpeg");*/
     background-size: cover;
     background-repeat: no-repeat;
@@ -19,7 +19,7 @@ h5, h1 {
 }
 
 .card-body {
-    background-image: url("img/codeup-arrow.jpg");
+    /*background-image: url("img/codeup-arrow.jpg");*/
     background-size: initial;
     background-repeat: no-repeat;
     height: 100%;
