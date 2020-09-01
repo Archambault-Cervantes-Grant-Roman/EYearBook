@@ -1,8 +1,11 @@
 body, html {
     /*font-family: 'Shadows Into Light', cursive;*/
-    font-family: 'Playfair Display', serif;
-    background: url("img/john-schnobrich-2FPjlAyMQTA-unsplash.jpg") no-repeat center center fixed;
+    /*font-family: 'Playfair Display', serif;*/
+
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    background: url("img/groupComputer.jpg") no-repeat center center fixed;
     /*background: url("img/moren-hsu-VLaKsTkmVhk-unsplash.jpg") no-repeat center center fixed;*/
+
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;

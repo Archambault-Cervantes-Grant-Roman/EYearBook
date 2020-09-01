@@ -27,7 +27,10 @@ body, html {
     /*height: 100%;*/
     background-position: center center;
     background-size: cover;
-    /*background-image: url("img/locker_with_white_block.jpg");*/
+
+    height: 100%;
+    background-image: url("img/yearbookWhiteBlock.jpg");
     /*font-family: 'Shadows Into Light', cursive;*/
-    /*font-family: 'Playfair Display', serif;*/
+    background-color: ghostwhite;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
 }
