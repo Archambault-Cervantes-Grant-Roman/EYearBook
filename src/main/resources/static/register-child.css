@@ -2,6 +2,7 @@ html,body{
     /*font-family: 'Shadows Into Light', cursive;*/
     font-family: 'Playfair Display', serif;
     background-image: url('img/locker.jpg');
+
     background-size: cover;
     background-repeat: no-repeat;
     height: 100%;

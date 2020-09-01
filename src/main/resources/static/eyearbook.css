@@ -1,6 +1,7 @@
 body{
     /*font-family: 'Shadows Into Light', cursive;*/
-    font-family: 'Playfair Display', serif;
+    /*font-family: 'Playfair Display', serif;*/
+    font-family: 'Bree Serif', serif;
 }
 .handwriting {
     font-family: 'Patrick Hand', cursive;
@@ -165,9 +166,9 @@ color: cornflowerblue;
     border-left: 10px solid blue;
 }
 
-.parentFooter{
-    margin-top: 250px;
-}
+/*.parentFooter{*/
+/*    margin-top: 250px;*/
+/*}*/
 /***************************************************************/
 /* END OF PARENT-PROFILE-PAGE CSS*/
 
@@ -207,10 +208,10 @@ color: cornflowerblue;
     /*margin-left: 33rem;*/
     /*width: 50%;*/
 }
-.footerPage{
-    margin-top: 0;
-    padding-top: 0;
-}
+/*.footerPage{*/
+/*    margin-top: 0;*/
+/*    padding-top: 0;*/
+/*}*/
 .container-fluid{
     padding-left: 0;
     padding-right: 0;
@@ -242,9 +243,9 @@ color: cornflowerblue;
 
 
 
-.foot{
-    margin-bottom: 0 !important;
-}
+/*.foot{*/
+/*    margin-bottom: 0 !important;*/
+/*}*/
 
 .imageOfCommentPoster{
     background-color: white;

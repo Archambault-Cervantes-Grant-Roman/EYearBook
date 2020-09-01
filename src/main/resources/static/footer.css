@@ -1,10 +1,11 @@
 footer {
-    position: absolute;
+    /*position: absolute;*/
     bottom: 0;
     width: 100%;
     position: fixed;
     height: 200px;
-    background-color: #999999;
+    /*background-color: #999999;*/
+    margin-bottom: 0 !important;
 }
 footer ul.footerleft{
     margin-left: 150px;
@@ -19,7 +20,7 @@ footer a{
 }
 
 footer a:hover{
-    color: #ffffff;
+    color: blue;
     text-decoration: none;
 }
 .social:hover {
@@ -30,4 +31,21 @@ footer a:hover{
     -webkit-transform: scale(0.8);
     color: #222;
 
+}
+
+/*.foot{*/
+/*    margin-bottom: 0 !important;*/
+/*}*/
+
+/*.parentFooter{*/
+/*    margin-top: 250px;*/
+/*}*/
+
+.footer{
+    margin-top: 0;
+    padding-top: 0;
+}
+
+a {
+    color: white;
 }
