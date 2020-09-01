@@ -128,7 +128,9 @@
 
             <!--  COMMENTS SECTION-->
             <div class="middleScroll ">
-                <div th:if="${pageOwner.myPageSignatures == empty}">
+<!--                <div th:if="${pageOwner.myPageSignatures == empty}">-->
+                    <div th:if="${!pageOwner.myPageSignatures.isEmpty()}">
+
                     <div class="text-center mt-5">
                         <h3 class="text-center">Who signed your page:</h3>
                     </div>
