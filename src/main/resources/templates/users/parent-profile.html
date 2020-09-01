@@ -28,9 +28,11 @@
 
 <nav th:replace="partials/navbarParent :: navbarParent"/>
 
-<div class="container-sm">
-<h1 class="text-center welcome mb-5">Welcome <span th:text="${user != null} ? ${user.username} : 'user is null'"></span></h1>
+<div class="container-sm pt-2">
+<h1 class="text-center welcome mb-5">Welcome <span th:text="${user != null} ? ${user.username} : 'user is null'"></span> to your parent profile page.  </h1>
+    <h3 class="text-center font-weight-bold">Here you can monitor posts your child has made</h3>
 </div>
+
 
 
 <div class="container-fluid d-flex justify-content-center">
@@ -44,8 +46,8 @@
                                      th:src="${child.student.image}"/>
                             </div>
                             <div class="col-sm-9 mt-4">
-                                <h3><a th:text="${child.username}"></a> posted on <a th:text="${userSignature.profile_user.username}"></a>'s profile</h3>
-                                <h3><a th:text="${userSignature.yearbook_comment}"></a></h3>
+                                <h3 class="childsPost"><a th:text="${child.username}"></a> posted on <a th:text="${userSignature.profile_user.username}"></a>'s profile</h3>
+                                <h3 class="handwriting"><a th:text="${userSignature.yearbook_comment}"></a></h3>
                             </div>
                         </div>
                     </div>
@@ -61,6 +63,7 @@
                 </div>
             </div>
     </div>
+</div>
 
     <!--modal code for purchase code-->
 

@@ -1,6 +1,6 @@
 html,body{
-    font-family: 'Shadows Into Light', cursive;
-
+    /*font-family: 'Shadows Into Light', cursive;*/
+    font-family: 'Playfair Display', serif;
     background-image: url('img/final-10.jpg');
     background-size: cover;
     background-repeat: no-repeat;

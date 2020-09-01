@@ -1,5 +1,6 @@
 body, html {
-    font-family: 'Shadows Into Light', cursive;
+    /*font-family: 'Shadows Into Light', cursive;*/
+    font-family: 'Playfair Display', serif;
 
     /*background: url("img/john-schnobrich-2FPjlAyMQTA-unsplash.jpg") no-repeat center center fixed;*/
 /*    background: url("img/moren-hsu-VLaKsTkmVhk-unsplash.jpg") no-repeat center center fixed;*/
@@ -46,10 +47,19 @@ h4 {
     color: black;
     font-weight: bolder;
 }
-
-.fas, .far {
-    color: #df7b7b;
-}
+ hr {
+     border-style: solid;
+ }
+/*.iconR1 {*/
+/*    color: #df7b7b;*/
+/*}*/
+/*.iconR2 {*/
+/*    color: olivedrab;*/
+/*}*/
+/*.fas, .far {*/
+/*    !*color: #df7b7b;*!*/
+/*    color: olivedrab;*/
+/*}*/
 
 h1 {
     color: #6a2621;

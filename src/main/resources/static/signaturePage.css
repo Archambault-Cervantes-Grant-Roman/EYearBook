@@ -24,5 +24,6 @@ body, html {
     background-size: cover;
     height: 100%;
     background-image: url("img/locker_with_white_block.jpg");
-    font-family: 'Shadows Into Light', cursive;
+    /*font-family: 'Shadows Into Light', cursive;*/
+    font-family: 'Playfair Display', serif;
 }
