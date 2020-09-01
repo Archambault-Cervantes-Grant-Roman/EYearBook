@@ -9,13 +9,19 @@
     <style>
         .profileLink{
             color: white;
+
+        }
+        .profileLink:hover{
+            color: white;
         }
         .searchScroll{
-            margin-top: 2rem;
-            margin-left: 12em;
-            background-color: rgba(0,0,0,0.5) !important;
-            width: 80%;
-            height: 80%;
+            /*margin-top: 2rem;*/
+            /*margin-left: 12em;*/
+            /*background-color: rgba(0,0,0,0.5) !important;*/
+            display: flex;
+            justify-content: center;
+            width: auto;
+            height: 855px;
             overflow-x: hidden;
             overflow-y: auto;
             text-align:justify;
@@ -29,35 +35,38 @@
     <form th:action="@{/search}">
         Filter: <input type="text" name="keyword" id="keyword" size="50" th:value="${keyword}" required/>
         &nbsp;
-        <input type="submit" value="Search"/>
+        <input class="btn btn-primary" type="submit" value="Search"/>
         &nbsp;
-        <input type="button" value="Clear" id="btnClear" onclick="clearSearch()"/>
+        <input class="btn btn-primary" type="button" value="Clear" id="btnClear" onclick="clearSearch()"/>
     </form>
-</div>
-<section class="searchScroll row">
-<div class="container" th:each="user : ${filteredResults}">
-<!--    <div class="">-->
-<!--        <div class="card profile-card-1" >-->
+    <div class="searchScroll row">
+        <div class="container" style="padding-right: 10px; padding-left: 10px; margin-left: 10px; margin-right: 10px" th:each="user : ${filteredResults}">
+            <div class="d-flex justify-content-center">
+                <!--    <div class="">-->
+                <!--        <div class="card profile-card-1" >-->
 
-<!--                <img class="card-img-top" th:src="${user.student.image}" alt="Card image cap" style="">-->
+                <!--                <img class="card-img-top" th:src="${user.student.image}" alt="Card image cap" style="">-->
 
 
-<!--                <h2 class="card" th:text="${user.student.first_name} +' '+ ${user.student.last_name}"></h2>-->
+                <!--                <h2 class="card" th:text="${user.student.first_name} +' '+ ${user.student.last_name}"></h2>-->
 
-<!--            <a class="card card-footer" th:href="@{/signature-page/{id}(id=${user.id})}">Link to Signature Page!</a>-->
-<!--        </div>-->
+                <!--            <a class="card card-footer" th:href="@{/signature-page/{id}(id=${user.id})}">Link to Signature Page!</a>-->
+                <!--        </div>-->
 
-<!--    </div>-->
-    <div class="card mt-3 border-dark" style="width: 18rem;">
-        <img class="card-img-top img-thumbnail" th:src="${user.student.image}" alt="Card image cap">
-        <div class="card-body">
-            <h4 class="card-title" th:text="${user.student.first_name} +' '+ ${user.student.last_name}"></h4>
-            <a class="d-flex justify-content-center card-footer profileLink badge badge-pill badge-success" th:href="@{/signature-page/{id}(id=${user.id})}">Visit This Friends Page!</a>
+                <!--    </div>-->
+                <div class="card mt-3 k text-center m-0 px-1 py-1" style="width: 18rem;">
+                    <img class="card-img-top img-thumbnail border-0" th:src="${user.student.image}" alt="Card image cap">
+                    <div class="card-body">
+                        <h4 class="card-title" th:text="${user.student.first_name} +' '+ ${user.student.last_name}"></h4>
+                        <a class="d-flex justify-content-center card-footer profileLink " style="background-color: #789f83;" th:href="@{/signature-page/{id}(id=${user.id})}">Visit This Friends Page!</a>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
-
 </div>
-</section>
+
 
 <script type="text/javascript">
     function clearSearch() {
