@@ -65,11 +65,16 @@ h4 {
     color: darkolivegreen;
 }
 
+.welcome{
+    border: black solid 5px;
+}
+
 #title {
-    color: #8a1f0a;
+    /*color: #8a1f0a;*/
+    color:darkolivegreen;
     /*font-family: 'Yatra One', Times, serif;*/
     font-family: 'Open Sans', sans-serif;
-    font-size: 4em;
+    font-size: 6em;
     /*font-weight: bolder;*/
     text-decoration: underline;
 }

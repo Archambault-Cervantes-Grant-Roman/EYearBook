@@ -70,17 +70,15 @@ color: #789f83;
 /************************************************************/
 
 .p-profile-page {
-        /*background: url("img/desk.jpg") no-repeat center center fixed;*/
-    background: url("img/coffee.jpg") no-repeat center center fixed;
+        background: url("img/desk.jpg") no-repeat center center fixed;
+    /*background: url("img/coffee.jpg") no-repeat center center fixed;*/
 
     -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;
         background-size: cover;
 }
-.welcome {
-    background-color: cornflowerblue;
-}
+
 
 /*.commentCard{*/
 /*    background-color: rgba(152, 148, 148, 0.5) !important;*/
