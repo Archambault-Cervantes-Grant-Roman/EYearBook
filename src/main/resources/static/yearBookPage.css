@@ -1,5 +1,6 @@
 body {
     background: url("img/pexels-bongkarn-thanyakij-3828353.jpg") no-repeat center center fixed;
+    background-size: cover;
 }
 
 .clickableArrow  {
