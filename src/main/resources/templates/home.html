@@ -9,10 +9,10 @@
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link th:rel="stylesheet" th:href="@{/footer.css}"/>
-    <link th:rel="stylesheet" th:href="@{/navbar.css}" />
-    <link th:rel="stylesheet" th:href="@{/home.css}" />
+    <link th:rel="stylesheet" th:href="@{/navbar.css}"/>
+    <link th:rel="stylesheet" th:href="@{/home.css}"/>
     <style>
-        .footer{
+        .footer {
             position: absolute;
             bottom: 3em;
             width: 100%;
@@ -27,85 +27,15 @@
 <nav th:replace="partials/navbar :: navbar"/>
 
 <div class="container mt-5">
+    <div class="card text-center">
+        <div class="jumbotron jumbotron-fluid rounded mb-0">
+            <div class="header d-flex justify-content-center align-content-center">
+                <h1 class=" text-center" id="title">E - Yearbook</h1>
+            </div>
+        </div>
+        <hr>
 
-    <div class="jumbotron jumbotron-fluid rounded mt-sm-2">
-        <div class="header d-flex justify-content-center ">
-            <h1 class="display-5 text-center" id="title">E - Yearbook</h1>
-    </div>
-</div>
-
-
-<!--<br>-->
-
-
-<!--    <br>-->
-<!--    <div class="container d-flex justify-content-center ">-->
-<!--        <div class="container card-body rounded-circle ">-->
-<!--            <h1 class="d-flex justify-content-center"><i class="fas fa-book-reader iconR1"></i></h1>-->
-<!--            <div class="container body d-flex justify-content-center">-->
-<!--                <h3 class="text-center">View your yearbook online.</h3>-->
-<!--            </div>-->
-<!--        </div>-->
-
-
-
-<!--        <div class="container card-body rounded-circle ">-->
-<!--            &lt;!&ndash;    <h1 class="d-flex justify-content-center"><i class="far fa-comment-alt"></i></h1>&ndash;&gt;-->
-<!--            <h1 class="d-flex justify-content-center"><i class="far fa-address-book iconR1"></i></h1>-->
-<!--            <div class="container body d-flex justify-content-center">-->
-<!--                <h3 class="text-center">Search for your friends.</h3>-->
-<!--            </div>-->
-<!--        </div>-->
-
-<!--        <div class="container card-body rounded-circle ">-->
-<!--            <h1 class="d-flex justify-content-center"><i class="fas fa-signature iconR1"></i></h1>-->
-<!--            <div class="container body d-flex justify-content-center">-->
-<!--                <h3 class="text-center">Sign your friends yearbook.</h3>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-
-<!--<h3 class="text-center">~ Child Safety in Mind ~</h3>-->
-<!--    <hr>-->
-
-<!--    <div class="container d-flex justify-content-center ">-->
-<!--        <div class="container card-body rounded-circle ">-->
-<!--            <h1 class="d-flex justify-content-center"><i class="fas fa-user-lock"></i></h1>-->
-<!--            <div class="container body d-flex justify-content-center">-->
-<!--                <h3 class="text-center">Restricted access.</h3>-->
-<!--            </div>-->
-<!--        </div>-->
-
-
-<!--        <div class="container card-body rounded-circle ">-->
-<!--            <h1 class="d-flex justify-content-center"><i class="fas fa-eye"></i></h1>-->
-<!--            <div class="container body d-flex justify-content-center">-->
-<!--                <h3 class="text-center">Monitor content.</h3>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-
-<!--&lt;!&ndash;    <div class="container rounded  info">&ndash;&gt;-->
-<!--&lt;!&ndash;        <div class="container body">&ndash;&gt;-->
-<!--&lt;!&ndash;            <h1 class="d-flex justify-content-center"><i class="far fa-eye"></i></h1>&ndash;&gt;-->
-<!--&lt;!&ndash;            <h3 class="d-flex justify-content-center font-weight-bold ">Parents saftey in mind.</h3>&ndash;&gt;-->
-<!--&lt;!&ndash;                <h3 class="d-flex justify-content-center"> </h3>&ndash;&gt;-->
-<!--&lt;!&ndash;                <h3 class="d-flex justify-content-center">  </h3>&ndash;&gt;-->
-<!--&lt;!&ndash;        </div>&ndash;&gt;-->
-<!--&lt;!&ndash;    </div>&ndash;&gt;-->
-
-
-<!--</div>-->
-<!--<footer class="footer">-->
-<!--    <footer th:replace="partials/footer :: footer"></footer>-->
-<!--</footer>-->
-
-<!--==============================================-->
-<div class="card text-center">
-<!--    <div class="card-header">-->
-<!--        E ~ Yearbook-->
-<!--    </div>-->
-    <div class="card-body">
+        <!--            <div class="card-body">-->
 
         <div class="container d-flex justify-content-center ">
             <div class="container card-body rounded-circle ">
@@ -130,11 +60,12 @@
                 </div>
             </div>
         </div>
-<br>
+        <br>
         <h4 class="text-center">~ Internet Safety in Mind ~</h4>
 
-<br>
-        <div class="container d-flex justify-content-center ">
+        <br>
+        <div class="container d-flex justify-content-center mb-0 ">
+
             <div class="container card-body rounded-circle ">
                 <h1 class="d-flex justify-content-center"><i class="fas fa-user-lock"></i></h1>
                 <div class="container body d-flex justify-content-center">
@@ -149,32 +80,24 @@
                     <h4 class="text-center">Monitor content.</h4>
                 </div>
             </div>
+            <!--                </div>-->
+
+
         </div>
 
-
-
-    </div>
-    <div class="card-footer text-dark">
-        <a class="nav-link btn-link btn text-dark" th:href="@{|/about|}">About The Developers</a>
+        <div class="card-footer text-dark">
+            <a class="nav-link btn-link btn text-dark" th:href="@{|/about|}">About The Developers</a>
+        </div>
     </div>
 </div>
-
-</div>
-
-
 
 
 <!--====================================================-->
 
 
-
-
-
-
-
 </body>
 <script>
-    $(function(){
+    $(function () {
 
         let limit = 0; // 0 = infinite.
         let interval = 7;// Secs
@@ -190,13 +113,13 @@
 
         let index = 0;
         let limitCount = 0;
-        let myInterval = setInterval(function() {
-            if (limit && limitCount >= limit-1) clearTimeout(myInterval);
+        let myInterval = setInterval(function () {
+            if (limit && limitCount >= limit - 1) clearTimeout(myInterval);
             if (index >= images.length) index = 0;
-            $('body').css({ "background-image":"url(" + images[index]+ ")" });
+            $('body').css({"background-image": "url(" + images[index] + ")"});
             index++;
             limitCount++;
-        }, interval*1000);
+        }, interval * 1000);
     });
 </script>
 </html>
