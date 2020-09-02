@@ -10,9 +10,7 @@ nav {
     /*font-family: 'Josefin Sans', sans-serif;*/
     border-bottom: 3px #789f83;
 }
-
-/*.nav-link {*/
-/*    border-bottom: 3px solid #B1CAE8;*/
-/*}*/
-
+.nav-font {
+    font-size: 1.25em;
+}
 
