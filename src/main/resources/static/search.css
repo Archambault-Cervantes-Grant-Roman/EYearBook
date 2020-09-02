@@ -1,16 +1,21 @@
 body, html {
     /*background-image: url("img/breezway.jpeg");*/
     /*background-image: url("img/A4209186-9CA6-49AF-B6CF-E141738548F9_1_105_c.jpeg");*/
-    background-image: url("img/locker_with_white_block.jpg");
+    background-image: url("img/locker.jpg");
     /*background-image: url("img/A60952B9-0C51-4A63-B3E6-20B1620F6324_1_105_c.jpeg");*/
-    background-size: cover;
+    background-size: 100% auto;
     background-repeat: no-repeat;
     height: 100%;
 }
 
-h5, h1 {
+h5 {
     color: white;
     text-shadow: 2px 2px 2px #818181;
+}
+
+h1 {
+    color: whitesmoke;
+
 }
 
 .card:hover {
@@ -31,6 +36,10 @@ h5, h1 {
 /*}*/
 
 .text-white {
+    /*background-color: #4F9D85;*/
+}
+
+.searchBtn {
     background-color: #4F9D85;
 }
 
