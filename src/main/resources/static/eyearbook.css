@@ -71,15 +71,22 @@ color: #789f83;
 
 .p-profile-page {
         /*background: url("img/desk.jpg") no-repeat center center fixed;*/
-    background: url("img/coffee.jpg") no-repeat center center fixed;
+    /*background: url("img/coffee.jpg") no-repeat center center fixed;*/
+    background: url("img/writing.jpg") no-repeat center center fixed;
+
 
     -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;
         background-size: cover;
 }
-.welcome {
-    background-color: cornflowerblue;
+
+.parentBox{
+    border: solid 5px black;
+}
+.parentCard{
+    /*background-color: rgba(44, 42, 33, 0.5);*/
+    background-color: rgba(0,0,0,0.6) !important;
 }
 
 /*.commentCard{*/
@@ -169,27 +176,6 @@ color: #789f83;
     width: 150px;
     border-left: 10px solid blue;
 }
-
-/*.parentFooter{*/
-/*    margin-top: 250px;*/
-/*}*/
-/***************************************************************/
-/* END OF PARENT-PROFILE-PAGE CSS*/
-
-
-/*Armando's css'*/
-
-
-
-/*.commentPadding{*/
-/*}*/
-
-
-
-/*.foot{*/
-/*    margin-bottom: 0 !important;*/
-/*}*/
-
 
 
 .box.large{
