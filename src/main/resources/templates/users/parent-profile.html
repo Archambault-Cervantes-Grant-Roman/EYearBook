@@ -6,19 +6,19 @@
           integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<!--    fonts-->
+    <!--    fonts-->
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
           integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
-<!--  cloudflare-->
+    <!--  cloudflare-->
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!--    jquery-->
+    <!--    jquery-->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
             integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
-<!--    css styling-->
-    <link th:rel="stylesheet" th:href="@{/navbarParent.css}" />
+    <!--    css styling-->
+    <link th:rel="stylesheet" th:href="@{/navbarParent.css}"/>
     <link th:href="@{/eyearbook.css}" rel="stylesheet"/>
-    <link th:rel="stylesheet" th:href="@{/navbar.css}" />
+    <link th:rel="stylesheet" th:href="@{/navbar.css}"/>
 
     <meta charset="UTF-8">
 
@@ -34,79 +34,89 @@
 
 
 <div class="container-sm pt-2">
-<h1 class="text-center welcome mb-5">Welcome, <span th:text="${user != null} ? ${user.username} : 'user is null'"></span>, to your parent-profile page.  </h1>
+    <h1 class="text-center welcome mb-5">Welcome, <span
+            th:text="${user != null} ? ${user.username} : 'user is null'"></span>, to your parent-profile page. </h1>
     <h3 class="text-center font-weight-bold">Here, you can monitor posts your child has made.</h3>
 </div>
 
 
-
 <div class="container-fluid d-flex justify-content-center">
     <div class="childCommentScroll">
-<!--        <div th:if="${user.userSignatures == empty}">-->
-            <div th:if="${user.userSignatures.isEmpty()}">
+        <!--        <div th:if="${user.userSignatures == empty}">-->
+        <div th:if="${user.userSignatures.isEmpty()}">
 
             <h3 class="text-center">Your Child's Comments:</h3>
         </div>
-                <div class="card-title" th:each="child : ${children}">
-                    <div class="card-body parentCommentCard" th:each="userSignature : ${child.userSignatures}">
-                        <div class="row border no-gutters individualCommentCard">
-                            <div class="col-sm-3">
-                                <img class="yourChildImage"
-                                     th:src="${child.student.image}"/>
-                            </div>
-                            <div class="col-sm-9 mt-4">
-                                <h3 class="childsPost"><a th:text="${child.username}"></a> posted on <a th:text="${userSignature.profile_user.username}"></a>'s profile</h3>
-                                <h3 class="handwriting"><a th:text="${userSignature.yearbook_comment}"></a></h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <ul>
-                            <li class="col-12" th:each="comment : ${user.userSignatures}">
-                                <h2> Comment: <span th:text="${comment.yearbook_comment}"></span></h2>
-                            </li>
-                        </ul>
+<!--        <div class="card-title" th:each="child : ${children}">-->
+<!--            <div th:each="userSignature : ${child.userSignatures}">-->
+<!--            <h3 class="childUserName">Child:<a th:text="${child.username}"></a></h3>-->
+<!--            </div>-->
+<!--        </div>-->
+        <div class="card-title" th:each="child : ${children}">
+            <div th:if="${child.userSignatures.empty}">
+                <h3 class="childUserName">Child:<a th:text="${child.username}"></a>This child has no comments</h3>
+            </div>
+            <div th:if="${!child.userSignatures.empty}">
+
+            <h3 class="childUserName">Child:<a th:text="${child.username}"></a>'s posts</h3>
+            </div>
+            <div class="card-body parentCommentCard" th:each="userSignature : ${child.userSignatures}">
+
+                <div class="row border no-gutters individualCommentCard">
+                    <div class="col-sm-9 mt-4">
+                        <h3 class="childsPost">posted on <a th:text="${userSignature.profile_user.username}"></a>'s
+                            profile</h3>
+                        <h3 class="handwriting"><a th:text="${userSignature.yearbook_comment}"></a></h3>
                     </div>
                 </div>
             </div>
+        </div>
+<!--        <div class="col-md-8">-->
+<!--            <div class="card-body">-->
+<!--                <ul>-->
+<!--                    <li class="col-12" th:each="comment : ${user.userSignatures}">-->
+<!--                        <h2> Comment: <span th:text="${comment.yearbook_comment}"></span></h2>-->
+<!--                    </li>-->
+<!--                </ul>-->
+<!--            </div>-->
+<!--        </div>-->
     </div>
 </div>
+</div>
 
-    <!--modal code for purchase code-->
+<!--modal code for purchase code-->
 
 
-    <div class="modal fade " id="modalEnterPurchaseCodeForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-         aria-hidden="true">
+<div class="modal fade " id="modalEnterPurchaseCodeForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
 
-        <form th:action="@{/purchase-code}" method="POST" th:object="${user}">
-            <div class="modal-dialog p-2 modal-sm" role="document">
-                <div class="modal-content">
-                    <div class="modal-header text-center">
-                        <h4 class="modal-title w-100 font-weight-bold">Enter Purchase Code: </h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
+    <form th:action="@{/purchase-code}" method="POST" th:object="${user}">
+        <div class="modal-dialog p-2 modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h4 class="modal-title w-100 font-weight-bold">Enter Purchase Code: </h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
 
-                    <div class="modal-body mx-3">
-                        <div class="md-form mb-4">
-                            <input type="text" id="purchaseCode" class="form-control validate" name="code"/>
-                            <label data-error="wrong" data-success="right" for="purchaseCode">Purchase Code</label>
-                            <br>
+                <div class="modal-body mx-3">
+                    <div class="md-form mb-4">
+                        <input type="text" id="purchaseCode" class="form-control validate" name="code"/>
+                        <label data-error="wrong" data-success="right" for="purchaseCode">Purchase Code</label>
+                        <br>
 
-                        </div>
-                    </div>
-
-                    <div class="modal-footer d-flex justify-content-center">
-                        <!--                <div class="modal-footer ">-->
-                        <button type="submit" class="btn btn-primary">Send</button>
                     </div>
                 </div>
+
+                <div class="modal-footer d-flex justify-content-center">
+                    <!--                <div class="modal-footer ">-->
+                    <button type="submit" class="btn btn-primary">Send</button>
+                </div>
             </div>
-        </form>
-    </div>
+        </div>
+    </form>
+</div>
 
 
 <!--modal code for register child-->
