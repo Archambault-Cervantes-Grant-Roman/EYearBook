@@ -16,7 +16,10 @@
     <title>Navbar</title>
 </head>
 <body>
-<nav th:fragment="navbarParent" class="navbar sticky-top navbar-expand-lg navbar-dark" style="background-color: #accaea;">
+<nav th:fragment="navbarParent" class="navbar sticky-top navbar-expand-lg navbar-dark" style="background-color: #789f83;">
+<!--<nav th:fragment="navbarParent" class="navbar sticky-top navbar-expand-lg navbar-dark" style="background-color: #accaea;">-->
+
+
     <a class="navbar-brand text-dark table-hover" th:href="@{/}">E-YEARBOOK<span class="sr-only"></span></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
             aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -41,18 +44,18 @@
 
             <th:block sec:authorize="isAuthenticated()">
                 <li class="nav-item" th:if="${#authentication.principal.isParent}">
-                    <a class="nav-link btn-link btn  table-hover text-dark nav-font" th:href="@{|/parent-profile|}">My Profile</a>
+                    <a class="nav-link btn-link btn  table-hover text-white nav-font" th:href="@{|/parent-profile|}">My Profile</a>
                 </li>
                 <!--=======================================================-->
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-dark nav-font table-hover" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle text-white nav-font table-hover" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Your Children
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <th:block th:each="child : ${children}">
-                            <a class="dropdown-item  nav-font text-dark table-hover" th:href="@{signature-page/{id} (id=${child.id})}">Visit <span th:text="${child.username}"></span>'s page </a>
+                            <a class="dropdown-item  nav-font text-white table-hover" th:href="@{signature-page/{id} (id=${child.id})}">Visit <span th:text="${child.username}"></span>'s page </a>
                         </th:block>
-                        <a class="dropdown-item  nav-font text-dark table-hover" href=""  data-toggle="modal" data-target="#modalRegisterChild">Register a
+                        <a class="dropdown-item  nav-font text-white table-hover" href=""  data-toggle="modal" data-target="#modalRegisterChild">Register a
                             Child</a>
                     </div>
                 </li>
@@ -60,12 +63,12 @@
 <!--testing this merge-->
                 <th:block sec:authorize="isAuthenticated()">
                     <li class="nav-item" th:if="${user.owns_yearbook}">
-                        <a class="nav-link btn-link btn  text-dark table-hover nav-font" th:href="@{|/yearbook|}">View Yearbook</a>
+                        <a class="nav-link btn-link btn  text-white table-hover nav-font" th:href="@{|/yearbook|}">View Yearbook</a>
                     </li>
 
                     <li class="nav-item dropdown  table-hover " th:if="${!user.owns_yearbook}">
 <!--                    <li class="nav-item ">-->
-                        <a class="nav-link dropdown-toggle text-dark nav-font" href="#" id="navbarYearbookDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle text-white nav-font" href="#" id="navbarYearbookDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Yearbook
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarYearbookDropdown">
@@ -78,10 +81,10 @@
                 </th:block>
 
 
-                <a class="nav-link btn-link btn text-dark table-hover nav-font" th:href="@{|/edit-profile|}">Update your profile</a>
+                <a class="nav-link btn-link btn text-white table-hover nav-font" th:href="@{|/edit-profile|}">Update your profile</a>
 
                 <li class="nav-item" th:if="${!#authentication.principal.isParent}">
-                    <a class="nav-link btn-link btn  text-dark nav-font table-hover"
+                    <a class="nav-link btn-link btn  text-white nav-font table-hover"
                        th:href="@{/signature-page/{id} (id = ${#authentication.principal.id})}">My
                         Student Profile</a>
                 </li>
@@ -91,7 +94,7 @@
             <th:block sec:authorize="isAuthenticated()">
                 <li class="nav-item ">
                     <form th:action="@{/logout}" th:method="post">
-                        <button class="nav-link btn-link btn text-dark nav-font">Logout</button>
+                        <button class="nav-link btn-link btn text-white nav-font">Logout</button>
                     </form>
                 </li>
             </th:block>
