@@ -9,7 +9,7 @@
           integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="/js/turn.js"></script>
-    <link th:rel="stylesheet" th:href="@{/navbar.css}" />
+    <link th:rel="stylesheet" th:href="@{/navbar.css}"/>
     <link th:href="@{/yearBookPage.css}" type='text/css' rel="stylesheet"/>
 
 
@@ -26,13 +26,13 @@
             transform: rotate(90deg);
             transform-origin: bottom left;
 
-            position: absolute;
-            top: -100vw;
-            left: 0;
-            padding-right: 0;
+            /*position: absolute;*/
+            /*top: -100vw;*/
+            /*left: 0;*/
+            /*padding-right: 0;*/
 
-            height: 100vw;
-            width: 100vh;
+            /*height: 100vw;*/
+            /*width: 100vh;*/
 
             background-color: #000;
             color: #fff;
@@ -42,8 +42,11 @@
 
         #magazine {
             width: 1152px;
-            height: 752px;
-            margin-left: 150px;
+            height: 720px;
+            margin-left: 200px;
+            margin-top: 5px;
+            margin-bottom: 5px;
+
         }
 
         #magazine .turn-page {
@@ -68,171 +71,198 @@
 <body>
 
 
+<div id="wrapper" class="flex-container">
+
+    <div class="" style="order:1; align-self: center">
+<!--        <label for="test">Zoom:</label>-->
+<!--        <input id="test" min="1" max="16" value='10' step="1" onchange="showVal(this.value)" type="range"/>-->
+        <!--            <input id="leftArrow" value="LEFT" type="button" class="turn-page"/><i class="fa fa-arrow-left" aria-hidden="true"></i>-->
+        <span id='leftArrow'><i class="fa fa-arrow-left fa-5x clickableArrowLeft clickableHover clickableArrow" aria-hidden="true"></i></span>
+        <!--            <input id="rightArrow" value="RIGHT" type="button" class="turn-page"/>-->
+<!--        <span id='rightArrow'><i class="fa fa-arrow-right fa-3x clickableArrowRight clickableHover"-->
+<!--                                 aria-hidden="true"></i></span>-->
+    </div>
+    <div class="" style="order: 3; align-self: center; justify-self: right; margin-left: 200px">
+        <!--        <label for="test">Zoom:</label>-->
+        <!--        <input id="test" min="1" max="16" value='10' step="1" onchange="showVal(this.value)" type="range"/>-->
+        <!--            <input id="leftArrow" value="LEFT" type="button" class="turn-page"/><i class="fa fa-arrow-left" aria-hidden="true"></i>-->
+<!--        <span id='leftArrow'><i class="fa fa-arrow-left fa-3x clickableArrowLeft clickableHover" aria-hidden="true"></i></span>-->
+        <!--            <input id="rightArrow" value="RIGHT" type="button" class="turn-page"/>-->
+        <span id='rightArrow'><i class="fa fa-arrow-right fa-5x clickableArrowRight clickableHover clickableArrow"
+                                 aria-hidden="true"></i></span>
+    </div>
+
+    <div id="magazine" class="zoom yearbook" style="order: 2">
+        <!--                cover-->
+        <div class="rotate" style="background-image:url(https://cdn.filestackcontent.com/ZBmfxl2lT4iDUpg23TH5
+);"></div>
+        <!--                 white page-->
+        <div class="rotate"
+             style="background-image:url(https://cdn.filestackcontent.com/XfPCRH6WQ2CoGnjlmkLO);"></div>
+        <!--                 1 quotes-->
+        <div class="rotate"
+             style="background-image:url(https://cdn.filestackcontent.com/ZAgxwuDFSt2F1h071a00);"></div>
+
+        <!--                 2 sports-->
+        <div class="rotate"
+             style="background-image:url(https://cdn.filestackcontent.com/If9nPUETH2SE8IvsAdgN);"></div>
+        <!--                 3 socializing-->
+        <div class="rotate"
+             style="background-image:url(https://cdn.filestackcontent.com/uAE9LSuIQDCLBqMmHJvu);"></div>
+
+        <!--                 4-->
+        <div class="rotate"
+             style="background-image:url(https://cdn.filestackcontent.com/KmEh7Q3LSNyW88Q0X778
+);"></div>
+        <!--                 5-->
+        <div class="rotate"
+             style="background-image:url(https://cdn.filestackcontent.com/ERPNxB4uSwiHMRA79AxS);"></div>
+        <!--                                        6-->
+        <div class="rotate"
+             style="background-image:url(https://cdn.filestackcontent.com/gQZhNKE7S4CidIM9Dimr);"></div>
+        <!--                                    7-->
+        <div class="rotate"
+             style="background-image:url(https://cdn.filestackcontent.com/U3K324tlR16GX9an9lQP);"></div>
+        <!--                 8-->
+        <div class="rotate"
+             style="background-image:url(https://cdn.filestackcontent.com/1i95959TJeFDDDKE6i6i);"></div>
+        <!--                // 9-->
+        <div class="rotate"
+             style="background-image:url(https://cdn.filestackcontent.com/MxfWz0Q6Tuisrn3NI2cr);"></div>
+
+        <!--                 10-->
+        <div class="rotate"
+             style="background-image:url(https://cdn.filestackcontent.com/klzufXqFS8qc4361iCH6);"></div>
+
+        <!--                 11-->
+        <div class="rotate"
+             style="background-image:url(https://cdn.filestackcontent.com/TzhgdCQRtuNw9Okm858g);"></div>
+        <!--                12-->
+        <div class="rotate"
+             style="background-image:url(https://cdn.filestackcontent.com/aDFEl9MhR02fSfmqsl3i);"></div>
+        <!--13-->
+        <div class="rotate"
+             style="background-image:url(https://cdn.filestackcontent.com/WKv5diA9Q3atmJtI148I);"></div>
+        <!--14-->
+        <div class="rotate"
+             style="background-image:url(https://cdn.filestackcontent.com/hPhoy84nSWWU5AG0WOjx);"></div>
+        <!--15-->
+        <div class="rotate"
+             style="background-image:url(https://cdn.filestackcontent.com/ncu5kzCQWWOv273H1xyw);"></div>
 
 
-
-
-
-        <div id="wrapper" class="">
-
-<div class="d-flex justify-content-center">
-            <input id="test" min="1" max="16" value='10' step="1" onchange="showVal(this.value)" type="range"/>
-<!--            <input id="leftArrow" value="LEFT" type="button" class="turn-page"/><i class="fa fa-arrow-left" aria-hidden="true"></i>-->
-    <span id='leftArrow'><i class="fa fa-arrow-left fa-5x clickableArrow clickableHover" aria-hidden="true"></i></span>
-<!--            <input id="rightArrow" value="RIGHT" type="button" class="turn-page"/>-->
-    <span id='rightArrow'><i class="fa fa-arrow-right fa-5x clickableArrow clickableHover" aria-hidden="true"></i></span>
+    </div>
 </div>
 
-            <div id="magazine" class="zoom">
-                <!--                cover-->
-                <div class="rotate" style="background-image:url(https://cdn.filestackcontent.com/ZBmfxl2lT4iDUpg23TH5
-);"></div>
-                <!--                 white page-->
-                <div class="rotate"
-                     style="background-image:url(https://cdn.filestackcontent.com/XfPCRH6WQ2CoGnjlmkLO);"></div>
-                <!--                 1 quotes-->
-                <div class="rotate"
-                     style="background-image:url(https://cdn.filestackcontent.com/ZAgxwuDFSt2F1h071a00);"></div>
 
-                <!--                 2 sports-->
-                <div class="rotate"
-                     style="background-image:url(https://cdn.filestackcontent.com/If9nPUETH2SE8IvsAdgN);"></div>
-                <!--                 3 socializing-->
-                <div class="rotate"
-                     style="background-image:url(https://cdn.filestackcontent.com/uAE9LSuIQDCLBqMmHJvu);"></div>
+<script type="text/javascript">
 
-                <!--                 4-->
-                <div class="rotate"
-                     style="background-image:url(https://cdn.filestackcontent.com/KmEh7Q3LSNyW88Q0X778
-);"></div>
-                <!--                 5-->
-                <div class="rotate"
-                     style="background-image:url(https://cdn.filestackcontent.com/ERPNxB4uSwiHMRA79AxS);"></div>
-<!--                                        6-->
-                <div class="rotate"
-                     style="background-image:url(https://cdn.filestackcontent.com/gQZhNKE7S4CidIM9Dimr);"></div>
-<!--                                    7-->
-                <div class="rotate"
-                     style="background-image:url(https://cdn.filestackcontent.com/U3K324tlR16GX9an9lQP);"></div>
-                <!--                 8-->
-                <div class="rotate"
-                     style="background-image:url(https://cdn.filestackcontent.com/1i95959TJeFDDDKE6i6i);"></div>
-                <!--                // 9-->
-                <div class="rotate"
-                     style="background-image:url(https://cdn.filestackcontent.com/MxfWz0Q6Tuisrn3NI2cr);"></div>
-
-                <!--                 10-->
-                <div class="rotate"
-                     style="background-image:url(https://cdn.filestackcontent.com/klzufXqFS8qc4361iCH6);"></div>
-
-                <!--                 11-->
-                <div class="rotate"
-                     style="background-image:url(https://cdn.filestackcontent.com/TzhgdCQRtuNw9Okm858g);"></div>
-<!--                12-->
-                <div class="rotate"
-                     style="background-image:url(https://cdn.filestackcontent.com/aDFEl9MhR02fSfmqsl3i);"></div>
-<!--13-->
-                <div class="rotate"
-                     style="background-image:url(https://cdn.filestackcontent.com/WKv5diA9Q3atmJtI148I);"></div>
-<!--14-->
-                <div class="rotate"
-                     style="background-image:url(https://cdn.filestackcontent.com/hPhoy84nSWWU5AG0WOjx);"></div>
-<!--15-->
-                <div class="rotate"
-                     style="background-image:url(https://cdn.filestackcontent.com/ncu5kzCQWWOv273H1xyw);"></div>
-
-
-            </div>
-        </div>
-
-
-        <script type="text/javascript">
-
-            $(window).ready(function () {
-                $('#magazine').turn({
-                    display: 'double',
-                    acceleration: true,
-                    gradients: !$.isTouch,
-                    elevation: 50,
-                    when: {
-                        turned: function (e, page) {
-                            /*console.log('Current view: ', $(this).turn('view'));*/
-                        }
-                    }
-                });
-            });
-
-
-            $(window).bind('keydown', function (e) {
-
-                if (e.keyCode == 37)
-                    $('#magazine').turn('previous');
-                else if (e.keyCode == 39)
-
-                    $('#magazine').turn('next');
-
-            });
-            $(window).bind('keydown', function (e) {
-
-                if (e.keyCode == 37)
-                    $('.clickableArrow').toggleClass("green");
-                // else if (e.keyCode == 39)
-
-
-
-            });
-
-
-
-
-            $('#leftArrow').click(function () {
-
-                $('#magazine').turn('previous');
-
-            });
-
-            $('#rightArrow').click(function () {
-                $('#magazine').turn('next');
-            });
-
-
-            function setZoom(zoom, e) {
-
-                transformOrigin = [0, 0];
-                e = e || instance.getElementsByClassName(zoom);
-                var p = ["webkit", "moz", "ms", "o"],
-                    s = "scale(" + zoom + ")",
-                    oString = (transformOrigin[0] * 100) + "% " + (transformOrigin[1] * 100) + "%";
-
-                for (var i = 0; i < p.length; i++) {
-                    e.style[p[i] + "Transform"] = s;
-                    e.style[p[i] + "TransformOrigin"] = oString;
+    $(window).ready(function () {
+        $('#magazine').turn({
+            display: 'double',
+            acceleration: true,
+            gradients: !$.isTouch,
+            elevation: 50,
+            when: {
+                turned: function (e, page) {
+                    /*console.log('Current view: ', $(this).turn('view'));*/
                 }
-
-                el.style["transform"] = s;
-                el.style["transformOrigin"] = oString;
-
             }
+        });
+    });
+    $(window).bind('keydown', function (e) {
 
-            function showVal(a) {
-                var zoomScale = Number(a) / 10;
-                setZoom(zoomScale, document.getElementsByClassName('zoom')[0])
+        if (e.keyCode == 37)
+            $('#magazine').turn('previous');
+        else if (e.keyCode == 39)
+            $('#magazine').turn('next');
+
+    });
+
+    $(window).bind('keydown', function (e) {
+
+        if (e.keyCode == 37)
+                $('.clickableArrowLeft').toggleClass("green"),
+                $(window).bind('keyup', function () {
+                    $('.clickableArrowLeft').removeClass("green");
+                });
+        else if (e.keyCode == 39)
+
+                $('.clickableArrowRight').toggleClass("green"),
+                $(window).bind('keyup', function () {
+                    $('.clickableArrowRight').removeClass("green");
+                });
+
+    });
+    // $(window).bind('keydown', function (e) {
+    //
+    //     if (e.keyCode == 37) {
+    //         $('.clickableArrow').toggleClass("green");
+    //     }
+    //
+    //      $(e.keyCode == 37).keyup(function() {
+    //         // Removes the color when any key is lifted...
+    //         $('.clickableArrow').toggleClass("green");
+    //     });
+    //     // else if (e.keyCode == 39)
+    //
+    //
+    //
+    // });
 
 
-            }
+    $('#leftArrow').click(function () {
 
-            function rotateImage() {
-                var img = document.getElementById('rotate2');
-                img.style.transform = 'rotate(180deg)';
-            }
+        $('#magazine').turn('previous');
 
-            $("#rotate").on('click', function () {
-                $("#wrapper").toggleClass("wrapper");
-            });
+    });
+
+    $('#rightArrow').click(function () {
+        $('#magazine').turn('next');
+    });
 
 
-        </script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-        </body>
+    // function setZoom(zoom, e) {
+    //
+    //     transformOrigin = [0, 0];
+    //     e = e || instance.getElementsByClassName(zoom);
+    //     var p = ["webkit", "moz", "ms", "o"],
+    //         s = "scale(" + zoom + ")",
+    //         oString = (transformOrigin[0] * 100) + "% " + (transformOrigin[1] * 100) + "%";
+    //
+    //     for (var i = 0; i < p.length; i++) {
+    //         e.style[p[i] + "Transform"] = s;
+    //         e.style[p[i] + "TransformOrigin"] = oString;
+    //     }
+    //
+    //     el.style["transform"] = s;
+    //     el.style["transformOrigin"] = oString;
+    //
+    // }
+
+    // function showVal(a) {
+    //     var zoomScale = Number(a) / 10;
+    //     setZoom(zoomScale, document.getElementsByClassName('zoom')[0])
+    //
+    //
+    // }
+
+    // function rotateImage() {
+    //     var img = document.getElementById('rotate2');
+    //     img.style.transform = 'rotate(180deg)';
+    // }
+    //
+    // $("#rotate").on('click', function () {
+    //     $("#wrapper").toggleClass("wrapper");
+    // });
+
+
+</script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
+</body>
 </html>

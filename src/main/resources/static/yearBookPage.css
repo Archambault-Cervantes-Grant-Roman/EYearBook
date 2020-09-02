@@ -3,10 +3,12 @@ body {
 }
 
 .clickableArrow  {
-
+    color: whitesmoke;
     cursor: pointer;
 
 }
+
+
 
 .clickableHover:hover {
     color: #57ca85;
@@ -15,4 +17,20 @@ body {
 
 .green {
     color: #57ca85;
+}
+
+.flex-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.clickableArrowLeft {
+    order: 1;
+}
+.clickableArrowRight {
+    order: 3;
+}
+
+.yearbook {
+    order: 2;
 }
