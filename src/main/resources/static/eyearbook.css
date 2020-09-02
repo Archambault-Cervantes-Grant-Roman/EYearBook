@@ -7,7 +7,7 @@ body{
     /*color: #1f882c;*/
 }
 .childsPost{
-color: cornflowerblue;
+color: #789f83;
 }
 
 
@@ -70,8 +70,10 @@ color: cornflowerblue;
 /************************************************************/
 
 .p-profile-page {
-        background: url("img/yearbookWhiteBlock.jpg") no-repeat center center fixed;
-        -webkit-background-size: cover;
+        /*background: url("img/desk.jpg") no-repeat center center fixed;*/
+    background: url("img/glasses.jpg") no-repeat center center fixed;
+
+    -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;
         background-size: cover;
