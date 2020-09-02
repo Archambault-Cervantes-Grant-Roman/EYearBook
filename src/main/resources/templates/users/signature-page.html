@@ -20,7 +20,7 @@
 
     <link th:href="@{/signaturePage.css}" type='text/css' rel="stylesheet"/>
 
-<!--    <link th:href="@{/eyearbook.css}" th:rel="stylesheet"/>-->
+    <!--    <link th:href="@{/eyearbook.css}" th:rel="stylesheet"/>-->
     <style>
         .btn-lg {
             padding: 10px 20px;
@@ -92,52 +92,54 @@
         <div class="left col-2">
 
         </div>
+        <div class="card middle middleScroll" style="width: 50%;">
+            <div class="card-body">
+                <div class=" hidden-md-down ">
+                    <h1 class="pt-5 text-center">Welcome, <a th:text="${pageOwner.student.first_name}"></a>, to your
+                        signature page.</h1>
 
-        <div class="middle col-6 hidden-md-down middleScroll">
-                <h1 class="pt-5 text-center">Welcome, <a th:text="${pageOwner.student.first_name}"></a>, to your signature page.</h1>
-
-            <div class="bannerImage d-flex justify-content-center">
-                <img width="851px" height="314px" th:src="${pageOwner.sign_page_banner_image}"/>
-            </div>
-
-            <div class="studentImage">
-                <img th:src="${pageOwner.student.image}" alt="avatar">
-            </div>
-            <div class="uploadButton" th:if="${#authentication.principal.id == pageOwner.id}">
-                <div class="d-flex justify-content-center">
-                    <div class="form-group ">
-                        <input type="BUTTON" class=" btn btn-primary mx-sm-1" value="Select an image" id="image"
-                               onclick="pickMark()">
+                    <div class="bannerImage d-flex justify-content-center">
+                        <img width="851px" height="314px" th:src="${pageOwner.sign_page_banner_image}"/>
                     </div>
 
-                    <form th:action="@{/bannerImg}" method="post" th:object="${pageOwner}">
-                        <input type="hidden" th:name="imageOwnerId" th:value="${pageOwner.id}">
-                        <button id="submit" type="submit" class="btn btn-primary mx-sm-1">Apply Image</button>
-                        <input type="hidden" th:field="*{id}">
-                        <div class="form-group">
-                            <label for="sign_page_banner_image"></label>
-                            <input type="hidden" class="form-control" id="sign_page_banner_image"
-                                   th:field="*{sign_page_banner_image}">
+                    <div class="studentImage">
+                        <img th:src="${pageOwner.student.image}" alt="avatar">
+                    </div>
+                    <div class="uploadButton" th:if="${#authentication.principal.id == pageOwner.id}">
+                        <div class="d-flex justify-content-center">
+                            <div class="form-group ">
+                                <input type="BUTTON" class=" btn btn-primary mx-sm-1" value="Select an image" id="image"
+                                       onclick="pickMark()">
+                            </div>
+
+                            <form th:action="@{/bannerImg}" method="post" th:object="${pageOwner}">
+                                <input type="hidden" th:name="imageOwnerId" th:value="${pageOwner.id}">
+                                <button id="submit" type="submit" class="btn btn-primary mx-sm-1">Apply Image</button>
+                                <input type="hidden" th:field="*{id}">
+                                <div class="form-group">
+                                    <label for="sign_page_banner_image"></label>
+                                    <input type="hidden" class="form-control" id="sign_page_banner_image"
+                                           th:field="*{sign_page_banner_image}">
+                                </div>
+                            </form>
                         </div>
-                    </form>
-                </div>
-            </div>
-
-
-            <div class="text-center mt-5" th:if="${!pageOwner.owns_yearbook}">
-                <h4 class="">Please ask a parent to purchase a yearbook</h4>
-            </div>
-
-            <!--  COMMENTS SECTION-->
-<!--            <div class="middleScroll ">-->
-                <!--                <div th:if="${pageOwner.myPageSignatures == empty}">-->
-                <div th:if="${!pageOwner.myPageSignatures.isEmpty()}">
-
-                    <div class="text-center">
-                        <h3 class="text-center">Signatures:</h3>
                     </div>
-                </div>
-<!--                <div class="parentCommentCard">-->
+
+
+                    <div class="text-center mt-5" th:if="${!pageOwner.owns_yearbook}">
+                        <h4 class="">Please ask a parent to purchase a yearbook</h4>
+                    </div>
+
+                    <!--  COMMENTS SECTION-->
+                    <!--            <div class="middleScroll ">-->
+                    <!--                <div th:if="${pageOwner.myPageSignatures == empty}">-->
+                    <div th:if="${!pageOwner.myPageSignatures.isEmpty()}">
+
+                        <div class="text-center">
+                            <h3 class="text-center">Signatures:</h3>
+                        </div>
+                    </div>
+                    <!--                <div class="parentCommentCard">-->
 
                     <div th:if="${pageOwner.owns_yearbook}">
                         <div class="" th:each="pageOwner : ${pageOwner.myPageSignatures}">
@@ -176,17 +178,13 @@
                             </div>
                         </div>
                     </div>
-<!--                </div>-->
-
-<!--            </div>-->
-            <!--  TO ENTER A COMMENTS SECTION-->
-
-
+                </div>
+            </div>
         </div>
-
         <div class="right col-2">
 
         </div>
+
     </div>
 </div>
 <!--modal code for purchase code-->

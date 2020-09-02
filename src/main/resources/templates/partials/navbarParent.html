@@ -17,7 +17,7 @@
 </head>
 <body>
 <nav th:fragment="navbarParent" class="navbar sticky-top navbar-expand-lg navbar-dark"
-     style="background-color: #789f83;">
+     style="background-color: #789f83;  font-family: 'Bree Serif', serif; color: black;">
     <!--<nav th:fragment="navbarParent" class="navbar sticky-top navbar-expand-lg navbar-dark" style="background-color: #accaea;">-->
 
 
@@ -56,11 +56,11 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <th:block th:each="child : ${children}">
-                            <a class="dropdown-item  nav-font text-white table-hover"
+                            <a class="dropdown-item nav-font table-hover"
                                th:href="@{signature-page/{id} (id=${child.id})}">Visit <span
                                     th:text="${child.username}"></span>'s page </a>
                         </th:block>
-                        <a class="dropdown-item  nav-font text-white table-hover" href="" data-toggle="modal"
+                        <a class="dropdown-item nav-font table-hover" href="" data-toggle="modal"
                            data-target="#modalRegisterChild">Register a
                             Child</a>
                     </div>

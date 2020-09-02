@@ -55,7 +55,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                         "/users/sign-up",
                         "/users/signature-page",
                         "/users/edit-profile" ,
-                        "/users/search"// only authenticated users can edit profile
+                        "/search"// only authenticated users can edit profile
 
                 )
                 .authenticated()
