@@ -53,10 +53,10 @@
 
                     <div  th:each="userSignature : ${child.userSignatures}">
                         <!--                    <div th:if="${userSignature.yearbook_comment != null}">-->
-                        <h5 class=" childsPost">Commented on <a th:text="${userSignature.profile_user.username}"></a>'s
-                            profile</h5>
+                        <h4 class=" childsPost">Commented on <a th:text="${userSignature.profile_user.username}"></a>'s
+                            profile</h4>
 
-                        <p class="handwriting"> ~ <a th:text="${userSignature.yearbook_comment}"></a></p>
+                        <h5 class="handwriting"> ~ <a th:text="${userSignature.yearbook_comment}"></a></h5>
 <hr>
                     </div>
                     <div>
