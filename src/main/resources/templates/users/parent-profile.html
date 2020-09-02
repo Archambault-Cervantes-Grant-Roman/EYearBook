@@ -49,7 +49,7 @@
             <div class="card-body ">
                 <div th:each="child : ${children}">
 
-                    <h4 class="text-center text-white"><a th:text="${child.username.toUpperCase()}"> </a></h4>
+                    <h4 class="text-center text-white"><a th:text="${child.username}"> </a></h4>
 
                     <div th:each="userSignature : ${child.userSignatures}">
                         <!--                    <div th:if="${userSignature.yearbook_comment != null}">-->
