@@ -52,9 +52,11 @@ body, html {
     border-radius: 50%;
 }
 .uploadButton{
-    position: relative;
-    margin-left: 550px;
-    margin-top: -8rem;
+    position: absolute;
+    /*margin-left: auto;*/
+    /*margin-right: 0;*/
+    /*margin-left: 550px;*/
+    /*margin-top: -8rem;*/
 }
 .bannerImage{
     justify-content: center;
