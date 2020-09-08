@@ -33,19 +33,21 @@
 <nav th:replace="partials/navbarParent :: navbarParent"/>
 
 <!--<div class="parentBox w-50">-->
-<div class="container-sm mt-sm-2 pl-0 pr-0 parentBox w-50">
+
+<div class="container-sm mt-sm-4 pl-0 pr-0 parentBox w-50">
     <div class="card parentCard">
-        <div class="card-header">
-            <h1 class="text-center text-white">Welcome to your parent-profile page <span
+        <div class="card-header ">
+            <h1 class="text-center pt-2 p-1 text-white">Welcome to your parent-profile page, <span
                     th:text="${user != null} ? ${user.username} : 'user is null'"></span>. </h1>
         </div>
-        <h3 class="text-center text-white ">You may monitor your child(ren)'s posts here.</h3>
+        <h3 class="text-center text-white pb-2 ">You may monitor your child(ren)'s posts here.</h3>
     </div>
 </div>
-
 <!--==================================-->
-<div class="container-sm pl-0 pr-0 parentBox w-50">"
+<div class="container-sm pl-0 pr-0 parentBox w-50">
     <div class="card parentCard">
+
+
         <div class="card-body ">
             <div th:each="child : ${children}">
 
@@ -66,6 +68,9 @@
         </div>
     </div>
 
+
+</div>
+</div>
 </div>
 
 
@@ -92,15 +97,14 @@
                         <label data-error="wrong" data-success="right" for="purchaseCode">Purchase
                             Code</label>
                         <br>
-
                     </div>
                 </div>
 
                 <div class="modal-footer d-flex justify-content-center">
                     <!--                <div class="modal-footer ">-->
                     <button type="submit" class="btn btn-primary">Send</button>
-
                 </div>
+
             </div>
         </div>
     </form>
