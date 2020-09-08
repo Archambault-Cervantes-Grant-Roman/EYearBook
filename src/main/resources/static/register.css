@@ -13,6 +13,9 @@ html,body{
     align-content: center;
 }
 
+.welcome{
+    border: black solid 5px;
+}
 .card{
     height: auto;
     margin-top: auto;
