@@ -4,12 +4,15 @@ package com.codeup.eyearbook.controllers;
 import com.codeup.eyearbook.models.Signatures;
 import com.codeup.eyearbook.models.Student;
 import com.codeup.eyearbook.models.User;
+import com.codeup.eyearbook.models.UserWithRoles;
+import com.codeup.eyearbook.repositories.Roles;
 import com.codeup.eyearbook.repositories.SignatureRepository;
 import com.codeup.eyearbook.repositories.StudentRepository;
 import com.codeup.eyearbook.repositories.UserRepository;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,12 +29,21 @@ public class UserController {
     private UserRepository userDao;
     private PasswordEncoder passwordEncoder;
     private StudentRepository studentsDao;
+    private Roles roles;
+
+    private void authenticate(User user) {
+        // Since we're using roles we need to retrieve them from the database
+        // The rest of the method does not need changes
+        UserDetails userDetails = new UserWithRoles(user, roles.ofUserWith(user.getUsername());
+        /* ... */
+    }
 
 
-    public UserController(UserRepository userDao, PasswordEncoder passwordEncoder, StudentRepository studentsDao) {
+    public UserController(UserRepository userDao, PasswordEncoder passwordEncoder, StudentRepository studentsDao, Roles roles) {
         this.userDao = userDao;
         this.passwordEncoder = passwordEncoder;
         this.studentsDao = studentsDao;
+        this.roles = roles;
     }
 
     @GetMapping("/sign-up")
