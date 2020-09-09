@@ -1,5 +1,7 @@
 package com.codeup.eyearbook.models;
 
+import org.springframework.data.repository.cdi.Eager;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -43,6 +45,13 @@ public class User {
     @Column(length = 20, nullable = false, unique = true)
     private String username;
 
+    @ManyToMany(cascade=CascadeType.MERGE, fetch = FetchType.EAGER)
+    @JoinTable(
+            name="user_role",
+            joinColumns={@JoinColumn(name="USER_ID", referencedColumnName="ID")},
+            inverseJoinColumns={@JoinColumn(name="ROLE_ID", referencedColumnName="ID")})
+    private List<Role> roles;
+
     @Transient
     private String retypePassword;
 
@@ -62,6 +71,7 @@ public class User {
         owns_yearbook = copy.owns_yearbook;
         parent_id = copy.parent_id;
         sign_page_banner_image = copy.sign_page_banner_image;
+
     }
 
     public long getId() {
@@ -160,8 +170,15 @@ public class User {
         this.userSignatures = userSignatures;
     }
 
+    public List<Role> getRoles() {
+        return roles;
+    }
 
-public boolean hasSignature(User user){
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
+    }
+
+    public boolean hasSignature(User user){
         boolean duplicateComment = false;
         for(Signatures signature : this.myPageSignatures){
             if(signature.getSigner().getUsername().equals(user.getUsername())){
