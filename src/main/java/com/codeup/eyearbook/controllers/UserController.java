@@ -104,8 +104,6 @@ public class UserController {
         boolean AnonCheck = token instanceof AnonymousAuthenticationToken;
         if (AnonCheck) return "users/login";
         User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
-
         User user = userDao.getOne(loggedInUser.getId());
         model.addAttribute("user", user);
 
@@ -115,14 +113,11 @@ public class UserController {
     }
 
 
-
-
     //this is to change username, email, and password
     @PostMapping("editUser")
     public String updateUserInfo (@ModelAttribute("user") User user){
         User loggedIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        long id = loggedIn.getId();
-        User existing = userDao.getOne(id);
+        User existing = userDao.getOne(loggedIn.getId());
         existing.setUsername(user.getUsername());
         existing.setEmail(user.getEmail());
         String hash = passwordEncoder.encode(user.getPassword());
