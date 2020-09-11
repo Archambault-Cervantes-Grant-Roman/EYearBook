@@ -44,10 +44,10 @@
             </th:block>
 
             <th:block sec:authorize="isAuthenticated()">
-                <li class="nav-item" th:if="${#authentication.principal.isParent}">
+<!--                <li class="nav-item" th:if="${#authentication.principal.isParent}">-->
                     <a class="nav-link btn-link btn  table-hover text-white nav-font" th:href="@{|/parent-profile|}">My
                         Profile</a>
-                </li>
+<!--                </li>-->
                 <!--=======================================================-->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-white nav-font table-hover" href="#" id="navbarDropdown"
@@ -92,11 +92,11 @@
                 <a class="nav-link btn-link btn text-white table-hover nav-font" th:href="@{|/edit-profile|}">Update
                     your profile</a>
 
-                <li class="nav-item" th:if="${!#authentication.principal.isParent}">
+<!--                <li class="nav-item" th:if="${!#authentication.principal.isParent}">-->
                     <a class="nav-link btn-link btn  text-white nav-font table-hover"
                        th:href="@{/signature-page/{id} (id = ${#authentication.principal.id})}">My
                         Student Profile</a>
-                </li>
+<!--                </li>-->
             </th:block>
 
 
