@@ -18,7 +18,7 @@
         <java.version>11</java.version>
         <skipTests>true</skipTests>
     </properties>
-<!--git checkout-->
+    <!--git checkout-->
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -62,13 +62,13 @@
             <artifactId>thymeleaf-extras-springsecurity5</artifactId>
             <version>3.0.4.RELEASE</version>
         </dependency>
-<!--        PDF PRINTING-->
+        <!--        PDF PRINTING-->
         <dependency>
             <groupId>org.apache.pdfbox</groupId>
             <artifactId>pdfbox</artifactId>
             <version>2.0.12</version>
         </dependency>
-<!--        dev tool -->
+        <!--        dev tool -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
@@ -78,10 +78,6 @@
 
     <build>
         <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
