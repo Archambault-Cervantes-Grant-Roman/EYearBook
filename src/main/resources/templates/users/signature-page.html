@@ -12,6 +12,10 @@
     <script type='text/javascript' th:src="@{/js/config.js}"></script>
 
     <script type="text/javascript" src="https://static.filestackapi.com/v3/filestack.js"></script>
+
+    <!--    Font Awesome-->
+    <script src="https://kit.fontawesome.com/4e791167da.js" crossorigin="anonymous"></script>
+
     <!--    css styling-->
 
     <script type='text/javascript' th:src="@{/js/script.js}"></script>
@@ -124,17 +128,66 @@
                     <div class="mobileProfilePic">
                     <img  th:src="${pageOwner.student.image}" alt="avatar">
                     </div>
+<!--                    <div class="mobileButtons d-flex justify-content-start"-->
+<!--                         th:if="${#authentication.principal.id == pageOwner.id}">-->
+<!--                        <div class="form-group ">-->
+<!--                            <input type="BUTTON" class=" btn btn-primary mx-sm-1" value="Select an image"-->
+<!--                                   id="imageMobile"-->
+<!--                                   onclick="pickMark()">-->
+<!--                        </div>-->
+
+<!--                        <form th:action="@{/bannerImg}" method="post" th:object="${pageOwner}">-->
+<!--                            <input type="hidden" th:name="imageOwnerId" th:value="${pageOwner.id}">-->
+<!--                            <button id="submitMobile" type="submit" class="btn btn-primary mx-sm-1">Apply Image-->
+<!--                            </button>-->
+<!--                            <input type="hidden" th:field="*{id}">-->
+<!--                            <div class="form-group">-->
+<!--                                <label for="sign_page_banner_image"></label>-->
+<!--                                <input type="hidden" class="form-control" id="sign_page_banner_image"-->
+<!--                                       th:field="*{sign_page_banner_image}">-->
+<!--                            </div>-->
+<!--                        </form>-->
+<!--                    </div>-->
+                    <div class="hideModal"
+                         th:if="${#authentication.principal.id == pageOwner.id}">
+                    <button type="button" class="modalButton btn" data-toggle="modal" data-target="#myModal"><i class="fas fa-camera"></i>
+                    </button>
+                    </div>
+                </div>
+                <div class="container-fluid text-center">
+                        <h1 class="mobileHeading pt-5 text-center">Welcome, <a th:text="${pageOwner.student.first_name}"></a>.</h1>
+                </div>
+            </div>
+            <hr>
+        </section>
+    </div>
+                                                <!--MOBILE MODAL-->
+
+
+    <!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Update Banner Image</h4>
+                </div>
+                <div class="modal-body">
+
+<!--                    FORM-->
                     <div class="mobileButtons d-flex justify-content-start"
                          th:if="${#authentication.principal.id == pageOwner.id}">
                         <div class="form-group ">
                             <input type="BUTTON" class=" btn btn-primary mx-sm-1" value="Select an image"
-                                   id="imageMobile"
+                                   id="image"
                                    onclick="pickMark()">
                         </div>
 
                         <form th:action="@{/bannerImg}" method="post" th:object="${pageOwner}">
                             <input type="hidden" th:name="imageOwnerId" th:value="${pageOwner.id}">
-                            <button id="submitMobile" type="submit" class="btn btn-primary mx-sm-1">Apply Image
+                            <button id="submit" type="submit" class="btn btn-primary mx-sm-1">Apply Image
                             </button>
                             <input type="hidden" th:field="*{id}">
                             <div class="form-group">
@@ -145,14 +198,13 @@
                         </form>
                     </div>
                 </div>
-                <div class="container-fluid text-center">
-                        <h1 class="mobileHeading pt-5 text-center">Welcome, <a th:text="${pageOwner.student.first_name}"></a>.</h1>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
             </div>
-            <hr>
-        </section>
-    </div>
 
+        </div>
+    </div>
 
     <!--    mobile view ending-->
 
@@ -172,23 +224,8 @@
                         <div class="row bannerImage d-flex justify-content-center">
                             <div class="uploadButton d-flex justify-content-start"
                                  th:if="${#authentication.principal.id == pageOwner.id}">
-                                <div class="form-group ">
-                                    <input type="BUTTON" class=" btn btn-primary mx-sm-1" value="Select an image"
-                                           id="image"
-                                           onclick="pickMark()">
-                                </div>
-
-                                <form th:action="@{/bannerImg}" method="post" th:object="${pageOwner}">
-                                    <input type="hidden" th:name="imageOwnerId" th:value="${pageOwner.id}">
-                                    <button id="submit" type="submit" class="btn btn-primary mx-sm-1">Apply Image
-                                    </button>
-                                    <input type="hidden" th:field="*{id}">
-                                    <div class="form-group">
-                                        <label for="sign_page_banner_image"></label>
-                                        <input type="hidden" class="form-control" id="sign_page_banner_image"
-                                               th:field="*{sign_page_banner_image}">
-                                    </div>
-                                </form>
+                                <button type="button" class="modalButton btn" data-toggle="modal" data-target="#myModal"><i class="fas fa-camera"></i>
+                                </button>
                             </div>
                             <img width="851px" height="314px" th:src="${pageOwner.sign_page_banner_image}"/>
                         </div>

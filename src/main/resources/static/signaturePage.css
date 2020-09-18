@@ -70,10 +70,8 @@ and (max-device-width : 991px)
 
 .uploadButton{
     position: absolute;
-    /*margin-left: auto;*/
-    /*margin-right: 0;*/
-    /*margin-left: 550px;*/
-    /*margin-top: -8rem;*/
+    left: 100%;
+    top: 83%;
 }
 
 @media only screen and (max-width: 480px){
@@ -164,23 +162,34 @@ and (max-device-width : 991px)
 .mobileProfilePic img{
     position: absolute;
     /* display: block; */
-    margin-top: 25%;
+    margin-top: 23%;
     width: 40%;
     /* height: 200px; */
     border: 5px solid white;
     border-radius: 50%;
     left: 29%;
-    height: 80%;
+    height: 85%;
 }
 
 .mobileButtons{
-    right: 10%;
-    top: 84%;
-    position: absolute;
+    position: static;
+    margin-left: 5em;
+    margin-top: 8em;
 }
 
 .mobileHeading{
     margin-top: 15%;
     position: inherit;
+}
+
+.modalButton{
+    position: absolute;
+    right: 10%;
+    background-color: #C5C1BE;
+    height: 50px;
+    width: 50px;
+    top: 87%;
+    border-radius: 50%;
+    border: 2px solid white;
 }
 
