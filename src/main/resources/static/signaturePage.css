@@ -178,7 +178,8 @@ and (max-device-width : 991px)
 }
 
 .mobileHeading{
-    margin-top: 15%;
+    margin-top: 5%;
+    margin-bottom: 5%;
     position: inherit;
 }
 
@@ -193,3 +194,16 @@ and (max-device-width : 991px)
     border: 2px solid white;
 }
 
+.signaturesHeader{
+    position: relative;
+    margin-top: 6%;
+}
+
+.section_2{
+    margin-top: 10%;
+}
+
+.mobileCommentSection{
+    position: relative;
+    top: 25%;
+}
