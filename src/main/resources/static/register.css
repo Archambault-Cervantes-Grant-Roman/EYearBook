@@ -1,7 +1,8 @@
 html,body{
     /*font-family: 'Shadows Into Light', cursive;*/
     /*font-family: 'Playfair Display', serif;*/
-    font-family: 'Bree Serif', serif;
+    /*font-family: 'Bree Serif', serif;*/
+    font-family: 'Yanone Kaffeesatz', sans-serif;
     background-image: url('img/final-10.jpg');
     background-size: cover;
     background-repeat: no-repeat;

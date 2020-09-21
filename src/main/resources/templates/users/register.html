@@ -20,56 +20,8 @@
         <div class="d-flex flex-column">
             <div>
                 <header>
-                    <nav class="mobile-navbar navbar navbar-expand-lg navbar-dark">
-                        <a class="navbar-brand" href="/">E-Yearbook</a>
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <div class="collapse navbar-collapse" id="navbarNav">
-                            <ul class="navbar-nav">
-                                <th:block sec:authorize="!isAuthenticated()">
-                                    <li class="nav-item ">
-                                        <a class="nav-link text-white nav-font" th:href="@{/login}">Login</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link btn-link btn text-white nav-font " th:href="@{/sign-up}">Parent
-                                            Registration</a>
-                                    </li>
-                                </th:block>
-                                <th:block sec:authorize="isAuthenticated()">
-                                    <li class="nav-item " th:if="${#authentication.principal.isParent}">
-                                        <a class="nav-link btn-link btn text-white nav-font"
-                                           th:href="@{|/parent-profile|}">My Profile</a>
-                                    </li>
+                    <nav th:replace="partials/navbar :: navbar"/>
 
-                                    <li class="nav-item" th:if="${!#authentication.principal.isParent}">
-                                        <a class="nav-link btn-link btn text-white nav-font"
-                                           th:href="@{/signature-page/{id} (id = ${#authentication.principal.id})}">My
-                                            Student Profile</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link btn-link btn text-white nav-font" th:href="@{|/search|}">Search
-                                            Registered Student</a>
-                                    </li>
-                                </th:block>
-                                <th:block sec:authorize="isAuthenticated()">
-                                    <li class="nav-item" th:if="${#authentication.principal.owns_yearbook}">
-                                        <a class="nav-link btn-link btn text-white nav-font" th:href="@{|/yearbook|}">View
-                                            Yearbook</a>
-                                    </li>
-                                </th:block>
-
-                                <th:block sec:authorize="isAuthenticated()">
-                                    <li class="nav-item ">
-                                        <form th:action="@{/logout}" th:method="post">
-                                            <button class="nav-link btn-link btn text-white nav-font">Logout</button>
-                                        </form>
-                                    </li>
-                                </th:block>
-                            </ul>
-                        </div>
-                    </nav>
                 </header>
             </div>
         </div>
