@@ -1,7 +1,15 @@
-body{
+body, html{
     /*font-family: 'Shadows Into Light', cursive;*/
     /*font-family: 'Playfair Display', serif;*/
-    font-family: 'Yanone Kaffeesatz', sans-serif;}
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    background: url("img/writing.jpg") no-repeat center center fixed;
+    height: 100%;
+
+
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;}
 .handwriting {
     font-family: 'Open Sans', sans-serif;
     /*color: #1f882c;*/
@@ -72,14 +80,7 @@ color: #789f83;
 .p-profile-page {
         /*background: url("img/desk.jpg") no-repeat center center fixed;*/
     /*background: url("img/coffee.jpg") no-repeat center center fixed;*/
-    background: url("img/writing.jpg") no-repeat center center fixed;
 
-
-
-    -webkit-background-size: cover;
-        -moz-background-size: cover;
-        -o-background-size: cover;
-        background-size: cover;
 }
 
 .parentBox{
