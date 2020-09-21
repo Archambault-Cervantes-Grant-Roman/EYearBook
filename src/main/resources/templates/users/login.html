@@ -2,47 +2,101 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
           integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <link th:rel="stylesheet" th:href="@{/navbar.css}" />
     <link th:rel="stylesheet" th:href="@{/login.css}"/>
+    <link th:rel="stylesheet" th:href="@{/navbar.css}"/>
     <title>Login</title>
 </head>
 <body>
-
-<th:block th:insert="partials/topOfPage :: topOfPage"></th:block>
-
-<nav th:replace="partials/navbar :: navbar"/>
-
-<div class="container">
-    <div class="d-flex justify-content-center h-100">
-        <div class="card">
-            <div class="card-body">
-                <div class="e-profile">
-                    <div class="tab-content pt-3">
-                        <div class="tab-pane active">
-                    <div class="invalid-feedback" th:if="${param.error}">
-                        Invalid Username and Password.
+<!--MOBILE VIEW START-->
+<div class="d-block d-sm-block d-md-block d-lg-none">
+    <section class="mobile-section-1 container-fluid h-100">
+        <div class="d-flex flex-column">
+            <div>
+                <header>
+                    <nav th:replace="partials/navbar :: navbar"/>
+                </header>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="container">
+            <div class="d-flex justify-content-center h-100">
+                <div class="card mobileCard">
+                    <div class="card-body">
+                        <div class="e-profile">
+                            <div class="tab-content pt-3">
+                                <div class="tab-pane active">
+                                    <div class="invalid-feedback" th:if="${param.error}">
+                                        Invalid Username and Password.
+                                    </div>
+                                    <div class="logout-feedback" th:if="${param.logout}">
+                                        You have been logged out.
+                                    </div>
+                                    <form th:action="@{/login}" method="POST">
+                                        <h1 class="row justify-content-center">Login</h1>
+                                        <div class="form-group">
+                                            <label for="username">Username</label>
+                                            <input type="text" class="form-control" name="username" id="username"
+                                                   placeholder="Enter Username">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="password">Password</label>
+                                            <input type="password" class="form-control" name="password" id="password"
+                                                   placeholder="Enter Password">
+                                        </div>
+                                        <div class="col text-center">
+                                            <input type="submit" value="Submit" class="btn btn-primary">
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="logout-feedback" th:if="${param.logout}">
-                        You have been logged out.
-                    </div>
-                    <form th:action="@{/login}" method="POST">
-                        <h1 class="row justify-content-center">Login</h1>
-                        <div class="form-group">
-                            <label for="username">Username</label>
-                            <input type="text" class="form-control" name="username" id="username"
-                                   placeholder="Enter Username">
-                        </div>
-                        <div class="form-group">
-                            <label for="password">Password</label>
-                            <input type="password" class="form-control" name="password" id="password"
-                                   placeholder="Enter Password">
-                        </div>
-                        <div class="col text-center">
-                            <input type="submit" value="Submit" class="btn btn-primary">
-                        </div>
-                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<div class="d-none d-lg-block d-xl-block">
+
+    <th:block th:insert="partials/topOfPage :: topOfPage"></th:block>
+
+    <nav th:replace="partials/navbar :: navbar"/>
+
+    <div class="container">
+        <div class="d-flex justify-content-center h-100">
+            <div class="card">
+                <div class="card-body">
+                    <div class="e-profile">
+                        <div class="tab-content pt-3">
+                            <div class="tab-pane active">
+                                <div class="invalid-feedback" th:if="${param.error}">
+                                    Invalid Username and Password.
+                                </div>
+                                <div class="logout-feedback" th:if="${param.logout}">
+                                    You have been logged out.
+                                </div>
+                                <form th:action="@{/login}" method="POST">
+                                    <h1 class="row justify-content-center">Login</h1>
+                                    <div class="form-group">
+                                        <label for="username">Username</label>
+                                        <input type="text" class="form-control" name="username" id="username"
+                                               placeholder="Enter Username">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="password">Password</label>
+                                        <input type="password" class="form-control" name="password" id="password"
+                                               placeholder="Enter Password">
+                                    </div>
+                                    <div class="col text-center">
+                                        <input type="submit" value="Submit" class="btn btn-primary">
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -50,8 +104,14 @@
         </div>
     </div>
 </div>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
 </body>
 </html>

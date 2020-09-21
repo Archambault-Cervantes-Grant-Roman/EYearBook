@@ -2,6 +2,8 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
@@ -11,23 +13,100 @@
     <link th:rel="stylesheet" th:href="@{/footer.css}"/>
     <link th:rel="stylesheet" th:href="@{/navbar.css}"/>
     <link th:rel="stylesheet" th:href="@{/home.css}"/>
-<!--    <style>-->
-<!--        .footer {-->
-<!--            position: absolute;-->
-<!--            bottom: 3em;-->
-<!--            width: 100%;-->
-<!--            height: 2.5rem;-->
-<!--        }-->
-<!--    </style>-->
     <title>Home Page</title>
 </head>
 <body>
 <!--<th:block th:insert="partials/topOfPage :: topOfPage"></th:block>-->
+<!--MOBILE VIEW START-->
 
-<nav th:replace="partials/navbar :: navbar"/>
+<div class="d-block d-sm-block d-md-block d-lg-none">
+    <section class="mobile-section-1 container-fluid h-100">
+        <div class="d-flex flex-column">
+            <div>
+                <header>
+                    <nav th:replace="partials/navbar :: navbar"/>
 
-<div class="container mt-5">
-<!--    <div class="card ">-->
+                </header>
+            </div>
+        </div>
+    </section>
+<section>
+    <div class="container mt-5">
+        <!--    <div class="card ">-->
+        <div class="jumbotron jumbotron-fluid rounded mb-0">
+            <div class="mobileHeader d-flex justify-content-center align-content-center">
+                <h1 class=" text-center" id="title">E - Yearbook</h1>
+            </div>
+        </div>
+
+        <hr>
+
+        <!--            <div class="card-body">-->
+        <div class="card text-center">
+            <div class="card-body">
+
+                    <div class="container card-body rounded-circle ">
+                        <h1 class="d-flex justify-content-center"><i class="fas fa-book-reader"></i></h1>
+                        <div class="container body d-flex justify-content-center">
+                            <h4 class="text-center">View your yearbook online.</h4>
+                        </div>
+                    </div>
+
+                    <div class="container card-body rounded-circle ">
+                        <!--    <h1 class="d-flex justify-content-center"><i class="far fa-comment-alt"></i></h1>-->
+                        <h1 class="d-flex justify-content-center"><i class="far fa-address-book"></i></h1>
+                        <div class="container body d-flex justify-content-center">
+                            <h4 class="text-center">Search for your friends.</h4>
+                        </div>
+                    </div>
+
+                    <div class="container card-body rounded-circle ">
+                        <h1 class="d-flex justify-content-center"><i class="fas fa-signature"></i></h1>
+                        <div class="container body d-flex justify-content-center">
+                            <h4 class="text-center">Sign your friends yearbook.</h4>
+                        </div>
+                    </div>
+
+                <br>
+                <h4 class="text-center">~ Internet Safety in Mind ~</h4>
+                <br>
+
+                <div class="container d-flex justify-content-center mb-0 ">
+                    <div class="container card-body rounded-circle ">
+                        <h1 class="d-flex justify-content-center"><i class="fas fa-user-lock"></i></h1>
+                        <div class="container body d-flex justify-content-center">
+                            <h4 class="text-center">Restricted access.</h4>
+                        </div>
+                    </div>
+
+
+                    <div class="container card-body rounded-circle ">
+                        <h1 class="d-flex justify-content-center"><i class="fas fa-eye"></i></h1>
+                        <div class="container body d-flex justify-content-center">
+                            <h4 class="text-center">Monitor content.</h4>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="card-footer text-dark">
+                <a class="nav-link btn-link btn text-dark" th:href="@{|/about|}">About The Developers</a>
+            </div>
+        </div>
+    </div>
+</section>
+</div>
+
+<!--mobile view end-->
+
+<!--desktop view start -->
+<div class="d-none d-lg-block d-xl-block">
+    <nav th:replace="partials/navbar :: navbar"/>
+
+    <div class="container mt-5">
+        <!--    <div class="card ">-->
         <div class="jumbotron jumbotron-fluid rounded mb-0">
             <div class="header d-flex justify-content-center align-content-center">
                 <h1 class=" text-center" id="title">E - Yearbook</h1>
@@ -37,64 +116,63 @@
         <hr>
 
         <!--            <div class="card-body">-->
-<div class="card text-center">
-    <div class="card-body">
+        <div class="card text-center">
+            <div class="card-body">
 
-        <div class="container d-flex justify-content-center ">
-            <div class="container card-body rounded-circle ">
-                <h1 class="d-flex justify-content-center"><i class="fas fa-book-reader"></i></h1>
-                <div class="container body d-flex justify-content-center">
-                    <h4 class="text-center">View your yearbook online.</h4>
-                </div>
-            </div>
+                <div class="container d-flex justify-content-center ">
+                    <div class="container card-body rounded-circle ">
+                        <h1 class="d-flex justify-content-center"><i class="fas fa-book-reader"></i></h1>
+                        <div class="container body d-flex justify-content-center">
+                            <h4 class="text-center">View your yearbook online.</h4>
+                        </div>
+                    </div>
 
-                <div class="container card-body rounded-circle ">
-                    <!--    <h1 class="d-flex justify-content-center"><i class="far fa-comment-alt"></i></h1>-->
-                    <h1 class="d-flex justify-content-center"><i class="far fa-address-book"></i></h1>
-                    <div class="container body d-flex justify-content-center">
-                        <h4 class="text-center">Search for your friends.</h4>
+                    <div class="container card-body rounded-circle ">
+                        <!--    <h1 class="d-flex justify-content-center"><i class="far fa-comment-alt"></i></h1>-->
+                        <h1 class="d-flex justify-content-center"><i class="far fa-address-book"></i></h1>
+                        <div class="container body d-flex justify-content-center">
+                            <h4 class="text-center">Search for your friends.</h4>
+                        </div>
+                    </div>
+
+                    <div class="container card-body rounded-circle ">
+                        <h1 class="d-flex justify-content-center"><i class="fas fa-signature"></i></h1>
+                        <div class="container body d-flex justify-content-center">
+                            <h4 class="text-center">Sign your friends yearbook.</h4>
+                        </div>
                     </div>
                 </div>
 
-                <div class="container card-body rounded-circle ">
-                    <h1 class="d-flex justify-content-center"><i class="fas fa-signature"></i></h1>
-                    <div class="container body d-flex justify-content-center">
-                        <h4 class="text-center">Sign your friends yearbook.</h4>
+                <br>
+                <h4 class="text-center">~ Internet Safety in Mind ~</h4>
+                <br>
+
+                <div class="container d-flex justify-content-center mb-0 ">
+                    <div class="container card-body rounded-circle ">
+                        <h1 class="d-flex justify-content-center"><i class="fas fa-user-lock"></i></h1>
+                        <div class="container body d-flex justify-content-center">
+                            <h4 class="text-center">Restricted access.</h4>
+                        </div>
+                    </div>
+
+
+                    <div class="container card-body rounded-circle ">
+                        <h1 class="d-flex justify-content-center"><i class="fas fa-eye"></i></h1>
+                        <div class="container body d-flex justify-content-center">
+                            <h4 class="text-center">Monitor content.</h4>
+                        </div>
                     </div>
                 </div>
+
             </div>
 
-        <br>
-        <h4 class="text-center">~ Internet Safety in Mind ~</h4>
-        <br>
 
-        <div class="container d-flex justify-content-center mb-0 ">
-            <div class="container card-body rounded-circle ">
-                <h1 class="d-flex justify-content-center"><i class="fas fa-user-lock"></i></h1>
-                <div class="container body d-flex justify-content-center">
-                    <h4 class="text-center">Restricted access.</h4>
-                </div>
-                </div>
-
-
-                <div class="container card-body rounded-circle ">
-                    <h1 class="d-flex justify-content-center"><i class="fas fa-eye"></i></h1>
-                    <div class="container body d-flex justify-content-center">
-                        <h4 class="text-center">Monitor content.</h4>
-                    </div>
-                </div>
+            <div class="card-footer text-dark">
+                <a class="nav-link btn-link btn text-dark" th:href="@{|/about|}">About The Developers</a>
             </div>
-
-        </div>
-
-
-        <div class="card-footer text-dark">
-            <a class="nav-link btn-link btn text-dark" th:href="@{|/about|}">About The Developers</a>
         </div>
     </div>
-
 </div>
-
 
 <!--====================================================-->
 
@@ -106,13 +184,8 @@
         let limit = 0; // 0 = infinite.
         let interval = 7;// Secs
         let images = [
-            // "img/locker_with_white_block.jpg"
-            // ,"img/yearbookWhiteBlock.jpg"
-            // ,"img/aquamanFaded.jpg"
-            // ,"img/faded group at computer.jpg"
-            "img/locker.jpg",
-            "img/yearbookPage.jpg",
-            "img/groupComputer.jpg"
+            "img/smallLocker.jpg",
+            "img/smallGroupComputer.jpg"
         ];
 
         let index = 0;
@@ -126,4 +199,13 @@
         }, interval * 1000);
     });
 </script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
 </html>

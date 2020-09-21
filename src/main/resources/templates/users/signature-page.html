@@ -24,6 +24,8 @@
 
     <link th:href="@{/signaturePage.css}" type='text/css' rel="stylesheet"/>
 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <style>
         .btn-lg {
             padding: 10px 20px;
@@ -88,45 +90,21 @@
 <main class="container-fluid h-100">
 
     <!--    mobile view start-->
+
     <div class="d-block d-sm-block d-md-block d-lg-none">
-        <section class="section_1 container-fluid h-100">
+        <section class="mobile-section-1 container-fluid h-100">
             <div class="d-flex flex-column">
                 <div>
                     <header>
-                        <nav class="mobile-navbar navbar navbar-expand-lg navbar-dark">
-                            <a class="navbar-brand" href="/">E-Yearbook</a>
-                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                                <span class="navbar-toggler-icon"></span>
-                            </button>
-                            <div class="collapse navbar-collapse" id="navbarNav">
-                                <ul class="navbar-nav">
-                                    <li class="nav-item active">
-                                        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="/search">Search Student</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="/yearbook">View Yearbook</a>
-                                    </li>
-                                    <th:block sec:authorize="isAuthenticated()">
-                                        <li class="nav-item">
-                                            <form th:action="@{/logout}" th:method="post">
-                                                <button class="btn nav-link">Logout</button>
-                                            </form>
-                                        </li>
-                                    </th:block>
-                                </ul>
-                            </div>
-                        </nav>
+                        <nav th:replace="partials/signaturePageNavbar :: signaturePageNavbar"/>
+
                     </header>
                 </div>
                 <div class="container-fluid text-center">
-                    <h1 class="mobileHeading pt-3 text-center">Welcome, <a th:text="${pageOwner.student.first_name}"></a>.</h1>
+                    <h1 class="mobileHeading pt-3 text-center"><a th:text="${pageOwner.student.first_name + ' ' + pageOwner.student.last_name}"></a>.</h1>
                 </div>
                 <div class="row mobileBannerImage d-flex justify-content-center">
-                    <img width="85%" height="450px" th:src="${pageOwner.sign_page_banner_image}"/>
+                    <img width="85%" height="150px" th:src="${pageOwner.sign_page_banner_image}"/>
                     <div class="mobileProfilePic">
                     <img  th:src="${pageOwner.student.image}" alt="avatar">
                     </div>
@@ -146,11 +124,14 @@
                         <h3 class=" text-center">Signatures:</h3>
                     </div>
                 </div>
+                <div class="text-center mt-5" th:if="${!pageOwner.owns_yearbook}">
+                    <h4 class="">Please ask a parent to purchase a yearbook</h4>
+                </div>
                 <div th:if="${pageOwner.owns_yearbook}">
                     <div class="mobileCommentSection" th:each="pageOwner : ${pageOwner.myPageSignatures}">
                         <div class="row no-gutters">
 
-                            <div class="signerImage col-4 mt-2">
+                            <div class="mobileSignerImage col-4 mt-2">
                                 <img class="img-thumbnail-sm"
                                      th:src="${pageOwner.signer.student.image}"/>
                             </div>
@@ -201,8 +182,7 @@
             <div class="middle middleScroll" style="width: 50%;">
                 <div class="card-body">
                     <div class=" hidden-md-down ">
-                        <h1 class="pt-5 text-center">Welcome, <a th:text="${pageOwner.student.first_name}"></a>, to your
-                            signature page.</h1>
+                        <h1 class="pt-5 text-center"><a th:text="${pageOwner.student.first_name + ' ' + pageOwner.student.last_name}"></a></h1>
 
                         <div class="row bannerImage d-flex justify-content-center">
                             <div class="uploadButton d-flex justify-content-start"

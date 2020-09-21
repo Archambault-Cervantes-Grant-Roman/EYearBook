@@ -16,6 +16,10 @@ html,body{
 .welcome{
     border: black solid 5px;
 }
+
+.welcomeForm{
+    margin-top: 8%;
+}
 .card{
     height: auto;
     margin-top: auto;
@@ -27,4 +31,10 @@ html,body{
 
 .card-header h2, label{
     color: white;
+}
+
+/*mobile*/
+
+.mobileWelcome{
+    margin-top: 30%;
 }

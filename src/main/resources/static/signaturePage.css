@@ -41,7 +41,7 @@ and (max-device-width : 991px)
             {
         body, html {
             /*margin: 0;*/
-            overflow: hidden;
+            overflow: scroll;
             /*background-color: white;*/
             background-image: none !important;
         }
@@ -185,11 +185,11 @@ and (max-device-width : 991px)
 
 .modalButton{
     position: absolute;
-    right: 10%;
+    right: 50px;
     background-color: #C5C1BE;
-    height: 50px;
-    width: 50px;
-    top: 87%;
+    height: 40px;
+    width: 43px;
+    top: 71%;
     border-radius: 50%;
     border: 2px solid white;
 }
@@ -206,4 +206,17 @@ and (max-device-width : 991px)
 .mobileCommentSection{
     position: relative;
     top: 25%;
+}
+
+.mobileSignerImage img {
+    /*background-size: 100% 100%;*/
+    position: relative;
+    display: block;
+    margin-left: 10%;
+    margin-right: 0;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    /*max-width: 100%;*/
+    /*max-height: 100%;*/
 }

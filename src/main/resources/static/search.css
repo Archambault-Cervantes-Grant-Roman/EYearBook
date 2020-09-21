@@ -8,6 +8,20 @@ body, html {
     height: 100%;
 }
 
+@media only screen
+    /*and (min-device-width : 375px)*/
+    /*and (max-device-width : 812px)*/
+and (max-device-width : 991px)
+    /*and (-webkit-device-pixel-ratio : 3)*/
+{
+    body, html {
+        overflow: scroll;
+        /*background-color: white;*/
+        background-image: url("img/locker.jpg");
+        background-size: cover;
+    }
+}
+
 h5 {
     color: white;
     text-shadow: 2px 2px 2px #818181;
