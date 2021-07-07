@@ -3,7 +3,7 @@ body, html {
     /*font-family: 'Playfair Display', serif;*/
 
     font-family: 'Yanone Kaffeesatz', sans-serif;
-    background: url("img/groupComputer.jpg") no-repeat center center fixed;
+    background: url("img/smallGroupComputer.jpg") no-repeat center center fixed;
     /*background: url("img/moren-hsu-VLaKsTkmVhk-unsplash.jpg") no-repeat center center fixed;*/
 
     -webkit-background-size: cover;
@@ -25,7 +25,7 @@ h1, label, .logout-feedback, .invalid-feedback {
 
 .card{
     height: 370px;
-    margin-top: auto;
+    margin-top: 25%;
     margin-bottom: auto;
     width: 400px;
     background-color: rgba(0,0,0,0.5) !important;
@@ -34,4 +34,10 @@ h1, label, .logout-feedback, .invalid-feedback {
 
 .card-header h3{
     color: white;
+}
+
+/*mobile*/
+
+.mobileCard{
+    margin-top: 35%;
 }

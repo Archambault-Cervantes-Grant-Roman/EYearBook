@@ -4,17 +4,21 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
           integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <title>View Students</title>
-    <link th:rel="stylesheet" th:href="@{/navbar.css}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link th:rel="stylesheet" th:href="@{/navbar.css}"/>
     <link th:rel="stylesheet" th:href="@{/search.css}">
     <style>
-        .profileLink{
+        .profileLink {
             color: white;
 
         }
-        .profileLink:hover{
+
+        .profileLink:hover {
             color: white;
         }
-        .searchScroll{
+
+        .searchScroll {
             /*margin-top: 2rem;*/
             /*margin-left: 12em;*/
             /*background-color: rgba(0,0,0,0.5) !important;*/
@@ -24,57 +28,133 @@
             height: 855px;
             overflow-x: hidden;
             overflow-y: auto;
-            text-align:justify;
+            text-align: justify;
         }
     </style>
 </head>
 <body>
-<nav th:replace="partials/navbar :: navbar"/>
-<div class="container mt-5 text-center">
-    <h1>Showing Students</h1>
-    <form th:action="@{/search}">
-         <input type="text" name="keyword" id="keyword" size="50" th:value="${keyword}" required/>
-        &nbsp;
-        <input class="btn searchBtn text-white" type="submit" value="Search"/>
-        &nbsp;
-        <input class="btn searchBtn text-white " type="button" value="Clear" id="btnClear" onclick="clearSearch()"/>
-    </form>
-    <div class="searchScroll row">
-        <div class="container" style="padding-right: 10px; padding-left: 10px; margin-left: 10px; margin-right: 10px" th:each="user : ${filteredResults}">
-            <div class="d-flex justify-content-center">
-                <!--    <div class="">-->
-                <!--        <div class="card profile-card-1" >-->
+<!--mobile start-->
 
-                <!--                <img class="card-img-top" th:src="${user.student.image}" alt="Card image cap" style="">-->
+<div class="d-block d-sm-block d-md-block d-lg-none">
+
+    <section class="mobile-section-1 container-fluid h-100">
+        <div class="d-flex flex-column">
+            <div>
+                <header>
+                    <nav th:replace="partials/navbar :: navbar"/>
+
+                </header>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="mt-5 text-center">
+            <h1>Showing Students</h1>
+            <form th:action="@{/search}">
+                <input type="text" name="keyword" id="keyword" size="50" th:value="${keyword}" required/>
+                &nbsp;
+                <input class="btn searchBtn text-white" type="submit" value="Search"/>
+                &nbsp;
+                <input class="btn searchBtn text-white " type="button" value="Clear" id="btnClear" onclick="clearSearch()"/>
+            </form>
+            <div class="searchScroll row">
+                <div class="container"
+                     style="padding-right: 10px; padding-left: 10px; margin-left: 10px; margin-right: 10px"
+                     th:each="user : ${filteredResults}">
+                    <div class="d-flex justify-content-center">
+                        <!--    <div class="">-->
+                        <!--        <div class="card profile-card-1" >-->
+
+                        <!--                <img class="card-img-top" th:src="${user.student.image}" alt="Card image cap" style="">-->
 
 
-                <!--                <h2 class="card" th:text="${user.student.first_name} +' '+ ${user.student.last_name}"></h2>-->
+                        <!--                <h2 class="card" th:text="${user.student.first_name} +' '+ ${user.student.last_name}"></h2>-->
 
-                <!--            <a class="card card-footer" th:href="@{/signature-page/{id}(id=${user.id})}">Link to Signature Page!</a>-->
-                <!--        </div>-->
+                        <!--            <a class="card card-footer" th:href="@{/signature-page/{id}(id=${user.id})}">Link to Signature Page!</a>-->
+                        <!--        </div>-->
 
-                <!--    </div>-->
-                <div class="card mt-3 k text-center m-0 px-1 py-1" style="width: 18rem;">
-                    <img class="card-img-top img-thumbnail border-0" th:src="${user.student.image}" alt="Card image cap">
-                    <div class="card-body">
-                        <h4 class="card-title" th:text="${user.student.first_name} +' '+ ${user.student.last_name}"></h4>
-                        <a class="d-flex justify-content-center card-footer profileLink " style="background-color: #789f83;" th:href="@{/signature-page/{id}(id=${user.id})}">Visit This Friends Page!</a>
+                        <!--    </div>-->
+                        <div class="card mt-3 k text-center m-0 px-1 py-1" style="width: 18rem;">
+                            <img class="card-img-top img-thumbnail border-0" th:src="${user.student.image}"
+                                 alt="Card image cap">
+                            <div class="card-body">
+                                <h4 class="card-title"
+                                    th:text="${user.student.first_name} +' '+ ${user.student.last_name}"></h4>
+                                <a class="d-flex justify-content-center card-footer profileLink "
+                                   style="background-color: #789f83;" th:href="@{/signature-page/{id}(id=${user.id})}">Visit
+                                    This Friends Page!</a>
+                            </div>
+                        </div>
                     </div>
+
                 </div>
             </div>
+        </div>
+    </section>
+</div>
 
+<!--                    Desktop start-->
+
+<div class="d-none d-lg-block d-xl-block">
+
+    <nav th:replace="partials/navbar :: navbar"/>
+    <div class="container mt-5 text-center">
+        <h1>Showing Students</h1>
+        <form th:action="@{/search}">
+            <input type="text" name="keyword" id="keyword" size="50" th:value="${keyword}" required/>
+            &nbsp;
+            <input class="btn searchBtn text-white" type="submit" value="Search"/>
+            &nbsp;
+            <input class="btn searchBtn text-white " type="button" value="Clear" id="btnClear" onclick="clearSearch()"/>
+        </form>
+        <div class="searchScroll row">
+            <div class="container"
+                 style="padding-right: 10px; padding-left: 10px; margin-left: 10px; margin-right: 10px"
+                 th:each="user : ${filteredResults}">
+                <div class="d-flex justify-content-center">
+                    <!--    <div class="">-->
+                    <!--        <div class="card profile-card-1" >-->
+
+                    <!--                <img class="card-img-top" th:src="${user.student.image}" alt="Card image cap" style="">-->
+
+
+                    <!--                <h2 class="card" th:text="${user.student.first_name} +' '+ ${user.student.last_name}"></h2>-->
+
+                    <!--            <a class="card card-footer" th:href="@{/signature-page/{id}(id=${user.id})}">Link to Signature Page!</a>-->
+                    <!--        </div>-->
+
+                    <!--    </div>-->
+                    <div class="card mt-3 k text-center m-0 px-1 py-1" style="width: 18rem;">
+                        <img class="card-img-top img-thumbnail border-0" th:src="${user.student.image}"
+                             alt="Card image cap">
+                        <div class="card-body">
+                            <h4 class="card-title"
+                                th:text="${user.student.first_name} +' '+ ${user.student.last_name}"></h4>
+                            <a class="d-flex justify-content-center card-footer profileLink "
+                               style="background-color: #789f83;" th:href="@{/signature-page/{id}(id=${user.id})}">Visit
+                                This Friends Page!</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </div>
     </div>
 </div>
-
 
 <script type="text/javascript">
     function clearSearch() {
         window.location = "[[@{/search}]]";
     }
 </script>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
 </body>
 </html>

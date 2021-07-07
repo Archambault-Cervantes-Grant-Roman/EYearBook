@@ -2,79 +2,170 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <link th:rel="stylesheet" th:href="@{/navbar.css}" />
+    <link th:rel="stylesheet" th:href="@{/navbar.css}"/>
     <link th:rel="stylesheet" th:href="@{/register.css}"/>
     <title>Sign up</title>
 </head>
 <body>
-<th:block th:insert="partials/topOfPage :: topOfPage"></th:block>
 
-<nav th:replace="partials/navbar :: navbar"/>
+<!--mobile start-->
+<div class="d-block d-sm-block d-md-block d-lg-none">
 
-<div class="container">
-    <div class="d-flex  justify-content-center h-100">
-        <div class="card welcome">
-            <div class="card-header">
-                <h2 class="d-flex justify-content-center">Parent Register Form</h2>
+    <section class="mobile-section-1 container-fluid h-100">
+        <div class="d-flex flex-column">
+            <div>
+                <header>
+                    <nav th:replace="partials/navbar :: navbar"/>
+
+                </header>
             </div>
+        </div>
+    </section>
+    <section>
+        <div class="container">
+            <div class="d-flex  justify-content-center h-100">
+                <div class="card mobileWelcome">
+                    <div class="card-header">
+                        <h2 class="d-flex justify-content-center">Parent Register Form</h2>
+                    </div>
 
-            <div class="card-body ">
-                <form th:action="@{/sign-up}" method="POST" th:object="${user}">
-                    <div class="container">
-                        <div class="form-group">
-                            <label class="input-group" for="username">Username</label>
-                            <input class="form-control" id="username" th:field="*{username}"/>
-                        </div>
-                    </div>
-                    <div class="container">
-                        <div class="form-group">
-                            <label class="input-group" for="email">Email</label>
-                            <input class="form-control" id="email" th:field="*{email}"/>
-                        </div>
-                    </div>
-                    <div class="container">
-                        <div class="form-group">
-                            <label class="input-group" for="password">Password</label>
-                            <input class="form-control" id="password" type="password" th:field="*{password}"/>
-                        </div>
-                    </div>
-                    <div class="container">
-                        <div class="form-group">
-                            <label class="input-group" for="confirmPassword">Confirm Password</label>
-                        <input class="form-control" type="password" name="confirmPassword" id="confirmPassword"/>
-                        <input id="isParent" type="hidden" name="isParent" th:value="1"/>
-                        </div>
-                    </div>
-                    <div class="col text-center">
-                        <input class="btn login_btn bg-primary text-white" value="Sign me up!" type="submit"/>
-                    </div>
-                </form>
-                <script>
-                    $('document').ready(function () {
-                        var password = document.getElementById("password")
-                        var confirmPassword = document.getElementById("confirmPassword");
+                    <div class="card-body ">
+                        <form th:action="@{/sign-up}" method="POST" th:object="${user}">
+                            <div class="container">
+                                <div class="form-group">
+                                    <label class="input-group" for="username">Username</label>
+                                    <input class="form-control" id="username" th:field="*{username}"/>
+                                </div>
+                            </div>
+                            <div class="container">
+                                <div class="form-group">
+                                    <label class="input-group" for="email">Email</label>
+                                    <input class="form-control" id="email" th:field="*{email}"/>
+                                </div>
+                            </div>
+                            <div class="container">
+                                <div class="form-group">
+                                    <label class="input-group" for="password">Password</label>
+                                    <input class="form-control" id="password" type="password" th:field="*{password}"/>
+                                </div>
+                            </div>
+                            <div class="container">
+                                <div class="form-group">
+                                    <label class="input-group" for="confirmPassword">Confirm Password</label>
+                                    <input class="form-control" type="password" name="confirmPassword"
+                                           id="confirmPassword"/>
+                                    <input id="isParent" type="hidden" name="isParent" th:value="1"/>
+                                </div>
+                            </div>
+                            <div class="col text-center">
+                                <input class="btn login_btn bg-primary text-white" value="Sign me up!" type="submit"/>
+                            </div>
+                        </form>
+                        <script>
+                            $('document').ready(function () {
+                                var password = document.getElementById("password")
+                                var confirmPassword = document.getElementById("confirmPassword");
 
-                        function validatePassword() {
-                            if (password.value !== confirmPassword.value) {
-                                confirmPassword.setCustomValidity("Passwords Don't Match");
-                            } else {
-                                confirmPassword.setCustomValidity('');
+                                function validatePassword() {
+                                    if (password.value !== confirmPassword.value) {
+                                        confirmPassword.setCustomValidity("Passwords Don't Match");
+                                    } else {
+                                        confirmPassword.setCustomValidity('');
+                                    }
+                                }
+
+                                password.onchange = validatePassword;
+                                confirmPassword.onkeyup = validatePassword;
+                            });
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!--DESKTOP START-->
+<div class="d-none d-lg-block d-xl-block">
+
+    <th:block th:insert="partials/topOfPage :: topOfPage"></th:block>
+
+    <nav th:replace="partials/navbar :: navbar"/>
+
+    <div class="container welcomeForm">
+        <div class="d-flex  justify-content-center h-100">
+            <div class="card welcome">
+                <div class="card-header">
+                    <h2 class="d-flex justify-content-center">Parent Register Form</h2>
+                </div>
+
+                <div class="card-body ">
+                    <form th:action="@{/sign-up}" method="POST" th:object="${user}">
+                        <div class="container">
+                            <div class="form-group">
+                                <label class="input-group" for="username">Username</label>
+                                <input class="form-control" id="username" th:field="*{username}"/>
+                            </div>
+                        </div>
+                        <div class="container">
+                            <div class="form-group">
+                                <label class="input-group" for="email">Email</label>
+                                <input class="form-control" id="email" th:field="*{email}"/>
+                            </div>
+                        </div>
+                        <div class="container">
+                            <div class="form-group">
+                                <label class="input-group" for="password">Password</label>
+                                <input class="form-control" id="password" type="password" th:field="*{password}"/>
+                            </div>
+                        </div>
+                        <div class="container">
+                            <div class="form-group">
+                                <label class="input-group" for="confirmPassword">Confirm Password</label>
+                                <input class="form-control" type="password" name="confirmPassword"
+                                       id="confirmPassword"/>
+                                <input id="isParent" type="hidden" name="isParent" th:value="1"/>
+                            </div>
+                        </div>
+                        <div class="col text-center">
+                            <input class="btn login_btn bg-primary text-white" value="Sign me up!" type="submit"/>
+                        </div>
+                    </form>
+                    <script>
+                        $('document').ready(function () {
+                            var password = document.getElementById("password")
+                            var confirmPassword = document.getElementById("confirmPassword");
+
+                            function validatePassword() {
+                                if (password.value !== confirmPassword.value) {
+                                    confirmPassword.setCustomValidity("Passwords Don't Match");
+                                } else {
+                                    confirmPassword.setCustomValidity('');
+                                }
                             }
-                        }
 
-                        password.onchange = validatePassword;
-                        confirmPassword.onkeyup = validatePassword;
-                    });
-                </script>
+                            password.onchange = validatePassword;
+                            confirmPassword.onkeyup = validatePassword;
+                        });
+                    </script>
+                </div>
             </div>
         </div>
     </div>
 </div>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
 </body>
 </html>

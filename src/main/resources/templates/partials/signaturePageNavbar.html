@@ -17,8 +17,9 @@
     <title>Navbar</title>
 </head>
 <body>
+<!--font-family: 'Bebas Neue', cursive;-->
 <nav th:fragment="signaturePageNavbar" class="navbar sticky-top navbar-expand-lg navbar-dark" style="background-color: #789f83;">
-    <a class="navbar-brand nav-font" style="font-family: 'Bebas Neue', cursive; font-size: 2em" th:href="@{/}">E-YEARBOOK<span class="sr-only"></span></a>
+    <a class="navbar-brand nav-font" style="font-size: 2em" th:href="@{/}">E-YEARBOOK<span class="sr-only"></span></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
             aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -59,7 +60,7 @@
 
             <th:block sec:authorize="isAuthenticated()">
                 <li class="nav-item ">
-                    <form th:action="@{/logout}" th:method="post">
+                    <form class="d-flex justify-content-center" th:action="@{/logout}" th:method="post">
                         <button class="nav-link btn-link btn text-white nav-font">Logout</button>
                     </form>
                 </li>

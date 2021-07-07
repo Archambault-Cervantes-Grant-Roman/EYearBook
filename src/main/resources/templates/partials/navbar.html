@@ -15,8 +15,9 @@
 
 </head>
 <body>
+<!--font-family: 'Bebas Neue', cursive;-->
 <nav th:fragment="navbar" class="navbar sticky-top navbar-expand-lg navbar-dark " style="background-color: #789f83; ">
-    <a class="navbar-brand" style="font-family: 'Bebas Neue', cursive; font-size: 2em" th:href="@{/}">E-YEARBOOK<span class="sr-only"></span></a>
+    <a class="navbar-brand" style=" font-size: 2em" th:href="@{/}">E-YEARBOOK<span class="sr-only"></span></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse"
             aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -27,7 +28,7 @@
 
             <th:block sec:authorize="!isAuthenticated()">
                 <li class="nav-item ">
-                    <a class="nav-link text-white nav-font" th:href="@{/login}">Login</a>
+                    <a class="nav-link text-white nav-font d-flex justify-content-center" th:href="@{/login}">Login</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link btn-link btn text-white nav-font " th:href="@{/sign-up}">Parent Registration</a>
@@ -57,7 +58,7 @@
 
             <th:block sec:authorize="isAuthenticated()">
                 <li class="nav-item ">
-                    <form th:action="@{/logout}" th:method="post">
+                    <form class="d-flex justify-content-center" th:action="@{/logout}" th:method="post">
                         <button class="nav-link btn-link btn text-white nav-font">Logout</button>
                     </form>
                 </li>

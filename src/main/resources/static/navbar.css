@@ -14,3 +14,12 @@ nav {
     font-size: 1.25em;
 }
 
+.mobile-navbar{
+    background: #789F83;
+}
+
+/*this is what the main class is called that effects mobile navbar padding*/
+.mobile-section-1{
+    padding-left: 0;
+    padding-right: 0;
+}

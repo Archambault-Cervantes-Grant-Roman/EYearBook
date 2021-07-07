@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thyme leaf.org/extras/spring-security" lang="en">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
 <head>
     <!--    bootstrap CSS-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
@@ -21,59 +21,109 @@
     <link th:rel="stylesheet" th:href="@{/navbar.css}"/>
 
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
     <title>Parent Profile Page</title>
 
 </head>
 
-<body class="p-profile-page">
-<th:block th:insert="partials/topOfPage :: topOfPage"></th:block>
+<body>
+<!--mobile start-->
+<div class="d-block d-sm-block d-md-block d-lg-none">
 
-<nav th:replace="partials/navbarParent :: navbarParent"/>
-
-<!--<div class="parentBox w-50">-->
-
-<div class="container-sm mt-sm-4 pl-0 pr-0 parentBox w-50">
-    <div class="card parentCard">
-        <div class="card-header ">
-            <h1 class="text-center pt-2 p-1 text-white">Welcome to your parent-profile page, <span
-                    th:text="${user != null} ? ${user.username} : 'user is null'"></span>. </h1>
-        </div>
-        <h3 class="text-center text-white pb-2 ">You may monitor your child(ren)'s posts here.</h3>
-    </div>
-</div>
-<!--==================================-->
-<div class="container-sm pl-0 pr-0 parentBox w-50">
-    <div class="card parentCard">
-
-
-        <div class="card-body ">
-            <div th:each="child : ${children}">
-
-                <h4 class="text-center text-white"><a th:text="${child.username}"> </a></h4>
-
-                <div th:each="userSignature : ${child.userSignatures}">
-                    <!--                    <div th:if="${userSignature.yearbook_comment != null}">-->
-                    <h4 class=" childsPost">Commented on <a th:text="${userSignature.profile_user.username}"></a>'s
-                        profile</h4>
-
-                    <h5 class="handwriting text-white"> ~ <a th:text="${userSignature.yearbook_comment}"></a></h5>
-                    <hr>
+    <section class="mobile-section-1 container-fluid h-100">
+        <nav th:replace="partials/navbarParent :: navbarParent"/>
+    </section>
+    <section>
+        <div class="container-sm mt-sm-4 pl-0 pr-0 parentBox">
+            <div class="card parentCard">
+                <div class="card-header ">
+                    <h1 class="text-center pt-2 p-1 text-white">Welcome to your parent-profile page, <span
+                            th:text="${user != null} ? ${user.username} : 'user is null'"></span>. </h1>
                 </div>
-                <div>
+                <h3 class="text-center text-white pb-2 ">You may monitor your child(ren)'s posts here.</h3>
+            </div>
+        </div>
+        <!--==================================-->
+        <div class="container-sm pl-0 pr-0 parentBox">
+            <div class="card parentCard">
 
+
+                <div class="card-body ">
+                    <div th:each="child : ${children}">
+
+                        <h4 class="text-center text-white"><a th:text="${child.username}"> </a></h4>
+
+                        <div th:each="userSignature : ${child.userSignatures}">
+                            <!--                    <div th:if="${userSignature.yearbook_comment != null}">-->
+                            <h4 class=" childsPost">Commented on <a
+                                    th:text="${userSignature.profile_user.username}"></a>'s
+                                profile</h4>
+
+                            <h5 class="handwriting text-white"> ~ <a th:text="${userSignature.yearbook_comment}"></a>
+                            </h5>
+                            <hr>
+                        </div>
+                        <div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!--desktop start-->
+<div class="d-none d-lg-block d-xl-block">
+
+    <div class="p-profile-page">
+        <th:block th:insert="partials/topOfPage :: topOfPage"></th:block>
+
+        <nav th:replace="partials/navbarParent :: navbarParent"/>
+
+        <!--<div class="parentBox w-50">-->
+
+        <div class="container-sm mt-sm-4 pl-0 pr-0 parentBox w-50">
+            <div class="card parentCard">
+                <div class="card-header ">
+                    <h1 class="text-center pt-2 p-1 text-white">Welcome to your parent-profile page, <span
+                            th:text="${user != null} ? ${user.username} : 'user is null'"></span>. </h1>
+                </div>
+                <h3 class="text-center text-white pb-2 ">You may monitor your child(ren)'s posts here.</h3>
+            </div>
+        </div>
+        <!--==================================-->
+        <div class="container-sm pl-0 pr-0 parentBox w-50">
+            <div class="card parentCard">
+
+
+                <div class="card-body ">
+                    <div th:each="child : ${children}">
+
+                        <h4 class="text-center text-white"><a th:text="${child.username}"> </a></h4>
+
+                        <div th:each="userSignature : ${child.userSignatures}">
+                            <!--                    <div th:if="${userSignature.yearbook_comment != null}">-->
+                            <h4 class=" childsPost">Commented on <a
+                                    th:text="${userSignature.profile_user.username}"></a>'s
+                                profile</h4>
+
+                            <h5 class="handwriting text-white"> ~ <a th:text="${userSignature.yearbook_comment}"></a>
+                            </h5>
+                            <hr>
+                        </div>
+                        <div>
+
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-
-
 </div>
-</div>
-</div>
-
-
+</body>
 <!--modal code for purchase code-->
 
 
